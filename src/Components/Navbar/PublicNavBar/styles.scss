@@ -1,0 +1,15 @@
+@import "./../../../Global/styles/Colors.scss";
+
+.navigation {
+  display: flex;
+  justify-content: center;
+  min-height: 10vh;
+  width: 100%;
+
+  .class-list {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}

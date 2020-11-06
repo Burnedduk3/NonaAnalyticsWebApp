@@ -1,0 +1,205 @@
+@import "./../../../Global/styles/Colors.scss";
+
+.life-project-container {
+  min-height: 80vh;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin: 0 0 40px 0;
+
+  .title {
+    display: flex;
+    margin: 20px 0;
+    font-size: 4em;
+    color: $primary-color;
+    font-weight: bold;
+    width: 100%;
+    justify-content: center;
+  }
+
+  .left-column {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+
+    .introduction {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .introduction-container {
+        width: 60%;
+        margin: 20px 0 50px 0;
+
+        .cite {
+          font-size: 3em;
+          font-weight: lighter;
+          font-style: italic;
+          text-align: center;
+          color: $primary-color;
+        }
+
+        .author {
+          font-size: 1em;
+          color: $secondary-color;
+        }
+      }
+
+      .questions-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        h4 {
+          color: $primary-color;
+          font-size: 1.5em;
+          max-width: 600px;
+          text-align: center;
+        }
+
+        .question {
+          display: flex;
+          width: 45%;
+
+          ul {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+
+            li {
+              font-size: 1.02em;
+              color: $secondary-color;
+            }
+          }
+        }
+      }
+    }
+
+    .community {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+
+      .subtitle {
+        margin: 30px 0 0 0;
+        font-size: 1.5em;
+        color: $primary-color;
+        max-width: 600px;
+        text-align: center;
+      }
+
+      .explanation {
+        max-width: 500px;
+        font-size: 1.1em;
+        color: $secondary-color;
+        text-align: justify;
+        margin: 10px 0 20px 0;
+      }
+
+      ul {
+        max-width: 500px;
+        min-width: 280px;
+
+        li {
+          font-size: 1.02em;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+
+  .right-column {
+    display: flex;
+    width: 50%;
+    flex-wrap: wrap;
+
+    .year {
+      display: flex;
+      width: 51%;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 20px 0 20px 150px;
+
+      h4 {
+        width: 50%;
+        text-align: center;
+        color: #f00505;
+        font-size: 1.5em;
+      }
+
+      ul {
+        display: flex;
+        flex-wrap: wrap;
+        width: 100%;
+        justify-content: center;
+
+        li {
+          width: 60%;
+          font-size: 1.2em;
+          color: $secondary-color;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 1024px) {
+
+  .life-project-container{
+    width: 100%;
+
+    .title {
+      text-align: center;
+    }
+
+    .left-column{
+      min-width: 360px;
+      .introduction{
+        width: 100%;
+        .introduction-container{
+          width: 100%;
+
+          .author {
+            padding: 0 20px;
+          }
+        }
+      }
+
+      .community{
+        width: 100%;
+        min-width:360px;
+
+        .explanation{
+          padding: 0 20px;
+        }
+
+        ul{
+          width: 70%;
+          li{
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .right-column{
+      min-width: 300px;
+
+      .year {
+        margin: 20px 0 20px 0px;
+        width: 100%;
+        h4 {
+
+        }
+
+        ul {
+          width: 100%;
+
+          li {
+            width: 80%;
+          }
+        }
+      }
+    }
+  }
+}

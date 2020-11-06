@@ -1,0 +1,17 @@
+.platform-container {
+  display: flex;
+  min-height: 80vh;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  .image-container {
+    display: flex;
+    width: 45%;
+    min-width: 300px;
+    margin: 25px 0;
+
+    img {
+      width: 100%;
+    }
+  }
+}

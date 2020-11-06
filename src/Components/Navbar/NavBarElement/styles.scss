@@ -1,0 +1,28 @@
+@import "./../../../Global/styles/Colors.scss";
+
+.list-element {
+  display: flex;
+  border-bottom: $secondary-color 1px solid;
+
+  .list-element::marker {
+    content: none;
+  }
+
+  .link-reference {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: $primary-color;
+    font-size: 1em;
+    padding: 20px;
+    max-width: 150px;
+    min-height: 42px;
+    text-align: center;
+  }
+
+  .link-reference:hover {
+    transition: color, background-color 0.5s ease;
+    color: $whiter-background;
+    background-color: $primary-color;
+  }
+}
