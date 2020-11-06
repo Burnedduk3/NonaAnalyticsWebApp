@@ -5,15 +5,41 @@
   .welcome-image {
     width: 100%;
     object-fit: cover;
-    object-position: 0 35%;
+    object-position: 5% 0;
+  }
+  .main-title{
+    display: flex;
+    justify-content: center;
+    max-width: 300px;
+    position: absolute;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 53vh;
+    font-size: 2.5em;
+    line-height: 1em;
+  }
+
+  .sub-title {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 65vh;
+    font-size: 2em;
   }
 }
 
 @media only screen and (max-width: 1024px) {
   .header {
-
-    .welcome-image {
-      object-position: 50% 35%;
-    }
+    height: 80vh;
   }
 }

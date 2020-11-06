@@ -8,13 +8,17 @@ const RoutingConstants = {
       name: 'Team',
       path: '/team',
     },
+    mision: {
+      name: 'Mission',
+      path: '/Mission',
+    },
     lifeProject: {
       name: 'Life Project',
       path: '/life-project',
     },
     nonaInnovationEcosystem: {
-      name: 'Nona Innovation',
-      path: '/nonca-innovation',
+      name: 'Innovation Timeline',
+      path: 'https://nona-analytics-files.s3.amazonaws.com/Innovation+Timeline.pdf',
     },
     mobileApp: {
       name: 'Mobile App',

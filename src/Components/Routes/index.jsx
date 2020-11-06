@@ -10,6 +10,7 @@ import LifeProject from '../../Containers/Public/LifeProject';
 import MobileApp from '../../Containers/Public/MobileApp';
 import LifeProjectPlataform from '../../Containers/Public/LifeProjectPlataform';
 import NonaInnovationEcosystem from '../../Containers/Public/NonaInnovationEcosystem';
+import Mission from '../../Containers/Public/Mission';
 
 const Routing = () => (
   <>
@@ -29,6 +30,11 @@ const Routing = () => (
           exact
           path={RoutingConstants.menu.lifeProjectPlataform.path}
           component={LifeProjectPlataform}
+        />
+        <Route
+          exact
+          path={RoutingConstants.menu.mision.path}
+          component={Mission}
         />
         <Route component={NotFound} />
       </Switch>
