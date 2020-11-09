@@ -5,6 +5,10 @@ const TeamTextConstants = {
       name: 'Cesar Munoz',
       title: 'PhD Computer Engineering & Management System - CEO Nona Analytics',
     },
+    person6: {
+      name: 'Rebecca Eggleton',
+      title: 'CFO Nona Analytics, Licensed CPA',
+    },
     person2: {
       name: 'Fernando Camacho',
       title: 'PhD Biomedical Engineering - Lead Data Scientist',
