@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom';
 const NavBarElement = (props) => {
   const { name, route } = props;
 
-  if (name === 'Mobile App' || name === 'Survey') {
+  if (name === 'Mobile App' || name === 'Survey' || name === 'Innovation Timeline') {
     return (
       <li key={name} className="list-element">
         <a className="link-reference" href={route}>{name}</a>
