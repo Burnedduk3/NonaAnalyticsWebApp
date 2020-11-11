@@ -10,6 +10,11 @@
       "StackName": "amplify-nonaformsapp-dev-222739",
       "StackId": "arn:aws:cloudformation:us-east-1:342495404680:stack/amplify-nonaformsapp-dev-222739/12051370-1fe0-11eb-aa58-0a73682547f5",
       "AmplifyAppId": "d23tz7oyttjdit"
+    },
+    "categories": {
+      "auth": {
+        "nonaformsapp694fbf3b": {}
+      }
     }
   }
 }

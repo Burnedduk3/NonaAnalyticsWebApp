@@ -18,15 +18,15 @@ const RoutingConstants = {
     },
     nonaInnovationEcosystem: {
       name: 'Innovation Timeline',
-      path: 'https://nona-analytics-files.s3.amazonaws.com/Innovation+Timeline.pdf',
+      path: 'https://public-resources222739-dev.s3.amazonaws.com/Life+Project+Timeline.pdf',
     },
     mobileApp: {
       name: 'Mobile App',
-      path: 'https://nona-analytics-files.s3.amazonaws.com/Mobile_App_Wireframe.pdf',
+      path: 'https://public-resources222739-dev.s3.amazonaws.com/Mobile_App_Wireframe.pdf',
     },
     lifeProjectPlataform: {
       name: 'Survey',
-      path: 'https://nona-analytics-files.s3.amazonaws.com/WebPAge.pdf',
+      path: 'https://public-resources222739-dev.s3.amazonaws.com/NonaAnalytics.pdf',
     },
   },
   notFound: {
