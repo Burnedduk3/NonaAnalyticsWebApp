@@ -19,7 +19,6 @@ jobs:
           key: v1-dependencies-{{ checksum "package.json" }}
       - run: yarn jslint
       - run: yarn csslint
-      - run: yarn test
 
 workflows:
   test:
