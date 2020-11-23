@@ -14,7 +14,7 @@ const RoutingConstants = {
     },
     bePart: {
       name: 'Be Part',
-      path: 'be-part',
+      path: '/be_part',
     },
   },
   notFound: {
