@@ -23,7 +23,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "jslint": "eslint \"src/**\" --ext jsx --ignore-pattern *.scss",
-    "scsslint": "stylelint \"src/**/*.scss\" --fix"
+    "csslint-fix": "stylelint \"src/**/*.scss\" --fix",
+    "csslint": "stylelint \"src/**/*.scss\""
   },
   "eslintConfig": {
     "extends": [

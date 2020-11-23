@@ -1,7 +1,7 @@
 import React from 'react';
 import './styles.scss';
 import NavBarElement from '../NavBarElement';
-import RoutingConstants from '../../Routes/RoutingConstants';
+import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
 
 const PublicNavBar = () => (
   <nav className="navigation">
