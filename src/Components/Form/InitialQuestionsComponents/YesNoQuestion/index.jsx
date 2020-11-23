@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import '.';
+import './styles.scss';
 
 const YesNoQuestion = (props) => {
   const { question, radioGroup } = props;
