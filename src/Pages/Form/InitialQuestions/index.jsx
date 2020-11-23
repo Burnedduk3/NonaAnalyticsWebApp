@@ -1,15 +1,11 @@
-import React, { useState } from 'react';
+import React from 'react';
 import InitialQuestionHeader from '../../../Components/Form/InitialQuestionsComponents/Header';
 
-const InitialFormContainer = () => {
-  const [liveInLakeNona, setLiveInLakeNona] = useState(false);
-  const [overAge, setOverAge] = useState(false);
-  return (
-    <>
-      <InitialQuestionHeader />
-      <main>
+const InitialFormContainer = () => (
+  <>
+    <InitialQuestionHeader />
+    <main />
+  </>
+);
 
-      </main>
-    </>
-  );
-};
+export default InitialFormContainer;

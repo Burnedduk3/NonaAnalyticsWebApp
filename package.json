@@ -21,7 +21,7 @@
   "scripts": {
     "start": "dotenv -e .env react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "react-scripts test --watchAll=false --forceExit",
     "eject": "react-scripts eject",
     "jslint": "eslint \"src/**\" --ext jsx --ignore-pattern *.scss",
     "csslint-fix": "stylelint \"src/**/*.scss\" --fix",
