@@ -41,13 +41,8 @@ export const getForm = /* GraphQL */ `
   query GetForm($id: ID!) {
     getForm(id: $id) {
       id
-      response
-      question {
-        id
-        question
-        items
-        createdAt
-        updatedAt
+      formQuestions {
+        nextToken
       }
       user {
         id
@@ -58,6 +53,7 @@ export const getForm = /* GraphQL */ `
         createdAt
         updatedAt
       }
+      finished
       createdAt
       updatedAt
     }
@@ -70,6 +66,46 @@ export const listForms = /* GraphQL */ `
     $nextToken: String
   ) {
     listForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        finished
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getFormQuestion = /* GraphQL */ `
+  query GetFormQuestion($id: ID!) {
+    getFormQuestion(id: $id) {
+      id
+      response
+      question {
+        id
+        question
+        items
+        createdAt
+        updatedAt
+      }
+      form {
+        id
+        finished
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listFormQuestions = /* GraphQL */ `
+  query ListFormQuestions(
+    $filter: ModelFormQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listFormQuestions(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
         response

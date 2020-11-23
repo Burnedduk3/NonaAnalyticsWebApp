@@ -4,6 +4,7 @@ type User @model {
   lastname: String!
   mail: String!
   phone: String!
+  age: Int!
   forms: [Form] @connection(name: "Forms")
 }
 
