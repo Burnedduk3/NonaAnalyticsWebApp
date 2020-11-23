@@ -1,7 +1,36 @@
 version: 2.1
 orbs:
   node: circleci/node@3.0.0
+
+jobs:
+  lint_test:
+    docker:
+      - image: node:14.15.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+      - run: yarn jslint
+      - run: yarn csslint
+      - run: yarn test
+
 workflows:
-  node-tests:
+  test:
     jobs:
-      - node/test
+      - lint_test
+      - manual_approval:
+          filters:
+            branches:
+              only:
+                - master
+                - development
+          requires:
+            - lint_test
+          type: approval
