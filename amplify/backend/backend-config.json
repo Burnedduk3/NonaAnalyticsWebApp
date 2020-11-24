@@ -1,6 +1,6 @@
 {
   "auth": {
-    "nonaformsappa764cc97": {
+    "nonaformsappb831ee69": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -16,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authnonaformsappa764cc97"
+              "userPoolId": "authnonaformsappb831ee69"
             }
           },
           "additionalAuthenticationProviders": []
