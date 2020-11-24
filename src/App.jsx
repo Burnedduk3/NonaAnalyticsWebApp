@@ -1,14 +1,18 @@
 import React from 'react';
-import Amplify from 'aws-amplify';
 import './App.scss';
-
+import { BrowserRouter } from 'react-router-dom';
+import Amplify from 'aws-amplify';
+import RouterConfig from './navigation/RouterConfig';
+// eslint-disable-next-line
 import awsExports from './aws-exports';
-import Routing from './Components/Routes';
 
+// eslint-disable-next-line
 Amplify.configure(awsExports);
 
 const App = () => (
-  <Routing />
+  <BrowserRouter>
+    <RouterConfig />
+  </BrowserRouter>
 );
 
 export default App;

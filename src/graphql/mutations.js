@@ -12,6 +12,7 @@ export const createUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -31,6 +32,7 @@ export const updateUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -50,6 +52,7 @@ export const deleteUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -65,13 +68,8 @@ export const createForm = /* GraphQL */ `
   ) {
     createForm(input: $input, condition: $condition) {
       id
-      response
-      question {
-        id
-        question
-        items
-        createdAt
-        updatedAt
+      formQuestions {
+        nextToken
       }
       user {
         id
@@ -79,9 +77,11 @@ export const createForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
+      finished
       createdAt
       updatedAt
     }
@@ -94,13 +94,8 @@ export const updateForm = /* GraphQL */ `
   ) {
     updateForm(input: $input, condition: $condition) {
       id
-      response
-      question {
-        id
-        question
-        items
-        createdAt
-        updatedAt
+      formQuestions {
+        nextToken
       }
       user {
         id
@@ -108,9 +103,11 @@ export const updateForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
+      finished
       createdAt
       updatedAt
     }
@@ -123,6 +120,32 @@ export const deleteForm = /* GraphQL */ `
   ) {
     deleteForm(input: $input, condition: $condition) {
       id
+      formQuestions {
+        nextToken
+      }
+      user {
+        id
+        name
+        lastname
+        mail
+        phone
+        age
+        createdAt
+        updatedAt
+      }
+      finished
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createFormQuestion = /* GraphQL */ `
+  mutation CreateFormQuestion(
+    $input: CreateFormQuestionInput!
+    $condition: ModelFormQuestionConditionInput
+  ) {
+    createFormQuestion(input: $input, condition: $condition) {
+      id
       response
       question {
         id
@@ -131,12 +154,61 @@ export const deleteForm = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      form {
         id
-        name
-        lastname
-        mail
-        phone
+        finished
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateFormQuestion = /* GraphQL */ `
+  mutation UpdateFormQuestion(
+    $input: UpdateFormQuestionInput!
+    $condition: ModelFormQuestionConditionInput
+  ) {
+    updateFormQuestion(input: $input, condition: $condition) {
+      id
+      response
+      question {
+        id
+        question
+        items
+        createdAt
+        updatedAt
+      }
+      form {
+        id
+        finished
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteFormQuestion = /* GraphQL */ `
+  mutation DeleteFormQuestion(
+    $input: DeleteFormQuestionInput!
+    $condition: ModelFormQuestionConditionInput
+  ) {
+    deleteFormQuestion(input: $input, condition: $condition) {
+      id
+      response
+      question {
+        id
+        question
+        items
+        createdAt
+        updatedAt
+      }
+      form {
+        id
+        finished
         createdAt
         updatedAt
       }

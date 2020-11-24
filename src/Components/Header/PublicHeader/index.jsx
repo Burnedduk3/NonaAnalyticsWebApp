@@ -1,6 +1,6 @@
 import React from 'react';
 import './styles.scss';
-import HeaderImage from '../../../Images/HomeImage.jpg';
+import HeaderImage from '../../../assets/Images/HomeImage.jpg';
 
 const PublicHeader = () => (
   <header className="header">

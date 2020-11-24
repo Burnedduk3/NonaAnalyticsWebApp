@@ -1,6 +1,6 @@
 {
   "auth": {
-    "nonaformsapp2efbb92d": {
+    "nonaformsappb831ee69": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -8,7 +8,7 @@
     }
   },
   "api": {
-    "Form": {
+    "nonaformsapp": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -16,7 +16,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authnonaformsapp2efbb92d"
+              "userPoolId": "authnonaformsappb831ee69"
             }
           },
           "additionalAuthenticationProviders": []

@@ -9,6 +9,7 @@ export const onCreateUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -25,6 +26,7 @@ export const onUpdateUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -41,6 +43,7 @@ export const onDeleteUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -53,13 +56,8 @@ export const onCreateForm = /* GraphQL */ `
   subscription OnCreateForm {
     onCreateForm {
       id
-      response
-      question {
-        id
-        question
-        items
-        createdAt
-        updatedAt
+      formQuestions {
+        nextToken
       }
       user {
         id
@@ -67,9 +65,11 @@ export const onCreateForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
+      finished
       createdAt
       updatedAt
     }
@@ -79,13 +79,8 @@ export const onUpdateForm = /* GraphQL */ `
   subscription OnUpdateForm {
     onUpdateForm {
       id
-      response
-      question {
-        id
-        question
-        items
-        createdAt
-        updatedAt
+      formQuestions {
+        nextToken
       }
       user {
         id
@@ -93,9 +88,11 @@ export const onUpdateForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
+      finished
       createdAt
       updatedAt
     }
@@ -105,6 +102,29 @@ export const onDeleteForm = /* GraphQL */ `
   subscription OnDeleteForm {
     onDeleteForm {
       id
+      formQuestions {
+        nextToken
+      }
+      user {
+        id
+        name
+        lastname
+        mail
+        phone
+        age
+        createdAt
+        updatedAt
+      }
+      finished
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateFormQuestion = /* GraphQL */ `
+  subscription OnCreateFormQuestion {
+    onCreateFormQuestion {
+      id
       response
       question {
         id
@@ -113,12 +133,55 @@ export const onDeleteForm = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      user {
+      form {
         id
-        name
-        lastname
-        mail
-        phone
+        finished
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateFormQuestion = /* GraphQL */ `
+  subscription OnUpdateFormQuestion {
+    onUpdateFormQuestion {
+      id
+      response
+      question {
+        id
+        question
+        items
+        createdAt
+        updatedAt
+      }
+      form {
+        id
+        finished
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteFormQuestion = /* GraphQL */ `
+  subscription OnDeleteFormQuestion {
+    onDeleteFormQuestion {
+      id
+      response
+      question {
+        id
+        question
+        items
+        createdAt
+        updatedAt
+      }
+      form {
+        id
+        finished
         createdAt
         updatedAt
       }
