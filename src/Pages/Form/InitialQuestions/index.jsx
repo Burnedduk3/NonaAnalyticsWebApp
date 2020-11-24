@@ -7,9 +7,7 @@ const InitialFormContainer = () => {
   return (
     <>
       <InitialQuestionHeader />
-      <main>
-
-      </main>
+      <main />
     </>
   );
 };

@@ -1,6 +1,6 @@
-import React from 'react';
-import './styles.scss';
-import PublicHeader from '../../../Components/Header/PublicHeader';
+import React from "react";
+import "./styles.scss";
+import PublicHeader from "../../../Components/Header/PublicHeader";
 
 const Home = () => (
   <>
