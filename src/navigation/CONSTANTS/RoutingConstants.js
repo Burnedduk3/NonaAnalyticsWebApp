@@ -21,6 +21,10 @@ const RoutingConstants = {
     name: '404',
     path: '/404',
   },
+  form: {
+    name: 'StartForm',
+    path: '/form',
+  },
 };
 
 export default RoutingConstants;
