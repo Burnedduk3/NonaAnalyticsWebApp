@@ -1,0 +1,28 @@
+.our-mission {
+    position: relative;
+    width: 100%;
+    padding-top: 20vh;
+    background-image: url("../../../assets/Images/InnovationImage.jpg");
+    background-size: cover;
+    opacity: 0.9;
+    z-index: -1;
+
+    &-content {
+        position: relative;
+        max-width: 400px;
+        padding: 10vh 10vh 10vh 20vh;
+        background-color: white;
+        z-index: 1;
+    }
+}
+
+.what-do-we-do {
+    background-color: #F5F5F5;
+    text-align: center;
+}
+
+.subtitle {
+    margin-bottom: 1em;
+    font-size: 40px;
+    color: #303030;
+}

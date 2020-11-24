@@ -1,41 +1,40 @@
 .header {
   display: flex;
-  height: 80vh;
+  flex-direction: column;
+  width: 100%;
+  padding-top: 40vh;
+  padding-bottom: 20vh;
+  position: relative;
 
-  .welcome-image {
+  &-container {
     width: 100%;
-    object-fit: cover;
-    object-position: 5% 0;
+    height: 100%;
+    background-image: url("../../../assets/Images/HomeImage.jpg");
+    background-size: cover;
+    filter: brightness(50%);
+    opacity: 0.9;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
   }
 
   .main-title {
-    display: flex;
-    justify-content: center;
-    max-width: 300px;
-    position: absolute;
+    max-width: 40%;
     color: white;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 53vh;
-    font-size: 2.5em;
+    margin-left: 20vh;
+    margin-bottom: 8vh;
+    top: 40vh;
+    font-size: 4em;
     line-height: 1em;
   }
 
-  .sub-title {
-    display: flex;
-    justify-content: center;
-    position: absolute;
-    color: white;
-    margin-left: auto;
-    margin-right: auto;
-    left: 0;
-    right: 0;
-    text-align: center;
-    top: 65vh;
-    font-size: 2em;
+  .call-to-action {
+    margin-left: 20vh;
+    top: 50vh;
+    height: 4em;
+    width: 150px;
+    border-radius: 32px;
   }
 }
 
