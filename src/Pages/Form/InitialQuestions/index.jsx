@@ -28,6 +28,8 @@ const InitialFormPage = () => {
   return (
 
     <>
+      <h2 className="form-start-title">Lets start</h2>
+      <div className="general-questions-container" />
       <main />
     </>
   );
