@@ -1,20 +1,15 @@
 {
-  "dev": {
+  "develop": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-nonaformsapp-dev-201856-authRole",
-      "UnauthRoleArn": "arn:aws:iam::342495404680:role/amplify-nonaformsapp-dev-201856-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::342495404680:role/amplify-nonaformsapp-dev-201856-authRole",
+      "AuthRoleName": "amplify-nonaformsapp-develop-210129-authRole",
+      "UnauthRoleArn": "arn:aws:iam::342495404680:role/amplify-nonaformsapp-develop-210129-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::342495404680:role/amplify-nonaformsapp-develop-210129-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-nonaformsapp-dev-201856-deployment",
-      "UnauthRoleName": "amplify-nonaformsapp-dev-201856-unauthRole",
-      "StackName": "amplify-nonaformsapp-dev-201856",
-      "StackId": "arn:aws:cloudformation:us-east-1:342495404680:stack/amplify-nonaformsapp-dev-201856/8a21f770-2b97-11eb-9c5c-0a773b285c67",
-      "AmplifyAppId": "d10eqmy16gnsxz"
-    },
-    "categories": {
-      "auth": {
-        "nonaformsapp2efbb92d": {}
-      }
+      "DeploymentBucketName": "amplify-nonaformsapp-develop-210129-deployment",
+      "UnauthRoleName": "amplify-nonaformsapp-develop-210129-unauthRole",
+      "StackName": "amplify-nonaformsapp-develop-210129",
+      "StackId": "arn:aws:cloudformation:us-east-1:342495404680:stack/amplify-nonaformsapp-develop-210129/fa6b08b0-2df8-11eb-92d2-0e71a2c850a7",
+      "AmplifyAppId": "d123p0iy4b0d27"
     }
   }
 }
