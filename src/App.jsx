@@ -1,14 +1,12 @@
 import React from 'react';
-import Amplify from 'aws-amplify';
 import './App.scss';
-
-import awsExports from './aws-exports';
-import Routing from './Components/Routes';
-
-Amplify.configure(awsExports);
+import { BrowserRouter } from 'react-router-dom';
+import RouterConfig from './navigation/RouterConfig';
 
 const App = () => (
-  <Routing />
+  <BrowserRouter>
+    <RouterConfig />
+  </BrowserRouter>
 );
 
 export default App;

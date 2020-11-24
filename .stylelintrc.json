@@ -4,7 +4,7 @@
   ],
   "extends": "stylelint-config-standard",
   "rules": {
-    "scss/dollar-variable-pattern": "^foo",
+    "scss/dollar-variable-pattern": "/foo-.+/",
     "scss/selector-no-redundant-nesting-selector": true
   }
 }
