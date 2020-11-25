@@ -9,6 +9,7 @@ export const onCreateUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -25,6 +26,7 @@ export const onUpdateUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -41,6 +43,7 @@ export const onDeleteUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -62,6 +65,7 @@ export const onCreateForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
@@ -84,6 +88,7 @@ export const onUpdateForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
@@ -106,6 +111,7 @@ export const onDeleteForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }

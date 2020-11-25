@@ -9,6 +9,7 @@ export const getUser = /* GraphQL */ `
       lastname
       mail
       phone
+      age
       forms {
         nextToken
       }
@@ -30,6 +31,7 @@ export const listUsers = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }
@@ -50,6 +52,7 @@ export const getForm = /* GraphQL */ `
         lastname
         mail
         phone
+        age
         createdAt
         updatedAt
       }

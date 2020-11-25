@@ -1,0 +1,2 @@
+export const ADD_QUESTIONS = 'ADD_QUESTIONS';
+export const DELETE_QUESTION = 'DELETE_QUESTION';

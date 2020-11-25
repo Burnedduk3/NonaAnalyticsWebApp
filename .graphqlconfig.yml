@@ -1,6 +1,6 @@
 projects:
-  Form:
-    schemaPath: amplify/backend/api/Form/build/schema.graphql
+  nonaformsapp:
+    schemaPath: amplify/backend/api/nonaformsapp/build/schema.graphql
     includes:
       - src/graphql/**/*.js
     excludes:

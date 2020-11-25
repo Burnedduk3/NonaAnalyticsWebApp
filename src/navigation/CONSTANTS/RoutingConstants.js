@@ -14,12 +14,16 @@ const RoutingConstants = {
     },
     bePart: {
       name: 'Be Part',
-      path: 'be-part',
+      path: '/be_part',
     },
   },
   notFound: {
     name: '404',
     path: '/404',
+  },
+  form: {
+    name: 'StartForm',
+    path: '/form',
   },
 };
 
