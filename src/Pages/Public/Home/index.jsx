@@ -1,31 +1,28 @@
-import React from "react";
-import "./styles.scss";
-import PublicHeader from "../../../Components/Header/PublicHeader";
+import React from 'react';
+import './styles.scss';
+import PublicHeader from '../../../Components/Header/PublicHeader';
+import Perk from './Components/Perk/index';
+import HomeTexts from './CONSTANTS';
 
 const Home = () => (
   <>
     <PublicHeader />
     <div className="our-mission">
       <div className="our-mission-content">
-        <h3 className="subtitle">Our Mission</h3>
-        <p>
-          Co-innovate with lifestyle medicine providers, fitness and wellness
-          centers, sports performance clubs, and health research institutions.
-          Our company utilizes state-of-the-art people analytics and machine
-          learning based personalization to offer innovative solutions that are
-          designed to double the analytical productivity of our customers, in
-          half of the time and with half the cost. Our team is located in Lake
-          Nona, the global epicenter for innovation in health, wellness and
-          sports technology. We are inspired to positively impact individual’s
-          health locally and internationally.
-        </p>
+        <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
+        <p>{HomeTexts.sections.first.text}</p>
       </div>
     </div>
     <div className="what-do-we-do">
-      <h3 className="subtitle">What do we do</h3>
+      <h3 className="subtitle">{HomeTexts.sections.second.title}</h3>
+      <div className="perks">
+        <Perk text={HomeTexts.sections.second.elem1} />
+        <Perk text={HomeTexts.sections.second.elem2} />
+        <Perk text={HomeTexts.sections.second.elem3} />
+      </div>
     </div>
     <div className="our-team">
-      <h3 className="subtitle">Our Team</h3>
+      <h3 className="subtitle">{HomeTexts.sections.third.title}</h3>
     </div>
   </>
 );
