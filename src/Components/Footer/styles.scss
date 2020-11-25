@@ -1,12 +1,12 @@
 @import "./../../Global/styles/Colors.scss";
 @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
 
-$foo-degrade-color: #0f485b;
+$degrade-color: #0f485b;
 
 .footer {
   background: transparent
-    linear-gradient(180deg, $foo-primary-color 0%, $foo-degrade-color 100%) 0%
-    0% no-repeat padding-box;
+    linear-gradient(180deg, $primary-color 0%, $degrade-color 100%) 0% 0%
+    no-repeat padding-box;
   min-height: 10vw;
   display: flex;
 
@@ -41,7 +41,7 @@ $foo-degrade-color: #0f485b;
         font-family: "Poppins", sans-serif;
         text-align: left;
         padding-bottom: 20px;
-        color: $foo-whiter-background;
+        color: $whiter-background;
       }
     }
     .three-col {
@@ -53,7 +53,7 @@ $foo-degrade-color: #0f485b;
         font-family: "Poppins", sans-serif;
         text-align: left;
         padding-bottom: 20px;
-        color: $foo-whiter-background;
+        color: $whiter-background;
       }
     }
     .four-col {
@@ -63,7 +63,7 @@ $foo-degrade-color: #0f485b;
       padding-left: 10%;
 
       .suscribe-form {
-        background: $foo-whiter-background;
+        background: $whiter-background;
         box-shadow: 0px 0px 30px #0000000d;
         border-radius: 30px;
         border: none;
@@ -75,18 +75,18 @@ $foo-degrade-color: #0f485b;
 
   h3 {
     font-family: "Poppins", sans-serif;
-    color: $foo-whiter-background;
+    color: $whiter-background;
   }
   p {
     font-family: "Poppins", sans-serif;
     text-align: left;
     padding-right: 2rem;
     padding-bottom: 20px;
-    color: $foo-whiter-background;
+    color: $whiter-background;
   }
 
   input[type="text"] {
-    background-color: $foo-whiter-background;
+    background-color: $whiter-background;
     font-family: "Poppins", sans-serif;
     border: none;
     border-radius: 30px;
@@ -107,7 +107,7 @@ $foo-degrade-color: #0f485b;
     font-family: "Poppins", sans-serif;
     border-radius: 33px;
     border: none;
-    color: $foo-whiter-background;
+    color: $whiter-background;
     height: 3rem;
     width: 35%;
     outline: none;
