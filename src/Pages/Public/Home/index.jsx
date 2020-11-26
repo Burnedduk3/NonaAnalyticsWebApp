@@ -6,7 +6,6 @@ import Member from './Components/Member/index';
 import HomeTexts from './CONSTANTS';
 import Footer from '../../../Components/Footer';
 
-
 const Home = () => (
   <>
     <PublicHeader page="lifeProject" />
