@@ -5,7 +5,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { Redirect } from 'react-router';
 import DropConsole from '../../../utils/DropConsole';
 import { listForms as ListForms } from '../../../graphql/queries';
-import { getQuestionsOfASection as GetQuestionsOfASection } from '../../../graphql/OwnQueries';
+import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
 import { createFormQuestion as CreateFormQuestions } from '../../../graphql/mutations';
 import { HIGH } from '../../../utils/DropConsole/CONSTANTS';
 import { FormQuestionsContext } from '../../../Context/FormQuestions/Provider';

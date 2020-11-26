@@ -20,7 +20,6 @@ type FormQuestion @model {
     response: String!
     question: Question @connection(name: "QuestionsString")
     form: Form @connection(name: "FormQuestions")
-    firstApparece: AWSTimestamp
 }
 
 type Question @model {
