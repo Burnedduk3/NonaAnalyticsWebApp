@@ -120,6 +120,7 @@ const Questioner = ({ match }) => {
             } if (item.category.name === 'Combo') {
               return (
                 <ComboBoxComponent
+                  key={item.id}
                   question={item.question}
                   questionId={item.id}
                   setResponse={setResponseState}
@@ -131,6 +132,7 @@ const Questioner = ({ match }) => {
             if (item.category.name === 'Open') {
               return (
                 <TextInputComponent
+                  key={item.id}
                   question={item.question}
                   questionId={item.id}
                   setResponse={setResponseState}
