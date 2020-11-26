@@ -256,23 +256,3 @@ export const listSentimentAnalysiss = /* GraphQL */ `
     }
   }
 `;
-
-export const getQuestionsOfASection = /* GraphQL */`
-query MyQuery (
-   $filter: ModelSectionFilterInput
-   $limit: Int
-   $nextToken: String
-){
-  listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
-    items {
-      questions {
-        items {
-          id
-          items
-          question
-        }
-      }
-    }
-  }
-}
-`;

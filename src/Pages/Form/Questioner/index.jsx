@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { Redirect } from 'react-router';
-import { getQuestionsOfASection as GetQuestionsOfASection } from '../../../graphql/queries';
+import { getQuestionsOfASection as GetQuestionsOfASection } from '../../../graphql/OwnQueries';
 import { ADD_QUESTIONS, DELETE_QUESTION } from '../../../Context/FormQuestions/ActionTypes';
 import DropConsole from '../../../utils/DropConsole';
 import { HIGH } from '../../../utils/DropConsole/CONSTANTS';
@@ -93,6 +93,8 @@ const Questioner = ({ match }) => {
     questionsPromise.then((response) => response);
   }, [match]);
 
+  console.log(FormQuestionsState);
+
   return (
     <div className="yes-no-container">
       {loading && (
@@ -104,17 +106,27 @@ const Questioner = ({ match }) => {
       <>
         {
         FormQuestionsState.map(
-          (item) => (
-            <div key={item.id} className="yes-no-container-comp">
-              <YesNoQuestion
-                question={item.question}
-                questionId={item.id}
-                radioGroup={item.id}
-                setResponse={setResponseState}
-                currentState={responseState}
-              />
-            </div>
-          ),
+          (item) => {
+            if (item.category.name === 'YesNo') {
+              return (
+                <div key={item.id} className="yes-no-container-comp">
+                  <YesNoQuestion
+                    question={item.question}
+                    questionId={item.id}
+                    radioGroup={item.id}
+                    setResponse={setResponseState}
+                    currentState={responseState}
+                  />
+                </div>
+              );
+            } if (item.category.name === 'Combo') {
+              return (<h1>Combo</h1>);
+            }
+            if (item.category.name === 'Open') {
+              return (<h1>Input</h1>);
+            }
+            return <></>;
+          },
         )
       }
       </>
