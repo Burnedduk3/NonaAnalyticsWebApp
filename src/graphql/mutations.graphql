@@ -145,6 +145,7 @@ mutation CreateFormQuestion(
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }
@@ -169,6 +170,7 @@ mutation UpdateFormQuestion(
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }
@@ -193,6 +195,7 @@ mutation DeleteFormQuestion(
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }

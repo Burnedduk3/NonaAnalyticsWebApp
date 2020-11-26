@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Redirect, Route, Switch } from 'react-router-dom';
 import Home from '../../Pages/Public/Home';
 import RoutingConstants from '../CONSTANTS/RoutingConstants';
 import NotFound from '../../Pages/NotFound';
@@ -26,10 +26,8 @@ const RouterConfig = () => (
         </FormQuestionProvider>
       </UserCurrentFormProvider>
     </UserProvider>
-    {/* error 404 */}
-    <Route path="*">
-      <NotFound />
-    </Route>
+    <Route path={RoutingConstants.notFound.path} component={NotFound} />
+    <Redirect to={RoutingConstants.notFound.path} />
   </Switch>
 );
 export default RouterConfig;

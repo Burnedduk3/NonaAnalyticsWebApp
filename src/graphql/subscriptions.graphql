@@ -124,6 +124,7 @@ subscription OnCreateFormQuestion {
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }
@@ -145,6 +146,7 @@ subscription OnUpdateFormQuestion {
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }
@@ -166,6 +168,7 @@ subscription OnDeleteFormQuestion {
       createdAt
       updatedAt
     }
+    firstApparece
     createdAt
     updatedAt
   }
