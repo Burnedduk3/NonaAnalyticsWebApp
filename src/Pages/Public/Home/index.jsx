@@ -1,13 +1,13 @@
 import React from 'react';
 import './styles.scss';
 import PublicHeader from '../../../Components/Header/PublicHeader';
-import Perk from './Components/Perk/index';
-import Member from './Components/Member/index';
+import Perk from './Components/Perk';
+import Member from './Components/Member';
 import HomeTexts from './CONSTANTS';
 
 const Home = () => (
   <>
-    <PublicHeader page="lifeProject" />
+    <PublicHeader page="home" />
     <div className="our-mission">
       <div className="our-mission-content">
         <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
