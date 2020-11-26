@@ -1,44 +1,50 @@
 type User @model {
-  id: ID!
-  name: String!
-  lastname: String!
-  mail: String!
-  phone: String!
-  age: Int!
-  forms: [Form] @connection(name: "Forms")
+    id: ID!
+    name: String!
+    lastname: String!
+    mail: String!
+    phone: String!
+    age: Int!
+    forms: [Form] @connection(name: "Forms")
 }
 
 type Form @model{
-  id: ID!
-  formQuestions: [FormQuestion] @connection(name:"FormQuestions")
-  user: User @connection(name:"Forms")
-  finished: Boolean
+    id: ID!
+    formQuestions: [FormQuestion] @connection(name:"FormQuestions")
+    user: User @connection(name:"Forms")
+    finished: Boolean
 }
 
 type FormQuestion @model {
-  id: ID!
-  response: String!
-  question: Question @connection(name: "QuestionsString")
-  form: Form @connection(name: "FormQuestions")
+    id: ID!
+    response: String!
+    question: Question @connection(name: "QuestionsString")
+    form: Form @connection(name: "FormQuestions")
 }
 
 type Question @model {
-  id: ID!
-  question: String!
-  usedForms: [FormQuestion] @connection(name: "QuestionsString")
-  category: Category @connection(name: "Category")
-  items: [String]
-  section: Section @connection(name: "FormSection")
+    id: ID!
+    question: String!
+    usedForms: [FormQuestion] @connection(name: "QuestionsString")
+    category: Category @connection(name: "Category")
+    items: [String]
+    section: Section @connection(name: "FormSection")
 }
 
 type Category @model {
-  id: ID!
-  name: String!
-  questions: [Question] @connection(name: "Category")
+    id: ID!
+    name: String!
+    questions: [Question] @connection(name: "Category")
 }
 
 type Section @model {
-  id: ID!
-  name: String!
-  questions: [Question] @connection(name: "FormSection")
+    id: ID!
+    name: String!
+    questions: [Question] @connection(name: "FormSection")
+}
+
+type SentimentAnalysis @model {
+    id: ID!
+    time: String!
+    motiv: String!
 }
