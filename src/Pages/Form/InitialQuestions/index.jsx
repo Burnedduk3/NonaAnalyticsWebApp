@@ -32,7 +32,7 @@ const InitialFormPage = () => {
       setLoading(true);
 
       const apiForm = await API.graphql(graphqlOperation(ListForms));
-
+      console.log(apiForm);
       if (apiForm && apiForm.data && apiForm.data.listForms && apiForm.data.listForms.items) {
         const CurrentForm = apiForm.data.listForms.items[0];
         userCurrentFormDispatch({ type: ADD_CURRENT_FORM, payload: CurrentForm });
@@ -41,11 +41,11 @@ const InitialFormPage = () => {
       // }
     } catch (currentFormError) {
       if (currentFormError instanceof Error) {
-        DropConsole(HIGH, currentFormError.message);
+        console.log(currentFormError.message);
         setLoading(false);
         setError(true);
       } else {
-        DropConsole(HIGH, currentFormError);
+        console.log(currentFormError);
         setLoading(false);
         setError(true);
       }
