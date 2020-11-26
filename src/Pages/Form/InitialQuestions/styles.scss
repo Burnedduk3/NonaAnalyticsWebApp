@@ -1,3 +1,22 @@
-div {
+@import "src/Global/styles/Colors";
+
+.content-container {
   display: flex;
+  width: 100vw;
+  min-height: 50vh;
+  justify-content: center;
+
+  .content-wrapper {
+    display: flex;
+    width: 70%;
+    background: white;
+    flex-wrap: wrap;
+    justify-content: center;
+
+    .form-start-title {
+      width: 100%;
+      font-size: 3em;
+      color: $secondary-color;
+    }
+  }
 }
