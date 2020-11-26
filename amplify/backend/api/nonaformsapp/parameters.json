@@ -1,11 +1,5 @@
 {
     "AppSyncApiName": "nonaformsapp",
     "DynamoDBBillingMode": "PAY_PER_REQUEST",
-    "DynamoDBEnableServerSideEncryption": false,
-    "AuthCognitoUserPoolId": {
-        "Fn::GetAtt": [
-            "authnonaformsappb831ee69",
-            "Outputs.UserPoolId"
-        ]
-    }
+    "DynamoDBEnableServerSideEncryption": false
 }

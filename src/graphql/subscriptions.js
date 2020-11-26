@@ -346,3 +346,36 @@ export const onDeleteSection = /* GraphQL */ `
     }
   }
 `;
+export const onCreateSentimentAnalysis = /* GraphQL */ `
+  subscription OnCreateSentimentAnalysis {
+    onCreateSentimentAnalysis {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateSentimentAnalysis = /* GraphQL */ `
+  subscription OnUpdateSentimentAnalysis {
+    onUpdateSentimentAnalysis {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteSentimentAnalysis = /* GraphQL */ `
+  subscription OnDeleteSentimentAnalysis {
+    onDeleteSentimentAnalysis {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;

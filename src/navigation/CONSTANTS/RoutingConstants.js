@@ -25,6 +25,10 @@ const RoutingConstants = {
     name: 'StartForm',
     path: '/form',
   },
+  dinamicForm: {
+    name: 'sectionQuestioner',
+    path: '/form',
+  },
 };
 
 export default RoutingConstants;
