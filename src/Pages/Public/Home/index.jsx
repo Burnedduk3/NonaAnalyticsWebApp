@@ -4,6 +4,8 @@ import PublicHeader from '../../../Components/Header/PublicHeader';
 import Perk from './Components/Perk/index';
 import Member from './Components/Member/index';
 import HomeTexts from './CONSTANTS';
+import Footer from '../../../Components/Footer';
+
 
 const Home = () => (
   <>
