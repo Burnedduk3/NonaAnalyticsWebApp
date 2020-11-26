@@ -400,3 +400,45 @@ export const deleteSection = /* GraphQL */ `
     }
   }
 `;
+export const createSentimentAnalysis = /* GraphQL */ `
+  mutation CreateSentimentAnalysis(
+    $input: CreateSentimentAnalysisInput!
+    $condition: ModelSentimentAnalysisConditionInput
+  ) {
+    createSentimentAnalysis(input: $input, condition: $condition) {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateSentimentAnalysis = /* GraphQL */ `
+  mutation UpdateSentimentAnalysis(
+    $input: UpdateSentimentAnalysisInput!
+    $condition: ModelSentimentAnalysisConditionInput
+  ) {
+    updateSentimentAnalysis(input: $input, condition: $condition) {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteSentimentAnalysis = /* GraphQL */ `
+  mutation DeleteSentimentAnalysis(
+    $input: DeleteSentimentAnalysisInput!
+    $condition: ModelSentimentAnalysisConditionInput
+  ) {
+    deleteSentimentAnalysis(input: $input, condition: $condition) {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
