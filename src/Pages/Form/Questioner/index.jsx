@@ -11,6 +11,8 @@ import Spinner from '../../../Components/Spinner';
 import { createFormQuestion as CreateFormQuestions } from '../../../graphql/mutations';
 import { UserCurrentFormContext } from '../../../Context/UserCurrentForm/Provider';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
+import ComboBoxComponent from '../Components/ComboBoxQuestion';
+import TextInputComponent from '../Components/TextInputQuestion';
 
 // eslint-disable-next-line react/prop-types
 const Questioner = ({ match }) => {
@@ -74,6 +76,7 @@ const Questioner = ({ match }) => {
             },
           ),
         );
+        setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
           DropConsole(HIGH, saveToDBError.message);
@@ -93,7 +96,7 @@ const Questioner = ({ match }) => {
     questionsPromise.then((response) => response);
   }, [match]);
 
-  console.log(FormQuestionsState);
+  console.log(responseState);
 
   return (
     <div className="yes-no-container">
@@ -120,10 +123,25 @@ const Questioner = ({ match }) => {
                 </div>
               );
             } if (item.category.name === 'Combo') {
-              return (<h1>Combo</h1>);
+              return (
+                <ComboBoxComponent
+                  question={item.question}
+                  questionId={item.id}
+                  setResponse={setResponseState}
+                  items={item.items}
+                  currentState={responseState}
+                />
+              );
             }
             if (item.category.name === 'Open') {
-              return (<h1>Input</h1>);
+              return (
+                <TextInputComponent
+                  question={item.question}
+                  questionId={item.id}
+                  setResponse={setResponseState}
+                  currentState={responseState}
+                />
+              );
             }
             return <></>;
           },
