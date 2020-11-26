@@ -1,2317 +1,2317 @@
 [
   [
-    "glass",
+    'glass',
     null,
-    "glass-martini"
+    'glass-martini',
   ],
   [
-    "meetup",
-    "fab",
-    null
+    'meetup',
+    'fab',
+    null,
   ],
   [
-    "star-o",
-    "far",
-    "star"
+    'star-o',
+    'far',
+    'star',
   ],
   [
-    "remove",
+    'remove',
     null,
-    "times"
+    'times',
   ],
   [
-    "close",
+    'close',
     null,
-    "times"
+    'times',
   ],
   [
-    "gear",
+    'gear',
     null,
-    "cog"
+    'cog',
   ],
   [
-    "trash-o",
-    "far",
-    "trash-alt"
+    'trash-o',
+    'far',
+    'trash-alt',
   ],
   [
-    "file-o",
-    "far",
-    "file"
+    'file-o',
+    'far',
+    'file',
   ],
   [
-    "clock-o",
-    "far",
-    "clock"
+    'clock-o',
+    'far',
+    'clock',
   ],
   [
-    "arrow-circle-o-down",
-    "far",
-    "arrow-alt-circle-down"
+    'arrow-circle-o-down',
+    'far',
+    'arrow-alt-circle-down',
   ],
   [
-    "arrow-circle-o-up",
-    "far",
-    "arrow-alt-circle-up"
+    'arrow-circle-o-up',
+    'far',
+    'arrow-alt-circle-up',
   ],
   [
-    "play-circle-o",
-    "far",
-    "play-circle"
+    'play-circle-o',
+    'far',
+    'play-circle',
   ],
   [
-    "repeat",
+    'repeat',
     null,
-    "redo"
+    'redo',
   ],
   [
-    "rotate-right",
+    'rotate-right',
     null,
-    "redo"
+    'redo',
   ],
   [
-    "refresh",
+    'refresh',
     null,
-    "sync"
+    'sync',
   ],
   [
-    "list-alt",
-    "far",
-    null
+    'list-alt',
+    'far',
+    null,
   ],
   [
-    "dedent",
+    'dedent',
     null,
-    "outdent"
+    'outdent',
   ],
   [
-    "video-camera",
+    'video-camera',
     null,
-    "video"
+    'video',
   ],
   [
-    "picture-o",
-    "far",
-    "image"
+    'picture-o',
+    'far',
+    'image',
   ],
   [
-    "photo",
-    "far",
-    "image"
+    'photo',
+    'far',
+    'image',
   ],
   [
-    "image",
-    "far",
-    "image"
+    'image',
+    'far',
+    'image',
   ],
   [
-    "pencil",
+    'pencil',
     null,
-    "pencil-alt"
+    'pencil-alt',
   ],
   [
-    "map-marker",
+    'map-marker',
     null,
-    "map-marker-alt"
+    'map-marker-alt',
   ],
   [
-    "pencil-square-o",
-    "far",
-    "edit"
+    'pencil-square-o',
+    'far',
+    'edit',
   ],
   [
-    "share-square-o",
-    "far",
-    "share-square"
+    'share-square-o',
+    'far',
+    'share-square',
   ],
   [
-    "check-square-o",
-    "far",
-    "check-square"
+    'check-square-o',
+    'far',
+    'check-square',
   ],
   [
-    "arrows",
+    'arrows',
     null,
-    "arrows-alt"
+    'arrows-alt',
   ],
   [
-    "times-circle-o",
-    "far",
-    "times-circle"
+    'times-circle-o',
+    'far',
+    'times-circle',
   ],
   [
-    "check-circle-o",
-    "far",
-    "check-circle"
+    'check-circle-o',
+    'far',
+    'check-circle',
   ],
   [
-    "mail-forward",
+    'mail-forward',
     null,
-    "share"
+    'share',
   ],
   [
-    "expand",
+    'expand',
     null,
-    "expand-alt"
+    'expand-alt',
   ],
   [
-    "compress",
+    'compress',
     null,
-    "compress-alt"
+    'compress-alt',
   ],
   [
-    "eye",
-    "far",
-    null
+    'eye',
+    'far',
+    null,
   ],
   [
-    "eye-slash",
-    "far",
-    null
+    'eye-slash',
+    'far',
+    null,
   ],
   [
-    "warning",
+    'warning',
     null,
-    "exclamation-triangle"
+    'exclamation-triangle',
   ],
   [
-    "calendar",
+    'calendar',
     null,
-    "calendar-alt"
+    'calendar-alt',
   ],
   [
-    "arrows-v",
+    'arrows-v',
     null,
-    "arrows-alt-v"
+    'arrows-alt-v',
   ],
   [
-    "arrows-h",
+    'arrows-h',
     null,
-    "arrows-alt-h"
+    'arrows-alt-h',
   ],
   [
-    "bar-chart",
-    "far",
-    "chart-bar"
+    'bar-chart',
+    'far',
+    'chart-bar',
   ],
   [
-    "bar-chart-o",
-    "far",
-    "chart-bar"
+    'bar-chart-o',
+    'far',
+    'chart-bar',
   ],
   [
-    "twitter-square",
-    "fab",
-    null
+    'twitter-square',
+    'fab',
+    null,
   ],
   [
-    "facebook-square",
-    "fab",
-    null
+    'facebook-square',
+    'fab',
+    null,
   ],
   [
-    "gears",
+    'gears',
     null,
-    "cogs"
+    'cogs',
   ],
   [
-    "thumbs-o-up",
-    "far",
-    "thumbs-up"
+    'thumbs-o-up',
+    'far',
+    'thumbs-up',
   ],
   [
-    "thumbs-o-down",
-    "far",
-    "thumbs-down"
+    'thumbs-o-down',
+    'far',
+    'thumbs-down',
   ],
   [
-    "heart-o",
-    "far",
-    "heart"
+    'heart-o',
+    'far',
+    'heart',
   ],
   [
-    "sign-out",
+    'sign-out',
     null,
-    "sign-out-alt"
+    'sign-out-alt',
   ],
   [
-    "linkedin-square",
-    "fab",
-    "linkedin"
+    'linkedin-square',
+    'fab',
+    'linkedin',
   ],
   [
-    "thumb-tack",
+    'thumb-tack',
     null,
-    "thumbtack"
+    'thumbtack',
   ],
   [
-    "external-link",
+    'external-link',
     null,
-    "external-link-alt"
+    'external-link-alt',
   ],
   [
-    "sign-in",
+    'sign-in',
     null,
-    "sign-in-alt"
+    'sign-in-alt',
   ],
   [
-    "github-square",
-    "fab",
-    null
+    'github-square',
+    'fab',
+    null,
   ],
   [
-    "lemon-o",
-    "far",
-    "lemon"
+    'lemon-o',
+    'far',
+    'lemon',
   ],
   [
-    "square-o",
-    "far",
-    "square"
+    'square-o',
+    'far',
+    'square',
   ],
   [
-    "bookmark-o",
-    "far",
-    "bookmark"
+    'bookmark-o',
+    'far',
+    'bookmark',
   ],
   [
-    "twitter",
-    "fab",
-    null
+    'twitter',
+    'fab',
+    null,
   ],
   [
-    "facebook",
-    "fab",
-    "facebook-f"
+    'facebook',
+    'fab',
+    'facebook-f',
   ],
   [
-    "facebook-f",
-    "fab",
-    "facebook-f"
+    'facebook-f',
+    'fab',
+    'facebook-f',
   ],
   [
-    "github",
-    "fab",
-    null
+    'github',
+    'fab',
+    null,
   ],
   [
-    "credit-card",
-    "far",
-    null
+    'credit-card',
+    'far',
+    null,
   ],
   [
-    "feed",
+    'feed',
     null,
-    "rss"
+    'rss',
   ],
   [
-    "hdd-o",
-    "far",
-    "hdd"
+    'hdd-o',
+    'far',
+    'hdd',
   ],
   [
-    "hand-o-right",
-    "far",
-    "hand-point-right"
+    'hand-o-right',
+    'far',
+    'hand-point-right',
   ],
   [
-    "hand-o-left",
-    "far",
-    "hand-point-left"
+    'hand-o-left',
+    'far',
+    'hand-point-left',
   ],
   [
-    "hand-o-up",
-    "far",
-    "hand-point-up"
+    'hand-o-up',
+    'far',
+    'hand-point-up',
   ],
   [
-    "hand-o-down",
-    "far",
-    "hand-point-down"
+    'hand-o-down',
+    'far',
+    'hand-point-down',
   ],
   [
-    "arrows-alt",
+    'arrows-alt',
     null,
-    "expand-arrows-alt"
+    'expand-arrows-alt',
   ],
   [
-    "group",
+    'group',
     null,
-    "users"
+    'users',
   ],
   [
-    "chain",
+    'chain',
     null,
-    "link"
+    'link',
   ],
   [
-    "scissors",
+    'scissors',
     null,
-    "cut"
+    'cut',
   ],
   [
-    "files-o",
-    "far",
-    "copy"
+    'files-o',
+    'far',
+    'copy',
   ],
   [
-    "floppy-o",
-    "far",
-    "save"
+    'floppy-o',
+    'far',
+    'save',
   ],
   [
-    "navicon",
+    'navicon',
     null,
-    "bars"
+    'bars',
   ],
   [
-    "reorder",
+    'reorder',
     null,
-    "bars"
+    'bars',
   ],
   [
-    "pinterest",
-    "fab",
-    null
+    'pinterest',
+    'fab',
+    null,
   ],
   [
-    "pinterest-square",
-    "fab",
-    null
+    'pinterest-square',
+    'fab',
+    null,
   ],
   [
-    "google-plus-square",
-    "fab",
-    null
+    'google-plus-square',
+    'fab',
+    null,
   ],
   [
-    "google-plus",
-    "fab",
-    "google-plus-g"
+    'google-plus',
+    'fab',
+    'google-plus-g',
   ],
   [
-    "money",
-    "far",
-    "money-bill-alt"
+    'money',
+    'far',
+    'money-bill-alt',
   ],
   [
-    "unsorted",
+    'unsorted',
     null,
-    "sort"
+    'sort',
   ],
   [
-    "sort-desc",
+    'sort-desc',
     null,
-    "sort-down"
+    'sort-down',
   ],
   [
-    "sort-asc",
+    'sort-asc',
     null,
-    "sort-up"
+    'sort-up',
   ],
   [
-    "linkedin",
-    "fab",
-    "linkedin-in"
+    'linkedin',
+    'fab',
+    'linkedin-in',
   ],
   [
-    "rotate-left",
+    'rotate-left',
     null,
-    "undo"
+    'undo',
   ],
   [
-    "legal",
+    'legal',
     null,
-    "gavel"
+    'gavel',
   ],
   [
-    "tachometer",
+    'tachometer',
     null,
-    "tachometer-alt"
+    'tachometer-alt',
   ],
   [
-    "dashboard",
+    'dashboard',
     null,
-    "tachometer-alt"
+    'tachometer-alt',
   ],
   [
-    "comment-o",
-    "far",
-    "comment"
+    'comment-o',
+    'far',
+    'comment',
   ],
   [
-    "comments-o",
-    "far",
-    "comments"
+    'comments-o',
+    'far',
+    'comments',
   ],
   [
-    "flash",
+    'flash',
     null,
-    "bolt"
+    'bolt',
   ],
   [
-    "clipboard",
-    "far",
-    null
+    'clipboard',
+    'far',
+    null,
   ],
   [
-    "paste",
-    "far",
-    "clipboard"
+    'paste',
+    'far',
+    'clipboard',
   ],
   [
-    "lightbulb-o",
-    "far",
-    "lightbulb"
+    'lightbulb-o',
+    'far',
+    'lightbulb',
   ],
   [
-    "exchange",
+    'exchange',
     null,
-    "exchange-alt"
+    'exchange-alt',
   ],
   [
-    "cloud-download",
+    'cloud-download',
     null,
-    "cloud-download-alt"
+    'cloud-download-alt',
   ],
   [
-    "cloud-upload",
+    'cloud-upload',
     null,
-    "cloud-upload-alt"
+    'cloud-upload-alt',
   ],
   [
-    "bell-o",
-    "far",
-    "bell"
+    'bell-o',
+    'far',
+    'bell',
   ],
   [
-    "cutlery",
+    'cutlery',
     null,
-    "utensils"
+    'utensils',
   ],
   [
-    "file-text-o",
-    "far",
-    "file-alt"
+    'file-text-o',
+    'far',
+    'file-alt',
   ],
   [
-    "building-o",
-    "far",
-    "building"
+    'building-o',
+    'far',
+    'building',
   ],
   [
-    "hospital-o",
-    "far",
-    "hospital"
+    'hospital-o',
+    'far',
+    'hospital',
   ],
   [
-    "tablet",
+    'tablet',
     null,
-    "tablet-alt"
+    'tablet-alt',
   ],
   [
-    "mobile",
+    'mobile',
     null,
-    "mobile-alt"
+    'mobile-alt',
   ],
   [
-    "mobile-phone",
+    'mobile-phone',
     null,
-    "mobile-alt"
+    'mobile-alt',
   ],
   [
-    "circle-o",
-    "far",
-    "circle"
+    'circle-o',
+    'far',
+    'circle',
   ],
   [
-    "mail-reply",
+    'mail-reply',
     null,
-    "reply"
+    'reply',
   ],
   [
-    "github-alt",
-    "fab",
-    null
+    'github-alt',
+    'fab',
+    null,
   ],
   [
-    "folder-o",
-    "far",
-    "folder"
+    'folder-o',
+    'far',
+    'folder',
   ],
   [
-    "folder-open-o",
-    "far",
-    "folder-open"
+    'folder-open-o',
+    'far',
+    'folder-open',
   ],
   [
-    "smile-o",
-    "far",
-    "smile"
+    'smile-o',
+    'far',
+    'smile',
   ],
   [
-    "frown-o",
-    "far",
-    "frown"
+    'frown-o',
+    'far',
+    'frown',
   ],
   [
-    "meh-o",
-    "far",
-    "meh"
+    'meh-o',
+    'far',
+    'meh',
   ],
   [
-    "keyboard-o",
-    "far",
-    "keyboard"
+    'keyboard-o',
+    'far',
+    'keyboard',
   ],
   [
-    "flag-o",
-    "far",
-    "flag"
+    'flag-o',
+    'far',
+    'flag',
   ],
   [
-    "mail-reply-all",
+    'mail-reply-all',
     null,
-    "reply-all"
+    'reply-all',
   ],
   [
-    "star-half-o",
-    "far",
-    "star-half"
+    'star-half-o',
+    'far',
+    'star-half',
   ],
   [
-    "star-half-empty",
-    "far",
-    "star-half"
+    'star-half-empty',
+    'far',
+    'star-half',
   ],
   [
-    "star-half-full",
-    "far",
-    "star-half"
+    'star-half-full',
+    'far',
+    'star-half',
   ],
   [
-    "code-fork",
+    'code-fork',
     null,
-    "code-branch"
+    'code-branch',
   ],
   [
-    "chain-broken",
+    'chain-broken',
     null,
-    "unlink"
+    'unlink',
   ],
   [
-    "shield",
+    'shield',
     null,
-    "shield-alt"
+    'shield-alt',
   ],
   [
-    "calendar-o",
-    "far",
-    "calendar"
+    'calendar-o',
+    'far',
+    'calendar',
   ],
   [
-    "maxcdn",
-    "fab",
-    null
+    'maxcdn',
+    'fab',
+    null,
   ],
   [
-    "html5",
-    "fab",
-    null
+    'html5',
+    'fab',
+    null,
   ],
   [
-    "css3",
-    "fab",
-    null
+    'css3',
+    'fab',
+    null,
   ],
   [
-    "ticket",
+    'ticket',
     null,
-    "ticket-alt"
+    'ticket-alt',
   ],
   [
-    "minus-square-o",
-    "far",
-    "minus-square"
+    'minus-square-o',
+    'far',
+    'minus-square',
   ],
   [
-    "level-up",
+    'level-up',
     null,
-    "level-up-alt"
+    'level-up-alt',
   ],
   [
-    "level-down",
+    'level-down',
     null,
-    "level-down-alt"
+    'level-down-alt',
   ],
   [
-    "pencil-square",
+    'pencil-square',
     null,
-    "pen-square"
+    'pen-square',
   ],
   [
-    "external-link-square",
+    'external-link-square',
     null,
-    "external-link-square-alt"
+    'external-link-square-alt',
   ],
   [
-    "compass",
-    "far",
-    null
+    'compass',
+    'far',
+    null,
   ],
   [
-    "caret-square-o-down",
-    "far",
-    "caret-square-down"
+    'caret-square-o-down',
+    'far',
+    'caret-square-down',
   ],
   [
-    "toggle-down",
-    "far",
-    "caret-square-down"
+    'toggle-down',
+    'far',
+    'caret-square-down',
   ],
   [
-    "caret-square-o-up",
-    "far",
-    "caret-square-up"
+    'caret-square-o-up',
+    'far',
+    'caret-square-up',
   ],
   [
-    "toggle-up",
-    "far",
-    "caret-square-up"
+    'toggle-up',
+    'far',
+    'caret-square-up',
   ],
   [
-    "caret-square-o-right",
-    "far",
-    "caret-square-right"
+    'caret-square-o-right',
+    'far',
+    'caret-square-right',
   ],
   [
-    "toggle-right",
-    "far",
-    "caret-square-right"
+    'toggle-right',
+    'far',
+    'caret-square-right',
   ],
   [
-    "eur",
+    'eur',
     null,
-    "euro-sign"
+    'euro-sign',
   ],
   [
-    "euro",
+    'euro',
     null,
-    "euro-sign"
+    'euro-sign',
   ],
   [
-    "gbp",
+    'gbp',
     null,
-    "pound-sign"
+    'pound-sign',
   ],
   [
-    "usd",
+    'usd',
     null,
-    "dollar-sign"
+    'dollar-sign',
   ],
   [
-    "dollar",
+    'dollar',
     null,
-    "dollar-sign"
+    'dollar-sign',
   ],
   [
-    "inr",
+    'inr',
     null,
-    "rupee-sign"
+    'rupee-sign',
   ],
   [
-    "rupee",
+    'rupee',
     null,
-    "rupee-sign"
+    'rupee-sign',
   ],
   [
-    "jpy",
+    'jpy',
     null,
-    "yen-sign"
+    'yen-sign',
   ],
   [
-    "cny",
+    'cny',
     null,
-    "yen-sign"
+    'yen-sign',
   ],
   [
-    "rmb",
+    'rmb',
     null,
-    "yen-sign"
+    'yen-sign',
   ],
   [
-    "yen",
+    'yen',
     null,
-    "yen-sign"
+    'yen-sign',
   ],
   [
-    "rub",
+    'rub',
     null,
-    "ruble-sign"
+    'ruble-sign',
   ],
   [
-    "ruble",
+    'ruble',
     null,
-    "ruble-sign"
+    'ruble-sign',
   ],
   [
-    "rouble",
+    'rouble',
     null,
-    "ruble-sign"
+    'ruble-sign',
   ],
   [
-    "krw",
+    'krw',
     null,
-    "won-sign"
+    'won-sign',
   ],
   [
-    "won",
+    'won',
     null,
-    "won-sign"
+    'won-sign',
   ],
   [
-    "btc",
-    "fab",
-    null
+    'btc',
+    'fab',
+    null,
   ],
   [
-    "bitcoin",
-    "fab",
-    "btc"
+    'bitcoin',
+    'fab',
+    'btc',
   ],
   [
-    "file-text",
+    'file-text',
     null,
-    "file-alt"
+    'file-alt',
   ],
   [
-    "sort-alpha-asc",
+    'sort-alpha-asc',
     null,
-    "sort-alpha-down"
+    'sort-alpha-down',
   ],
   [
-    "sort-alpha-desc",
+    'sort-alpha-desc',
     null,
-    "sort-alpha-down-alt"
+    'sort-alpha-down-alt',
   ],
   [
-    "sort-amount-asc",
+    'sort-amount-asc',
     null,
-    "sort-amount-down"
+    'sort-amount-down',
   ],
   [
-    "sort-amount-desc",
+    'sort-amount-desc',
     null,
-    "sort-amount-down-alt"
+    'sort-amount-down-alt',
   ],
   [
-    "sort-numeric-asc",
+    'sort-numeric-asc',
     null,
-    "sort-numeric-down"
+    'sort-numeric-down',
   ],
   [
-    "sort-numeric-desc",
+    'sort-numeric-desc',
     null,
-    "sort-numeric-down-alt"
+    'sort-numeric-down-alt',
   ],
   [
-    "youtube-square",
-    "fab",
-    null
+    'youtube-square',
+    'fab',
+    null,
   ],
   [
-    "youtube",
-    "fab",
-    null
+    'youtube',
+    'fab',
+    null,
   ],
   [
-    "xing",
-    "fab",
-    null
+    'xing',
+    'fab',
+    null,
   ],
   [
-    "xing-square",
-    "fab",
-    null
+    'xing-square',
+    'fab',
+    null,
   ],
   [
-    "youtube-play",
-    "fab",
-    "youtube"
+    'youtube-play',
+    'fab',
+    'youtube',
   ],
   [
-    "dropbox",
-    "fab",
-    null
+    'dropbox',
+    'fab',
+    null,
   ],
   [
-    "stack-overflow",
-    "fab",
-    null
+    'stack-overflow',
+    'fab',
+    null,
   ],
   [
-    "instagram",
-    "fab",
-    null
+    'instagram',
+    'fab',
+    null,
   ],
   [
-    "flickr",
-    "fab",
-    null
+    'flickr',
+    'fab',
+    null,
   ],
   [
-    "adn",
-    "fab",
-    null
+    'adn',
+    'fab',
+    null,
   ],
   [
-    "bitbucket",
-    "fab",
-    null
+    'bitbucket',
+    'fab',
+    null,
   ],
   [
-    "bitbucket-square",
-    "fab",
-    "bitbucket"
+    'bitbucket-square',
+    'fab',
+    'bitbucket',
   ],
   [
-    "tumblr",
-    "fab",
-    null
+    'tumblr',
+    'fab',
+    null,
   ],
   [
-    "tumblr-square",
-    "fab",
-    null
+    'tumblr-square',
+    'fab',
+    null,
   ],
   [
-    "long-arrow-down",
+    'long-arrow-down',
     null,
-    "long-arrow-alt-down"
+    'long-arrow-alt-down',
   ],
   [
-    "long-arrow-up",
+    'long-arrow-up',
     null,
-    "long-arrow-alt-up"
+    'long-arrow-alt-up',
   ],
   [
-    "long-arrow-left",
+    'long-arrow-left',
     null,
-    "long-arrow-alt-left"
+    'long-arrow-alt-left',
   ],
   [
-    "long-arrow-right",
+    'long-arrow-right',
     null,
-    "long-arrow-alt-right"
+    'long-arrow-alt-right',
   ],
   [
-    "apple",
-    "fab",
-    null
+    'apple',
+    'fab',
+    null,
   ],
   [
-    "windows",
-    "fab",
-    null
+    'windows',
+    'fab',
+    null,
   ],
   [
-    "android",
-    "fab",
-    null
+    'android',
+    'fab',
+    null,
   ],
   [
-    "linux",
-    "fab",
-    null
+    'linux',
+    'fab',
+    null,
   ],
   [
-    "dribbble",
-    "fab",
-    null
+    'dribbble',
+    'fab',
+    null,
   ],
   [
-    "skype",
-    "fab",
-    null
+    'skype',
+    'fab',
+    null,
   ],
   [
-    "foursquare",
-    "fab",
-    null
+    'foursquare',
+    'fab',
+    null,
   ],
   [
-    "trello",
-    "fab",
-    null
+    'trello',
+    'fab',
+    null,
   ],
   [
-    "gratipay",
-    "fab",
-    null
+    'gratipay',
+    'fab',
+    null,
   ],
   [
-    "gittip",
-    "fab",
-    "gratipay"
+    'gittip',
+    'fab',
+    'gratipay',
   ],
   [
-    "sun-o",
-    "far",
-    "sun"
+    'sun-o',
+    'far',
+    'sun',
   ],
   [
-    "moon-o",
-    "far",
-    "moon"
+    'moon-o',
+    'far',
+    'moon',
   ],
   [
-    "vk",
-    "fab",
-    null
+    'vk',
+    'fab',
+    null,
   ],
   [
-    "weibo",
-    "fab",
-    null
+    'weibo',
+    'fab',
+    null,
   ],
   [
-    "renren",
-    "fab",
-    null
+    'renren',
+    'fab',
+    null,
   ],
   [
-    "pagelines",
-    "fab",
-    null
+    'pagelines',
+    'fab',
+    null,
   ],
   [
-    "stack-exchange",
-    "fab",
-    null
+    'stack-exchange',
+    'fab',
+    null,
   ],
   [
-    "arrow-circle-o-right",
-    "far",
-    "arrow-alt-circle-right"
+    'arrow-circle-o-right',
+    'far',
+    'arrow-alt-circle-right',
   ],
   [
-    "arrow-circle-o-left",
-    "far",
-    "arrow-alt-circle-left"
+    'arrow-circle-o-left',
+    'far',
+    'arrow-alt-circle-left',
   ],
   [
-    "caret-square-o-left",
-    "far",
-    "caret-square-left"
+    'caret-square-o-left',
+    'far',
+    'caret-square-left',
   ],
   [
-    "toggle-left",
-    "far",
-    "caret-square-left"
+    'toggle-left',
+    'far',
+    'caret-square-left',
   ],
   [
-    "dot-circle-o",
-    "far",
-    "dot-circle"
+    'dot-circle-o',
+    'far',
+    'dot-circle',
   ],
   [
-    "vimeo-square",
-    "fab",
-    null
+    'vimeo-square',
+    'fab',
+    null,
   ],
   [
-    "try",
+    'try',
     null,
-    "lira-sign"
+    'lira-sign',
   ],
   [
-    "turkish-lira",
+    'turkish-lira',
     null,
-    "lira-sign"
+    'lira-sign',
   ],
   [
-    "plus-square-o",
-    "far",
-    "plus-square"
+    'plus-square-o',
+    'far',
+    'plus-square',
   ],
   [
-    "slack",
-    "fab",
-    null
+    'slack',
+    'fab',
+    null,
   ],
   [
-    "wordpress",
-    "fab",
-    null
+    'wordpress',
+    'fab',
+    null,
   ],
   [
-    "openid",
-    "fab",
-    null
+    'openid',
+    'fab',
+    null,
   ],
   [
-    "institution",
+    'institution',
     null,
-    "university"
+    'university',
   ],
   [
-    "bank",
+    'bank',
     null,
-    "university"
+    'university',
   ],
   [
-    "mortar-board",
+    'mortar-board',
     null,
-    "graduation-cap"
+    'graduation-cap',
   ],
   [
-    "yahoo",
-    "fab",
-    null
+    'yahoo',
+    'fab',
+    null,
   ],
   [
-    "google",
-    "fab",
-    null
+    'google',
+    'fab',
+    null,
   ],
   [
-    "reddit",
-    "fab",
-    null
+    'reddit',
+    'fab',
+    null,
   ],
   [
-    "reddit-square",
-    "fab",
-    null
+    'reddit-square',
+    'fab',
+    null,
   ],
   [
-    "stumbleupon-circle",
-    "fab",
-    null
+    'stumbleupon-circle',
+    'fab',
+    null,
   ],
   [
-    "stumbleupon",
-    "fab",
-    null
+    'stumbleupon',
+    'fab',
+    null,
   ],
   [
-    "delicious",
-    "fab",
-    null
+    'delicious',
+    'fab',
+    null,
   ],
   [
-    "digg",
-    "fab",
-    null
+    'digg',
+    'fab',
+    null,
   ],
   [
-    "pied-piper-pp",
-    "fab",
-    null
+    'pied-piper-pp',
+    'fab',
+    null,
   ],
   [
-    "pied-piper-alt",
-    "fab",
-    null
+    'pied-piper-alt',
+    'fab',
+    null,
   ],
   [
-    "drupal",
-    "fab",
-    null
+    'drupal',
+    'fab',
+    null,
   ],
   [
-    "joomla",
-    "fab",
-    null
+    'joomla',
+    'fab',
+    null,
   ],
   [
-    "spoon",
+    'spoon',
     null,
-    "utensil-spoon"
+    'utensil-spoon',
   ],
   [
-    "behance",
-    "fab",
-    null
+    'behance',
+    'fab',
+    null,
   ],
   [
-    "behance-square",
-    "fab",
-    null
+    'behance-square',
+    'fab',
+    null,
   ],
   [
-    "steam",
-    "fab",
-    null
+    'steam',
+    'fab',
+    null,
   ],
   [
-    "steam-square",
-    "fab",
-    null
+    'steam-square',
+    'fab',
+    null,
   ],
   [
-    "automobile",
+    'automobile',
     null,
-    "car"
+    'car',
   ],
   [
-    "envelope-o",
-    "far",
-    "envelope"
+    'envelope-o',
+    'far',
+    'envelope',
   ],
   [
-    "spotify",
-    "fab",
-    null
+    'spotify',
+    'fab',
+    null,
   ],
   [
-    "deviantart",
-    "fab",
-    null
+    'deviantart',
+    'fab',
+    null,
   ],
   [
-    "soundcloud",
-    "fab",
-    null
+    'soundcloud',
+    'fab',
+    null,
   ],
   [
-    "file-pdf-o",
-    "far",
-    "file-pdf"
+    'file-pdf-o',
+    'far',
+    'file-pdf',
   ],
   [
-    "file-word-o",
-    "far",
-    "file-word"
+    'file-word-o',
+    'far',
+    'file-word',
   ],
   [
-    "file-excel-o",
-    "far",
-    "file-excel"
+    'file-excel-o',
+    'far',
+    'file-excel',
   ],
   [
-    "file-powerpoint-o",
-    "far",
-    "file-powerpoint"
+    'file-powerpoint-o',
+    'far',
+    'file-powerpoint',
   ],
   [
-    "file-image-o",
-    "far",
-    "file-image"
+    'file-image-o',
+    'far',
+    'file-image',
   ],
   [
-    "file-photo-o",
-    "far",
-    "file-image"
+    'file-photo-o',
+    'far',
+    'file-image',
   ],
   [
-    "file-picture-o",
-    "far",
-    "file-image"
+    'file-picture-o',
+    'far',
+    'file-image',
   ],
   [
-    "file-archive-o",
-    "far",
-    "file-archive"
+    'file-archive-o',
+    'far',
+    'file-archive',
   ],
   [
-    "file-zip-o",
-    "far",
-    "file-archive"
+    'file-zip-o',
+    'far',
+    'file-archive',
   ],
   [
-    "file-audio-o",
-    "far",
-    "file-audio"
+    'file-audio-o',
+    'far',
+    'file-audio',
   ],
   [
-    "file-sound-o",
-    "far",
-    "file-audio"
+    'file-sound-o',
+    'far',
+    'file-audio',
   ],
   [
-    "file-video-o",
-    "far",
-    "file-video"
+    'file-video-o',
+    'far',
+    'file-video',
   ],
   [
-    "file-movie-o",
-    "far",
-    "file-video"
+    'file-movie-o',
+    'far',
+    'file-video',
   ],
   [
-    "file-code-o",
-    "far",
-    "file-code"
+    'file-code-o',
+    'far',
+    'file-code',
   ],
   [
-    "vine",
-    "fab",
-    null
+    'vine',
+    'fab',
+    null,
   ],
   [
-    "codepen",
-    "fab",
-    null
+    'codepen',
+    'fab',
+    null,
   ],
   [
-    "jsfiddle",
-    "fab",
-    null
+    'jsfiddle',
+    'fab',
+    null,
   ],
   [
-    "life-ring",
-    "far",
-    null
+    'life-ring',
+    'far',
+    null,
   ],
   [
-    "life-bouy",
-    "far",
-    "life-ring"
+    'life-bouy',
+    'far',
+    'life-ring',
   ],
   [
-    "life-buoy",
-    "far",
-    "life-ring"
+    'life-buoy',
+    'far',
+    'life-ring',
   ],
   [
-    "life-saver",
-    "far",
-    "life-ring"
+    'life-saver',
+    'far',
+    'life-ring',
   ],
   [
-    "support",
-    "far",
-    "life-ring"
+    'support',
+    'far',
+    'life-ring',
   ],
   [
-    "circle-o-notch",
+    'circle-o-notch',
     null,
-    "circle-notch"
+    'circle-notch',
   ],
   [
-    "rebel",
-    "fab",
-    null
+    'rebel',
+    'fab',
+    null,
   ],
   [
-    "ra",
-    "fab",
-    "rebel"
+    'ra',
+    'fab',
+    'rebel',
   ],
   [
-    "resistance",
-    "fab",
-    "rebel"
+    'resistance',
+    'fab',
+    'rebel',
   ],
   [
-    "empire",
-    "fab",
-    null
+    'empire',
+    'fab',
+    null,
   ],
   [
-    "ge",
-    "fab",
-    "empire"
+    'ge',
+    'fab',
+    'empire',
   ],
   [
-    "git-square",
-    "fab",
-    null
+    'git-square',
+    'fab',
+    null,
   ],
   [
-    "git",
-    "fab",
-    null
+    'git',
+    'fab',
+    null,
   ],
   [
-    "hacker-news",
-    "fab",
-    null
+    'hacker-news',
+    'fab',
+    null,
   ],
   [
-    "y-combinator-square",
-    "fab",
-    "hacker-news"
+    'y-combinator-square',
+    'fab',
+    'hacker-news',
   ],
   [
-    "yc-square",
-    "fab",
-    "hacker-news"
+    'yc-square',
+    'fab',
+    'hacker-news',
   ],
   [
-    "tencent-weibo",
-    "fab",
-    null
+    'tencent-weibo',
+    'fab',
+    null,
   ],
   [
-    "qq",
-    "fab",
-    null
+    'qq',
+    'fab',
+    null,
   ],
   [
-    "weixin",
-    "fab",
-    null
+    'weixin',
+    'fab',
+    null,
   ],
   [
-    "wechat",
-    "fab",
-    "weixin"
+    'wechat',
+    'fab',
+    'weixin',
   ],
   [
-    "send",
+    'send',
     null,
-    "paper-plane"
+    'paper-plane',
   ],
   [
-    "paper-plane-o",
-    "far",
-    "paper-plane"
+    'paper-plane-o',
+    'far',
+    'paper-plane',
   ],
   [
-    "send-o",
-    "far",
-    "paper-plane"
+    'send-o',
+    'far',
+    'paper-plane',
   ],
   [
-    "circle-thin",
-    "far",
-    "circle"
+    'circle-thin',
+    'far',
+    'circle',
   ],
   [
-    "header",
+    'header',
     null,
-    "heading"
+    'heading',
   ],
   [
-    "sliders",
+    'sliders',
     null,
-    "sliders-h"
+    'sliders-h',
   ],
   [
-    "futbol-o",
-    "far",
-    "futbol"
+    'futbol-o',
+    'far',
+    'futbol',
   ],
   [
-    "soccer-ball-o",
-    "far",
-    "futbol"
+    'soccer-ball-o',
+    'far',
+    'futbol',
   ],
   [
-    "slideshare",
-    "fab",
-    null
+    'slideshare',
+    'fab',
+    null,
   ],
   [
-    "twitch",
-    "fab",
-    null
+    'twitch',
+    'fab',
+    null,
   ],
   [
-    "yelp",
-    "fab",
-    null
+    'yelp',
+    'fab',
+    null,
   ],
   [
-    "newspaper-o",
-    "far",
-    "newspaper"
+    'newspaper-o',
+    'far',
+    'newspaper',
   ],
   [
-    "paypal",
-    "fab",
-    null
+    'paypal',
+    'fab',
+    null,
   ],
   [
-    "google-wallet",
-    "fab",
-    null
+    'google-wallet',
+    'fab',
+    null,
   ],
   [
-    "cc-visa",
-    "fab",
-    null
+    'cc-visa',
+    'fab',
+    null,
   ],
   [
-    "cc-mastercard",
-    "fab",
-    null
+    'cc-mastercard',
+    'fab',
+    null,
   ],
   [
-    "cc-discover",
-    "fab",
-    null
+    'cc-discover',
+    'fab',
+    null,
   ],
   [
-    "cc-amex",
-    "fab",
-    null
+    'cc-amex',
+    'fab',
+    null,
   ],
   [
-    "cc-paypal",
-    "fab",
-    null
+    'cc-paypal',
+    'fab',
+    null,
   ],
   [
-    "cc-stripe",
-    "fab",
-    null
+    'cc-stripe',
+    'fab',
+    null,
   ],
   [
-    "bell-slash-o",
-    "far",
-    "bell-slash"
+    'bell-slash-o',
+    'far',
+    'bell-slash',
   ],
   [
-    "trash",
+    'trash',
     null,
-    "trash-alt"
+    'trash-alt',
   ],
   [
-    "copyright",
-    "far",
-    null
+    'copyright',
+    'far',
+    null,
   ],
   [
-    "eyedropper",
+    'eyedropper',
     null,
-    "eye-dropper"
+    'eye-dropper',
   ],
   [
-    "area-chart",
+    'area-chart',
     null,
-    "chart-area"
+    'chart-area',
   ],
   [
-    "pie-chart",
+    'pie-chart',
     null,
-    "chart-pie"
+    'chart-pie',
   ],
   [
-    "line-chart",
+    'line-chart',
     null,
-    "chart-line"
+    'chart-line',
   ],
   [
-    "lastfm",
-    "fab",
-    null
+    'lastfm',
+    'fab',
+    null,
   ],
   [
-    "lastfm-square",
-    "fab",
-    null
+    'lastfm-square',
+    'fab',
+    null,
   ],
   [
-    "ioxhost",
-    "fab",
-    null
+    'ioxhost',
+    'fab',
+    null,
   ],
   [
-    "angellist",
-    "fab",
-    null
+    'angellist',
+    'fab',
+    null,
   ],
   [
-    "cc",
-    "far",
-    "closed-captioning"
+    'cc',
+    'far',
+    'closed-captioning',
   ],
   [
-    "ils",
+    'ils',
     null,
-    "shekel-sign"
+    'shekel-sign',
   ],
   [
-    "shekel",
+    'shekel',
     null,
-    "shekel-sign"
+    'shekel-sign',
   ],
   [
-    "sheqel",
+    'sheqel',
     null,
-    "shekel-sign"
+    'shekel-sign',
   ],
   [
-    "meanpath",
-    "fab",
-    "font-awesome"
+    'meanpath',
+    'fab',
+    'font-awesome',
   ],
   [
-    "buysellads",
-    "fab",
-    null
+    'buysellads',
+    'fab',
+    null,
   ],
   [
-    "connectdevelop",
-    "fab",
-    null
+    'connectdevelop',
+    'fab',
+    null,
   ],
   [
-    "dashcube",
-    "fab",
-    null
+    'dashcube',
+    'fab',
+    null,
   ],
   [
-    "forumbee",
-    "fab",
-    null
+    'forumbee',
+    'fab',
+    null,
   ],
   [
-    "leanpub",
-    "fab",
-    null
+    'leanpub',
+    'fab',
+    null,
   ],
   [
-    "sellsy",
-    "fab",
-    null
+    'sellsy',
+    'fab',
+    null,
   ],
   [
-    "shirtsinbulk",
-    "fab",
-    null
+    'shirtsinbulk',
+    'fab',
+    null,
   ],
   [
-    "simplybuilt",
-    "fab",
-    null
+    'simplybuilt',
+    'fab',
+    null,
   ],
   [
-    "skyatlas",
-    "fab",
-    null
+    'skyatlas',
+    'fab',
+    null,
   ],
   [
-    "diamond",
-    "far",
-    "gem"
+    'diamond',
+    'far',
+    'gem',
   ],
   [
-    "intersex",
+    'intersex',
     null,
-    "transgender"
+    'transgender',
   ],
   [
-    "facebook-official",
-    "fab",
-    "facebook"
+    'facebook-official',
+    'fab',
+    'facebook',
   ],
   [
-    "pinterest-p",
-    "fab",
-    null
+    'pinterest-p',
+    'fab',
+    null,
   ],
   [
-    "whatsapp",
-    "fab",
-    null
+    'whatsapp',
+    'fab',
+    null,
   ],
   [
-    "hotel",
+    'hotel',
     null,
-    "bed"
+    'bed',
   ],
   [
-    "viacoin",
-    "fab",
-    null
+    'viacoin',
+    'fab',
+    null,
   ],
   [
-    "medium",
-    "fab",
-    null
+    'medium',
+    'fab',
+    null,
   ],
   [
-    "y-combinator",
-    "fab",
-    null
+    'y-combinator',
+    'fab',
+    null,
   ],
   [
-    "yc",
-    "fab",
-    "y-combinator"
+    'yc',
+    'fab',
+    'y-combinator',
   ],
   [
-    "optin-monster",
-    "fab",
-    null
+    'optin-monster',
+    'fab',
+    null,
   ],
   [
-    "opencart",
-    "fab",
-    null
+    'opencart',
+    'fab',
+    null,
   ],
   [
-    "expeditedssl",
-    "fab",
-    null
+    'expeditedssl',
+    'fab',
+    null,
   ],
   [
-    "battery-4",
+    'battery-4',
     null,
-    "battery-full"
+    'battery-full',
   ],
   [
-    "battery",
+    'battery',
     null,
-    "battery-full"
+    'battery-full',
   ],
   [
-    "battery-3",
+    'battery-3',
     null,
-    "battery-three-quarters"
+    'battery-three-quarters',
   ],
   [
-    "battery-2",
+    'battery-2',
     null,
-    "battery-half"
+    'battery-half',
   ],
   [
-    "battery-1",
+    'battery-1',
     null,
-    "battery-quarter"
+    'battery-quarter',
   ],
   [
-    "battery-0",
+    'battery-0',
     null,
-    "battery-empty"
+    'battery-empty',
   ],
   [
-    "object-group",
-    "far",
-    null
+    'object-group',
+    'far',
+    null,
   ],
   [
-    "object-ungroup",
-    "far",
-    null
+    'object-ungroup',
+    'far',
+    null,
   ],
   [
-    "sticky-note-o",
-    "far",
-    "sticky-note"
+    'sticky-note-o',
+    'far',
+    'sticky-note',
   ],
   [
-    "cc-jcb",
-    "fab",
-    null
+    'cc-jcb',
+    'fab',
+    null,
   ],
   [
-    "cc-diners-club",
-    "fab",
-    null
+    'cc-diners-club',
+    'fab',
+    null,
   ],
   [
-    "clone",
-    "far",
-    null
+    'clone',
+    'far',
+    null,
   ],
   [
-    "hourglass-o",
-    "far",
-    "hourglass"
+    'hourglass-o',
+    'far',
+    'hourglass',
   ],
   [
-    "hourglass-1",
+    'hourglass-1',
     null,
-    "hourglass-start"
+    'hourglass-start',
   ],
   [
-    "hourglass-2",
+    'hourglass-2',
     null,
-    "hourglass-half"
+    'hourglass-half',
   ],
   [
-    "hourglass-3",
+    'hourglass-3',
     null,
-    "hourglass-end"
+    'hourglass-end',
   ],
   [
-    "hand-rock-o",
-    "far",
-    "hand-rock"
+    'hand-rock-o',
+    'far',
+    'hand-rock',
   ],
   [
-    "hand-grab-o",
-    "far",
-    "hand-rock"
+    'hand-grab-o',
+    'far',
+    'hand-rock',
   ],
   [
-    "hand-paper-o",
-    "far",
-    "hand-paper"
+    'hand-paper-o',
+    'far',
+    'hand-paper',
   ],
   [
-    "hand-stop-o",
-    "far",
-    "hand-paper"
+    'hand-stop-o',
+    'far',
+    'hand-paper',
   ],
   [
-    "hand-scissors-o",
-    "far",
-    "hand-scissors"
+    'hand-scissors-o',
+    'far',
+    'hand-scissors',
   ],
   [
-    "hand-lizard-o",
-    "far",
-    "hand-lizard"
+    'hand-lizard-o',
+    'far',
+    'hand-lizard',
   ],
   [
-    "hand-spock-o",
-    "far",
-    "hand-spock"
+    'hand-spock-o',
+    'far',
+    'hand-spock',
   ],
   [
-    "hand-pointer-o",
-    "far",
-    "hand-pointer"
+    'hand-pointer-o',
+    'far',
+    'hand-pointer',
   ],
   [
-    "hand-peace-o",
-    "far",
-    "hand-peace"
+    'hand-peace-o',
+    'far',
+    'hand-peace',
   ],
   [
-    "registered",
-    "far",
-    null
+    'registered',
+    'far',
+    null,
   ],
   [
-    "creative-commons",
-    "fab",
-    null
+    'creative-commons',
+    'fab',
+    null,
   ],
   [
-    "gg",
-    "fab",
-    null
+    'gg',
+    'fab',
+    null,
   ],
   [
-    "gg-circle",
-    "fab",
-    null
+    'gg-circle',
+    'fab',
+    null,
   ],
   [
-    "tripadvisor",
-    "fab",
-    null
+    'tripadvisor',
+    'fab',
+    null,
   ],
   [
-    "odnoklassniki",
-    "fab",
-    null
+    'odnoklassniki',
+    'fab',
+    null,
   ],
   [
-    "odnoklassniki-square",
-    "fab",
-    null
+    'odnoklassniki-square',
+    'fab',
+    null,
   ],
   [
-    "get-pocket",
-    "fab",
-    null
+    'get-pocket',
+    'fab',
+    null,
   ],
   [
-    "wikipedia-w",
-    "fab",
-    null
+    'wikipedia-w',
+    'fab',
+    null,
   ],
   [
-    "safari",
-    "fab",
-    null
+    'safari',
+    'fab',
+    null,
   ],
   [
-    "chrome",
-    "fab",
-    null
+    'chrome',
+    'fab',
+    null,
   ],
   [
-    "firefox",
-    "fab",
-    null
+    'firefox',
+    'fab',
+    null,
   ],
   [
-    "opera",
-    "fab",
-    null
+    'opera',
+    'fab',
+    null,
   ],
   [
-    "internet-explorer",
-    "fab",
-    null
+    'internet-explorer',
+    'fab',
+    null,
   ],
   [
-    "television",
+    'television',
     null,
-    "tv"
+    'tv',
   ],
   [
-    "contao",
-    "fab",
-    null
+    'contao',
+    'fab',
+    null,
   ],
   [
-    "500px",
-    "fab",
-    null
+    '500px',
+    'fab',
+    null,
   ],
   [
-    "amazon",
-    "fab",
-    null
+    'amazon',
+    'fab',
+    null,
   ],
   [
-    "calendar-plus-o",
-    "far",
-    "calendar-plus"
+    'calendar-plus-o',
+    'far',
+    'calendar-plus',
   ],
   [
-    "calendar-minus-o",
-    "far",
-    "calendar-minus"
+    'calendar-minus-o',
+    'far',
+    'calendar-minus',
   ],
   [
-    "calendar-times-o",
-    "far",
-    "calendar-times"
+    'calendar-times-o',
+    'far',
+    'calendar-times',
   ],
   [
-    "calendar-check-o",
-    "far",
-    "calendar-check"
+    'calendar-check-o',
+    'far',
+    'calendar-check',
   ],
   [
-    "map-o",
-    "far",
-    "map"
+    'map-o',
+    'far',
+    'map',
   ],
   [
-    "commenting",
+    'commenting',
     null,
-    "comment-dots"
+    'comment-dots',
   ],
   [
-    "commenting-o",
-    "far",
-    "comment-dots"
+    'commenting-o',
+    'far',
+    'comment-dots',
   ],
   [
-    "houzz",
-    "fab",
-    null
+    'houzz',
+    'fab',
+    null,
   ],
   [
-    "vimeo",
-    "fab",
-    "vimeo-v"
+    'vimeo',
+    'fab',
+    'vimeo-v',
   ],
   [
-    "black-tie",
-    "fab",
-    null
+    'black-tie',
+    'fab',
+    null,
   ],
   [
-    "fonticons",
-    "fab",
-    null
+    'fonticons',
+    'fab',
+    null,
   ],
   [
-    "reddit-alien",
-    "fab",
-    null
+    'reddit-alien',
+    'fab',
+    null,
   ],
   [
-    "edge",
-    "fab",
-    null
+    'edge',
+    'fab',
+    null,
   ],
   [
-    "credit-card-alt",
+    'credit-card-alt',
     null,
-    "credit-card"
+    'credit-card',
   ],
   [
-    "codiepie",
-    "fab",
-    null
+    'codiepie',
+    'fab',
+    null,
   ],
   [
-    "modx",
-    "fab",
-    null
+    'modx',
+    'fab',
+    null,
   ],
   [
-    "fort-awesome",
-    "fab",
-    null
+    'fort-awesome',
+    'fab',
+    null,
   ],
   [
-    "usb",
-    "fab",
-    null
+    'usb',
+    'fab',
+    null,
   ],
   [
-    "product-hunt",
-    "fab",
-    null
+    'product-hunt',
+    'fab',
+    null,
   ],
   [
-    "mixcloud",
-    "fab",
-    null
+    'mixcloud',
+    'fab',
+    null,
   ],
   [
-    "scribd",
-    "fab",
-    null
+    'scribd',
+    'fab',
+    null,
   ],
   [
-    "pause-circle-o",
-    "far",
-    "pause-circle"
+    'pause-circle-o',
+    'far',
+    'pause-circle',
   ],
   [
-    "stop-circle-o",
-    "far",
-    "stop-circle"
+    'stop-circle-o',
+    'far',
+    'stop-circle',
   ],
   [
-    "bluetooth",
-    "fab",
-    null
+    'bluetooth',
+    'fab',
+    null,
   ],
   [
-    "bluetooth-b",
-    "fab",
-    null
+    'bluetooth-b',
+    'fab',
+    null,
   ],
   [
-    "gitlab",
-    "fab",
-    null
+    'gitlab',
+    'fab',
+    null,
   ],
   [
-    "wpbeginner",
-    "fab",
-    null
+    'wpbeginner',
+    'fab',
+    null,
   ],
   [
-    "wpforms",
-    "fab",
-    null
+    'wpforms',
+    'fab',
+    null,
   ],
   [
-    "envira",
-    "fab",
-    null
+    'envira',
+    'fab',
+    null,
   ],
   [
-    "wheelchair-alt",
-    "fab",
-    "accessible-icon"
+    'wheelchair-alt',
+    'fab',
+    'accessible-icon',
   ],
   [
-    "question-circle-o",
-    "far",
-    "question-circle"
+    'question-circle-o',
+    'far',
+    'question-circle',
   ],
   [
-    "volume-control-phone",
+    'volume-control-phone',
     null,
-    "phone-volume"
+    'phone-volume',
   ],
   [
-    "asl-interpreting",
+    'asl-interpreting',
     null,
-    "american-sign-language-interpreting"
+    'american-sign-language-interpreting',
   ],
   [
-    "deafness",
+    'deafness',
     null,
-    "deaf"
+    'deaf',
   ],
   [
-    "hard-of-hearing",
+    'hard-of-hearing',
     null,
-    "deaf"
+    'deaf',
   ],
   [
-    "glide",
-    "fab",
-    null
+    'glide',
+    'fab',
+    null,
   ],
   [
-    "glide-g",
-    "fab",
-    null
+    'glide-g',
+    'fab',
+    null,
   ],
   [
-    "signing",
+    'signing',
     null,
-    "sign-language"
+    'sign-language',
   ],
   [
-    "viadeo",
-    "fab",
-    null
+    'viadeo',
+    'fab',
+    null,
   ],
   [
-    "viadeo-square",
-    "fab",
-    null
+    'viadeo-square',
+    'fab',
+    null,
   ],
   [
-    "snapchat",
-    "fab",
-    null
+    'snapchat',
+    'fab',
+    null,
   ],
   [
-    "snapchat-ghost",
-    "fab",
-    null
+    'snapchat-ghost',
+    'fab',
+    null,
   ],
   [
-    "snapchat-square",
-    "fab",
-    null
+    'snapchat-square',
+    'fab',
+    null,
   ],
   [
-    "pied-piper",
-    "fab",
-    null
+    'pied-piper',
+    'fab',
+    null,
   ],
   [
-    "first-order",
-    "fab",
-    null
+    'first-order',
+    'fab',
+    null,
   ],
   [
-    "yoast",
-    "fab",
-    null
+    'yoast',
+    'fab',
+    null,
   ],
   [
-    "themeisle",
-    "fab",
-    null
+    'themeisle',
+    'fab',
+    null,
   ],
   [
-    "google-plus-official",
-    "fab",
-    "google-plus"
+    'google-plus-official',
+    'fab',
+    'google-plus',
   ],
   [
-    "google-plus-circle",
-    "fab",
-    "google-plus"
+    'google-plus-circle',
+    'fab',
+    'google-plus',
   ],
   [
-    "font-awesome",
-    "fab",
-    null
+    'font-awesome',
+    'fab',
+    null,
   ],
   [
-    "fa",
-    "fab",
-    "font-awesome"
+    'fa',
+    'fab',
+    'font-awesome',
   ],
   [
-    "handshake-o",
-    "far",
-    "handshake"
+    'handshake-o',
+    'far',
+    'handshake',
   ],
   [
-    "envelope-open-o",
-    "far",
-    "envelope-open"
+    'envelope-open-o',
+    'far',
+    'envelope-open',
   ],
   [
-    "linode",
-    "fab",
-    null
+    'linode',
+    'fab',
+    null,
   ],
   [
-    "address-book-o",
-    "far",
-    "address-book"
+    'address-book-o',
+    'far',
+    'address-book',
   ],
   [
-    "vcard",
+    'vcard',
     null,
-    "address-card"
+    'address-card',
   ],
   [
-    "address-card-o",
-    "far",
-    "address-card"
+    'address-card-o',
+    'far',
+    'address-card',
   ],
   [
-    "vcard-o",
-    "far",
-    "address-card"
+    'vcard-o',
+    'far',
+    'address-card',
   ],
   [
-    "user-circle-o",
-    "far",
-    "user-circle"
+    'user-circle-o',
+    'far',
+    'user-circle',
   ],
   [
-    "user-o",
-    "far",
-    "user"
+    'user-o',
+    'far',
+    'user',
   ],
   [
-    "id-badge",
-    "far",
-    null
+    'id-badge',
+    'far',
+    null,
   ],
   [
-    "drivers-license",
+    'drivers-license',
     null,
-    "id-card"
+    'id-card',
   ],
   [
-    "id-card-o",
-    "far",
-    "id-card"
+    'id-card-o',
+    'far',
+    'id-card',
   ],
   [
-    "drivers-license-o",
-    "far",
-    "id-card"
+    'drivers-license-o',
+    'far',
+    'id-card',
   ],
   [
-    "quora",
-    "fab",
-    null
+    'quora',
+    'fab',
+    null,
   ],
   [
-    "free-code-camp",
-    "fab",
-    null
+    'free-code-camp',
+    'fab',
+    null,
   ],
   [
-    "telegram",
-    "fab",
-    null
+    'telegram',
+    'fab',
+    null,
   ],
   [
-    "thermometer-4",
+    'thermometer-4',
     null,
-    "thermometer-full"
+    'thermometer-full',
   ],
   [
-    "thermometer",
+    'thermometer',
     null,
-    "thermometer-full"
+    'thermometer-full',
   ],
   [
-    "thermometer-3",
+    'thermometer-3',
     null,
-    "thermometer-three-quarters"
+    'thermometer-three-quarters',
   ],
   [
-    "thermometer-2",
+    'thermometer-2',
     null,
-    "thermometer-half"
+    'thermometer-half',
   ],
   [
-    "thermometer-1",
+    'thermometer-1',
     null,
-    "thermometer-quarter"
+    'thermometer-quarter',
   ],
   [
-    "thermometer-0",
+    'thermometer-0',
     null,
-    "thermometer-empty"
+    'thermometer-empty',
   ],
   [
-    "bathtub",
+    'bathtub',
     null,
-    "bath"
+    'bath',
   ],
   [
-    "s15",
+    's15',
     null,
-    "bath"
+    'bath',
   ],
   [
-    "window-maximize",
-    "far",
-    null
+    'window-maximize',
+    'far',
+    null,
   ],
   [
-    "window-restore",
-    "far",
-    null
+    'window-restore',
+    'far',
+    null,
   ],
   [
-    "times-rectangle",
+    'times-rectangle',
     null,
-    "window-close"
+    'window-close',
   ],
   [
-    "window-close-o",
-    "far",
-    "window-close"
+    'window-close-o',
+    'far',
+    'window-close',
   ],
   [
-    "times-rectangle-o",
-    "far",
-    "window-close"
+    'times-rectangle-o',
+    'far',
+    'window-close',
   ],
   [
-    "bandcamp",
-    "fab",
-    null
+    'bandcamp',
+    'fab',
+    null,
   ],
   [
-    "grav",
-    "fab",
-    null
+    'grav',
+    'fab',
+    null,
   ],
   [
-    "etsy",
-    "fab",
-    null
+    'etsy',
+    'fab',
+    null,
   ],
   [
-    "imdb",
-    "fab",
-    null
+    'imdb',
+    'fab',
+    null,
   ],
   [
-    "ravelry",
-    "fab",
-    null
+    'ravelry',
+    'fab',
+    null,
   ],
   [
-    "eercast",
-    "fab",
-    "sellcast"
+    'eercast',
+    'fab',
+    'sellcast',
   ],
   [
-    "snowflake-o",
-    "far",
-    "snowflake"
+    'snowflake-o',
+    'far',
+    'snowflake',
   ],
   [
-    "superpowers",
-    "fab",
-    null
+    'superpowers',
+    'fab',
+    null,
   ],
   [
-    "wpexplorer",
-    "fab",
-    null
+    'wpexplorer',
+    'fab',
+    null,
   ],
   [
-    "cab",
+    'cab',
     null,
-    "taxi"
-  ]
-]
+    'taxi',
+  ],
+];

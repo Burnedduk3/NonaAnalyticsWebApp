@@ -1,8 +1,8 @@
 import React from 'react';
-import PublicHeader from '../../../Components/Header/PublicHeader';
+import Footer from '../../../Components/Footer';
 
 const Home = () => (
-  <PublicHeader />
+  <Footer />
 );
 
 export default Home;
