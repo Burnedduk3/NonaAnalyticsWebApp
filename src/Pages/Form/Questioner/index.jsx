@@ -55,7 +55,6 @@ const Questioner = ({ match }) => {
         DropConsole(HIGH, questionsError.message);
         setError(true);
       }
-      console.log(questionsError);
       setError(true);
     }
     setLoading(false);
@@ -80,8 +79,6 @@ const Questioner = ({ match }) => {
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
           DropConsole(HIGH, saveToDBError.message);
-        } else {
-          console.log(saveToDBError);
         }
       }
 
@@ -95,8 +92,6 @@ const Questioner = ({ match }) => {
     const questionsPromise = getQuestions();
     questionsPromise.then((response) => response);
   }, [match]);
-
-  console.log(responseState);
 
   return (
     <div className="yes-no-container">
