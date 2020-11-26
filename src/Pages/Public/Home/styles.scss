@@ -28,8 +28,29 @@
   }
 }
 
+.our-team {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0vh;
+
+  .subtitle {
+    color: #FF5C63;
+  }
+
+  .sm {
+    font-size: 25px;
+    margin-top: 5vh;
+  }
+
+  .meds {
+    display: flex;
+    justify-content: center;
+  }
+}
+
 .subtitle {
   margin-bottom: 1em;
-  font-size: 40px;
+  font-size: 35px;
   color: #303030;
 }

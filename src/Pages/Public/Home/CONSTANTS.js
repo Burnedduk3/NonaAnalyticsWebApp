@@ -17,38 +17,48 @@ const HomeTexts = {
     third: {
       title: 'Our Team',
       subtitle: 'Colombian Association of Life Style Medicine',
-      member1: {
-        name: 'Cesar Muñoz',
-        title: 'PhD Computer Engineering & Management System - CEO Nona Analytics',
-      },
-      member2: {
-        name: 'Rebecca Eggleton',
-        title: 'CFO Nona Analytics, Licensed CPA',
-      },
-      member3: {
-        name: 'Fernando Camacho',
-        title: 'PhD Biomedical Engineering - Lead Data Scientist',
-      },
-      member4: {
-        name: 'Miguel Angel Valcarcel',
-        title: 'Lead Software Engineer Mobile App',
-      },
-      member5: {
-        name: 'Juan David Cabrera',
-        title: 'Lead Software Engineer Web / Cloud Plataform',
-      },
-      member6: {
-        name: 'Nicolas Betancur',
-        title: 'Machine Learning Engineer',
-      },
-      member7: {
-        name: 'Ana Maria Betancourt',
-        title: 'Medical Doctor Specialized Sport & Life Style Medicine Co-founder ASMEVIDA',
-      },
-      member8: {
-        name: 'Simon Villa Arango',
-        title: 'PhD Biomedical Engineering - CEO inncremental SAS Co-founder ASMEVIDA',
-      },
+      members: [
+        {
+          med: false,
+          name: 'Cesar Muñoz',
+          title: 'PhD Computer Engineering & Management System - CEO Nona Analytics',
+        },
+        {
+          med: false,
+          name: 'Rebecca Eggleton',
+          title: 'CFO Nona Analytics, Licensed CPA',
+        },
+        {
+          med: false,
+          name: 'Fernando Camacho',
+          title: 'PhD Biomedical Engineering - Lead Data Scientist',
+        },
+        {
+          med: false,
+          name: 'Miguel Angel Valcarcel',
+          title: 'Lead Software Engineer Mobile App',
+        },
+        {
+          med: false,
+          name: 'Juan David Cabrera',
+          title: 'Lead Software Engineer Web / Cloud Plataform',
+        },
+        {
+          med: false,
+          name: 'Nicolas Betancur',
+          title: 'Machine Learning Engineer',
+        },
+        {
+          med: true,
+          name: 'Ana Maria Betancourt',
+          title: 'Medical Doctor Specialized Sport & Life Style Medicine Co-founder ASMEVIDA',
+        },
+        {
+          med: true,
+          name: 'Simon Villa Arango',
+          title: 'PhD Biomedical Engineering - CEO inncremental SAS Co-founder ASMEVIDA',
+        },
+      ],
     },
   },
 };
