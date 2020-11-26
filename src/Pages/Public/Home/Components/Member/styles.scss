@@ -1,0 +1,46 @@
+.eng,
+.med {
+  display: flex;
+  align-items: center;
+  background-color: #EEEEEE;
+  box-shadow: 5px 5px 9px #AFAFAF85;
+  border-radius: 2em;
+  color: #005776;
+
+  .name-container {
+    font-weight: bold;
+    font-size: 1.55em;
+  }
+
+  .title-container {
+    font-size: 1.1em;
+  }
+}
+
+.med {
+  flex-direction: column;
+  justify-content: flex-start;
+  max-width: 40%;
+  box-sizing: border-box;
+  margin: 3vh 3vh;
+  padding: 1em 3em;
+}
+
+.eng {
+  width: 75%;
+  height: 3em;
+  margin: 3vh 0vh;
+  padding: 0.5em;
+
+  .name-container {
+    width: 40%;
+    display: flex;
+    text-align: right;
+    justify-content: flex-end;
+    padding-right: 2em;
+  }
+
+  .title-container {
+    width: 60%;
+  }
+}
