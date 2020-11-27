@@ -8,14 +8,14 @@ const PublicHeader = (props) => {
   const home = () => (
     <header className="header header-home">
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.headers.home}</h1>
+      <h1 className="main-title">{HeaderTexts.headers.home.text}</h1>
       <button type="button" className="quick-start">
-        LEARN MORE
+        {HeaderTexts.headers.home.button}
       </button>
       <div className="call">
-        <span className="call-text">Do you want to be part of the community?</span>
+        <span className="call-text">{HeaderTexts.headers.home.span_text}</span>
         <button type="button" className="call-button">
-          Quick start
+          {HeaderTexts.headers.home.span_button}
         </button>
       </div>
     </header>
@@ -23,24 +23,24 @@ const PublicHeader = (props) => {
   const lifeProject = () => (
     <header className="header header-life">
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.headers.lifeProject}</h1>
+      <h1 className="main-title">{HeaderTexts.headers.lifeProject.text}</h1>
       <div className="info">
-        <span className="first">{HeaderTexts.spans.lifeProject[0]}</span>
-        <span className="second">{HeaderTexts.spans.lifeProject[1]}</span>
-        <span className="third">{HeaderTexts.spans.lifeProject[2]}</span>
+        <span className="first">{HeaderTexts.headers.lifeProject.span[0]}</span>
+        <span className="second">{HeaderTexts.headers.lifeProject.span[1]}</span>
+        <span className="third">{HeaderTexts.headers.lifeProject.span[2]}</span>
       </div>
     </header>
   );
   const innovation = () => (
     <header className="header header-innovation">
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.headers.innovation}</h1>
+      <h1 className="main-title">{HeaderTexts.headers.innovation.text}</h1>
     </header>
   );
   const bePart = () => (
     <header className="header header-bepart">
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.headers.bePart}</h1>
+      <h1 className="main-title">{HeaderTexts.headers.bePart.text}</h1>
     </header>
   );
   return (
