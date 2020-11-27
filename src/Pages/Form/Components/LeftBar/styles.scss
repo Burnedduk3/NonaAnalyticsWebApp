@@ -1,0 +1,12 @@
+@import "src/Global/styles/Colors";
+.aside-menu{
+  max-width: 15vw;
+  width: 15vw;
+  min-width: 300px;
+  background-color: $primary-color;
+
+  .progress-bar-container{
+    width: 200px;
+    margin: auto;
+  }
+}

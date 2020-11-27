@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
 import { ADD_QUESTIONS, DELETE_QUESTION } from '../../../Context/FormQuestions/ActionTypes';
 import DropConsole from '../../../utils/DropConsole';
@@ -13,6 +13,8 @@ import { UserCurrentFormContext } from '../../../Context/UserCurrentForm/Provide
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
 import TextInputComponent from '../Components/TextInputQuestion';
+import LeftBar from '../Components/LeftBar';
+import './styles.scss';
 
 // eslint-disable-next-line react/prop-types
 const Questioner = ({ match }) => {
@@ -20,7 +22,7 @@ const Questioner = ({ match }) => {
   const [error, setError] = useState(false);
   const { FormQuestionsState, FormQuestionsDispatch } = useContext(FormQuestionsContext);
   const { userCurrentFormState } = useContext(UserCurrentFormContext);
-  const [useRedirect, setUseRedirect] = useState(false);
+  const navigationHistory = useHistory();
 
   const [responseState, setResponseState] = useState({});
 
@@ -81,8 +83,7 @@ const Questioner = ({ match }) => {
           DropConsole(HIGH, saveToDBError.message);
         }
       }
-
-      setUseRedirect(true);
+      navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Demographics`);
 
       return 0;
     });
@@ -94,61 +95,67 @@ const Questioner = ({ match }) => {
   }, [match]);
 
   return (
-    <div className="yes-no-container">
-      {loading && (
-        <div className="spinner-wrapper">
-          <Spinner />
+    <main className="content-container">
+      <LeftBar />
+      <div className="form-container">
+        {loading && (
+          <div className="spinner-wrapper">
+            <Spinner />
+          </div>
+        )}
+        {(!loading && !error) && (
+          <>
+            {
+              FormQuestionsState.map(
+                (item) => {
+                  if (item.category.name === 'YesNo') {
+                    return (
+                      <div key={item.id} className="yes-no-container-comp">
+                        <YesNoQuestion
+                          question={item.question}
+                          questionId={item.id}
+                          radioGroup={item.id}
+                          setResponse={setResponseState}
+                          currentState={responseState}
+                        />
+                      </div>
+                    );
+                  } if (item.category.name === 'Combo') {
+                    return (
+                      <ComboBoxComponent
+                        key={item.id}
+                        question={item.question}
+                        questionId={item.id}
+                        setResponse={setResponseState}
+                        items={item.items}
+                        currentState={responseState}
+                      />
+                    );
+                  }
+                  if (item.category.name === 'Open') {
+                    return (
+                      <TextInputComponent
+                        key={item.id}
+                        question={item.question}
+                        questionId={item.id}
+                        setResponse={setResponseState}
+                        currentState={responseState}
+                      />
+                    );
+                  }
+                  return <></>;
+                },
+              )
+            }
+          </>
+        )}
+        <div className="buttons-container">
+          {/* eslint-disable-next-line react/prop-types */}
+          {(match.params.section !== 'Lake-Nona') && <button className="button previous" type="button" onClick={() => navigationHistory.goBack()}>{'< PREVIOUS'}</button>}
+          <button className="button next" type="button" onClick={SaveToDataBase}>{'NEXT >'}</button>
         </div>
-      )}
-      {(!loading && !error) && (
-      <>
-        {
-        FormQuestionsState.map(
-          (item) => {
-            if (item.category.name === 'YesNo') {
-              return (
-                <div key={item.id} className="yes-no-container-comp">
-                  <YesNoQuestion
-                    question={item.question}
-                    questionId={item.id}
-                    radioGroup={item.id}
-                    setResponse={setResponseState}
-                    currentState={responseState}
-                  />
-                </div>
-              );
-            } if (item.category.name === 'Combo') {
-              return (
-                <ComboBoxComponent
-                  key={item.id}
-                  question={item.question}
-                  questionId={item.id}
-                  setResponse={setResponseState}
-                  items={item.items}
-                  currentState={responseState}
-                />
-              );
-            }
-            if (item.category.name === 'Open') {
-              return (
-                <TextInputComponent
-                  key={item.id}
-                  question={item.question}
-                  questionId={item.id}
-                  setResponse={setResponseState}
-                  currentState={responseState}
-                />
-              );
-            }
-            return <></>;
-          },
-        )
-      }
-      </>
-      )}
-      <button type="button" onClick={SaveToDataBase}>Start Survey</button>
-      {useRedirect && (<Redirect to={`${RoutingConstants.dinamicForm.path}/Demographics`} />)}
-    </div>
+      </div>
+    </main>
   );
 };
 export default Questioner;
