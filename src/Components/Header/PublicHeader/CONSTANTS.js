@@ -1,32 +1,30 @@
 const HeaderTexts = {
-  headers: {
-    home: {
-      text:
+  home: {
+    text:
         'We want to build a community that promotes well being',
-      button:
+    button:
         'LEARN MORE',
-      span_text:
+    span_text:
         'Do you want to be part of the community?',
-      span_button:
+    span_button:
         'Quick start',
-    },
-    lifeProject: {
-      text:
+  },
+  lifeProject: {
+    text:
         'The Lake Nona Life Project',
-      span: [
-        '70% - 90%',
-        'of Chronic diseases are lifestyle preventable...',
-        'Willet, Walter (1970, January01) Prevention of Chronic Diseases Means of Diet and Lyfestile Changes.',
-      ],
-    },
-    innovation: {
-      text:
+    span: [
+      '70% - 90%',
+      'of Chronic diseases are lifestyle preventable...',
+      'Willet, Walter (1970, January01) Prevention of Chronic Diseases Means of Diet and Lyfestile Changes.',
+    ],
+  },
+  innovation: {
+    text:
         'The Lake Nona Life Project',
-    },
-    bePart: {
-      text:
+  },
+  bePart: {
+    text:
         'Your participation is essential to cracking-the-code to life-long health and well-being. Join the thousands of Lake Nona Citizen Scientists Making History.',
-    },
   },
 };
 
