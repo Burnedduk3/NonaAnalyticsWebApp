@@ -2,7 +2,7 @@ import React, {
   useContext, useEffect, useState, useRef,
 } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { Redirect } from 'react-router';
+import { useHistory } from 'react-router';
 import DropConsole from '../../../utils/DropConsole';
 import { listForms as ListForms } from '../../../graphql/queries';
 import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
@@ -12,10 +12,12 @@ import { FormQuestionsContext } from '../../../Context/FormQuestions/Provider';
 import Spinner from '../../../Components/Spinner';
 import { ADD_QUESTIONS } from '../../../Context/FormQuestions/ActionTypes';
 import YesNoQuestion from '../Components/YesNoQuestion';
-import './styles.scss';
 import { UserCurrentFormContext } from '../../../Context/UserCurrentForm/Provider';
 import { ADD_CURRENT_FORM } from '../../../Context/UserCurrentForm/ActionTypes';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
+import QuestionerHeader from '../Components/Header';
+import Footer from '../../../Components/Footer';
+import './styles.scss';
 
 const InitialFormPage = () => {
   const isCancelled = useRef(false);
@@ -24,7 +26,7 @@ const InitialFormPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [responseState, setResponseState] = useState({});
-  const [useRedirect, setUseRedirect] = useState(false);
+  const navigationHistory = useHistory();
 
   const getCurrentForm = async () => {
     try {
@@ -117,7 +119,7 @@ const InitialFormPage = () => {
       });
 
       if (isAbleToPass.every((booleanCondition) => booleanCondition === true)) {
-        setUseRedirect(true);
+        navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Lake-Nona`);
       }
       return 0;
     });
@@ -136,17 +138,18 @@ const InitialFormPage = () => {
   }, []);
 
   return (
-
-    <main className="content-container">
-      <div className="content-wrapper">
-        <h2 className="form-start-title">Lets start</h2>
-        {loading && (
-        <div className="spinner-wrapper">
-          <Spinner />
-        </div>
-        )}
-        {(!loading && !error) && (
-        <div className="general-questions-container">
+    <>
+      <QuestionerHeader />
+      <main className="questioner-content-container">
+        <div className="content-wrapper">
+          <h2 className="form-start-title">Lets start</h2>
+          {loading && (
+          <div className="spinner-wrapper">
+            <Spinner />
+          </div>
+          )}
+          {(!loading && !error) && (
+          <div className="general-questions-container">
             {
               FormQuestionsState.map(
                 (item) => (
@@ -161,17 +164,18 @@ const InitialFormPage = () => {
                 ),
               )
             }
-          <button type="button" onClick={SaveToDataBase}>Start Survey</button>
+            <button type="button" onClick={SaveToDataBase} className="start-survey">Start Survey</button>
+          </div>
+          )}
+          {(!loading && error) && (
+          <div>
+            <h2>Error</h2>
+          </div>
+          )}
         </div>
-        )}
-        {(!loading && error) && (
-        <div>
-          <h2>Error</h2>
-        </div>
-        )}
-      </div>
-      {useRedirect && (<Redirect to={`${RoutingConstants.dinamicForm.path}/Lake-Nona`} />)}
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 };
 

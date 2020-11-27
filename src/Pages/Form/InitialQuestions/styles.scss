@@ -1,8 +1,9 @@
 @import "src/Global/styles/Colors";
 
-.content-container {
+.questioner-content-container {
+  margin: 50px 0 0 0;
   display: flex;
-  width: 100vw;
+  width: 100%;
   min-height: 50vh;
   justify-content: center;
 
@@ -17,6 +18,21 @@
       width: 100%;
       font-size: 3em;
       color: $secondary-color;
+    }
+
+    .general-questions-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      margin: 0 0 50px 0;
+
+      .start-survey {
+        height: fit-content;
+        background-color: #fc1a24;
+        padding: 15px 50px;
+        border-radius: 25px;
+        color: white;
+      }
     }
   }
 }
