@@ -8,6 +8,10 @@ const PublicHeader = (props) => {
   const home = () => (
     <header className="header header-home">
       <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
       <h1 className="main-title">{HeaderTexts.home.text}</h1>
       <button type="button" className="quick-start">
         {HeaderTexts.home.button}
@@ -23,6 +27,10 @@ const PublicHeader = (props) => {
   const lifeProject = () => (
     <header className="header header-life">
       <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
       <h1 className="main-title">
         <span className="title-secondary">{HeaderTexts.lifeProject.text.substr(0, 13)}</span>
         <br />
@@ -40,6 +48,10 @@ const PublicHeader = (props) => {
   const innovation = () => (
     <header className="header header-innovation">
       <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
       <h1 className="main-title">{HeaderTexts.innovation.text}</h1>
     </header>
   );
