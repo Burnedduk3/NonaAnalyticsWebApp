@@ -12,6 +12,21 @@
   margin-bottom: 8%;
   margin-right: 7%;
 
+  img {
+    border-radius: 50%;
+    border: 1px solid #707070;
+    height: 12rem;
+    width: 12rem;
+  }
+  h2 {
+    color: $secondary-color;
+    font-family: "proxima-nova", sans-serif;
+  }
+  p {
+    font-family: "Poppins", sans-serif;
+    color: $text-color;
+  }
+
   &-left {
     .one {
       grid-column: 1 / 4;
@@ -46,17 +61,5 @@
     img {
       float: left;
     }
-  }
-  img {
-    border-radius: 50%;
-    border: 1px solid #707070;
-  }
-  h2 {
-    color: $secondary-color;
-    font-family: "proxima-nova", sans-serif;
-  }
-  p {
-    font-family: "Poppins", sans-serif;
-    color: $text-color;
   }
 }

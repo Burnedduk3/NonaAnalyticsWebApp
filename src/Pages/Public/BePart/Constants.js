@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const BePartContentText = {
   sections: {
     first: {
@@ -5,35 +6,35 @@ const BePartContentText = {
       title: 'What We Do',
       text:
           'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      image: '../../../assets/Images/WhatWeDoImage.jpg',
+      img: require('../../../assets/Images/WhatWeDoImage.jpg'),
     },
     second: {
       align: 'right',
       title: 'How We do It',
       text:
           'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      image: '../../../assets/Images/HowWeDoItImage.jpg',
+      img: require('../../../assets/Images/HowWeDoItImage.jpg'),
     },
     third: {
       align: 'left',
       title: 'Participate',
       text:
           'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      image: '../../../assets/Images/ParticipateImage.jpg',
+      img: require('../../../assets/Images/ParticipateImage.jpg'),
     },
     fourth: {
       align: 'right',
       title: 'Win Prices',
       text:
           'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      image: '../../../assets/Images/WinPricesImage.jpg',
+      img: require('../../../assets/Images/WinPricesImage.jpg'),
     },
   },
   buttons: {
     first: {
       color: 'blue',
       text: 'Download App',
-      type:'button',
+      type: 'button',
       to: '/',
     },
     second: {
@@ -46,3 +47,4 @@ const BePartContentText = {
 };
 
 export default BePartContentText;
+/* eslint-enable global-require */

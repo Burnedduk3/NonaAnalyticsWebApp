@@ -4,11 +4,12 @@ import PropTypes from 'prop-types';
 
 const BePartContent = (props) => {
   const { details } = props;
+
   const left = () => (
     <div className="content">
       <div className="wrapperBP wrapperBP-left">
         <div className="one">
-          <img scr={details.image} alt={details.title} />
+          <img src={details.img.default} alt={details.title} />
         </div>
         <div className="two">
           <h2>{details.title}</h2>
@@ -25,7 +26,7 @@ const BePartContent = (props) => {
           <p>{details.text}</p>
         </div>
         <div className="two">
-          <img scr={details.image} alt={details.title} />
+          <img src={details.img.default} alt={details.title} />
         </div>
       </div>
     </div>
@@ -47,7 +48,7 @@ BePartContent.propTypes = {
     align: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
-    image: PropTypes.string,
+    image: PropTypes.string.isRequired,
   }),
 };
 
