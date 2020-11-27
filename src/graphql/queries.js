@@ -223,3 +223,36 @@ export const listSections = /* GraphQL */ `
     }
   }
 `;
+export const getSentimentAnalysis = /* GraphQL */ `
+  query GetSentimentAnalysis($id: ID!) {
+    getSentimentAnalysis(id: $id) {
+      id
+      time
+      motiv
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listSentimentAnalysiss = /* GraphQL */ `
+  query ListSentimentAnalysiss(
+    $filter: ModelSentimentAnalysisFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSentimentAnalysiss(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        time
+        motiv
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;

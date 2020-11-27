@@ -1,0 +1,337 @@
+# this is an auto generated file. This will be overwritten
+subscription OnCreateUser {
+  onCreateUser {
+    id
+    name
+    lastname
+    mail
+    phone
+    age
+    forms {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateUser {
+  onUpdateUser {
+    id
+    name
+    lastname
+    mail
+    phone
+    age
+    forms {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteUser {
+  onDeleteUser {
+    id
+    name
+    lastname
+    mail
+    phone
+    age
+    forms {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateForm {
+  onCreateForm {
+    id
+    formQuestions {
+      nextToken
+    }
+    user {
+      id
+      name
+      lastname
+      mail
+      phone
+      age
+      createdAt
+      updatedAt
+    }
+    finished
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateForm {
+  onUpdateForm {
+    id
+    formQuestions {
+      nextToken
+    }
+    user {
+      id
+      name
+      lastname
+      mail
+      phone
+      age
+      createdAt
+      updatedAt
+    }
+    finished
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteForm {
+  onDeleteForm {
+    id
+    formQuestions {
+      nextToken
+    }
+    user {
+      id
+      name
+      lastname
+      mail
+      phone
+      age
+      createdAt
+      updatedAt
+    }
+    finished
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateFormQuestion {
+  onCreateFormQuestion {
+    id
+    response
+    question {
+      id
+      question
+      items
+      createdAt
+      updatedAt
+    }
+    form {
+      id
+      finished
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateFormQuestion {
+  onUpdateFormQuestion {
+    id
+    response
+    question {
+      id
+      question
+      items
+      createdAt
+      updatedAt
+    }
+    form {
+      id
+      finished
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteFormQuestion {
+  onDeleteFormQuestion {
+    id
+    response
+    question {
+      id
+      question
+      items
+      createdAt
+      updatedAt
+    }
+    form {
+      id
+      finished
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateQuestion {
+  onCreateQuestion {
+    id
+    question
+    usedForms {
+      nextToken
+    }
+    category {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    items
+    section {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateQuestion {
+  onUpdateQuestion {
+    id
+    question
+    usedForms {
+      nextToken
+    }
+    category {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    items
+    section {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteQuestion {
+  onDeleteQuestion {
+    id
+    question
+    usedForms {
+      nextToken
+    }
+    category {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    items
+    section {
+      id
+      name
+      createdAt
+      updatedAt
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateCategory {
+  onCreateCategory {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateCategory {
+  onUpdateCategory {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteCategory {
+  onDeleteCategory {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateSection {
+  onCreateSection {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSection {
+  onUpdateSection {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSection {
+  onDeleteSection {
+    id
+    name
+    questions {
+      nextToken
+    }
+    createdAt
+    updatedAt
+  }
+}
+subscription OnCreateSentimentAnalysis {
+  onCreateSentimentAnalysis {
+    id
+    time
+    motiv
+    createdAt
+    updatedAt
+  }
+}
+subscription OnUpdateSentimentAnalysis {
+  onUpdateSentimentAnalysis {
+    id
+    time
+    motiv
+    createdAt
+    updatedAt
+  }
+}
+subscription OnDeleteSentimentAnalysis {
+  onDeleteSentimentAnalysis {
+    id
+    time
+    motiv
+    createdAt
+    updatedAt
+  }
+}
