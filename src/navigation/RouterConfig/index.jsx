@@ -6,7 +6,8 @@ import NotFound from '../../Pages/NotFound';
 import UserProvider from '../../Context/UserContext/Provider';
 import InitialFormPage from '../../Pages/Form/InitialQuestions';
 import FormQuestionProvider from '../../Context/FormQuestions/Provider';
-import BePartPage from '../../Pages/Public/BePart';
+import Questioner from '../../Pages/Form/Questioner';
+import UserCurrentFormProvider from '../../Context/UserCurrentForm/Provider';
 
 const RouterConfig = () => (
   <Switch>
@@ -14,13 +15,16 @@ const RouterConfig = () => (
     <Route exact path={RoutingConstants.menu.home.path} component={Home} />
     <Route exact path={RoutingConstants.menu.lifeProject.path} component={Home} />
     <Route exact path={RoutingConstants.menu.innovation.path} component={Home} />
-    <Route exact path={RoutingConstants.menu.bePart.path} component={BePartPage} />
+    <Route exact path={RoutingConstants.menu.bePart.path} component={Home} />
 
     {/* private routes */}
     <UserProvider>
-      <FormQuestionProvider>
-        <Route exact path={RoutingConstants.form.path} component={InitialFormPage} />
-      </FormQuestionProvider>
+      <UserCurrentFormProvider>
+        <FormQuestionProvider>
+          <Route exact path={RoutingConstants.form.path} component={InitialFormPage} />
+          <Route exact path={`${RoutingConstants.dinamicForm.path}/:section`} component={Questioner} />
+        </FormQuestionProvider>
+      </UserCurrentFormProvider>
     </UserProvider>
     {/* error 404 */}
     <Route path="*">
