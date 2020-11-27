@@ -5,7 +5,7 @@ import { API, graphqlOperation } from 'aws-amplify';
 import { Redirect } from 'react-router';
 import DropConsole from '../../../utils/DropConsole';
 import { listForms as ListForms } from '../../../graphql/queries';
-import { getQuestionsOfASection as GetQuestionsOfASection } from '../../../graphql/OwnQueries';
+import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
 import { createFormQuestion as CreateFormQuestions } from '../../../graphql/mutations';
 import { HIGH } from '../../../utils/DropConsole/CONSTANTS';
 import { FormQuestionsContext } from '../../../Context/FormQuestions/Provider';
@@ -32,7 +32,6 @@ const InitialFormPage = () => {
       setLoading(true);
 
       const apiForm = await API.graphql(graphqlOperation(ListForms));
-
       if (apiForm && apiForm.data && apiForm.data.listForms && apiForm.data.listForms.items) {
         const CurrentForm = apiForm.data.listForms.items[0];
         userCurrentFormDispatch({ type: ADD_CURRENT_FORM, payload: CurrentForm });
@@ -41,11 +40,9 @@ const InitialFormPage = () => {
       // }
     } catch (currentFormError) {
       if (currentFormError instanceof Error) {
-        DropConsole(HIGH, currentFormError.message);
         setLoading(false);
         setError(true);
       } else {
-        DropConsole(HIGH, currentFormError);
         setLoading(false);
         setError(true);
       }
