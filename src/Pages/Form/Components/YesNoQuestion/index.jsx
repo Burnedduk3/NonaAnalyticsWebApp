@@ -7,28 +7,31 @@ const YesNoQuestion = ({
 }) => (
   <div className="inputContainer">
     <p>{question}</p>
-    <label htmlFor={`${questionId}+yes`}>
-      <input
-        id={`${questionId}+yes`}
-        className="radio-button affirmative"
-        type="radio"
-        name={radioGroup}
-        value="yes"
-        onClick={() => setResponse({ ...currentState, [questionId]: 'yes' })}
-      />
-      <div className="check positive" />
-    </label>
-    <label htmlFor={`${questionId}+no`}>
-      <input
-        id={`${questionId}+no`}
-        className="radio-button negative"
-        type="radio"
-        name={radioGroup}
-        value="no"
-        onClick={() => setResponse({ ...currentState, [questionId]: 'no' })}
-      />
-      <div className="check negative" />
-    </label>
+    <div className="response-container">
+      <label htmlFor={`${questionId}+yes`}>
+        <input
+          id={`${questionId}+yes`}
+          className="radio-button affirmative"
+          type="radio"
+          name={radioGroup}
+          value="yes"
+          onClick={() => setResponse({ ...currentState, [questionId]: 'yes' })}
+        />
+        <div className="check positive" />
+      </label>
+      <label htmlFor={`${questionId}+no`}>
+        <input
+          id={`${questionId}+no`}
+          className="radio-button negative"
+          type="radio"
+          name={radioGroup}
+          value="no"
+          onClick={() => setResponse({ ...currentState, [questionId]: 'no' })}
+        />
+        <div className="check negative" />
+      </label>
+    </div>
+
   </div>
 );
 
