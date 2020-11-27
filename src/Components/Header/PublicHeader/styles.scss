@@ -1,3 +1,5 @@
+@import '../../../Global/styles/Colors';
+
 .header {
   display: flex;
   flex-direction: column;
@@ -16,24 +18,46 @@
     z-index: -1;
   }
 
+  .social {
+    position: relative;
+    margin-left: auto;
+    margin-right: 8em;
+    max-width: 3em;
+    display: flex;
+    flex-direction: column;
+
+    .fab {
+      font-size: 3em;
+      margin-bottom: 1em;
+      color: $secondary-color;
+    }
+  }
+
   &-home {
-    padding-top: 40vh;
-    padding-bottom: 15vh;
+    padding-top: 20vh;
+    padding-bottom: 13vh;
 
     .container {
       background-image: url("../../../assets/Images/HomeImage.jpg");
     }
 
+    .social {
+      top: 35vh;
+    }
+
+    .main-title {
+      margin-left: 20vh;
+    }
+
     .quick-start {
       margin-left: 20vh;
-      top: 50vh;
       height: 4em;
       width: 150px;
       border-radius: 32px;
-      border: 2px solid #ff5c63;
-      background: #ff5c6329;
+      border: 2px solid $secondary-color;
+      background: #FF5C6329;
       box-shadow: 4px 4px 6px #00000008;
-      color: #ff5c63;
+      color: $secondary-color;
     }
 
     .call {
@@ -43,7 +67,7 @@
       height: 7em;
       display: flex;
       align-items: center;
-      background-color: #eee;
+      background-color: $whiter-background;
       padding-left: 15vh;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
@@ -61,8 +85,8 @@
         border-top-right-radius: 20px;
         border-bottom-right-radius: 20px;
         border-style: none;
-        background-color: #ff5c63;
-        color: #fff;
+        background-color: $secondary-color;
+        color: $whiter-background;
         font-size: 1.2em;
         font-weight: normal;
       }
@@ -70,28 +94,43 @@
   }
 
   &-life {
-    .main-title {
-      margin-top: 42vh;
-    }
+    padding-top: 20vh;
 
     .container {
       background-image: url("../../../assets/Images/LifeProjectImage.jpg");
       background-position: 50%;
-      opacity: 0.7;
+      opacity: 0.6;
+    }
+
+    .social {
+      top: 15vh;
+    }
+
+    .main-title {
+      margin-left: 30vh;
+    }
+
+    .title-primary {
+      color: $primary-color;
+      font-size: 1.5em;
+    }
+
+    .title-secondary {
+      color: $secondary-color;
     }
 
     .info {
       position: relative;
       top: 11vh;
-      max-width: 40%;
+      max-width: 45%;
       height: 7em;
       display: flex;
-      padding: 2vh 0 2vh 20vh;
+      padding: 2vh 0vh 2vh 30vh;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
-      background-color: #ff5c63;
-      color: #fff;
+      background-color: $secondary-color;
+      color: $whiter-background;
       border-top-right-radius: 20px;
       border-bottom-right-radius: 20px;
 
@@ -132,7 +171,6 @@
   .main-title {
     max-width: 40%;
     color: white;
-    margin-left: 20vh;
     margin-bottom: 8vh;
     top: 40vh;
     font-size: 4em;
