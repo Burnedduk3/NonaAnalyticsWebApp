@@ -1,0 +1,62 @@
+@import "../../../../../Global/styles/Colors.scss";
+@import url("https://fonts.googleapis.com/css?family=Proxima+Nova");
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+.wrapperBP {
+  display: grid;
+  grid-template-columns: repeat(11, 1fr);
+  grid-gap: 50px;
+  grid-auto-rows: minmax(100px, auto);
+  padding-left: 10%;
+  margin-top: 8%;
+  margin-bottom: 8%;
+  margin-right: 7%;
+
+  &-left {
+    .one {
+      grid-column: 1 / 4;
+      grid-row: 1;
+    }
+    .two {
+      grid-column: 4 / 12;
+      grid-row: 1;
+    }
+    p,
+    h2 {
+      text-align: left;
+    }
+    img {
+      float: right;
+    }
+  }
+
+  &-right {
+    .one {
+      grid-column: 1 / 8;
+      grid-row: 1;
+    }
+    .two {
+      grid-column: 8 / 12;
+      grid-row: 1;
+    }
+    p,
+    h2 {
+      text-align: right;
+    }
+    img {
+      float: left;
+    }
+  }
+  img {
+    border-radius: 50%;
+    border: 1px solid #707070;
+  }
+  h2 {
+    color: $secondary-color;
+    font-family: "proxima-nova", sans-serif;
+  }
+  p {
+    font-family: "Poppins", sans-serif;
+    color: $text-color;
+  }
+}

@@ -9,6 +9,7 @@ $degrade-color: #0f485b;
     no-repeat padding-box;
   min-height: 10vw;
   display: flex;
+  width: 100%;
 
   .wrapper {
     display: grid;
@@ -16,6 +17,7 @@ $degrade-color: #0f485b;
     grid-gap: 50px;
     grid-auto-rows: minmax(10vw, 20vw);
     padding-left: 10%;
+    padding-top: 40px;
 
     .one-col {
       grid-column: 1 / 4;
@@ -83,6 +85,7 @@ $degrade-color: #0f485b;
     padding-right: 2rem;
     padding-bottom: 20px;
     color: $whiter-background;
+    font-size: 0.9rem;
   }
 
   input[type="text"] {
