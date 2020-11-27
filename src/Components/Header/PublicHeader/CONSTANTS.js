@@ -30,7 +30,7 @@ const HeaderTexts = {
   },
   bePart: {
     text:
-        'Your participation is essential to cracking-the-code to life-long health and well-being. Join the thousands of Lake Nona Citizen Scientists Making History.',
+        'The Lake Nona Life Project',
   },
 };
 
