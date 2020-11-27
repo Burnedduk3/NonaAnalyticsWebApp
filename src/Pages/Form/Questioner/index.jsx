@@ -1,7 +1,7 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
 import { Redirect } from 'react-router';
-import { getQuestionsOfASection as GetQuestionsOfASection } from '../../../graphql/OwnQueries';
+import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
 import { ADD_QUESTIONS, DELETE_QUESTION } from '../../../Context/FormQuestions/ActionTypes';
 import DropConsole from '../../../utils/DropConsole';
 import { HIGH } from '../../../utils/DropConsole/CONSTANTS';

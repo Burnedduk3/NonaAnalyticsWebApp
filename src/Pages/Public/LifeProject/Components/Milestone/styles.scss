@@ -1,0 +1,38 @@
+@import '../../../../../Global/styles/Colors';
+
+.milestone {
+  max-width: 50%;
+  padding-left: 3em;
+  margin-bottom: 3em;
+
+  .date {
+    display: inline-block;
+    position: relative;
+    right: 43px;
+    bottom: 19px;
+    font-weight: bold;
+    font-size: 2em;
+    &-date1 {
+      color: $whiter-background;
+    }
+    &-prim {
+      color: $primary-color;
+    }
+    &-second {
+      color: $secondary-color;
+    }
+  }
+
+  .circle {
+    display: inline-block;
+    height: 3.5em;
+    width: 3.5em;
+    border-radius: 50%;
+    &-prim {
+      background-color: $primary-color;
+    }
+    &-second {
+      background-color: $secondary-color;
+    }
+  }
+}
