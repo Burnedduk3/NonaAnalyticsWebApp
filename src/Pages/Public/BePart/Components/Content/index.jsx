@@ -6,14 +6,14 @@ const BePartContent = (props) => {
   const { details } = props;
 
   const left = () => (
-    <div className="content">
+    <div className="contentBP">
       <div className="wrapperBP wrapperBP-left">
         <div className="one">
-          <img src={details.img.default} alt={details.title} />
+          <img src={details.img.default} alt={details.title} className="imgBePart" />
         </div>
         <div className="two">
-          <h2>{details.title}</h2>
-          <p>{details.text}</p>
+          <h2 className="BePartText">{details.title}</h2>
+          <p className="BePartText">{details.text}</p>
         </div>
       </div>
     </div>
@@ -22,11 +22,11 @@ const BePartContent = (props) => {
     <div className="content-right">
       <div className="wrapperBP wrapperBP-right">
         <div className="one">
-          <h2>{details.title}</h2>
-          <p>{details.text}</p>
+          <h2 className="BePartText">{details.title}</h2>
+          <p className="BePartText">{details.text}</p>
         </div>
         <div className="two">
-          <img src={details.img.default} alt={details.title} />
+          <img src={details.img.default} alt={details.title} className="imgBePart" />
         </div>
       </div>
     </div>
