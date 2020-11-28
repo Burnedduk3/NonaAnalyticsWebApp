@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.scss';
+import { Link } from 'react-router-dom';
 import footerConst from './constants';
 import logo from '../../assets/Logos/logo.png';
 
@@ -11,17 +12,43 @@ const Footer = () => (
         <p>{footerConst.firstCol.text}</p>
       </div>
       <div className="two-col">
-        <p><a href={footerConst.secCol.home.path}>{footerConst.secCol.home.name}</a></p>
         <p>
-          <a href={footerConst.secCol.lifeProject.path}>{footerConst.secCol.lifeProject.name}</a>
+          <Link to={footerConst.secCol.home.path}>
+            {footerConst.secCol.home.name}
+          </Link>
         </p>
-        <p><a href={footerConst.secCol.innovation.path}>{footerConst.secCol.innovation.name}</a></p>
-        <p><a href={footerConst.secCol.bePart.path}>{footerConst.secCol.bePart.name}</a></p>
+        <p>
+          <Link to={footerConst.secCol.lifeProject.path}>
+            {footerConst.secCol.lifeProject.name}
+          </Link>
+        </p>
+        <p>
+          <Link to={footerConst.secCol.innovation.path}>
+            {footerConst.secCol.innovation.name}
+          </Link>
+        </p>
+        <p>
+          <Link to={footerConst.secCol.bePart.path}>
+            {footerConst.secCol.bePart.name}
+          </Link>
+        </p>
       </div>
       <div className="three-col">
-        <p><a href={footerConst.thirdCol.terms.path}>{footerConst.thirdCol.terms.name}</a></p>
-        <p><a href={footerConst.thirdCol.privacy.path}>{footerConst.thirdCol.privacy.name}</a></p>
-        <p><a href={footerConst.thirdCol.faqs.path}>{footerConst.thirdCol.faqs.name}</a></p>
+        <p>
+          <Link to={footerConst.thirdCol.terms.path}>
+            {footerConst.thirdCol.terms.name}
+          </Link>
+        </p>
+        <p>
+          <Link to={footerConst.thirdCol.privacy.path}>
+            {footerConst.thirdCol.privacy.name}
+          </Link>
+        </p>
+        <p>
+          <Link to={footerConst.thirdCol.faqs.path}>
+            {footerConst.thirdCol.faqs.name}
+          </Link>
+        </p>
       </div>
       <div className="four-col">
         <h3>{footerConst.fourthCol.title}</h3>
