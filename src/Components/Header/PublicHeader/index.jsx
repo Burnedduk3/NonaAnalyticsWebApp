@@ -2,12 +2,14 @@ import React from 'react';
 import './styles.scss';
 import PropTypes from 'prop-types';
 import HeaderTexts from './CONSTANTS';
+import PublicNavBar from '../../Navbar/PublicNavBar';
 
 const PublicHeader = (props) => {
   const { page } = props;
   const home = () => (
     <header className="header header-home">
       <div className="container" />
+      <PublicNavBar />
       <div className="social">
         <i className="fab fa-instagram" />
         <i className="fab fa-facebook-f" />

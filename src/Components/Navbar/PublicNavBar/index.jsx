@@ -5,6 +5,7 @@ import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
 
 const PublicNavBar = () => (
   <nav className="navigation">
+    <span><img src="./../../../assets/Logos/logo.png" alt="logo" /></span>
     <ul className="class-list">
       {
         Object.values(RoutingConstants.menu).map((item) => (
