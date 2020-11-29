@@ -15,6 +15,8 @@ import ComboBoxComponent from '../Components/ComboBoxQuestion';
 import TextInputComponent from '../Components/TextInputQuestion';
 import LeftBar from '../Components/LeftBar';
 import './styles.scss';
+import { UserContext } from '../../../Context/UserContext/Provider';
+import { ADD_RESPONDED_QUESTIONS } from '../../../Context/UserContext/ActionTypes';
 
 // eslint-disable-next-line react/prop-types
 const Questioner = ({ match }) => {
@@ -23,6 +25,7 @@ const Questioner = ({ match }) => {
   const { FormQuestionsState, FormQuestionsDispatch } = useContext(FormQuestionsContext);
   const { userCurrentFormState } = useContext(UserCurrentFormContext);
   const navigationHistory = useHistory();
+  const { UserDispatch } = useContext(UserContext);
 
   const [responseState, setResponseState] = useState({});
 
@@ -61,6 +64,10 @@ const Questioner = ({ match }) => {
     }
     setLoading(false);
   };
+
+  useEffect(() => {
+    UserDispatch({ type: ADD_RESPONDED_QUESTIONS, payload: Object.keys(responseState).length });
+  }, [responseState]);
 
   const SaveToDataBase = async () => {
     await Object.entries(responseState).map(async (item) => {

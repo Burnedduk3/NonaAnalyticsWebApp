@@ -1,10 +1,12 @@
-import { ADD_USER, DELETE_USER, EDIT_USER } from './ActionTypes';
+import {
+  ADD_RESPONDED_QUESTIONS, ADD_USER, DELETE_USER, EDIT_USER,
+} from './ActionTypes';
 
 export const initialState = {
-
+  respondedQuestions: 0,
 };
 
-const userReducer = (state, { type }) => {
+const userReducer = (state, { type, payload }) => {
   switch (type) {
     case ADD_USER: {
       return {};
@@ -16,6 +18,13 @@ const userReducer = (state, { type }) => {
 
     case EDIT_USER: {
       return {};
+    }
+
+    case ADD_RESPONDED_QUESTIONS: {
+      return {
+        ...state,
+        respondedQuestions: payload,
+      };
     }
 
     default: {
