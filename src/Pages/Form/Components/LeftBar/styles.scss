@@ -1,51 +1,16 @@
 @import "src/Global/styles/Colors";
-.aside-menu{
+
+.aside-menu {
   max-width: 15vw;
   width: 15vw;
   min-width: 300px;
   background-color: $primary-color;
 
-  .progress-bar-container{
+  .progress-bar-container {
     width: 200px;
     margin: auto;
   }
-  .drop-down-menu{
-    text-decoration: none;
-    margin: 25px 0 0 0;
-    .main-options{
-      border: 1px solid;
-      padding: 15px 0;
-      .btn{
-        color: white;
-        margin: 10px 15px;
 
-      }
-      .submenu{
-        background: white;
-        overflow: hidden;
-        max-height: 0px;
 
-        .options{
-          color: black;
-          width: 100%;
-          display: block;
-          padding: 10px 15px;
-          position: relative;
-        }
-        .options::before{
-          content: "";
-          position: absolute;
-          width: 6px;
-          height: 100%;
-          left: 0;
-          top: 0;
-          opacity: 0;
-        }
-      }
-
-    }
-    .main-options:target .submenu{
-      max-height: fit-content;
-    }
   }
-}
+
