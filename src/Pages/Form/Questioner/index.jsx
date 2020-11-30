@@ -90,7 +90,12 @@ const Questioner = ({ match }) => {
           DropConsole(HIGH, saveToDBError.message);
         }
       }
-      navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Demographics`);
+      // eslint-disable-next-line react/prop-types
+      if (match.params.section !== 'Demographics') {
+        navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Demographics`);
+      } else {
+        navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Quality-of-life`);
+      }
 
       return 0;
     });
