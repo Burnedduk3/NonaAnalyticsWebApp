@@ -1,4 +1,4 @@
-@import '../../../Global/styles/Colors';
+@import "../../../Global/styles/Colors";
 
 .header {
   display: flex;
@@ -55,7 +55,7 @@
       width: 150px;
       border-radius: 32px;
       border: 2px solid $secondary-color;
-      background: #FF5C6329;
+      background: #ff5c6329;
       box-shadow: 4px 4px 6px #00000008;
       color: $secondary-color;
     }
@@ -157,14 +157,47 @@
     .container {
       background-image: url("../../../assets/Images/InnovationImage.jpg");
     }
+
+    .social {
+      top: 15vh;
+    }
+
+    .main-title {
+      margin-left: 30vh;
+    }
+
+    .title-primary {
+      color: $primary-color;
+      font-size: 1.5em;
+    }
+
+    .title-secondary {
+      color: $secondary-color;
+    }
   }
 
   &-bepart {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
-
+    padding-top: 10vh;
     .container {
       background-image: url("../../../assets/Images/BePartImage.jpg");
+      height: 500px;
+    }
+
+    .social {
+      top: 15vh;
+    }
+
+    .main-title {
+      margin-left: 30vh;
+    }
+
+    .title-primary {
+      color: $primary-color;
+      font-size: 1.5em;
+    }
+
+    .title-secondary {
+      color: $secondary-color;
     }
   }
 

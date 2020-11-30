@@ -58,7 +58,17 @@ const PublicHeader = (props) => {
   const bePart = () => (
     <header className="header header-bepart">
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.bePart.text}</h1>
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
+      <h1 className="main-title">
+        <span className="title-secondary">{HeaderTexts.bePart.text.substr(0, 13)}</span>
+        <br />
+        <span className="title-primary">
+          {HeaderTexts.bePart.text.substr(13, HeaderTexts.bePart.text.length)}
+        </span>
+      </h1>
     </header>
   );
   return (
