@@ -9,6 +9,7 @@ import InitialFormPage from '../../Pages/Form/InitialQuestions';
 import FormQuestionProvider from '../../Context/FormQuestions/Provider';
 import Questioner from '../../Pages/Form/Questioner';
 import UserCurrentFormProvider from '../../Context/UserCurrentForm/Provider';
+import BePartPage from '../../Pages/Public/BePart';
 
 const RouterConfig = () => (
   <Switch>
@@ -16,7 +17,7 @@ const RouterConfig = () => (
     <Route exact path={RoutingConstants.menu.home.path} component={Home} />
     <Route exact path={RoutingConstants.menu.lifeProject.path} component={LifeProject} />
     <Route exact path={RoutingConstants.menu.innovation.path} component={Home} />
-    <Route exact path={RoutingConstants.menu.bePart.path} component={Home} />
+    <Route exact path={RoutingConstants.menu.bePart.path} component={BePartPage} />
 
     {/* private routes */}
     <UserProvider>

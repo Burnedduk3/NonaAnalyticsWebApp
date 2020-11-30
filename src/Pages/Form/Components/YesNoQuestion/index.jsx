@@ -6,7 +6,7 @@ const YesNoQuestion = ({
   question, radioGroup, questionId, setResponse, currentState,
 }) => (
   <div className="inputContainer">
-    <p>{question}</p>
+    <p className="question-text">{question}</p>
     <div className="response-container">
       <label htmlFor={`${questionId}+yes`}>
         <input

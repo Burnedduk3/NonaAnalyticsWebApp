@@ -5,11 +5,11 @@ export const UserContext = createContext({});
 
 // eslint-disable-next-line react/prop-types
 const UserProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(
+  const [UserState, UserDispatch] = useReducer(
     userReducer, initialState,
   );
   return (
-    <UserContext.Provider value={{ state, dispatch }}>
+    <UserContext.Provider value={{ UserState, UserDispatch }}>
       {children}
     </UserContext.Provider>
   );

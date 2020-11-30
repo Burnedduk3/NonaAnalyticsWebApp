@@ -4,19 +4,20 @@
 $degrade-color: #0f485b;
 
 .footer {
-  background:
-    transparent
+  background: transparent
     linear-gradient(180deg, $primary-color 0%, $degrade-color 100%) 0% 0%
     no-repeat padding-box;
   min-height: 10vw;
   display: flex;
+  width: 100%;
 
   .wrapper {
     display: grid;
     grid-template-columns: repeat(11, 1fr);
     grid-gap: 50px;
-    grid-auto-rows: minmax(10vw, 20vw);
+    grid-auto-rows: minmax(10vw, auto);
     padding-left: 10%;
+    padding-top: 40px;
 
     .one-col {
       grid-column: 1 / 4;
@@ -72,7 +73,7 @@ $degrade-color: #0f485b;
         border-radius: 30px;
         border: none;
         height: 3rem;
-        width: 65%;
+        width: 85%;
       }
     }
   }
@@ -88,6 +89,7 @@ $degrade-color: #0f485b;
     padding-right: 2rem;
     padding-bottom: 20px;
     color: $whiter-background;
+    font-size: 0.9rem;
   }
 
   input[type="text"] {
@@ -106,8 +108,7 @@ $degrade-color: #0f485b;
   }
 
   button {
-    background:
-      transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0%
+    background: transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0%
       0% no-repeat padding-box;
     box-shadow: 0 0 15px #ff707087;
     font-family: "Poppins", sans-serif;
