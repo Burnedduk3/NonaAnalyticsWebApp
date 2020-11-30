@@ -174,18 +174,18 @@
   }
 
   &-bepart {
-    padding-top: 10vh;
     .container {
       background-image: url("../../../assets/Images/BePartImage.jpg");
       height: 500px;
+      opacity: 0.5;
     }
 
     .social {
-      top: 15vh;
+      top: 10vh;
     }
 
     .main-title {
-      margin-left: 30vh;
+      margin-left: 20vh;
     }
 
     .title-primary {
@@ -199,7 +199,7 @@
   }
 
   .main-title {
-    max-width: 40%;
+    max-width: 45%;
     color: white;
     margin-bottom: 8vh;
     top: 40vh;

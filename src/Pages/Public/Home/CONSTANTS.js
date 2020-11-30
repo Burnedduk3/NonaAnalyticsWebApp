@@ -9,7 +9,7 @@ const HomeTexts = {
         text: 'Know project',
         type: 'button',
         to: '/life-project',
-      },  
+      },
     },
     second: {
       title: 'What do we do',
@@ -23,7 +23,7 @@ const HomeTexts = {
         color: 'red',
         text: 'Start Survey',
         type: 'button',
-        to: '/',
+        to: '/form',
       },
     },
     third: {
