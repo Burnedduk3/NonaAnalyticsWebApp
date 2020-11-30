@@ -33,15 +33,13 @@
   }
 
   &-home {
-    padding-top: 20vh;
-
     .container {
       background-image: url("../../../assets/Images/HomeImage.jpg");
       filter: brightness(50%);
     }
 
     .social {
-      top: 35vh;
+      top: 20vh;
     }
 
     .main-title {
@@ -92,9 +90,18 @@
     }
   }
 
-  &-life {
-    padding-top: 20vh;
+  .title-primary {
+    display: inline-block;
+    color: $primary-color;
+    font-size: 1.5em;
+    margin-top: 20px;
+  }
 
+  .title-secondary {
+    color: $secondary-color;
+  }
+
+  &-life {
     .container {
       background-image: url("../../../assets/Images/LifeProjectImage.jpg");
       background-position: 50%;
@@ -102,24 +109,15 @@
     }
 
     .social {
-      top: 28vh;
+      top: 20vh;
     }
 
     .main-title {
       margin-left: 30vh;
     }
 
-    .title-primary {
-      color: $primary-color;
-      font-size: 1.5em;
-    }
-
-    .title-secondary {
-      color: $secondary-color;
-    }
-
     .info {
-      margin-top: 15vh;
+      margin-top: 5vh;
       margin-bottom: -10vh;
       max-width: 45%;
       max-height: 20vh;
@@ -159,11 +157,23 @@
   }
 
   &-bepart {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
+    padding-bottom: 10vh;
 
     .container {
       background-image: url("../../../assets/Images/BePartImage.jpg");
+      opacity: 0.5;
+    }
+
+    .social {
+      top: 20vh;
+
+      .fab {
+        color: $primary-color;
+      }
+    }
+
+    .main-title {
+      margin-left: 30vh;
     }
   }
 

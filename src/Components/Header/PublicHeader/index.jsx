@@ -7,34 +7,46 @@ import PublicNavBar from '../../Navbar/PublicNavBar';
 const PublicHeader = (props) => {
   const { page } = props;
   const home = () => (
-    <header className="header header-home">
-      <div className="container" />
-      <PublicNavBar />
-      <div className="social">
-        <i className="fab fa-instagram" />
-        <i className="fab fa-facebook-f" />
-      </div>
-      <h1 className="main-title">{HeaderTexts.home.text}</h1>
-      <button type="button" className="quick-start">
-        {HeaderTexts.home.button}
-      </button>
-      <div className="call">
-        <span className="call-text">{HeaderTexts.home.span_text}</span>
-        <button type="button" className="call-button">
-          {HeaderTexts.home.span_button}
+    <>
+      <header className="header header-home">
+        <PublicNavBar theme="light" />
+        <div className="container" />
+        <div className="social">
+          <i className="fab fa-instagram" />
+          <i className="fab fa-facebook-f" />
+        </div>
+        <h1 className="main-title">
+          {HeaderTexts.home.text.substr(0, 8)}
+          <span className="title-secondary">
+            {HeaderTexts.home.text.substr(8, 8)}
+          </span>
+          <br />
+          {HeaderTexts.home.text.substr(16, HeaderTexts.home.text.length)}
+        </h1>
+        <button type="button" className="quick-start">
+          {HeaderTexts.home.button}
         </button>
-      </div>
-    </header>
+        <div className="call">
+          <span className="call-text">{HeaderTexts.home.span_text}</span>
+          <button type="button" className="call-button">
+            {HeaderTexts.home.span_button}
+          </button>
+        </div>
+      </header>
+    </>
   );
   const lifeProject = () => (
     <header className="header header-life">
+      <PublicNavBar theme="dark" />
       <div className="container" />
       <div className="social">
         <i className="fab fa-instagram" />
         <i className="fab fa-facebook-f" />
       </div>
       <h1 className="main-title">
-        <span className="title-secondary">{HeaderTexts.lifeProject.text.substr(0, 13)}</span>
+        <span className="title-secondary">
+          {HeaderTexts.lifeProject.text.substr(0, 13)}
+        </span>
         <br />
         <span className="title-primary">
           {HeaderTexts.lifeProject.text.substr(13, HeaderTexts.innovation.text.length)}
@@ -49,6 +61,7 @@ const PublicHeader = (props) => {
   );
   const innovation = () => (
     <header className="header header-innovation">
+      <PublicNavBar />
       <div className="container" />
       <div className="social">
         <i className="fab fa-instagram" />
@@ -59,8 +72,19 @@ const PublicHeader = (props) => {
   );
   const bePart = () => (
     <header className="header header-bepart">
+      <PublicNavBar theme="dark" />
       <div className="container" />
-      <h1 className="main-title">{HeaderTexts.bePart.text}</h1>
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
+      <h1 className="main-title">
+        <span className="title-secondary">{HeaderTexts.bePart.text.substr(0, 13)}</span>
+        <br />
+        <span className="title-primary">
+          {HeaderTexts.bePart.text.substr(13, HeaderTexts.bePart.text.length)}
+        </span>
+      </h1>
     </header>
   );
   return (
