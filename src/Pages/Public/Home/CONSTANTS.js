@@ -1,3 +1,4 @@
+/* eslint-disable global-require */
 const HomeTexts = {
   sections: {
     first: {
@@ -13,12 +14,21 @@ const HomeTexts = {
     },
     second: {
       title: 'What do we do',
-      elem1:
-        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor.',
-      elem2:
-        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor.',
-      elem3:
-        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor.',
+      elem1: {
+        title: 'How We Do It',
+        text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
+        img: require('../../../assets/Images/HowWeDoItImage.jpg'),
+      }, 
+      elem2: {
+        title: 'Participate',
+        text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
+        img: require('../../../assets/Images/ParticipateImage.jpg'),
+      }, 
+      elem3: {
+        title: 'Win Prices',
+        text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
+        img: require('../../../assets/Images/WinPricesImage.jpg'),
+      }, 
       button: {
         color: 'red',
         text: 'Start Survey',
@@ -76,3 +86,4 @@ const HomeTexts = {
 };
 
 export default HomeTexts;
+/* eslint-enable global-require */
