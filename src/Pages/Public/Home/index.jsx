@@ -5,6 +5,7 @@ import Perk from './Components/Perk';
 import Member from './Components/Member';
 import HomeTexts from './CONSTANTS';
 import Footer from '../../../Components/Footer';
+import Button from '../../../Components/Button';
 
 const Home = () => (
   <>
@@ -13,6 +14,7 @@ const Home = () => (
       <div className="our-mission-content">
         <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
         <p>{HomeTexts.sections.first.text}</p>
+        <Button details={HomeTexts.sections.first.button} />
       </div>
     </div>
     <div className="what-do-we-do">
@@ -22,6 +24,7 @@ const Home = () => (
         <Perk text={HomeTexts.sections.second.elem2} />
         <Perk text={HomeTexts.sections.second.elem3} />
       </div>
+      <Button details={HomeTexts.sections.second.button} />
     </div>
     <div className="our-team">
       <h3 className="subtitle">{HomeTexts.sections.third.title}</h3>

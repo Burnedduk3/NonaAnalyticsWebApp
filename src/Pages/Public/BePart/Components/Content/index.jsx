@@ -48,7 +48,7 @@ BePartContent.propTypes = {
     align: PropTypes.string,
     title: PropTypes.string,
     text: PropTypes.string,
-    image: PropTypes.string.isRequired,
+    img: PropTypes.string.isRequired,
   }),
 };
 

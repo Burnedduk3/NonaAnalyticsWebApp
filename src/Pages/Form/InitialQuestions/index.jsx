@@ -15,7 +15,7 @@ import YesNoQuestion from '../Components/YesNoQuestion';
 import { UserCurrentFormContext } from '../../../Context/UserCurrentForm/Provider';
 import { ADD_CURRENT_FORM } from '../../../Context/UserCurrentForm/ActionTypes';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
-import QuestionerHeader from '../Components/Header';
+import PublicHeader from '../../../Components/Header/PublicHeader';
 import Footer from '../../../Components/Footer';
 import './styles.scss';
 
@@ -139,10 +139,10 @@ const InitialFormPage = () => {
 
   return (
     <>
-      <QuestionerHeader />
+      <PublicHeader page="startSurvey" />
       <main className="questioner-content-container">
         <div className="content-wrapper">
-          <h2 className="form-start-title">Lets start</h2>
+          <h2 className="form-start-title">Let´s start</h2>
           {loading && (
           <div className="spinner-wrapper">
             <Spinner />
