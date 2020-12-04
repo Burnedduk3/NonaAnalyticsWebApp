@@ -1,6 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { API, graphqlOperation } from 'aws-amplify';
-import { useHistory } from 'react-router';
+import { useHistory, useParams } from 'react-router';
 import { getQuestionsOfASection as GetQuestionsOfASection } from '../OwnQueries';
 import { ADD_QUESTIONS, DELETE_QUESTION } from '../../../Context/FormQuestions/ActionTypes';
 import DropConsole from '../../../utils/DropConsole';
@@ -17,53 +17,25 @@ import LeftBar from '../Components/LeftBar';
 import './styles.scss';
 import { UserContext } from '../../../Context/UserContext/Provider';
 import { ADD_RESPONDED_QUESTIONS } from '../../../Context/UserContext/ActionTypes';
+import useAWSGraphql from '../../../Hooks/useAWSGraphql';
+import { FETCHING, SUCCESS } from '../../../reducers/AWSGraphql/actionTypes';
 
 // eslint-disable-next-line react/prop-types
-const Questioner = ({ match }) => {
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+const Questioner = () => {
   const { FormQuestionsState, FormQuestionsDispatch } = useContext(FormQuestionsContext);
   const { userCurrentFormState } = useContext(UserCurrentFormContext);
   const navigationHistory = useHistory();
   const { UserDispatch } = useContext(UserContext);
+  const { section } = useParams();
+  const [getQuestionState, getQuestionRequest] = useAWSGraphql(GetQuestionsOfASection, {
+    filter: {
+      name: {
+        eq: section,
+      },
+    },
+  });
 
   const [responseState, setResponseState] = useState({});
-
-  const getQuestions = async () => {
-    try {
-      setLoading(true);
-      const apiQuestions = await API.graphql(
-        graphqlOperation(
-          GetQuestionsOfASection,
-          {
-            filter: {
-              name: {
-                // eslint-disable-next-line react/prop-types
-                eq: match.params.section,
-              },
-            },
-          },
-        ),
-      );
-
-      if (apiQuestions && apiQuestions.data
-          && apiQuestions.data.listSections
-          && apiQuestions.data.listSections.items) {
-        const sectionQuestions = apiQuestions.data.listSections.items[0];
-        FormQuestionsDispatch({ type: DELETE_QUESTION });
-        FormQuestionsDispatch({ type: ADD_QUESTIONS, payload: sectionQuestions.questions.items });
-      }
-      setLoading(false);
-      setError(false);
-    } catch (questionsError) {
-      if (questionsError instanceof Error) {
-        DropConsole(HIGH, questionsError.message);
-        setError(true);
-      }
-      setError(true);
-    }
-    setLoading(false);
-  };
 
   useEffect(() => {
     UserDispatch({ type: ADD_RESPONDED_QUESTIONS, payload: Object.keys(responseState).length });
@@ -90,32 +62,46 @@ const Questioner = ({ match }) => {
           DropConsole(HIGH, saveToDBError.message);
         }
       }
-      // eslint-disable-next-line react/prop-types
-      if (match.params.section !== 'Demographics') {
-        navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Demographics`);
-      } else {
-        navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Quality-of-life`);
-      }
-
       return 0;
     });
   };
 
+  const handleSubmit = () => {
+    const savePromise = SaveToDataBase();
+    savePromise.then((result) => result);
+    if (section !== 'Demographics') {
+      navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Demographics`);
+    } else {
+      navigationHistory.push(`${RoutingConstants.dinamicForm.path}/Quality-of-life`);
+    }
+  };
+
   useEffect(() => {
-    const questionsPromise = getQuestions();
-    questionsPromise.then((response) => response);
-  }, [match]);
+    getQuestionRequest();
+  }, [section]);
+
+  useEffect(() => {
+    if (getQuestionState.status === SUCCESS) {
+      FormQuestionsDispatch({ type: DELETE_QUESTION });
+      FormQuestionsDispatch(
+        {
+          type: ADD_QUESTIONS,
+          payload: getQuestionState.response.data.listSections.items[0].questions.items,
+        },
+      );
+    }
+  }, [getQuestionState]);
 
   return (
     <main className="content-container">
       <LeftBar />
       <div className="form-container">
-        {loading && (
+        {getQuestionState.status === FETCHING && (
           <div className="spinner-wrapper">
             <Spinner />
           </div>
         )}
-        {(!loading && !error) && (
+        {(getQuestionState.status === SUCCESS) && (
           <>
             {
               FormQuestionsState.map(
@@ -163,8 +149,8 @@ const Questioner = ({ match }) => {
         )}
         <div className="buttons-container">
           {/* eslint-disable-next-line react/prop-types */}
-          {(match.params.section !== 'Lake-Nona') && <button className="button previous" type="button" onClick={() => navigationHistory.goBack()}>{'< PREVIOUS'}</button>}
-          <button className="button next" type="button" onClick={SaveToDataBase}>{'NEXT >'}</button>
+          {(section !== 'Lake-Nona') && <button className="button previous" type="button" onClick={() => navigationHistory.goBack()}>{'< PREVIOUS'}</button>}
+          <button className="button next" type="button" onClick={handleSubmit}>{'NEXT >'}</button>
         </div>
       </div>
     </main>
