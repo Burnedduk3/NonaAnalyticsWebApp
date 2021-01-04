@@ -1,9 +1,15 @@
+import HowWeDoItImage from '../../../assets/Images/HowWeDoItImage.jpg';
+import ParticipateImage from '../../../assets/Images/ParticipateImage.jpg';
+import WinPricesImage from '../../../assets/Images/WinPricesImage.jpg';
+
 /* eslint-disable global-require */
 const HomeTexts = {
+  title: 'What do we do',
   sections: {
     first: {
       title: 'Our Mission',
       text:
+      // eslint-disable-next-line max-len
         'Co-innovate with lifestyle medicine providers, fitness and wellness centers, sports performance clubs, and health research institutions. Our company utilizes state-of-the-art people analytics and machine learning based personalization to offer innovative solutions that are designed to double the analytical productivity of our customers, in half of the time and with half the cost. Our team is located in Lake Nona, the global epicenter for innovation in health, wellness and sports technology. We are inspired to positively impact individual’s health locally and internationally.',
       button: {
         color: 'red',
@@ -13,71 +19,73 @@ const HomeTexts = {
       },
     },
     second: {
-      title: 'What do we do',
       elem1: {
         title: 'How We Do It',
         text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
-        img: require('../../../assets/Images/HowWeDoItImage.jpg'),
-      }, 
+        img: HowWeDoItImage,
+      },
       elem2: {
         title: 'Participate',
         text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
-        img: require('../../../assets/Images/ParticipateImage.jpg'),
-      }, 
+        img: ParticipateImage,
+      },
       elem3: {
         title: 'Win Prices',
         text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus.',
-        img: require('../../../assets/Images/WinPricesImage.jpg'),
-      }, 
-      button: {
-        color: 'red',
-        text: 'Start Survey',
-        type: 'button',
-        to: '/form',
+        img: WinPricesImage,
       },
+    },
+    button: {
+      color: 'red',
+      text: 'Start Survey',
+      type: 'button',
+      to: '/form',
     },
     third: {
       title: 'Our Team',
       subtitle: 'Colombian Association of Life Style Medicine',
       members: [
         {
-          med: false,
+          role: 'eng',
           name: 'Cesar Muñoz',
+          // eslint-disable-next-line max-len
           title: 'PhD Computer Engineering & Management System - CEO Nona Analytics',
         },
         {
-          med: false,
+          role: 'eng',
           name: 'Rebecca Eggleton',
           title: 'CFO Nona Analytics, Licensed CPA',
         },
         {
-          med: false,
+          role: 'eng',
           name: 'Fernando Camacho',
           title: 'PhD Biomedical Engineering - Lead Data Scientist',
         },
         {
-          med: false,
+          role: 'eng',
           name: 'Miguel Angel Valcarcel',
           title: 'Lead Software Engineer Mobile App',
         },
         {
-          med: false,
+          role: 'eng',
           name: 'Juan David Cabrera',
           title: 'Lead Software Engineer Web / Cloud Plataform',
         },
         {
-          med: false,
+          role: 'eng',
           name: 'Nicolas Betancur',
           title: 'Machine Learning Engineer',
         },
         {
-          med: true,
+          role: 'med',
           name: 'Ana Maria Betancourt',
+          // eslint-disable-next-line max-len
           title: 'Medical Doctor Specialized Sport & Life Style Medicine Co-founder ASMEVIDA',
         },
         {
-          med: true,
+          role: 'med',
           name: 'Simon Villa Arango',
+          // eslint-disable-next-line max-len
           title: 'PhD Biomedical Engineering - CEO inncremental SAS Co-founder ASMEVIDA',
         },
       ],
