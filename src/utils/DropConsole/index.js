@@ -17,7 +17,10 @@ const DropConsole = (level, message) => {
 
     if (level === LOW) {
       // eslint-disable-next-line no-console
-      console.log(`%c LOW WARNING: ${message} `, 'background: #222; color: #bada55');
+      console.log(
+          `%c LOW WARNING: ${message} `,
+          'background: #222; color: #bada55',
+      );
     }
 
     if (level === MESSAGE) {
