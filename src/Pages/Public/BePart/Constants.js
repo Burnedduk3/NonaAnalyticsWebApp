@@ -1,33 +1,34 @@
+import WhatWeDoImage from '../../../assets/Images/WhatWeDoImage.jpg';
+import WinPricesImage from '../../../assets/Images/WinPricesImage.jpg';
+import ParticipateImage from '../../../assets/Images/ParticipateImage.jpg';
+import HowWeDoItImage from '../../../assets/Images/HowWeDoItImage.jpg';
+
 /* eslint-disable global-require */
 const BePartContentText = {
   sections: {
     first: {
-      align: 'left',
       title: 'What We Do',
-      text:
-          'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      img: require('../../../assets/Images/WhatWeDoImage.jpg'),
+      // eslint-disable-next-line max-len
+      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      img: WhatWeDoImage,
     },
     second: {
-      align: 'right',
       title: 'How We do It',
-      text:
-          'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      img: require('../../../assets/Images/HowWeDoItImage.jpg'),
+      // eslint-disable-next-line max-len
+      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      img: HowWeDoItImage,
     },
     third: {
-      align: 'left',
       title: 'Participate',
-      text:
-          'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      img: require('../../../assets/Images/ParticipateImage.jpg'),
+      // eslint-disable-next-line max-len
+      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      img: ParticipateImage,
     },
     fourth: {
-      align: 'right',
       title: 'Win Prices',
-      text:
-          'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
-      img: require('../../../assets/Images/WinPricesImage.jpg'),
+      // eslint-disable-next-line max-len
+      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      img: WinPricesImage,
     },
   },
   buttons: {
@@ -41,7 +42,7 @@ const BePartContentText = {
       color: 'red',
       text: 'Start Survey',
       type: 'button',
-      to: '/',
+      to: '/form',
     },
   },
 };

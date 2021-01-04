@@ -407,7 +407,7 @@ angle-double-left:
   changes:
     - '3'
     - 5.0.0
-  label: Angle Double Left
+  label: Angle Double BePartSubContainer
   search:
     terms:
       - arrows
@@ -696,7 +696,7 @@ arrow-alt-circle-down:
 arrow-alt-circle-left:
   changes:
     - 5.0.0
-  label: Alternate Arrow Circle Left
+  label: Alternate Arrow Circle BePartSubContainer
   search:
     terms:
       - arrow-circle-o-left
@@ -749,7 +749,7 @@ arrow-circle-left:
   changes:
     - '2'
     - 5.0.0
-  label: Arrow Circle Left
+  label: Arrow Circle BePartSubContainer
   search:
     terms:
       - back
@@ -1246,7 +1246,7 @@ balance-scale-left:
     - 5.0.13
     - 5.9.0
     - 5.12.0
-  label: Balance Scale (Left-Weighted)
+  label: Balance Scale (BePartSubContainer-Weighted)
   search:
     terms:
       - justice
@@ -2966,7 +2966,7 @@ caret-left:
   changes:
     - '2'
     - 5.0.0
-  label: Caret Left
+  label: Caret BePartSubContainer
   search:
     terms:
       - arrow
@@ -3015,7 +3015,7 @@ caret-square-left:
   changes:
     - '4'
     - 5.0.0
-  label: Caret Square Left
+  label: Caret Square BePartSubContainer
   search:
     terms:
       - arrow
@@ -3703,7 +3703,7 @@ chevron-circle-left:
   changes:
     - '3.1'
     - 5.0.0
-  label: Chevron Circle Left
+  label: Chevron Circle BePartSubContainer
   search:
     terms:
       - arrow
@@ -9480,7 +9480,7 @@ hand-point-left:
   changes:
     - '2'
     - 5.0.0
-  label: Hand Pointing Left
+  label: Hand Pointing BePartSubContainer
   search:
     terms:
       - back
@@ -11883,7 +11883,7 @@ long-arrow-alt-down:
 long-arrow-alt-left:
   changes:
     - 5.0.0
-  label: Alternate Long Arrow Left
+  label: Alternate Long Arrow BePartSubContainer
   search:
     terms:
       - back

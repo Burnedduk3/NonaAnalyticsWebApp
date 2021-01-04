@@ -1,7 +1,7 @@
 import {
   HIGH, LOW, MEDIUM, MESSAGE,
 } from './CONSTANTS';
-import { ENVIRONMENT } from '../../Config/EnviromentVariables';
+import {ENVIRONMENT} from '../../Config/EnviromentVariables';
 
 const DropConsole = (level, message) => {
   if (ENVIRONMENT === 'develop') {
