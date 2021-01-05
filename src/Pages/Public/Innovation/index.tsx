@@ -1,3 +1,11 @@
 import React from 'react';
 
-export default {};
+const InnovationPage = () =>{
+  return (
+    <>
+      <h1>hola</h1>
+    </>
+  );
+};
+
+export default InnovationPage;
