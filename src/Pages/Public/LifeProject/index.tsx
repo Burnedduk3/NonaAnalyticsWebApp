@@ -31,7 +31,13 @@ const LifeProject: React.FC = (): JSX.Element => (
             return (
               <Milestone
                 key={`${index}third`}
-                item={new MilestoneClass(item.title, item.text)} color={color}
+                Milestones={
+                  new MilestoneClass(
+                      item.title,
+                      item.text,
+                  )
+                }
+                color={color}
               />);
           })
         }

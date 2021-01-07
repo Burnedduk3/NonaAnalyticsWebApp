@@ -1,5 +1,5 @@
 export interface IMilestone{
-  item: MilestoneClass;
+  Milestones: MilestoneClass;
   color: string
 }
 

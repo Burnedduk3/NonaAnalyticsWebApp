@@ -1,21 +1,30 @@
-import {
-  HIGH, LOW, MEDIUM, MESSAGE,
-} from './CONSTANTS';
 import {ENVIRONMENT} from '../../Config/EnviromentVariables';
 
-const DropConsole = (level, message) => {
+
+export enum LogLevel {
+  // eslint-disable-next-line no-unused-vars
+  MESSAGE,
+  // eslint-disable-next-line no-unused-vars
+  LOW,
+  // eslint-disable-next-line no-unused-vars
+  MEDIUM,
+  // eslint-disable-next-line no-unused-vars
+  HIGH,
+}
+
+const dropConsole = (level: LogLevel, message: string): void => {
   if (ENVIRONMENT === 'develop') {
-    if (level === HIGH) {
+    if (level === LogLevel.HIGH) {
       // eslint-disable-next-line no-console
       console.error(`ERROR!: ${message}`);
     }
 
-    if (level === MEDIUM) {
+    if (level === LogLevel.MEDIUM) {
       // eslint-disable-next-line no-console
       console.warn(`WARNING: ${message}`);
     }
 
-    if (level === LOW) {
+    if (level === LogLevel.LOW) {
       // eslint-disable-next-line no-console
       console.log(
           `%c LOW WARNING: ${message} `,
@@ -23,11 +32,11 @@ const DropConsole = (level, message) => {
       );
     }
 
-    if (level === MESSAGE) {
+    if (level === LogLevel.MESSAGE) {
       // eslint-disable-next-line no-console
       console.log(message);
     }
   }
 };
 
-export default DropConsole;
+export default dropConsole;

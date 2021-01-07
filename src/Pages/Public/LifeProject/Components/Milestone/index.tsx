@@ -5,17 +5,17 @@ import {IMilestone} from '../../interfaces/MilestonesInterfaces';
 const Milestone: React.FC<IMilestone> = (
     {
       color,
-      item,
+      Milestones,
     }:IMilestone,
 ): JSX.Element => {
   return (
     <div className="milestone">
       <span className={`circle circle-${color}`} />
-      <h3 className="date date-date1">{item.title.substr(0, 2)}</h3>
+      <h3 className="date date-date1">{Milestones.title.substr(0, 2)}</h3>
       <h3 className={`date date-${color}`}>
-        {item.title.substr(2, item.title.length)}
+        {Milestones.title.substr(2, Milestones.title.length)}
       </h3>
-      <p>{item.text}</p>
+      <p>{Milestones.text}</p>
     </div>
   );
 };

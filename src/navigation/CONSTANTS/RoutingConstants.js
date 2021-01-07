@@ -8,10 +8,6 @@ const RoutingConstants = {
       name: 'Life Project',
       path: '/life-project',
     },
-    innovation: {
-      name: 'Innovation',
-      path: '/innovation',
-    },
     bePart: {
       name: 'Be Part',
       path: '/be_part',

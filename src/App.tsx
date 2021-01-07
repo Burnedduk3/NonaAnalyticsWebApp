@@ -1,11 +1,12 @@
 import React from 'react';
 import './App.scss';
 import RouterConfig from './navigation/RouterConfig';
+import {BrowserRouter} from 'react-router-dom';
 
 const App: React.FC = (): JSX.Element => (
-  <div className="App">
+  <BrowserRouter>
     <RouterConfig />
-  </div>
+  </BrowserRouter>
 );
 
 export default App;
