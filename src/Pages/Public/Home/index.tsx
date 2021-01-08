@@ -19,7 +19,6 @@ const Home: React.FC = (): JSX.Element => {
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
 
-
   const TestAthenaDataBase = () =>{
     // console.log('CLICKED');
 

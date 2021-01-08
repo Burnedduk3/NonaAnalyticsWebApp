@@ -39,7 +39,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
     signIn().then();
   };
 
-
   const handleInput = (event:ChangeEvent<HTMLInputElement>) => {
     if (event.target.name === 'username') {
       setPageInputs({...pageInputs, username: event.target.value});

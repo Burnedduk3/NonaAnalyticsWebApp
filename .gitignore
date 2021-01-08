@@ -43,3 +43,5 @@ amplify-gradle-config.json
 amplifytools.xcconfig
 .secret-*
 .eslintcache
+
+ yarn.lock
