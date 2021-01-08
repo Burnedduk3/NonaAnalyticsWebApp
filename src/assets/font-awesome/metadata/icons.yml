@@ -16521,7 +16521,7 @@ sign-in-alt:
       - sign up
       - sign-in
       - signin
-      - signup
+      - Signup
   styles:
     - solid
   unicode: f2f6
@@ -20357,7 +20357,7 @@ user-plus:
       - avatar
       - positive
       - sign up
-      - signup
+      - Signup
       - team
   styles:
     - solid

@@ -4,6 +4,7 @@ import HeaderTexts from './CONSTANTS';
 import PublicNavBar from '../../Navbar/PublicNavBar';
 import {IPublicHeaderProps} from './interface';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
+import {useApplicationState} from '../../../Context/ApplicationState/Provider';
 
 
 const PublicHeader: React.FC<IPublicHeaderProps> = (
@@ -86,17 +87,24 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
       </h1>
     </header>
   );
+
+  const ApplicationState = useApplicationState();
   return (
     <>
-      {(page === RoutingConstants.menu.home.path) && (
-        home()
-      )}
-      {(page === RoutingConstants.menu.lifeProject.path) && (
-        lifeProject()
-      )}
-      {(page === RoutingConstants.menu.bePart.path) && (
-        bePart()
-      )}
+      {ApplicationState?.appState?.hideHeader ?
+            <></> :
+        <>
+          {(page === RoutingConstants.menu.home.path) && (
+            home()
+          )}
+          {(page === RoutingConstants.menu.lifeProject.path) && (
+            lifeProject()
+          )}
+          {(page === RoutingConstants.menu.bePart.path) && (
+            bePart()
+          )}
+        </>
+      }
     </>
   );
 };

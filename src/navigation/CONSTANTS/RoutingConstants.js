@@ -13,6 +13,14 @@ const RoutingConstants = {
       path: '/be_part',
     },
   },
+  login: {
+    name: 'login',
+    path: '/login',
+  },
+  signUp: {
+    name: 'signUp',
+    path: '/sign-up',
+  },
   notFound: {
     name: '404',
     path: '/404',
