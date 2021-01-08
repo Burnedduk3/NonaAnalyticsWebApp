@@ -1,5 +1,6 @@
 import React, {ChangeEvent, useState} from 'react';
 import {ISignUp} from './interfaces/SignUpInterface';
+import {Auth} from 'aws-amplify';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -49,6 +50,29 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     }
   };
 
+  const signUp = async () => {
+    try {
+      const {user} = await Auth.signUp({
+        username: pageInputs.email,
+        password: pageInputs.password,
+        attributes: {
+          email: pageInputs.email,
+          phone_number: pageInputs.phoneNumber,
+          birthdate: pageInputs.birthdate,
+          address: pageInputs.address,
+          gender: pageInputs.gender,
+          name: pageInputs.name,
+        },
+      });
+      console.log(user);
+    } catch (error) {
+      console.log('error signing up:', error);
+    }
+  };
+
+  const startSignup = () =>{
+    signUp().then();
+  };
 
   return (
     <main>
@@ -84,6 +108,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
       <label htmlFor="confirmPassword">confirmPassword
         <input type="password" name='confirmPassword' onChange={handleInput}/>
       </label>
+      <button type="button" onClick={startSignup}>Sign Up</button>
     </main>
   );
 };
