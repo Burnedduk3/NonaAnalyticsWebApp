@@ -21,9 +21,12 @@ const Home: React.FC = (): JSX.Element => {
 
 
   const TestAthenaDataBase = () =>{
-    console.log('CLICKED');
+    // console.log('CLICKED');
+
+
     Auth.currentCredentials()
         .then((credentials) => {
+          console.log('CLICKED');
           const lambda = new Lambda({
             credentials: Auth.essentialCredentials(credentials),
           });
