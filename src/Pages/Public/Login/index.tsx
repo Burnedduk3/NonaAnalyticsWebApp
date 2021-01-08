@@ -19,7 +19,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const history = useHistory();
 
   useEffect(() => {
-    setPageInputs({password: '', username: ''});
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
   }, []);
 
