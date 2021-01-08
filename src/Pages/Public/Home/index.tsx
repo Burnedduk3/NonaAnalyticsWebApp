@@ -15,6 +15,7 @@ const Home: React.FC = (): JSX.Element => {
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
+
   return (
     <>
       <div className="our-mission">

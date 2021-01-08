@@ -15,6 +15,7 @@ import Footer from '../../Components/Footer';
 import LoginPage from '../../Pages/Public/Login';
 import ApplicationStateProvider from '../../Context/ApplicationState/Provider';
 import SignUpPage from '../../Pages/Public/Signup';
+import FormPage from '../../Pages/Public/Form/Questioner';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -45,6 +46,13 @@ const RouterConfig: React.FC = (): JSX.Element => {
           exact
           path={RoutingConstants.signUp.path}
           component={SignUpPage}
+        />
+
+
+        <Route
+          exact
+          path={RoutingConstants.form.path}
+          component={FormPage}
         />
 
         {/* private routes */}
