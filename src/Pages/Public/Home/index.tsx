@@ -29,6 +29,7 @@ const Home: React.FC = (): JSX.Element => {
           const lambda = new Lambda({
             credentials: Auth.essentialCredentials(credentials),
           });
+          console.log('DONE');
           return lambda.invoke({
             FunctionName: 'athenaConnect',
             Payload: JSON.stringify(
