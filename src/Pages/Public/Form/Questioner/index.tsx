@@ -21,14 +21,12 @@ const FormPage:React.FC = (): JSX.Element =>{
   const getQuestions = async ():Promise<void> => {
     try {
       setLoading(true);
-      // eslint-disable-next-line max-len
       const apiQuestions:any = await API.graphql(
           graphqlOperation(
               getQuestionsOfASection,
               {
                 filter: {
                   name: {
-                    // eslint-disable-next-line react/prop-types
                     eq: 'Demographics',
                   },
                 },
@@ -143,11 +141,13 @@ const FormPage:React.FC = (): JSX.Element =>{
           </>
         )}
         <div className="buttons-container">
-          {/*  /!* eslint-disable-next-line react/prop-types *!/*/}
-          {/* eslint-disable-next-line max-len */}
-          {/*  {(match.params.section !== 'Lake-Nona') && <button className="button previous" type="button" onClick={() => navigationHistory.goBack()}>{'< PREVIOUS'}</button>}*/}
-          {/* eslint-disable-next-line max-len */}
-          <button className="button next" type="button" onClick={SaveToDataBase}>{'NEXT >'}</button>
+          <button
+            className="button next"
+            type="button"
+            onClick={SaveToDataBase}
+          >
+            {'NEXT >'}
+          </button>
         </div>
       </div>
     </main>
