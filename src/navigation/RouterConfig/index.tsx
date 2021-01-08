@@ -12,11 +12,13 @@ import NotFound from '../../Pages/NotFound';
 import BePartPage from '../../Pages/Public/BePart';
 import PublicHeader from '../../Components/Header/PublicHeader';
 import Footer from '../../Components/Footer';
+import LoginPage from '../../Pages/Public/Login';
+import ApplicationStateProvider from '../../Context/ApplicationState/Provider';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
   return (
-    <>
+    <ApplicationStateProvider>
       <PublicHeader page={location.pathname}/>
       <Switch>
         {/* public routes */}
@@ -30,6 +32,18 @@ const RouterConfig: React.FC = (): JSX.Element => {
           exact
           path={RoutingConstants.menu.bePart.path}
           component={BePartPage}
+        />
+
+        <Route
+          exact
+          path={RoutingConstants.login.path}
+          component={LoginPage}
+        />
+
+        <Route
+          exact
+          path={RoutingConstants.signUp.path}
+          component={LoginPage}
         />
 
         {/* private routes */}
@@ -47,7 +61,7 @@ const RouterConfig: React.FC = (): JSX.Element => {
         <Redirect to={RoutingConstants.notFound.path}/>
       </Switch>
       <Footer />
-    </>
+    </ApplicationStateProvider>
   );
 };
 export default RouterConfig;
