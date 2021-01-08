@@ -6,16 +6,15 @@ query ListQuestionsOfSection(
 ) {
   listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
     items {
-      name
       id
+      name
       questions {
         items {
-          question
-          items
           id
+          items
+          question
           category {
             name
-            id
           }
         }
       }

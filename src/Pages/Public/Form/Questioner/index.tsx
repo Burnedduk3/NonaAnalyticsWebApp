@@ -8,6 +8,7 @@ import YesNoQuestion from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
 import LeftBar from '../Components/LeftBar';
 import {createFormQuestion} from '../../../../graphql/mutations';
+import {getQuestion} from '../../../../graphql/queries';
 
 
 const FormPage:React.FC = (): JSX.Element =>{
@@ -33,7 +34,6 @@ const FormPage:React.FC = (): JSX.Element =>{
               },
           ),
       );
-
       if (apiQuestions && apiQuestions.data &&
           apiQuestions.data.listSections &&
           apiQuestions.data.listSections.items) {
@@ -67,6 +67,31 @@ const FormPage:React.FC = (): JSX.Element =>{
                 },
             ),
         );
+
+        const question: any = await API.graphql(
+            graphqlOperation(
+                getQuestion,
+                {
+                  id: item[0],
+                }),
+        );
+        if (question && question.data && question.data.getQuestion) {
+          const questionDetail = question.data.getQuestion;
+          const response = await API.get('athenaConnectApi', '/connect',
+              {
+                'queryStringParameters':
+                    {
+                      userid: '1234',
+                      category: questionDetail.category.name,
+                      answer: item[1],
+                      question: questionDetail.id,
+                      date: new Date().getDate().toString(),
+                    }
+                ,
+              },
+          );
+          console.log(response);
+        }
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
@@ -74,8 +99,6 @@ const FormPage:React.FC = (): JSX.Element =>{
         }
         console.log(saveToDBError);
       }
-
-      return 0;
     });
   };
 
