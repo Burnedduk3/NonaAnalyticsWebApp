@@ -7,9 +7,7 @@ import {
   SHOW_FOOTER,
   SHOW_HEADER,
 } from '../../../Context/ApplicationState/ActionTypes';
-
-import Auth from '@aws-amplify/auth';
-import Lambda from 'aws-sdk/clients/lambda'; // npm install aws-sdk
+import {API} from 'aws-amplify';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -19,29 +17,9 @@ const Home: React.FC = (): JSX.Element => {
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
 
-  const TestAthenaDataBase = () =>{
-    // console.log('CLICKED');
-
-
-    Auth.currentCredentials()
-        .then((credentials) => {
-          console.log('CLICKED');
-          const lambda = new Lambda({
-            credentials: Auth.essentialCredentials(credentials),
-          });
-          console.log('DONE');
-          return lambda.invoke({
-            FunctionName: 'athenaConnect',
-            Payload: JSON.stringify(
-                {
-                  userid: '1234',
-                  type: 'YESNO',
-                  answer: `YES`,
-                  date: '2019-09-22',
-                },
-            ),
-          });
-        });
+  const TestAthenaDataBase = async () => {
+    const response = await API.get('athenaConnectApi', '/connect', {});
+    console.log(response);
   };
 
   return (

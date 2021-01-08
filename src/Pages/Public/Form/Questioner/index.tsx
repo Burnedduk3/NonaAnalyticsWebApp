@@ -54,7 +54,6 @@ const FormPage:React.FC = (): JSX.Element =>{
 
   const SaveToDataBase = async () => {
     await Object.entries(responseState).map(async (item) => {
-      console.log(item);
       try {
         await API.graphql(
             graphqlOperation(
