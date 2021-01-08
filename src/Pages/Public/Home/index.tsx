@@ -19,7 +19,9 @@ const Home: React.FC = (): JSX.Element => {
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
 
+
   const TestAthenaDataBase = () =>{
+    console.log('CLICKED');
     Auth.currentCredentials()
         .then((credentials) => {
           const lambda = new Lambda({
@@ -42,12 +44,7 @@ const Home: React.FC = (): JSX.Element => {
   return (
     <>
       <div className="our-mission">
-        <button
-          type="button"
-          onClick={TestAthenaDataBase}
-        >
-            Click Me !!!!
-        </button>
+
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>
@@ -69,6 +66,13 @@ const Home: React.FC = (): JSX.Element => {
             )
           }
         </div>
+
+        <button
+          type="button"
+          onClick={TestAthenaDataBase}
+        >
+              Click Me !!!!
+        </button>
       </div>
       <div className="our-team">
       </div>
