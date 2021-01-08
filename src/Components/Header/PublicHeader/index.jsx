@@ -87,6 +87,21 @@ const PublicHeader = (props) => {
       </h1>
     </header>
   );
+  const startSurvey = () => (
+    <header className="header header-startSurvey">
+      <PublicNavBar theme="dark" />
+      <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
+      <h1 className="main-title">
+        <span className="title-primary">
+          {HeaderTexts.startSurvey.text}
+        </span>
+      </h1>
+    </header>
+  );
   return (
     <>
       {(page === 'home') && (
@@ -100,6 +115,9 @@ const PublicHeader = (props) => {
       )}
       {(page === 'bePart') && (
         bePart()
+      )}
+      {(page === 'startSurvey') && (
+        startSurvey()
       )}
     </>
   );

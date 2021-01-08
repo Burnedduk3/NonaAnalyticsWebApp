@@ -41,7 +41,7 @@ const BePartContentText = {
       color: 'red',
       text: 'Start Survey',
       type: 'button',
-      to: '/',
+      to: '/form',
     },
   },
 };
