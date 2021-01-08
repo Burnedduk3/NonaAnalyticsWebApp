@@ -8,6 +8,9 @@ import {
   SHOW_HEADER,
 } from '../../../Context/ApplicationState/ActionTypes';
 
+import Auth from '@aws-amplify/auth';
+import Lambda from 'aws-sdk/clients/lambda'; // npm install aws-sdk
+
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
 
@@ -15,9 +18,36 @@ const Home: React.FC = (): JSX.Element => {
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
+
+  const TestAthenaDataBase = () =>{
+    Auth.currentCredentials()
+        .then((credentials) => {
+          const lambda = new Lambda({
+            credentials: Auth.essentialCredentials(credentials),
+          });
+          return lambda.invoke({
+            FunctionName: 'athenaConnect',
+            Payload: JSON.stringify(
+                {
+                  userid: '1234',
+                  type: 'YESNO',
+                  answer: `YES`,
+                  date: '2019-09-22',
+                },
+            ),
+          });
+        });
+  };
+
   return (
     <>
       <div className="our-mission">
+        <button
+          type="button"
+          onClick={TestAthenaDataBase}
+        >
+            Click Me !!!!
+        </button>
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>
@@ -45,5 +75,6 @@ const Home: React.FC = (): JSX.Element => {
     </>
   );
 };
+
 
 export default Home;
