@@ -27,11 +27,11 @@ const RoutingConstants = {
   },
   form: {
     name: 'StartForm',
-    path: '/form',
+    path: '/pre-questioner',
   },
   dinamicForm: {
     name: 'sectionQuestioner',
-    path: '/form',
+    path: '/questioner',
   },
 };
 

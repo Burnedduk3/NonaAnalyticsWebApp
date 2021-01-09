@@ -1,4 +1,4 @@
-export interface IUserContextState{
+export interface IUserState{
     respondedQuestions: number | 0;
     name: string | '';
     email: string | '';
@@ -15,4 +15,9 @@ export interface IUserContextPayload{
 export interface IUserContextReducer{
     type: string,
     payload: IUserContextPayload,
+}
+
+export interface IUserStateContext{
+    userState: IUserState;
+    userStateDispatch: React.Dispatch<IUserContextReducer>;
 }

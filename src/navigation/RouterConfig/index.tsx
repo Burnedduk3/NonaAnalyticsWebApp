@@ -1,7 +1,7 @@
 import React from 'react';
 import {Redirect, Route, Switch, useLocation} from 'react-router-dom';
-import Home from '../../Pages/Public/Home';
-import LifeProject from '../../Pages/Public/LifeProject';
+import Home from '../../Pages/Public/Home/src';
+import LifeProject from '../../Pages/Public/LifeProject/src';
 import RoutingConstants from '../CONSTANTS/RoutingConstants';
 import NotFound from '../../Pages/NotFound';
 // import UserProvider from '../../Context/UserContext/Provider';
@@ -9,13 +9,14 @@ import NotFound from '../../Pages/NotFound';
 // import FormQuestionProvider from '../../Context/FormQuestions/Provider';
 // import Questioner from '../../Pages/Form/Questioner';
 // import UserCurrentFormProvider from '../../Context/UserCurrentForm/Provider';
-import BePartPage from '../../Pages/Public/BePart';
+import BePartPage from '../../Pages/Public/BePart/src';
 import PublicHeader from '../../Components/Header/PublicHeader';
 import Footer from '../../Components/Footer';
-import LoginPage from '../../Pages/Public/Login';
+import LoginPage from '../../Pages/Public/Login/src';
 import ApplicationStateProvider from '../../Context/ApplicationState/Provider';
-import SignUpPage from '../../Pages/Public/Signup';
-import FormPage from '../../Pages/Public/Form/Questioner';
+import SignUpPage from '../../Pages/Public/Signup/src';
+import PrivateRoutes from '../PrivateRoutes';
+import PreQuestionerPage from '../../Pages/Public/PreQuestioner/src';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -48,24 +49,14 @@ const RouterConfig: React.FC = (): JSX.Element => {
           component={SignUpPage}
         />
 
-
         <Route
           exact
           path={RoutingConstants.form.path}
-          component={FormPage}
+          component={PreQuestionerPage}
         />
 
-        {/* private routes */}
-        {/* <UserProvider>*/}
-        {/*  <UserCurrentFormProvider>*/}
-        {/*    <FormQuestionProvider>*/}
-        {/* eslint-disable-next-line max-len */}
-        {/*      <Route exact path={RoutingConstants.form.path} component={InitialFormPage} />*/}
-        {/* eslint-disable-next-line max-len */}
-        {/*      <Route exact path={`${RoutingConstants.dinamicForm.path}/:section`} component={Questioner} />*/}
-        {/*    </FormQuestionProvider>*/}
-        {/*  </UserCurrentFormProvider>*/}
-        {/* </UserProvider>*/}
+        <PrivateRoutes />
+
         <Route path={RoutingConstants.notFound.path} component={NotFound}/>
         <Redirect to={RoutingConstants.notFound.path}/>
       </Switch>

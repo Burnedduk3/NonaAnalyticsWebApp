@@ -1,7 +1,7 @@
-import {IUserContextPayload, IUserContextState} from './interface';
+import {IUserContextPayload, IUserState} from './interface';
 
 const addQuestions = (
-    currentState: IUserContextState,
+    currentState: IUserState,
     payload: IUserContextPayload,
 ) => ({...currentState, ...payload});
 

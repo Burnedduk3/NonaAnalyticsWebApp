@@ -1,9 +1,9 @@
 import {
   ADD_RESPONDED_QUESTIONS, ADD_USER, DELETE_USER, EDIT_USER,
 } from './ActionTypes';
-import {IUserContextReducer, IUserContextState} from './interface';
+import {IUserContextReducer, IUserState} from './interface';
 
-export const initialState: IUserContextState = {
+export const initialState: IUserState = {
   respondedQuestions: 0,
   name: '',
   email: '',
@@ -11,9 +11,9 @@ export const initialState: IUserContextState = {
 };
 
 const userReducer = (
-    state: IUserContextState,
+    state: IUserState,
     {type, payload}: IUserContextReducer,
-): IUserContextState => {
+): IUserState => {
   switch (type) {
     case ADD_USER: {
       return {

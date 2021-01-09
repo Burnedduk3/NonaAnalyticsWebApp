@@ -5,11 +5,18 @@ import PublicNavBar from '../../Navbar/PublicNavBar';
 import {IPublicHeaderProps} from './interface';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
 import {useApplicationState} from '../../../Context/ApplicationState/Provider';
+import {useHistory} from 'react-router-dom';
 
 
 const PublicHeader: React.FC<IPublicHeaderProps> = (
     {page}: IPublicHeaderProps,
 ): JSX.Element => {
+  const history = useHistory();
+
+  const QuickStart = () => {
+    history.push(RoutingConstants.form.path);
+  };
+
   const home = () => (
     <header className="header header-home">
       <PublicNavBar theme="light" />
@@ -31,7 +38,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
       </button>
       <div className="call">
         <span className="call-text">{HeaderTexts.home.span_text}</span>
-        <button type="button" className="call-button">
+        <button type="button" className="call-button" onClick={QuickStart}>
           {HeaderTexts.home.span_button}
         </button>
       </div>
@@ -100,7 +107,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
           {(page === RoutingConstants.menu.lifeProject.path) && (
             lifeProject()
           )}
-          {(page === RoutingConstants.menu.bePart.path) && (
+          {(page === RoutingConstants.menu.bePart.path || page === RoutingConstants.form.path) && (
             bePart()
           )}
         </>

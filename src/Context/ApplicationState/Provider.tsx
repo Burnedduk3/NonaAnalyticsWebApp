@@ -2,7 +2,6 @@ import React, {createContext, useReducer} from 'react';
 import ApplicationStateReducer, {initialState} from './Reducer';
 import {IAppStateContext} from './interface';
 
-// eslint-disable-next-line max-len
 type ContextValue = IAppStateContext | null;
 
 export const ApplicationStateContext = createContext<ContextValue>(null);
