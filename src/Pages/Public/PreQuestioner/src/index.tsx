@@ -12,10 +12,11 @@ import {IStateQuestionResponse} from './interface';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
 import ErrorToContinue from '../Components/ErrorToContinue';
-
-import './styles.scss';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import {useHistory} from 'react-router-dom';
+
+import './styles.scss';
+
 
 const initialState: IStateQuestionResponse = {
   live_play: 'no-responded',
@@ -36,31 +37,22 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
   }, []);
 
-  useEffect(() => {
-    console.log(userState);
-
-
-    return (()=>{
-      if (
-        responseState.live_play === 'yes' &&
-          responseState.over18 === 'yes' &&
-          userState === null
-      ) {
-        history.push(RoutingConstants.login.path);
-      }
-
-      if (
-        responseState.live_play === 'yes' &&
-          responseState.over18 === 'yes' &&
-          userState !== null
-      ) {
-        history.push(RoutingConstants.dinamicForm.path);
-      }
-    });
-  }, [responseState]);
-
   const onTakeSurvey = ():void =>{
-    console.log(RoutingConstants.dinamicForm.path);
+    if (
+      responseState.live_play === 'yes' &&
+        responseState.over18 === 'yes' &&
+        userState === null
+    ) {
+      history.push(RoutingConstants.login.path);
+    }
+
+    if (
+      responseState.live_play === 'yes' &&
+        responseState.over18 === 'yes' &&
+        userState !== null
+    ) {
+      history.push(RoutingConstants.dinamicForm.path);
+    }
   };
 
 
@@ -77,7 +69,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
 
       {
         responseState.live_play === 'yes' && <YesNoQuestion
-          question={CONSTANTS.firstQuestion}
+          question={CONSTANTS.secondQuestion}
           radioGroup="over18"
           questionId='over18'
           setResponse={setResponseState}
