@@ -51,6 +51,17 @@
       float: left;
     }
   }
+
+  h2 {
+    color: $secondary-color;
+    font-family: "Montserrat", sans-serif;
+    font-weight: bold;
+  }
+
+  p {
+    font-family: "Poppins", sans-serif;
+    color: $text-color;
+  }
 }
 
 .imgBePart {
@@ -58,15 +69,4 @@
   border: 1px solid #707070;
   height: 12rem;
   width: 12rem;
-}
-
-h2 {
-  color: $secondary-color;
-  font-family: "Montserrat", sans-serif;
-  font-weight: bold;
-}
-
-p {
-  font-family: "Poppins", sans-serif;
-  color: $text-color;
 }
