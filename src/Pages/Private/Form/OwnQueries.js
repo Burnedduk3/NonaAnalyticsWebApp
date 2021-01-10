@@ -22,3 +22,32 @@ query ListQuestionsOfSection(
   }
 }
 `;
+
+export const getSectionsWithQuestions = /* GraphQL */ `
+  query ListSections(
+    $filter: ModelSectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+      listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
+        items {
+        name
+        id
+        subSections {
+            items {
+                id
+                name
+                questions {
+                    items {
+                    id
+                    items
+                    question
+                    stack
+                    }
+                }
+            }
+        }
+      }
+    }
+   }
+`;

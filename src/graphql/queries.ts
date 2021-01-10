@@ -2,6 +2,37 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const syncUsers = /* GraphQL */ `
+  query SyncUsers(
+    $filter: ModelUserFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncUsers(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        lastname
+        mail
+        phone
+        age
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
 export const getUser = /* GraphQL */ `
   query GetUser($id: ID!) {
     getUser(id: $id) {
@@ -13,7 +44,11 @@ export const getUser = /* GraphQL */ `
       age
       forms {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -33,10 +68,41 @@ export const listUsers = /* GraphQL */ `
         mail
         phone
         age
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncForms = /* GraphQL */ `
+  query SyncForms(
+    $filter: ModelFormFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncForms(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        finished
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -46,6 +112,7 @@ export const getForm = /* GraphQL */ `
       id
       formQuestions {
         nextToken
+        startedAt
       }
       user {
         id
@@ -54,10 +121,16 @@ export const getForm = /* GraphQL */ `
         mail
         phone
         age
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       finished
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -73,10 +146,41 @@ export const listForms = /* GraphQL */ `
       items {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncFormQuestions = /* GraphQL */ `
+  query SyncFormQuestions(
+    $filter: ModelFormQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncFormQuestions(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        response
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -88,16 +192,26 @@ export const getFormQuestion = /* GraphQL */ `
       question {
         id
         question
+        stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -113,10 +227,43 @@ export const listFormQuestions = /* GraphQL */ `
       items {
         id
         response
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncQuestions = /* GraphQL */ `
+  query SyncQuestions(
+    $filter: ModelQuestionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncQuestions(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        question
+        stack
+        items
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -125,22 +272,33 @@ export const getQuestion = /* GraphQL */ `
     getQuestion(id: $id) {
       id
       question
+      stack
       usedForms {
         nextToken
+        startedAt
       }
       category {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      subSection {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       items
-      section {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -156,11 +314,43 @@ export const listQuestions = /* GraphQL */ `
       items {
         id
         question
+        stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncCategories = /* GraphQL */ `
+  query SyncCategories(
+    $filter: ModelCategoryFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncCategories(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -171,7 +361,11 @@ export const getCategory = /* GraphQL */ `
       name
       questions {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -187,10 +381,41 @@ export const listCategorys = /* GraphQL */ `
       items {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
+    }
+  }
+`;
+export const syncSections = /* GraphQL */ `
+  query SyncSections(
+    $filter: ModelSectionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncSections(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
     }
   }
 `;
@@ -199,9 +424,13 @@ export const getSection = /* GraphQL */ `
     getSection(id: $id) {
       id
       name
-      questions {
+      subSections {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -217,43 +446,88 @@ export const listSections = /* GraphQL */ `
       items {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;
-export const getSentimentAnalysis = /* GraphQL */ `
-  query GetSentimentAnalysis($id: ID!) {
-    getSentimentAnalysis(id: $id) {
+export const syncSubSections = /* GraphQL */ `
+  query SyncSubSections(
+    $filter: ModelSubSectionFilterInput
+    $limit: Int
+    $nextToken: String
+    $lastSync: AWSTimestamp
+  ) {
+    syncSubSections(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+      lastSync: $lastSync
+    ) {
+      items {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      nextToken
+      startedAt
+    }
+  }
+`;
+export const getSubSection = /* GraphQL */ `
+  query GetSubSection($id: ID!) {
+    getSubSection(id: $id) {
       id
-      time
-      motiv
+      name
+      section {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
   }
 `;
-export const listSentimentAnalysiss = /* GraphQL */ `
-  query ListSentimentAnalysiss(
-    $filter: ModelSentimentAnalysisFilterInput
+export const listSubSections = /* GraphQL */ `
+  query ListSubSections(
+    $filter: ModelSubSectionFilterInput
     $limit: Int
     $nextToken: String
   ) {
-    listSentimentAnalysiss(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
+    listSubSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        time
-        motiv
+        name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
+      startedAt
     }
   }
 `;

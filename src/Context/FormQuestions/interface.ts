@@ -21,6 +21,6 @@ export interface IQuestion {
 }
 
 export interface IFormQuestionsContext{
-    appState: IFormQuestionsContextState;
-    appStateDispatch: React.Dispatch<IFormQuestionsContextReducer>;
+    formState: IFormQuestionsContextState;
+    formStateDispatch: React.Dispatch<IFormQuestionsContextReducer>;
 }

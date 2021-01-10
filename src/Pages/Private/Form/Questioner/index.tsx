@@ -1,6 +1,6 @@
 import {API, graphqlOperation} from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import {getQuestionsOfASection} from '../OwnQueries';
+import {getQuestionsOfASection, getSectionsWithQuestions} from '../OwnQueries';
 import dropConsole, {LogLevel} from '../../../../utils/DropConsole';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
@@ -35,18 +35,26 @@ const FormPage:React.FC = (): JSX.Element =>{
   const getQuestions = async ():Promise<void> => {
     try {
       setLoading(true);
+      const testQuestions: any = await API.graphql(
+          graphqlOperation(
+              getSectionsWithQuestions,
+              {},
+          ),
+      );
+      console.log(testQuestions);
       const apiQuestions:any = await API.graphql(
           graphqlOperation(
               getQuestionsOfASection,
               {
                 filter: {
                   name: {
-                    eq: 'Demographics',
+                    eq: 'Health',
                   },
                 },
               },
           ),
       );
+
       if (apiQuestions && apiQuestions.data &&
           apiQuestions.data.listSections &&
           apiQuestions.data.listSections.items) {

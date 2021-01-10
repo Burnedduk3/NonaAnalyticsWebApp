@@ -16,7 +16,11 @@ export const createUser = /* GraphQL */ `
       age
       forms {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -36,7 +40,11 @@ export const updateUser = /* GraphQL */ `
       age
       forms {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -56,7 +64,11 @@ export const deleteUser = /* GraphQL */ `
       age
       forms {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -71,6 +83,7 @@ export const createForm = /* GraphQL */ `
       id
       formQuestions {
         nextToken
+        startedAt
       }
       user {
         id
@@ -79,10 +92,16 @@ export const createForm = /* GraphQL */ `
         mail
         phone
         age
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       finished
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -97,6 +116,7 @@ export const updateForm = /* GraphQL */ `
       id
       formQuestions {
         nextToken
+        startedAt
       }
       user {
         id
@@ -105,10 +125,16 @@ export const updateForm = /* GraphQL */ `
         mail
         phone
         age
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       finished
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -123,6 +149,7 @@ export const deleteForm = /* GraphQL */ `
       id
       formQuestions {
         nextToken
+        startedAt
       }
       user {
         id
@@ -131,10 +158,16 @@ export const deleteForm = /* GraphQL */ `
         mail
         phone
         age
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       finished
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -151,16 +184,26 @@ export const createFormQuestion = /* GraphQL */ `
       question {
         id
         question
+        stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -177,16 +220,26 @@ export const updateFormQuestion = /* GraphQL */ `
       question {
         id
         question
+        stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -203,16 +256,26 @@ export const deleteFormQuestion = /* GraphQL */ `
       question {
         id
         question
+        stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -226,22 +289,33 @@ export const createQuestion = /* GraphQL */ `
     createQuestion(input: $input, condition: $condition) {
       id
       question
+      stack
       usedForms {
         nextToken
+        startedAt
       }
       category {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      subSection {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       items
-      section {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -255,22 +329,33 @@ export const updateQuestion = /* GraphQL */ `
     updateQuestion(input: $input, condition: $condition) {
       id
       question
+      stack
       usedForms {
         nextToken
+        startedAt
       }
       category {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      subSection {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       items
-      section {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -284,22 +369,33 @@ export const deleteQuestion = /* GraphQL */ `
     deleteQuestion(input: $input, condition: $condition) {
       id
       question
+      stack
       usedForms {
         nextToken
+        startedAt
       }
       category {
         id
         name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      subSection {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       items
-      section {
-        id
-        name
-        createdAt
-        updatedAt
-      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -315,7 +411,11 @@ export const createCategory = /* GraphQL */ `
       name
       questions {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -331,7 +431,11 @@ export const updateCategory = /* GraphQL */ `
       name
       questions {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -347,7 +451,11 @@ export const deleteCategory = /* GraphQL */ `
       name
       questions {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -361,9 +469,13 @@ export const createSection = /* GraphQL */ `
     createSection(input: $input, condition: $condition) {
       id
       name
-      questions {
+      subSections {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -377,9 +489,13 @@ export const updateSection = /* GraphQL */ `
     updateSection(input: $input, condition: $condition) {
       id
       name
-      questions {
+      subSections {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -393,51 +509,100 @@ export const deleteSection = /* GraphQL */ `
     deleteSection(input: $input, condition: $condition) {
       id
       name
+      subSections {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createSubSection = /* GraphQL */ `
+  mutation CreateSubSection(
+    $input: CreateSubSectionInput!
+    $condition: ModelSubSectionConditionInput
+  ) {
+    createSubSection(input: $input, condition: $condition) {
+      id
+      name
+      section {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
       questions {
         nextToken
+        startedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
   }
 `;
-export const createSentimentAnalysis = /* GraphQL */ `
-  mutation CreateSentimentAnalysis(
-    $input: CreateSentimentAnalysisInput!
-    $condition: ModelSentimentAnalysisConditionInput
+export const updateSubSection = /* GraphQL */ `
+  mutation UpdateSubSection(
+    $input: UpdateSubSectionInput!
+    $condition: ModelSubSectionConditionInput
   ) {
-    createSentimentAnalysis(input: $input, condition: $condition) {
+    updateSubSection(input: $input, condition: $condition) {
       id
-      time
-      motiv
+      name
+      section {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
   }
 `;
-export const updateSentimentAnalysis = /* GraphQL */ `
-  mutation UpdateSentimentAnalysis(
-    $input: UpdateSentimentAnalysisInput!
-    $condition: ModelSentimentAnalysisConditionInput
+export const deleteSubSection = /* GraphQL */ `
+  mutation DeleteSubSection(
+    $input: DeleteSubSectionInput!
+    $condition: ModelSubSectionConditionInput
   ) {
-    updateSentimentAnalysis(input: $input, condition: $condition) {
+    deleteSubSection(input: $input, condition: $condition) {
       id
-      time
-      motiv
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteSentimentAnalysis = /* GraphQL */ `
-  mutation DeleteSentimentAnalysis(
-    $input: DeleteSentimentAnalysisInput!
-    $condition: ModelSentimentAnalysisConditionInput
-  ) {
-    deleteSentimentAnalysis(input: $input, condition: $condition) {
-      id
-      time
-      motiv
+      name
+      section {
+        id
+        name
+        _version
+        _deleted
+        _lastChangedAt
+        createdAt
+        updatedAt
+      }
+      questions {
+        nextToken
+        startedAt
+      }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
