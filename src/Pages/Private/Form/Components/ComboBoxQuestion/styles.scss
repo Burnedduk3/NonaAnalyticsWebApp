@@ -1,0 +1,43 @@
+@import "src/Global/styles/Colors";
+@import "../../../../../assets/font-awesome/scss/fontawesome.scss";
+@import "../../../../../assets/font-awesome/scss/solid.scss";
+
+.inputContainer {
+  position: relative;
+
+  p {
+    font-weight: bold;
+  }
+
+  width: 100%;
+
+  .combo-box {
+    border: none;
+    border-bottom: 1px #d6d4da solid !important;
+    outline: none;
+    display: block;
+    min-width: 300px;
+    width: 500px;
+    max-width: 700px;
+    text-align: center;
+    -webkit-appearance: none !important;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 15px 0 0 0;
+    font-size: 25px;
+    color: #5c5c5c;
+    font-weight: bold;
+  }
+
+  .combo-box::-ms-expand {
+    display: none;
+  }
+
+  .combo-box:hover {
+    cursor: pointer;
+  }
+
+  option {
+    color: $primary-color;
+  }
+}
