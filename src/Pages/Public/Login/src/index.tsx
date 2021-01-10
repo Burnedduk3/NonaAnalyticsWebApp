@@ -11,6 +11,12 @@ import {
 import {HIDE_FOOTER} from '../../../../Context/ApplicationState/ActionTypes';
 import {useHistory} from 'react-router-dom';
 import {Auth} from 'aws-amplify';
+import './styles.scss';
+import logo from '../../../../assets/Logos/logo.png';
+import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
+import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
+import user from '../../../../assets/Icons/user.png';
+import lock from '../../../../assets/Icons/lock.png';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -54,32 +60,44 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   return (
-    <main>
+    <main className="Login-body">
       <div className="logo-container">
-
+        <img src={logo} alt="logo" className="Nona-logo"/>
       </div>
       <div className="Login-card-container">
         <div className="go-back-container">
           <p onClick={goHome}>
+            <i className="fas fa-caret-left"></i>
             {CONSTANTS.backButton}
           </p>
         </div>
-        <h1 className="page-title">Login</h1>
+        <h2 className="page-title">Login</h2>
+        <div className="login-socialMedia">
+          <img src={GoogleIcon} alt="Google logo" />
+          <img src={FBIcon} alt="Facebook logo" />
+        </div>
+        <div className="horizontal-line">
+          <hr/>
+          O
+          <hr/>
+        </div>
         <form className="form-container">
           <label htmlFor="username" className="label user">
+            <img src={user} alt="User Icon"/>
             <input
               type="text"
               name="username"
-              placeholder="username"
+              placeholder="Username"
               className="username-text-field"
               onChange={handleInput}
             />
           </label>
           <label htmlFor="password" className="label lock">
+            <img src={lock} alt="Lock Icon"/>
             <input
               type="text"
               name="password"
-              placeholder="password"
+              placeholder="Password"
               className="password-text-field"
               onChange={handleInput}
             />

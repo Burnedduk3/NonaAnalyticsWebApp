@@ -107,7 +107,8 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
           {(page === RoutingConstants.menu.lifeProject.path) && (
             lifeProject()
           )}
-          {(page === RoutingConstants.menu.bePart.path || page === RoutingConstants.form.path) && (
+          {(page === RoutingConstants.menu.bePart.path ||
+            page === RoutingConstants.form.path) && (
             bePart()
           )}
         </>
