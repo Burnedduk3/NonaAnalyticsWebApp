@@ -41,7 +41,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     if (
       responseState.live_play === 'yes' &&
         responseState.over18 === 'yes' &&
-        userState === null
+        userState !== null
     ) {
       history.push(RoutingConstants.login.path);
     }
@@ -49,9 +49,10 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     if (
       responseState.live_play === 'yes' &&
         responseState.over18 === 'yes' &&
-        userState !== null
+        userState === null
     ) {
-      history.push(RoutingConstants.dinamicForm.path);
+      // eslint-disable-next-line max-len
+      history.push(`${RoutingConstants.dinamicForm.path}/Lake-Nona/Lake-Nona/0`);
     }
   };
 

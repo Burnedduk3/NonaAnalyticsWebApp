@@ -95,7 +95,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
           <label htmlFor="password" className="label lock">
             <img src={lock} alt="Lock Icon"/>
             <input
-              type="text"
+              type="password"
               name="password"
               placeholder="Password"
               className="password-text-field"

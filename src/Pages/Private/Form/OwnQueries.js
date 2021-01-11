@@ -39,10 +39,14 @@ export const getSectionsWithQuestions = /* GraphQL */ `
                 name
                 questions {
                     items {
-                    id
-                    items
-                    question
-                    stack
+                        id
+                        items
+                        question
+                        stack
+                        category {
+                            id
+                            name
+                        }
                     }
                 }
             }

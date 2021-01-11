@@ -1,26 +1,42 @@
 export interface IFormQuestionsContextState{
-    formID: string;
-    questions: Array<IQuestion>;
-
+    sections: Array<ISection> | null;
+    currentSection: ISection | null;
+    nextSection: ISection | null;
+    previous: ISection | null;
 }
 
 export interface IFormQuestionsContextPayload{
-    question: IQuestion;
-    questions?: Array<IQuestion>;
+    section?: ISection;
+    sections?: Array<ISection>
+    newState?: IFormQuestionsContextState
 }
 
-export interface IFormQuestionsContextReducer{
+export interface IFormQuestionsContextReducer {
     type: string,
-    payload: IFormQuestionsContextPayload,
-}
-
-export interface IQuestion {
-    id: string,
-    question: string,
-    items: Array< string | null > | null,
+    payload: IFormQuestionsContextPayload | undefined,
 }
 
 export interface IFormQuestionsContext{
     formState: IFormQuestionsContextState;
     formStateDispatch: React.Dispatch<IFormQuestionsContextReducer>;
+}
+
+export interface ISection{
+    id: string
+    name: string
+    subSections: any
+}
+
+export interface ISubSection{
+    id: string
+    name: string
+    questions: Array<IQuestion>
+    maxStack: number
+}
+
+export interface IQuestion{
+    id: string,
+    items: Array<string> | null
+    question: string
+    stack: number
 }

@@ -1,6 +1,5 @@
 import {API, graphqlOperation} from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
-import {getQuestionsOfASection, getSectionsWithQuestions} from '../OwnQueries';
 import dropConsole, {LogLevel} from '../../../../utils/DropConsole';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
@@ -8,7 +7,6 @@ import YesNoQuestion from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
 import LeftBar from '../Components/LeftBar';
 import {createFormQuestion} from '../../../../graphql/mutations';
-import {getQuestion} from '../../../../graphql/queries';
 import {
   useApplicationState,
 } from '../../../../Context/ApplicationState/Provider';
@@ -18,61 +16,78 @@ import {
 } from '../../../../Context/ApplicationState/ActionTypes';
 
 import './styles.scss';
+import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
+import {GET_SECTIONS} from '../../../../Context/FormQuestions/ActionTypes';
+import {fetchQuestions} from './FetchQuestions';
+import {RouteComponentProps} from 'react-router';
+import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
+import {
+  ISection,
+} from '../../../../Context/FormQuestions/interface';
 
-const FormPage:React.FC = (): JSX.Element =>{
+
+const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
+    {match}:RouteComponentProps<TQuestionerRoute>,
+): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
-
   const [responseState, setResponseState] = useState({});
   const ApplicationState = useApplicationState();
+  const FormApplicationState = useFormQuestionState();
+  const {params} = match;
 
-  useEffect(() => {
+  useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    setLoading(true);
+    try {
+      fetchQuestions(FormApplicationState?.formState).then((data) =>{
+        FormApplicationState?.formStateDispatch(
+            {
+              type: GET_SECTIONS,
+              payload: {
+                newState: data,
+              },
+            });
+        setQuestioner();
+      });
+      setFormQuestions([]);
+      setError(false);
+      setLoading(false);
+    } catch (error) {
+      setError(true);
+      setLoading(false);
+    }
   }, []);
 
-  const getQuestions = async ():Promise<void> => {
-    try {
-      setLoading(true);
-      const testQuestions: any = await API.graphql(
-          graphqlOperation(
-              getSectionsWithQuestions,
-              {},
-          ),
-      );
-      console.log(testQuestions);
-      const apiQuestions:any = await API.graphql(
-          graphqlOperation(
-              getQuestionsOfASection,
-              {
-                filter: {
-                  name: {
-                    eq: 'Health',
-                  },
-                },
-              },
-          ),
-      );
-
-      if (apiQuestions && apiQuestions.data &&
-          apiQuestions.data.listSections &&
-          apiQuestions.data.listSections.items) {
-        const sectionQuestions = apiQuestions.data.listSections.items[0];
-        setFormQuestions(sectionQuestions.questions.items);
+  const setQuestioner = () =>{
+    if (FormApplicationState &&
+        FormApplicationState.formState &&
+        FormApplicationState.formState.sections &&
+        FormApplicationState?.formState.sections?.length > 0) {
+      const questioner = FormApplicationState?.formState.sections;
+      if (questioner) {
+        questioner.map((section:ISection) =>{
+          if (section.name === params.section) {
+            section.subSections.items.map((subSection: any)=>{
+              if (subSection.name === params.subSection) {
+                console.log(subSection);
+                const showableQuestions:Array<any> = [];
+                subSection.questions.items.map((question:any)=>{
+                  if (question.stack.toString() === params.stack) {
+                    showableQuestions.push(question);
+                  }
+                });
+                setFormQuestions(showableQuestions);
+              }
+            });
+          }
+        });
       }
-      setLoading(false);
-      setError(false);
-    } catch (questionsError) {
-      if (questionsError instanceof Error) {
-        dropConsole(LogLevel.HIGH, questionsError.message);
-        setError(true);
-      }
-      setError(true);
     }
-    setLoading(false);
   };
-
+  // TODO Send data to the athena database
   const SaveToDataBase = async () => {
     await Object.entries(responseState).map(async (item) => {
       try {
@@ -81,44 +96,13 @@ const FormPage:React.FC = (): JSX.Element =>{
                 createFormQuestion,
                 {
                   input: {
-                    formQuestionFormId: '1926620e-d866-409f-b819-f0f7d5fbc839',
+                    formQuestionFormId: '2885c437-2fe1-4898-b437-3002c8c612a8',
                     formQuestionQuestionId: item[0],
                     response: item[1],
                   },
                 },
             ),
         );
-
-        const question: any = await API.graphql(
-            graphqlOperation(
-                getQuestion,
-                {
-                  id: item[0],
-                }),
-        );
-        if (question && question.data && question.data.getQuestion) {
-          const questionDetail = question.data.getQuestion;
-          const date = new Date;
-          const response = await API.get('athenaConnectApi', '/connect',
-              {
-                'queryStringParameters':
-                    {
-                      userid: '1234',
-                      category: questionDetail.category.name,
-                      answer: item[1],
-                      question: questionDetail.id,
-                      date: date.getUTCFullYear() + '-' +
-                        ('00' + (date.getUTCMonth()+1)).slice(-2) + '-' +
-                        ('00' + date.getUTCDate()).slice(-2) + ' ' +
-                        ('00' + date.getUTCHours()).slice(-2) + ':' +
-                        ('00' + date.getUTCMinutes()).slice(-2) + ':' +
-                        ('00' + date.getUTCSeconds()).slice(-2),
-                    }
-                ,
-              },
-          );
-          console.log(response);
-        }
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
@@ -128,11 +112,7 @@ const FormPage:React.FC = (): JSX.Element =>{
       }
     });
   };
-
-  useEffect(()=>{
-    getQuestions().then();
-  }, []);
-
+  console.log(responseState);
   return (
     <main className="content-container">
       <LeftBar />

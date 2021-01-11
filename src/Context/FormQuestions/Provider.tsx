@@ -7,6 +7,7 @@ type ContextValue = IFormQuestionsContext | null;
 
 export const FormQuestionsContext = createContext<ContextValue>(null);
 
+// eslint-disable-next-line react/prop-types
 const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
   const [FormQuestionsState, FormQuestionsDispatch] = useReducer(
       FormQuestionsReducer, initialState,
@@ -14,6 +15,7 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
 
   const formQuestionContext: IFormQuestionsContext = {
     formState: FormQuestionsState,
+
     formStateDispatch: FormQuestionsDispatch,
   };
 
@@ -26,5 +28,8 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
     </FormQuestionsContext.Provider>
   );
 };
+
+export const useFormQuestionState = () =>
+  React.useContext(FormQuestionsContext);
 
 export default FormQuestionProvider;
