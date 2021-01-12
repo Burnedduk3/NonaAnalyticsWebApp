@@ -186,15 +186,24 @@ export const createFormQuestion = /* GraphQL */ `
         question
         stack
         items
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
         finished
+        _version
+        _deleted
+        _lastChangedAt
         createdAt
         updatedAt
       }
+      _version
+      _deleted
+      _lastChangedAt
       createdAt
       updatedAt
     }
