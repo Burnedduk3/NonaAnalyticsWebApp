@@ -60,7 +60,7 @@ export const fetchQuestions = async (
                   maxStack = dbQuestion.stack;
                 }
                 subSectionQuestions.push(question);
-              }); console.log(maxStack);
+              });
               return {
                 id: subSection.id,
                 maxStack: maxStack,
@@ -96,6 +96,5 @@ export const fetchQuestions = async (
       throw new Error('Error fetching the questions');
     }
   } catch (error) {
-    console.log(error);
   }
 };

@@ -10,7 +10,7 @@ import {
 } from '../../../../Context/ApplicationState/Provider';
 import {HIDE_FOOTER} from '../../../../Context/ApplicationState/ActionTypes';
 import {useHistory} from 'react-router-dom';
-import {Auth} from 'aws-amplify';
+import {API, Auth, graphqlOperation} from 'aws-amplify';
 import './styles.scss';
 import logo from '../../../../assets/Logos/logo.png';
 import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
@@ -18,7 +18,8 @@ import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
 import user from '../../../../assets/Icons/user.png';
 import lock from '../../../../assets/Icons/lock.png';
 import {useUserState} from '../../../../Context/UserContext/Provider';
-import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
+import {ADD_USER, EDIT_USER} from '../../../../Context/UserContext/ActionTypes';
+import {createForm} from '../../../../graphql/mutations';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -56,6 +57,19 @@ const LoginPage : React.FC = (): JSX.Element =>{
         });
         // TODO Here we should add a cookie to mantain the session
         if (user.attributes.email_verified) {
+          const formData: any = await API.graphql(graphqlOperation(createForm,
+              {
+                input: {
+
+                },
+              },
+          ));
+          userState?.userStateDispatch({
+            type: EDIT_USER,
+            payload: {
+              currentForm: formData.data.createForm.id,
+            },
+          });
           history.push(
               `${RoutingConstants.dinamicForm.path}/Lake-Nona/Lake-Nona/0`,
           );
@@ -64,7 +78,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
         }
       }
     } catch (error) {
-      console.log('error Login');
+      console.log(error);
       setError(true);
     }
   };

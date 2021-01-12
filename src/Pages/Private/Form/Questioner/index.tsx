@@ -29,6 +29,7 @@ import {
   ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
+import {useUserState} from '../../../../Context/UserContext/Provider';
 
 
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
@@ -44,9 +45,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   ] = useState<boolean>(true);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
+  const userState = useUserState();
   const {params} = match;
   const history = useHistory();
-
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
@@ -113,7 +114,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
                 {
                   input: {
                     // eslint-disable-next-line max-len
-                    formQuestionFormId: '2885c437-2fe1-4898-b437-3002c8c612a8', // TODO HERE
+                    formQuestionFormId: userState?.userState.currentForm, // TODO HERE
                     formQuestionQuestionId: item[0],
                     response: item[1],
                   },
@@ -125,7 +126,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
         if (saveToDBError instanceof Error) {
           dropConsole(LogLevel.HIGH, saveToDBError.message);
         }
-        console.log(saveToDBError);
       }
     });
     if (FormApplicationState && FormApplicationState.formState) {
