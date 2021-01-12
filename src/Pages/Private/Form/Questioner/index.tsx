@@ -49,7 +49,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   const userState = useUserState();
   const {params} = match;
   const history = useHistory();
-  
+
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
@@ -187,7 +187,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       }
     }
   };
-
   return (
     <main className="content-container">
       <LeftBar />
