@@ -29,6 +29,8 @@ import {
   ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
+import {useUserState} from '../../../../Context/UserContext/Provider';
+
 
 
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
@@ -44,6 +46,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   ] = useState<boolean>(true);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
+  const userState = useUserState();
   const {params} = match;
   const history = useHistory();
 
@@ -113,7 +116,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
                 {
                   input: {
                     // eslint-disable-next-line max-len
-                    formQuestionFormId: '2885c437-2fe1-4898-b437-3002c8c612a8', // TODO HERE
+                    formQuestionFormId: userState?.userState.currentForm, // TODO HERE
                     formQuestionQuestionId: item[0],
                     response: item[1],
                   },
@@ -125,7 +128,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
         if (saveToDBError instanceof Error) {
           dropConsole(LogLevel.HIGH, saveToDBError.message);
         }
-        console.log(saveToDBError);
       }
     });
     if (FormApplicationState && FormApplicationState.formState) {
@@ -139,7 +141,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
           const subSection = currentSection.subSections[index];
           if (params.stack !== undefined) {
             if (
-              subSection.maxStack >= parseInt(params.stack)) {
+              subSection.maxStack > parseInt(params.stack)) {
               // it changes the stack but not the subsection
               nextStack = parseInt(params.stack) + 1;
               break;
@@ -168,8 +170,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
                 }
               } else {
                 if (subSection.name === params.subSection) {
-                  console.log(subSection.name === params.subSection);
-                  console.log(index);
                   nextSubSection = currentSection.subSections[index + 1].name;
                   nextStack = 0;
                   break;

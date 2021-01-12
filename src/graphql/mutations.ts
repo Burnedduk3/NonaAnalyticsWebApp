@@ -92,16 +92,10 @@ export const createForm = /* GraphQL */ `
         mail
         phone
         age
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       finished
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
