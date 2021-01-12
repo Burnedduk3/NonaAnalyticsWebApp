@@ -9,6 +9,7 @@ export interface IFormQuestionsContextPayload{
     section?: ISection;
     sections?: Array<ISection>
     fetchedSections?: IFormQuestionsContextState
+    newState?: IFormQuestionsContextState
 }
 
 export interface IFormQuestionsContextReducer {

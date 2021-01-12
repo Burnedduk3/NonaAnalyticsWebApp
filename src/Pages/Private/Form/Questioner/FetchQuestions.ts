@@ -6,11 +6,10 @@ import {
 import {API, graphqlOperation} from 'aws-amplify';
 import {getSectionsWithQuestions} from '../OwnQueries';
 
-// TODO change the function to mantain the change on the path variables
-
 export const fetchQuestions = async (
     currentState: IFormQuestionsContextState | undefined,
     firstTime: boolean,
+
 ) => {
   try {
     if (!currentState) {
@@ -89,7 +88,6 @@ export const fetchQuestions = async (
       }
 
       currentState.sections = sections;
-
       if (currentState) {
         return currentState;
       }

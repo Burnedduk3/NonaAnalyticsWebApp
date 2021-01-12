@@ -187,7 +187,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       }
     }
   };
-
   return (
     <main className="content-container">
       <LeftBar />
