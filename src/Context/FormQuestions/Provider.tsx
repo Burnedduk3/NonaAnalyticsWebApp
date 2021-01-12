@@ -15,7 +15,6 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
 
   const formQuestionContext: IFormQuestionsContext = {
     formState: FormQuestionsState,
-
     formStateDispatch: FormQuestionsDispatch,
   };
 
