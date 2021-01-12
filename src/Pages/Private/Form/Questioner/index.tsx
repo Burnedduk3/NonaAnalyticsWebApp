@@ -32,10 +32,8 @@ import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 
 
-
-const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
-    {match}:RouteComponentProps<TQuestionerRoute>,
-): JSX.Element =>{
+// eslint-disable-next-line max-len
+const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
