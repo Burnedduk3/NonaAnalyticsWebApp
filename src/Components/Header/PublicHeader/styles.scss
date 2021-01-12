@@ -1,4 +1,4 @@
-@import "../../../Global/styles/Colors";
+@import '../../../Global/styles/Colors';
 
 .header {
   display: flex;
@@ -21,12 +21,12 @@
     position: relative;
     margin-left: auto;
     margin-right: 8em;
-    max-width: 2em;
+    max-width: 3em;
     display: flex;
     flex-direction: column;
 
     .fab {
-      font-size: 2em;
+      font-size: 3em;
       margin-bottom: 1em;
       color: $secondary-color;
     }
@@ -122,7 +122,7 @@
       max-width: 45%;
       max-height: 20vh;
       display: flex;
-      padding: 2vh 0vh 3vh 30vh;
+      padding: 2vh 0 3vh 30vh;
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
@@ -147,86 +147,29 @@
     }
   }
 
-  &-innovation {
-    padding-top: 20vh;
-    padding-bottom: 20vh;
-
-    .container {
-      background-image: url("../../../assets/Images/BePartImage.jpg");
-    }
-
-    .social {
-      top: 15vh;
-    }
-
-    .main-title {
-      margin-left: 30vh;
-    }
-
-    .title-primary {
-      color: $primary-color;
-      font-size: 1.5em;
-    }
-
-    .title-secondary {
-      color: $secondary-color;
-    }
-  }
-
   &-bepart {
+    padding-bottom: 10vh;
+
     .container {
       background-image: url("../../../assets/Images/BePartImage.jpg");
-      min-height: 350px;
       opacity: 0.5;
     }
 
     .social {
       top: 20vh;
+
+      .fab {
+        color: $primary-color;
+      }
     }
 
     .main-title {
       margin-left: 30vh;
-    }
-
-    .title-primary {
-      color: $primary-color;
-      font-size: 1.5em;
-    }
-
-    .title-secondary {
-      color: $secondary-color;
-    }
-  }
-
-  &-startSurvey {
-    .container {
-      background-image: url("../../../assets/Images/StartSurveyImage.jpg");
-      min-height: 350px;
-      opacity: 0.5;
-    }
-
-    .social {
-      top: 20vh;
-    }
-
-    .main-title {
-      margin-left: 20vh;
-      max-width: 70% !important;
-      line-height: 0.8em !important;
-    }
-
-    .title-primary {
-      color: $primary-color;
-      font-size: 0.5em;
-    }
-
-    .title-secondary {
-      color: $secondary-color;
     }
   }
 
   .main-title {
-    max-width: 45%;
+    max-width: 40%;
     color: white;
     margin-bottom: 8vh;
     top: 40vh;

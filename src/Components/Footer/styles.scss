@@ -4,7 +4,8 @@
 $degrade-color: #0f485b;
 
 .footer {
-  background: transparent
+  background:
+    transparent
     linear-gradient(180deg, $primary-color 0%, $degrade-color 100%) 0% 0%
     no-repeat padding-box;
   min-height: 10vw;
@@ -108,7 +109,8 @@ $degrade-color: #0f485b;
   }
 
   button {
-    background: transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0%
+    background:
+      transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0%
       0% no-repeat padding-box;
     box-shadow: 0 0 15px #ff707087;
     font-family: "Poppins", sans-serif;

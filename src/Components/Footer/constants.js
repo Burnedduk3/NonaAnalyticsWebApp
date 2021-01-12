@@ -1,5 +1,6 @@
 const footerConst = {
   firstCol: {
+    // eslint-disable-next-line max-len
     text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy',
   },
   secCol: {
@@ -10,10 +11,6 @@ const footerConst = {
     lifeProject: {
       name: 'Life Project',
       path: '/life-project',
-    },
-    innovation: {
-      name: 'Innovation',
-      path: '/innovation',
     },
     bePart: {
       name: 'Be Part',

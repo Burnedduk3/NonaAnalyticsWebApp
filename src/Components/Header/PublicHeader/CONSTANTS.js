@@ -21,6 +21,7 @@ const HeaderTexts = {
     span: [
       '70% - 90%',
       'of Chronic diseases are lifestyle preventable...',
+      // eslint-disable-next-line max-len
       'Willet, Walter (1970, January01) Prevention of Chronic Diseases Means of Diet and Lyfestile Changes.',
     ],
   },
@@ -31,9 +32,6 @@ const HeaderTexts = {
   bePart: {
     text:
         'The Lake Nona Life Project',
-  },
-  startSurvey: {
-    text: 'Your participation is essential to cracking-the-code to life-long health and well-being. Join the thousands of Lake Nona Citizen Scientists Making History.',
   },
 };
 

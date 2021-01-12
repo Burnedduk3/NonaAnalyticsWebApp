@@ -1,0 +1,151 @@
+@import '../../../../Global/styles/Colors.scss';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+.Sign-up-Body {
+  background: $primary-color;
+  height: auto;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+
+  .logoContainer img {
+    min-width: 200px;
+    width: 20vw;
+  }
+
+  .Sign-up-Card {
+    margin: auto 10vw;
+    display: flex;
+    flex-direction: column;
+    background: $whiter-background;
+    min-width: 350px;
+    width: 40vw;
+    min-height: 60vh;
+    border-radius: 45px;
+    justify-content: space-around;
+    align-items: center;
+
+    .go-back-container {
+      cursor: pointer;
+      color: #5c5c5c;
+      font-size: 0.8em;
+      margin-top: 4%;
+      margin-right: auto;
+
+      i {
+        margin: auto 2em;
+      }
+
+      p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+      }
+    }
+
+    h2 {
+      color: $primary-color;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .login-socialMedia {
+      display: flex;
+      justify-content: space-evenly;
+      margin: 3% 10%;
+
+      img {
+        cursor: pointer;
+        min-width: 50px;
+        width: 4%;
+      }
+    }
+
+    .horizontal-line {
+      display: flex;
+      justify-content: center;
+      color: #7e7d7d;
+      opacity: 15%;
+      width: 70%;
+
+      hr {
+        width: 40%;
+      }
+    }
+
+    .form-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-width: 350px;
+      width: 40vw;
+
+      label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin: auto .4vw;
+      }
+
+      input {
+        border: none;
+        border-bottom: 1px solid #344c69;
+        width: 55%;
+        color: #344c69;
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        font-size: 1em;
+        margin: 2.5vh .4vw;
+      }
+
+      img {
+        width: 7%;
+        height: 7%;
+        object-fit: cover;
+      }
+
+      button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3em;
+        border-radius: 15px;
+        background: $primary-color 0% 0% no-repeat padding-box;
+        box-shadow: 0 0 15px #00577687;
+        font-family: "Poppins", sans-serif;
+        color: $whiter-background;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1em;
+        margin: 1vh 11.5%;
+      }
+    }
+
+    .have-account-container {
+      margin-bottom: 5%;
+
+      p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        font-size: 0.9em;
+      }
+
+      a {
+        font-family: "Poppins", sans-serif;
+        font-weight: 700;
+        color: $primary-color;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+    }
+  }
+}
