@@ -31,7 +31,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     responseState,
     setResponseState,
   ] = useState<IStateQuestionResponse>(initialState);
-
+  console.log(userState?.userState);
   useEffect(()=>{
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
@@ -41,7 +41,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     if (
       responseState.live_play === 'yes' &&
         responseState.over18 === 'yes' &&
-        userState !== null
+        userState?.userState.email === ''
     ) {
       history.push(RoutingConstants.login.path);
     }
@@ -49,7 +49,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     if (
       responseState.live_play === 'yes' &&
         responseState.over18 === 'yes' &&
-        userState === null
+        userState?.userState.email !== ''
     ) {
       // eslint-disable-next-line max-len
       history.push(`${RoutingConstants.dinamicForm.path}/Lake-Nona/Lake-Nona/0`);

@@ -8,6 +8,10 @@ export const initialState: IUserState = {
   name: '',
   email: '',
   phone: '',
+  address: '',
+  birthdate: '',
+  gender: '',
+  currentForm: '',
 };
 
 const userReducer = (
@@ -17,7 +21,7 @@ const userReducer = (
   switch (type) {
     case ADD_USER: {
       return {
-        ...initialState,
+        ...state,
         ...payload,
       };
     }
