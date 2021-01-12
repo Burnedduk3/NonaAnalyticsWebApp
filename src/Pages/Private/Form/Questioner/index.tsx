@@ -34,6 +34,7 @@ import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 
 
+
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
     {match}:RouteComponentProps<TQuestionerRoute>,
 ): JSX.Element =>{
@@ -50,6 +51,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   const userState = useUserState();
   const {params} = match;
   const history = useHistory();
+  
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
