@@ -1,0 +1,27 @@
+@import "src/Global/styles/Colors";
+
+.button-container {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  min-height: 80px;
+  align-items: center;
+
+  .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    background-color: $button-primary-color;
+    min-width: 200px;
+    min-height: 50px;
+    border-radius: 50px;
+    color: $cream-white-background;
+    font-size: 1.2em;
+    border-color: transparent;
+  }
+
+  .button:hover{
+    cursor: pointer;
+  }
+}

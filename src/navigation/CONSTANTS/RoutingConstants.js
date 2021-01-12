@@ -8,14 +8,18 @@ const RoutingConstants = {
       name: 'Life Project',
       path: '/life-project',
     },
-    innovation: {
-      name: 'Innovation',
-      path: '/innovation',
-    },
     bePart: {
       name: 'Be Part',
       path: '/be_part',
     },
+  },
+  login: {
+    name: 'login',
+    path: '/login',
+  },
+  signUp: {
+    name: 'signUp',
+    path: '/sign-up',
   },
   notFound: {
     name: '404',
@@ -23,11 +27,11 @@ const RoutingConstants = {
   },
   form: {
     name: 'StartForm',
-    path: '/form',
+    path: '/pre-questioner',
   },
   dinamicForm: {
     name: 'sectionQuestioner',
-    path: '/form',
+    path: '/questioner',
   },
 };
 

@@ -21,6 +21,7 @@ const HeaderTexts = {
     span: [
       '70% - 90%',
       'of Chronic diseases are lifestyle preventable...',
+      // eslint-disable-next-line max-len
       'Willet, Walter (1970, January01) Prevention of Chronic Diseases Means of Diet and Lyfestile Changes.',
     ],
   },

@@ -12,12 +12,15 @@
     bottom: 19px;
     font-weight: bold;
     font-size: 2em;
+
     &-date1 {
       color: $whiter-background;
     }
+
     &-prim {
       color: $primary-color;
     }
+
     &-second {
       color: $secondary-color;
     }
@@ -28,9 +31,11 @@
     height: 3.5em;
     width: 3.5em;
     border-radius: 50%;
+
     &-prim {
       background-color: $primary-color;
     }
+
     &-second {
       background-color: $secondary-color;
     }
