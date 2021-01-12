@@ -22,9 +22,6 @@ export const syncUsers = /* GraphQL */ `
         mail
         phone
         age
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
@@ -46,9 +43,6 @@ export const getUser = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }

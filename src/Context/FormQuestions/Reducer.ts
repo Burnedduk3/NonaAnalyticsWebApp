@@ -1,9 +1,11 @@
+import {addSection, nextSection} from './ActionCreators';
 import {
-  DELETE_SECTION,
   ADD_SECTION,
+  DELETE_SECTION,
+  GET_SECTIONS,
+  NEXT_SECTION,
   SET_CURRENT_CURRENT_SECTION,
   SET_CURRENT_STACK,
-  GET_SECTIONS,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -23,16 +25,8 @@ const FormQuestionsReducer = (
 ):IFormQuestionsContextState => {
   switch (type) {
     case GET_SECTIONS: {
-      if (!payload?.newState) {
-        throw new Error('empty payload new state, not able to add sections');
-      }
-      if (state && state.sections && state.sections.length === 0) {
-        return {
-          sections: payload.newState.sections,
-          currentSection: payload.newState.currentSection,
-          nextSection: payload.newState.nextSection,
-          previous: payload.newState.previous,
-        };
+      if (payload) {
+        return addSection(payload);
       }
       return state;
     }
@@ -50,6 +44,10 @@ const FormQuestionsReducer = (
 
     case SET_CURRENT_CURRENT_SECTION: {
       return initialState;
+    }
+
+    case NEXT_SECTION: {
+      return nextSection(state);
     }
 
     default:

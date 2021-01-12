@@ -8,7 +8,7 @@ export interface IFormQuestionsContextState{
 export interface IFormQuestionsContextPayload{
     section?: ISection;
     sections?: Array<ISection>
-    newState?: IFormQuestionsContextState
+    fetchedSections?: IFormQuestionsContextState
 }
 
 export interface IFormQuestionsContextReducer {
@@ -24,7 +24,7 @@ export interface IFormQuestionsContext{
 export interface ISection{
     id: string
     name: string
-    subSections: any
+    subSections: Array<ISubSection>
 }
 
 export interface ISubSection{
@@ -39,4 +39,10 @@ export interface IQuestion{
     items: Array<string> | null
     question: string
     stack: number
+    category: ICategory
+}
+
+export interface ICategory{
+    id: string,
+    name: 'Open' | 'YesNo' | 'Combo'
 }
