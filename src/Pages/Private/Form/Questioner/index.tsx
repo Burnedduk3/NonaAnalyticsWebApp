@@ -17,13 +17,18 @@ import {
 
 import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
-import {GET_SECTIONS} from '../../../../Context/FormQuestions/ActionTypes';
+import {
+  GET_SECTIONS,
+  NEXT_SECTION,
+} from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from './FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
-  ISection,
+  IQuestion,
+  ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
+import {useHistory} from 'react-router-dom';
 
 
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
@@ -33,25 +38,34 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
   const [responseState, setResponseState] = useState({});
+  const [
+    firstTimeFetchingQuestions,
+    setFirstTimeFetchingQuestions,
+  ] = useState<boolean>(true);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
   const {params} = match;
+  const history = useHistory();
 
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
     setLoading(true);
     try {
-      fetchQuestions(FormApplicationState?.formState).then((data) =>{
+      fetchQuestions(
+          FormApplicationState?.formState,
+          firstTimeFetchingQuestions,
+      ).then((data: any) =>{
         FormApplicationState?.formStateDispatch(
             {
               type: GET_SECTIONS,
               payload: {
-                newState: data,
+                fetchedSections: data,
               },
             });
         setQuestioner();
       });
+      setFirstTimeFetchingQuestions(false);
       setFormQuestions([]);
       setError(false);
       setLoading(false);
@@ -59,7 +73,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       setError(true);
       setLoading(false);
     }
-  }, []);
+  }, [params]);
 
   const setQuestioner = () =>{
     if (FormApplicationState &&
@@ -70,11 +84,10 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       if (questioner) {
         questioner.map((section:ISection) =>{
           if (section.name === params.section) {
-            section.subSections.items.map((subSection: any)=>{
+            section.subSections.map((subSection: ISubSection)=>{
               if (subSection.name === params.subSection) {
-                console.log(subSection);
                 const showableQuestions:Array<any> = [];
-                subSection.questions.items.map((question:any)=>{
+                subSection.questions.map((question: IQuestion)=>{
                   if (question.stack.toString() === params.stack) {
                     showableQuestions.push(question);
                   }
@@ -90,6 +103,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   // TODO Send data to the athena database
   // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
+    let nextStack: number = params.stack? parseInt(params.stack) : 0;
+    let nextSubSection: string = params.subSection? params.subSection : '';
     await Object.entries(responseState).map(async (item) => {
       try {
         await API.graphql(
@@ -113,8 +128,65 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
         console.log(saveToDBError);
       }
     });
+    if (FormApplicationState && FormApplicationState.formState) {
+      const currentSection = FormApplicationState.formState.currentSection;
+      if (currentSection && currentSection.subSections) {
+        for (
+          let index = 0;
+          index < currentSection.subSections.length;
+          index++
+        ) {
+          const subSection = currentSection.subSections[index];
+          if (params.stack !== undefined) {
+            if (
+              subSection.maxStack >= parseInt(params.stack)) {
+              // it changes the stack but not the subsection
+              nextStack = parseInt(params.stack) + 1;
+              break;
+            } else {
+              if (index === currentSection.subSections.length - 1 ) {
+                // Here it changes the Section
+                FormApplicationState.formStateDispatch(
+                    {
+                      type: NEXT_SECTION,
+                      payload: undefined,
+                    });
+                nextStack = 0;
+                if (
+                  FormApplicationState &&
+                    FormApplicationState.formState &&
+                    FormApplicationState.formState.currentSection &&
+                    FormApplicationState.formState.currentSection.subSections
+                ) {
+                  nextSubSection = FormApplicationState.
+                      formState.
+                      currentSection.
+                      subSections[0].
+                      name;
+                  nextStack = 0;
+                  break;
+                }
+              } else {
+                if (subSection.name === params.subSection) {
+                  console.log(subSection.name === params.subSection);
+                  console.log(index);
+                  nextSubSection = currentSection.subSections[index + 1].name;
+                  nextStack = 0;
+                  break;
+                }
+              }
+            }
+          }
+        }
+        currentSection.subSections.map((subSection: ISubSection, index)=>{
+        });
+        history.push(
+            // eslint-disable-next-line max-len
+            `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
+        );
+      }
+    }
   };
-  console.log(responseState);
   return (
     <main className="content-container">
       <LeftBar />

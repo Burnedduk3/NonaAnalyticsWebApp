@@ -1,12 +1,15 @@
 import {
-  IFormQuestionsContextState,
-  ISection,
+  ICategory,
+  IFormQuestionsContextState, IQuestion,
+  ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
 import {API, graphqlOperation} from 'aws-amplify';
 import {getSectionsWithQuestions} from '../OwnQueries';
 
 export const fetchQuestions = async (
     currentState: IFormQuestionsContextState | undefined,
+    firstTime: boolean,
+
 ) => {
   try {
     if (!currentState) {
@@ -21,40 +24,76 @@ export const fetchQuestions = async (
             databaseQuestions.data &&
             databaseQuestions.data.listSections
     ) {
-      const questions:Array<any> = databaseQuestions.data.listSections.items;
+      let sections:Array<any> = databaseQuestions.data.listSections.items;
       let currentSection: ISection = {
         id: '',
         name: '',
-        subSections: [],
+        subSections: <ISubSection[]>[],
       };
       let nextSection: ISection = {
         id: '',
         name: '',
-        subSections: [],
+        subSections: <ISubSection[]>[],
       };
       const healthRegex = new RegExp('Health', 'g');
       const LakeNonaRegex = new RegExp('Lake-Nona', 'g');
-      questions.map((item)=>{
-        if (LakeNonaRegex.test(item.name)) {
-          currentSection = item;
-        }
-        if (healthRegex.test(item.name)) {
-          nextSection = item;
-        }
+      sections = sections.map((item)=>{
+        const subSections = item.subSections.items.map(
+            (subSection: any): ISubSection=>{
+              const subSectionQuestions = <IQuestion[]>[];
+              let maxStack = 0;
+              subSection.questions.items.map((dbQuestion: any)=>{
+                const category: ICategory = {
+                  id: dbQuestion.category.id,
+                  name: dbQuestion.category.name,
+                };
+
+                const question: IQuestion = {
+                  category: category,
+                  id: dbQuestion.id,
+                  items: dbQuestion.items,
+                  question: dbQuestion.question,
+                  stack: parseInt(dbQuestion.stack),
+                };
+                if (maxStack < dbQuestion.stack) {
+                  maxStack = dbQuestion.stack;
+                }
+                subSectionQuestions.push(question);
+              });
+              return {
+                id: subSection.id,
+                maxStack: maxStack,
+                name: subSection.name,
+                questions: subSectionQuestions,
+              };
+            });
+
         const section: ISection = {
-          ...item,
+          id: item.id,
+          subSections: subSections,
+          name: item.name,
         };
-        currentState.sections?.push(section);
+        if (LakeNonaRegex.test(section.name)) {
+          currentSection = section;
+        }
+        if (healthRegex.test(section.name)) {
+          nextSection = section;
+        }
+        return section;
+      });
+      if (firstTime) {
         currentState.previous = null;
         currentState.nextSection = nextSection;
         currentState.currentSection = currentSection;
-      });
+      }
+
+      currentState.sections = sections;
       if (currentState) {
         return currentState;
       }
       throw new Error('Error fetching the questions');
     }
   } catch (error) {
-    console.log('error fetching data');
+    console.log(error);
   }
 };
