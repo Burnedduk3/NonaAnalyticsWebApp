@@ -139,7 +139,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
           const subSection = currentSection.subSections[index];
           if (params.stack !== undefined) {
             if (
-              subSection.maxStack >= parseInt(params.stack)) {
+              subSection.maxStack > parseInt(params.stack)) {
               // it changes the stack but not the subsection
               nextStack = parseInt(params.stack) + 1;
               break;
@@ -168,8 +168,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
                 }
               } else {
                 if (subSection.name === params.subSection) {
-                  console.log(subSection.name === params.subSection);
-                  console.log(index);
                   nextSubSection = currentSection.subSections[index + 1].name;
                   nextStack = 0;
                   break;

@@ -1,15 +1,21 @@
 export interface IUserState{
     respondedQuestions: number | 0;
-    name: string | '';
-    email: string | '';
-    phone: string | '';
+    name: string;
+    email: string;
+    phone: string;
+    gender: string;
+    address: string;
+    birthdate: string;
 }
 
 export interface IUserContextPayload{
-    respondedQuestions?: number | 0;
-    name?: string | '';
-    email?: string | '';
-    phone?: string | '';
+    respondedQuestions?: number;
+    name?: string;
+    email?: string;
+    phone?: string;
+    gender?: string;
+    address?: string;
+    birthdate?: string;
 }
 
 export interface IUserContextReducer{

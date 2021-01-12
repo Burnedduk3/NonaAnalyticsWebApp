@@ -60,7 +60,7 @@ export const fetchQuestions = async (
                   maxStack = dbQuestion.stack;
                 }
                 subSectionQuestions.push(question);
-              });
+              }); console.log(maxStack);
               return {
                 id: subSection.id,
                 maxStack: maxStack,
