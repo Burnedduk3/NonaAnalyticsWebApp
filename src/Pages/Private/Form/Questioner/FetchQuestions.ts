@@ -89,7 +89,6 @@ export const fetchQuestions = async (
       }
 
       currentState.sections = sections;
-
       if (currentState) {
         return currentState;
       }
