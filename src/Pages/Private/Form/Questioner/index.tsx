@@ -5,7 +5,7 @@ import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
 import YesNoQuestion from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
-import LeftBar from '../Components/LeftBar';
+import LeftBar from '../Components/LeftBar/src';
 import {createFormQuestion} from '../../../../graphql/mutations';
 import {
   useApplicationState,
@@ -30,6 +30,8 @@ import {
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
+import LadderQuestion from '../Components/LadderQuestion';
+import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 
 
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
@@ -195,6 +197,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
             <Spinner />
           </div>
         )}
+        {/* eslint-disable-next-line max-len */}
         {(!loading && !error) && (
           <>
             {
@@ -233,6 +236,23 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
                           questionId={item.id}
                           setResponse={setResponseState}
                           currentState={responseState}
+                        />
+                      );
+                    }
+                    if (item.category.name === 'Ladder') {
+                      return (
+                        <LadderQuestion
+                          key={item.id}
+                          questionText={item.question}
+                          questionId={item.id}
+                          radioGroup={item.id}
+                          setResponse={setResponseState}
+                          currentState={responseState}
+                          values={
+                            item.items === null?
+                                LadderConstants.default.defaultValue:
+                                item.items
+                          }
                         />
                       );
                     }
