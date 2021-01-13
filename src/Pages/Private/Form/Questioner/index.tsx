@@ -34,10 +34,8 @@ import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 
 
-
-const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
-    {match}:RouteComponentProps<TQuestionerRoute>,
-): JSX.Element =>{
+// eslint-disable-next-line max-len
+const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
@@ -51,7 +49,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
   const userState = useUserState();
   const {params} = match;
   const history = useHistory();
-  
+
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
@@ -189,7 +187,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       }
     }
   };
-
   return (
     <main className="content-container">
       <LeftBar />
