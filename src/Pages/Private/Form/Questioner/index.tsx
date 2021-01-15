@@ -33,10 +33,8 @@ import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
 import saveQuestionsToAurora from './SaveQuestionsToAurora';
 
-
-const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
-    {match}:RouteComponentProps<TQuestionerRoute>,
-): JSX.Element =>{
+// eslint-disable-next-line max-len
+const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
@@ -186,7 +184,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (
       }
     }
   };
-
   return (
     <main className="content-container">
       <LeftBar />

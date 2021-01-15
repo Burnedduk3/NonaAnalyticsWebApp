@@ -1,0 +1,105 @@
+@import '../../../../Global/styles/Colors.scss';
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@800&display=swap");
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
+.Verification-Container {
+  background: $primary-color;
+  display: flex;
+  min-height: 100vh;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  padding-top: 5vh;
+  padding-bottom: 5vh;
+
+  .Logo-Container img {
+    min-width: 200px;
+    width: 20vw;
+  }
+
+  .Verification-Card {
+    margin: auto 10vw;
+    background: $whiter-background;
+    display: flex;
+    flex-direction: column;
+    min-width: 350px;
+    width: 40vw;
+    min-height: 60vh;
+    border-radius: 45px;
+    justify-content: space-around;
+    align-items: center;
+
+    .go-back-container {
+      cursor: pointer;
+      color: #5c5c5c;
+      font-size: 0.8em;
+      margin-top: 4%;
+      margin-right: auto;
+
+      i {
+        margin: auto 2em;
+      }
+
+      p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+      }
+    }
+
+    h2 {
+      color: $primary-color;
+      font-family: "Poppins", sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+    .text {
+      margin: auto 5vh;
+
+      p {
+        font-family: "Poppins", sans-serif;
+        font-weight: 200;
+        font-size: 0.9em;
+      }
+      a {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: $primary-color;
+        text-decoration: none;
+      }
+    }
+
+    .resend {
+      margin: 5vh auto;
+      min-width: 350px;
+      width: 40vw;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+
+      h4 {
+        font-family: "Poppins", sans-serif;
+        font-weight: 400;
+        color: $text-color;
+      }
+
+      button {
+        cursor: pointer;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 80%;
+        height: 3em;
+        border-radius: 15px;
+        background: $primary-color 0% 0% no-repeat padding-box;
+        box-shadow: 0 0 15px #00577687;
+        font-family: "Poppins", sans-serif;
+        color: $whiter-background;
+        border: none;
+        outline: none;
+        font-weight: 700;
+        text-transform: uppercase;
+        font-size: 1em;
+      }
+    }
+
+  }
+}
