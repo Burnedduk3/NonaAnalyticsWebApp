@@ -12,6 +12,7 @@ export const initialState: IUserState = {
   birthdate: '',
   gender: '',
   currentForm: '',
+  usernameID: '',
 };
 
 const userReducer = (

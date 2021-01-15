@@ -7,6 +7,7 @@ export interface IUserState{
     address: string;
     birthdate: string;
     currentForm: string;
+    usernameID: string;
 }
 
 export interface IUserContextPayload{
@@ -18,6 +19,7 @@ export interface IUserContextPayload{
     address?: string;
     birthdate?: string;
     currentForm?: string;
+    usernameID?: string;
 }
 
 export interface IUserContextReducer{

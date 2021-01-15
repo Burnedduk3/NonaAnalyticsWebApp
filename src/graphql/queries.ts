@@ -2,74 +2,145 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncUsers = /* GraphQL */ `
-  query SyncUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncUsers(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
+export const getDemographicInfo = /* GraphQL */ `
+  query GetDemographicInfo($id: Int!) {
+    getDemographicInfo(id: $id) {
+      id
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
     }
   }
 `;
-export const getUser = /* GraphQL */ `
-  query GetUser($id: ID!) {
-    getUser(id: $id) {
+export const listDemographicInfos = /* GraphQL */ `
+  query ListDemographicInfos {
+    listDemographicInfos {
+      id
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
+    }
+  }
+`;
+export const getUserinfo = /* GraphQL */ `
+  query GetUserinfo($id: Int!) {
+    getUSERINFO(id: $id) {
       id
       name
-      lastname
-      mail
       phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      createdAt
-      updatedAt
+      email
     }
   }
 `;
-export const listUsers = /* GraphQL */ `
-  query ListUsers(
-    $filter: ModelUserFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listUsers(filter: $filter, limit: $limit, nextToken: $nextToken) {
-      items {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
+export const listUserinfOs = /* GraphQL */ `
+  query ListUserinfOs {
+    listUSERINFOs {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+export const getEmployment = /* GraphQL */ `
+  query GetEmployment($userid: String!) {
+    getEmployment(userid: $userid) {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const listEmployments = /* GraphQL */ `
+  query ListEmployments {
+    listEmployments {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const getHealthBehaviors = /* GraphQL */ `
+  query GetHealthBehaviors($userid: String!) {
+    getHealthBehaviors(userid: $userid) {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const listHealthBehaviorss = /* GraphQL */ `
+  query ListHealthBehaviorss {
+    listHealthBehaviorss {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const getOralHealth = /* GraphQL */ `
+  query GetOralHealth($userid: String!) {
+    getOralHealth(userid: $userid) {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
+    }
+  }
+`;
+export const listOralHealths = /* GraphQL */ `
+  query ListOralHealths {
+    listOralHealths {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
     }
   }
 `;
@@ -88,6 +159,7 @@ export const syncForms = /* GraphQL */ `
     ) {
       items {
         id
+        UserID
         finished
         _version
         _deleted
@@ -108,19 +180,7 @@ export const getForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
       _version
       _deleted
@@ -139,6 +199,7 @@ export const listForms = /* GraphQL */ `
     listForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        UserID
         finished
         _version
         _deleted
@@ -196,6 +257,7 @@ export const getFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        UserID
         finished
         _version
         _deleted
