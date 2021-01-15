@@ -4,4 +4,3 @@ export default {
   linkText: 'Login',
   backButton: '   Back to Nona Analytics',
 };
-

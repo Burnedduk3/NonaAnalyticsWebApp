@@ -2,9 +2,9 @@ import React from 'react';
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import './styles.scss';
-import colors from '../../../../../Global/js/colors';
-import logo from '../../../../../assets/Logos/logo.png';
-import DropDownComponent from './DropDown';
+import colors from '../../../../../../Global/js/colors';
+import logo from '../../../../../../assets/Logos/logo.png';
+import DropDownComponent from '../DropDown';
 import LeftBarText from './CONSTANTS';
 
 const LeftBar = () => {

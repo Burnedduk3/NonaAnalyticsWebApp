@@ -21,7 +21,6 @@ const Home: React.FC = (): JSX.Element => {
   return (
     <>
       <div className="our-mission">
-
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>

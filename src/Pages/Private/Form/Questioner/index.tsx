@@ -1,12 +1,10 @@
-import {API, graphqlOperation} from 'aws-amplify';
 import React, {useEffect, useState} from 'react';
 import dropConsole, {LogLevel} from '../../../../utils/DropConsole';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
 import YesNoQuestion from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
-import LeftBar from '../Components/LeftBar';
-import {createFormQuestion} from '../../../../graphql/mutations';
+import LeftBar from '../Components/LeftBar/src';
 import {
   useApplicationState,
 } from '../../../../Context/ApplicationState/Provider';
@@ -30,7 +28,10 @@ import {
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
-
+import LadderQuestion from '../Components/LadderQuestion';
+import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
+import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
+import saveQuestionsToAurora from './SaveQuestionsToAurora';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -104,23 +105,21 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   // TODO Send data to the athena database
   // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
-    let nextStack: number = params.stack? parseInt(params.stack) : 0;
-    let nextSubSection: string = params.subSection? params.subSection : '';
+    const {params} = match;
+    const {subSection, stack} = params;
+    let nextStack: number = stack? parseInt(stack) : 0;
+    let nextSubSection: string = subSection? subSection : '';
+    if (subSection === 'Demographics' && stack && parseInt(stack) === 0) {
+      saveQuestionsToAurora(responseState);
+    }
     await Object.entries(responseState).map(async (item) => {
       try {
-        await API.graphql(
-            graphqlOperation(
-                createFormQuestion,
-                {
-                  input: {
-                    // eslint-disable-next-line max-len
-                    formQuestionFormId: userState?.userState.currentForm, // TODO HERE
-                    formQuestionQuestionId: item[0],
-                    response: item[1],
-                  },
-                },
-            ),
-        );
+        const [questionID, questionResponse] = item;
+        saveQuestionsToDynamo(
+            questionID,
+            questionResponse,
+            userState?.userState.currentForm,
+        ).then();
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
@@ -194,6 +193,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             <Spinner />
           </div>
         )}
+        {/* eslint-disable-next-line max-len */}
         {(!loading && !error) && (
           <>
             {
@@ -232,6 +232,23 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           questionId={item.id}
                           setResponse={setResponseState}
                           currentState={responseState}
+                        />
+                      );
+                    }
+                    if (item.category.name === 'Ladder') {
+                      return (
+                        <LadderQuestion
+                          key={item.id}
+                          questionText={item.question}
+                          questionId={item.id}
+                          radioGroup={item.id}
+                          setResponse={setResponseState}
+                          currentState={responseState}
+                          values={
+                            item.items === null?
+                                LadderConstants.default.defaultValue:
+                                item.items
+                          }
                         />
                       );
                     }

@@ -4,6 +4,7 @@ export interface IMilestone{
 }
 
 /**
+ * The milestones that would
  *  that will be shown in the page.
  *  */
 export class MilestoneClass {
