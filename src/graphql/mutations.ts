@@ -2,75 +2,232 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const createUser = /* GraphQL */ `
-  mutation CreateUser(
-    $input: CreateUserInput!
-    $condition: ModelUserConditionInput
-  ) {
-    createUser(input: $input, condition: $condition) {
+export const deleteDemographicInfo = /* GraphQL */ `
+  mutation DeleteDemographicInfo($id: Int!) {
+    deleteDemographicInfo(id: $id) {
       id
-      name
-      lastname
-      mail
-      phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
     }
   }
 `;
-export const updateUser = /* GraphQL */ `
-  mutation UpdateUser(
-    $input: UpdateUserInput!
-    $condition: ModelUserConditionInput
+export const createDemographicInfo = /* GraphQL */ `
+  mutation CreateDemographicInfo(
+    $createDemographicInfoInput: CreateDemographicInfoInput!
   ) {
-    updateUser(input: $input, condition: $condition) {
+    createDemographicInfo(
+      createDemographicInfoInput: $createDemographicInfoInput
+    ) {
       id
-      name
-      lastname
-      mail
-      phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
     }
   }
 `;
-export const deleteUser = /* GraphQL */ `
-  mutation DeleteUser(
-    $input: DeleteUserInput!
-    $condition: ModelUserConditionInput
+export const updateDemographicInfo = /* GraphQL */ `
+  mutation UpdateDemographicInfo(
+    $updateDemographicInfoInput: UpdateDemographicInfoInput!
   ) {
-    deleteUser(input: $input, condition: $condition) {
+    updateDemographicInfo(
+      updateDemographicInfoInput: $updateDemographicInfoInput
+    ) {
+      id
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
+    }
+  }
+`;
+export const deleteUserinfo = /* GraphQL */ `
+  mutation DeleteUserinfo($id: Int!) {
+    deleteUSERINFO(id: $id) {
       id
       name
-      lastname
-      mail
       phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+      email
+    }
+  }
+`;
+export const createUserinfo = /* GraphQL */ `
+  mutation CreateUserinfo($createUSERINFOInput: CreateUSERINFOInput!) {
+    createUSERINFO(createUSERINFOInput: $createUSERINFOInput) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+export const updateUserinfo = /* GraphQL */ `
+  mutation UpdateUserinfo($updateUSERINFOInput: UpdateUSERINFOInput!) {
+    updateUSERINFO(updateUSERINFOInput: $updateUSERINFOInput) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+export const deleteEmployment = /* GraphQL */ `
+  mutation DeleteEmployment($userid: String!) {
+    deleteEmployment(userid: $userid) {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const createEmployment = /* GraphQL */ `
+  mutation CreateEmployment($createEmploymentInput: CreateEmploymentInput!) {
+    createEmployment(createEmploymentInput: $createEmploymentInput) {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const updateEmployment = /* GraphQL */ `
+  mutation UpdateEmployment($updateEmploymentInput: UpdateEmploymentInput!) {
+    updateEmployment(updateEmploymentInput: $updateEmploymentInput) {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const deleteHealthBehaviors = /* GraphQL */ `
+  mutation DeleteHealthBehaviors($userid: String!) {
+    deleteHealthBehaviors(userid: $userid) {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const createHealthBehaviors = /* GraphQL */ `
+  mutation CreateHealthBehaviors(
+    $createHealthBehaviorsInput: CreateHealthBehaviorsInput!
+  ) {
+    createHealthBehaviors(
+      createHealthBehaviorsInput: $createHealthBehaviorsInput
+    ) {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const updateHealthBehaviors = /* GraphQL */ `
+  mutation UpdateHealthBehaviors(
+    $updateHealthBehaviorsInput: UpdateHealthBehaviorsInput!
+  ) {
+    updateHealthBehaviors(
+      updateHealthBehaviorsInput: $updateHealthBehaviorsInput
+    ) {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const deleteOralHealth = /* GraphQL */ `
+  mutation DeleteOralHealth($userid: String!) {
+    deleteOralHealth(userid: $userid) {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
+    }
+  }
+`;
+export const createOralHealth = /* GraphQL */ `
+  mutation CreateOralHealth($createOralHealthInput: CreateOralHealthInput!) {
+    createOralHealth(createOralHealthInput: $createOralHealthInput) {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
+    }
+  }
+`;
+export const updateOralHealth = /* GraphQL */ `
+  mutation UpdateOralHealth($updateOralHealthInput: UpdateOralHealthInput!) {
+    updateOralHealth(updateOralHealthInput: $updateOralHealthInput) {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
     }
   }
 `;
@@ -85,16 +242,7 @@ export const createForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
       createdAt
       updatedAt
@@ -112,23 +260,9 @@ export const updateForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -145,23 +279,9 @@ export const deleteForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -180,15 +300,23 @@ export const createFormQuestion = /* GraphQL */ `
         question
         stack
         items
+ 
+ 
+        
         createdAt
         updatedAt
       }
       form {
         id
+        UserID
         finished
+ 
+ 
+        
         createdAt
         updatedAt
       }
+      
       createdAt
       updatedAt
     }
@@ -207,24 +335,23 @@ export const updateFormQuestion = /* GraphQL */ `
         question
         stack
         items
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
       form {
         id
+        UserID
         finished
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -243,24 +370,23 @@ export const deleteFormQuestion = /* GraphQL */ `
         question
         stack
         items
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
       form {
         id
+        UserID
         finished
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -282,25 +408,16 @@ export const createQuestion = /* GraphQL */ `
       category {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       items
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -322,25 +439,20 @@ export const updateQuestion = /* GraphQL */ `
       category {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
       items
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -362,25 +474,23 @@ export const deleteQuestion = /* GraphQL */ `
       category {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
       items
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -398,9 +508,7 @@ export const createCategory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -418,9 +526,7 @@ export const updateCategory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -438,9 +544,7 @@ export const deleteCategory = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -458,9 +562,7 @@ export const createSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -478,9 +580,7 @@ export const updateSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -498,9 +598,7 @@ export const deleteSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -517,9 +615,9 @@ export const createSubSection = /* GraphQL */ `
       section {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
@@ -527,9 +625,7 @@ export const createSubSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -546,9 +642,9 @@ export const updateSubSection = /* GraphQL */ `
       section {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
@@ -556,9 +652,7 @@ export const updateSubSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }
@@ -575,9 +669,9 @@ export const deleteSubSection = /* GraphQL */ `
       section {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+ 
+ 
+        
         createdAt
         updatedAt
       }
@@ -585,9 +679,7 @@ export const deleteSubSection = /* GraphQL */ `
         nextToken
         startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
+      
       createdAt
       updatedAt
     }

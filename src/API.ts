@@ -2,25 +2,131 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateUserInput = {
-  id?: string | null,
+export type CreateDemographicInfoInput = {
+  id: number,
+  bornInUSA: number,
+  yearsInFl: number,
+  latinx?: number | null,
+  race?: string | null,
+  education?: string | null,
+  maritalstatus?: string | null,
+  livingWithPartner?: number | null,
+  biologicalChildren?: number | null,
+  stepChildren?: number | null,
+  underageChildren?: number | null,
+  gender?: string | null,
+  pregnant?: number | null,
+};
+
+export type UpdateDemographicInfoInput = {
+  id: number,
+  bornInUSA?: number | null,
+  yearsInFl?: number | null,
+  latinx?: number | null,
+  race?: string | null,
+  education?: string | null,
+  maritalstatus?: string | null,
+  livingWithPartner?: number | null,
+  biologicalChildren?: number | null,
+  stepChildren?: number | null,
+  underageChildren?: number | null,
+  gender?: string | null,
+  pregnant?: number | null,
+};
+
+export type CreateUSERINFOInput = {
+  id: number,
   name: string,
-  lastname: string,
-  mail: string,
   phone: string,
-  age: number,
+  email: string,
+};
+
+export type UpdateUSERINFOInput = {
+  id: number,
+  name?: string | null,
+  phone?: string | null,
+  email?: string | null,
+};
+
+export type CreateEmploymentInput = {
+  k1_work?: number | null,
+  k1_willing_adress?: number | null,
+  k1_employer_st?: string | null,
+  k1_employer_city?: string | null,
+  k1_employer_zip?: string | null,
+  k1_employment?: number | null,
+  userid: string,
+};
+
+export type UpdateEmploymentInput = {
+  k1_work?: number | null,
+  k1_willing_adress?: number | null,
+  k1_employer_st?: string | null,
+  k1_employer_city?: string | null,
+  k1_employer_zip?: string | null,
+  k1_employment?: number | null,
+  userid: string,
+};
+
+export type CreateHealthBehaviorsInput = {
+  c1_regular_doctor?: number | null,
+  c1_visits_2yr?: number | null,
+  c3_num_medications?: number | null,
+  c3_vitamins?: number | null,
+  c4_med_time?: number | null,
+  c4_med_day?: number | null,
+  c4_med_forget?: number | null,
+  c4_med_stop?: number | null,
+  userid: string,
+};
+
+export type UpdateHealthBehaviorsInput = {
+  c1_regular_doctor?: number | null,
+  c1_visits_2yr?: number | null,
+  c3_num_medications?: number | null,
+  c3_vitamins?: number | null,
+  c4_med_time?: number | null,
+  c4_med_day?: number | null,
+  c4_med_forget?: number | null,
+  c4_med_stop?: number | null,
+  userid: string,
+};
+
+export type CreateOralHealthInput = {
+  d1_brush_teeth?: number | null,
+  d1_use_floss?: number | null,
+  d1_use_mouthwash?: number | null,
+  d2_teethbrush_per_day?: number | null,
+  d2_use_cleaning_agent?: number | null,
+  d3_floss_per_day?: number | null,
+  d4_mouthwash_per_day?: number | null,
+  userid: string,
+};
+
+export type UpdateOralHealthInput = {
+  d1_brush_teeth?: number | null,
+  d1_use_floss?: number | null,
+  d1_use_mouthwash?: number | null,
+  d2_teethbrush_per_day?: number | null,
+  d2_use_cleaning_agent?: number | null,
+  d3_floss_per_day?: number | null,
+  d4_mouthwash_per_day?: number | null,
+  userid: string,
+};
+
+export type CreateFormInput = {
+  id?: string | null,
+  UserID: string,
+  finished?: boolean | null,
   _version?: number | null,
 };
 
-export type ModelUserConditionInput = {
-  name?: ModelStringInput | null,
-  lastname?: ModelStringInput | null,
-  mail?: ModelStringInput | null,
-  phone?: ModelStringInput | null,
-  age?: ModelIntInput | null,
-  and?: Array< ModelUserConditionInput | null > | null,
-  or?: Array< ModelUserConditionInput | null > | null,
-  not?: ModelUserConditionInput | null,
+export type ModelFormConditionInput = {
+  UserID?: ModelStringInput | null,
+  finished?: ModelBooleanInput | null,
+  and?: Array< ModelFormConditionInput | null > | null,
+  or?: Array< ModelFormConditionInput | null > | null,
+  not?: ModelFormConditionInput | null,
 };
 
 export type ModelStringInput = {
@@ -63,47 +169,6 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
-export type ModelIntInput = {
-  ne?: number | null,
-  eq?: number | null,
-  le?: number | null,
-  lt?: number | null,
-  ge?: number | null,
-  gt?: number | null,
-  between?: Array< number | null > | null,
-  attributeExists?: boolean | null,
-  attributeType?: ModelAttributeTypes | null,
-};
-
-export type UpdateUserInput = {
-  id: string,
-  name?: string | null,
-  lastname?: string | null,
-  mail?: string | null,
-  phone?: string | null,
-  age?: number | null,
-  _version?: number | null,
-};
-
-export type DeleteUserInput = {
-  id?: string | null,
-  _version?: number | null,
-};
-
-export type CreateFormInput = {
-  id?: string | null,
-  finished?: boolean | null,
-  _version?: number | null,
-  formUserId?: string | null,
-};
-
-export type ModelFormConditionInput = {
-  finished?: ModelBooleanInput | null,
-  and?: Array< ModelFormConditionInput | null > | null,
-  or?: Array< ModelFormConditionInput | null > | null,
-  not?: ModelFormConditionInput | null,
-};
-
 export type ModelBooleanInput = {
   ne?: boolean | null,
   eq?: boolean | null,
@@ -113,9 +178,9 @@ export type ModelBooleanInput = {
 
 export type UpdateFormInput = {
   id: string,
+  UserID?: string | null,
   finished?: boolean | null,
   _version?: number | null,
-  formUserId?: string | null,
 };
 
 export type DeleteFormInput = {
@@ -168,6 +233,18 @@ export type ModelQuestionConditionInput = {
   and?: Array< ModelQuestionConditionInput | null > | null,
   or?: Array< ModelQuestionConditionInput | null > | null,
   not?: ModelQuestionConditionInput | null,
+};
+
+export type ModelIntInput = {
+  ne?: number | null,
+  eq?: number | null,
+  le?: number | null,
+  lt?: number | null,
+  ge?: number | null,
+  gt?: number | null,
+  between?: Array< number | null > | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
 };
 
 export type UpdateQuestionInput = {
@@ -259,16 +336,13 @@ export type DeleteSubSectionInput = {
   _version?: number | null,
 };
 
-export type ModelUserFilterInput = {
+export type ModelFormFilterInput = {
   id?: ModelIDInput | null,
-  name?: ModelStringInput | null,
-  lastname?: ModelStringInput | null,
-  mail?: ModelStringInput | null,
-  phone?: ModelStringInput | null,
-  age?: ModelIntInput | null,
-  and?: Array< ModelUserFilterInput | null > | null,
-  or?: Array< ModelUserFilterInput | null > | null,
-  not?: ModelUserFilterInput | null,
+  UserID?: ModelStringInput | null,
+  finished?: ModelBooleanInput | null,
+  and?: Array< ModelFormFilterInput | null > | null,
+  or?: Array< ModelFormFilterInput | null > | null,
+  not?: ModelFormFilterInput | null,
 };
 
 export type ModelIDInput = {
@@ -285,14 +359,6 @@ export type ModelIDInput = {
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
   size?: ModelSizeInput | null,
-};
-
-export type ModelFormFilterInput = {
-  id?: ModelIDInput | null,
-  finished?: ModelBooleanInput | null,
-  and?: Array< ModelFormFilterInput | null > | null,
-  or?: Array< ModelFormFilterInput | null > | null,
-  not?: ModelFormFilterInput | null,
 };
 
 export type ModelFormQuestionFilterInput = {
@@ -337,84 +403,276 @@ export type ModelSubSectionFilterInput = {
   not?: ModelSubSectionFilterInput | null,
 };
 
-export type CreateUserMutationVariables = {
-  input: CreateUserInput,
-  condition?: ModelUserConditionInput | null,
+export type DeleteDemographicInfoMutationVariables = {
+  id: number,
 };
 
-export type CreateUserMutation = {
-  createUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    lastname: string,
-    mail: string,
-    phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+export type DeleteDemographicInfoMutation = {
+  deleteDemographicInfo:  {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
   } | null,
 };
 
-export type UpdateUserMutationVariables = {
-  input: UpdateUserInput,
-  condition?: ModelUserConditionInput | null,
+export type CreateDemographicInfoMutationVariables = {
+  createDemographicInfoInput: CreateDemographicInfoInput,
 };
 
-export type UpdateUserMutation = {
-  updateUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    lastname: string,
-    mail: string,
-    phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+export type CreateDemographicInfoMutation = {
+  createDemographicInfo:  {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
   } | null,
 };
 
-export type DeleteUserMutationVariables = {
-  input: DeleteUserInput,
-  condition?: ModelUserConditionInput | null,
+export type UpdateDemographicInfoMutationVariables = {
+  updateDemographicInfoInput: UpdateDemographicInfoInput,
 };
 
-export type DeleteUserMutation = {
-  deleteUser:  {
-    __typename: "User",
-    id: string,
+export type UpdateDemographicInfoMutation = {
+  updateDemographicInfo:  {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
+  } | null,
+};
+
+export type DeleteUserinfoMutationVariables = {
+  id: number,
+};
+
+export type DeleteUserinfoMutation = {
+  deleteUSERINFO:  {
+    __typename: "USERINFO",
+    id: number,
     name: string,
-    lastname: string,
-    mail: string,
     phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+    email: string,
+  } | null,
+};
+
+export type CreateUserinfoMutationVariables = {
+  createUSERINFOInput: CreateUSERINFOInput,
+};
+
+export type CreateUserinfoMutation = {
+  createUSERINFO:  {
+    __typename: "USERINFO",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null,
+};
+
+export type UpdateUserinfoMutationVariables = {
+  updateUSERINFOInput: UpdateUSERINFOInput,
+};
+
+export type UpdateUserinfoMutation = {
+  updateUSERINFO:  {
+    __typename: "USERINFO",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null,
+};
+
+export type DeleteEmploymentMutationVariables = {
+  userid: string,
+};
+
+export type DeleteEmploymentMutation = {
+  deleteEmployment:  {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
+  } | null,
+};
+
+export type CreateEmploymentMutationVariables = {
+  createEmploymentInput: CreateEmploymentInput,
+};
+
+export type CreateEmploymentMutation = {
+  createEmployment:  {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
+  } | null,
+};
+
+export type UpdateEmploymentMutationVariables = {
+  updateEmploymentInput: UpdateEmploymentInput,
+};
+
+export type UpdateEmploymentMutation = {
+  updateEmployment:  {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
+  } | null,
+};
+
+export type DeleteHealthBehaviorsMutationVariables = {
+  userid: string,
+};
+
+export type DeleteHealthBehaviorsMutation = {
+  deleteHealthBehaviors:  {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null,
+};
+
+export type CreateHealthBehaviorsMutationVariables = {
+  createHealthBehaviorsInput: CreateHealthBehaviorsInput,
+};
+
+export type CreateHealthBehaviorsMutation = {
+  createHealthBehaviors:  {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null,
+};
+
+export type UpdateHealthBehaviorsMutationVariables = {
+  updateHealthBehaviorsInput: UpdateHealthBehaviorsInput,
+};
+
+export type UpdateHealthBehaviorsMutation = {
+  updateHealthBehaviors:  {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null,
+};
+
+export type DeleteOralHealthMutationVariables = {
+  userid: string,
+};
+
+export type DeleteOralHealthMutation = {
+  deleteOralHealth:  {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
+  } | null,
+};
+
+export type CreateOralHealthMutationVariables = {
+  createOralHealthInput: CreateOralHealthInput,
+};
+
+export type CreateOralHealthMutation = {
+  createOralHealth:  {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
+  } | null,
+};
+
+export type UpdateOralHealthMutationVariables = {
+  updateOralHealthInput: UpdateOralHealthInput,
+};
+
+export type UpdateOralHealthMutation = {
+  updateOralHealth:  {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
   } | null,
 };
 
@@ -432,20 +690,7 @@ export type CreateFormMutation = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -469,20 +714,7 @@ export type UpdateFormMutation = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -506,20 +738,7 @@ export type DeleteFormMutation = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -554,6 +773,7 @@ export type CreateFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -594,6 +814,7 @@ export type UpdateFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -634,6 +855,7 @@ export type DeleteFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1021,87 +1243,166 @@ export type DeleteSubSectionMutation = {
   } | null,
 };
 
-export type SyncUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
-  lastSync?: number | null,
+export type GetDemographicInfoQueryVariables = {
+  id: number,
 };
 
-export type SyncUsersQuery = {
-  syncUsers:  {
-    __typename: "ModelUserConnection",
-    items:  Array< {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null > | null,
-    nextToken: string | null,
-    startedAt: number | null,
+export type GetDemographicInfoQuery = {
+  getDemographicInfo:  {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
   } | null,
 };
 
-export type GetUserQueryVariables = {
-  id: string,
+export type ListDemographicInfosQuery = {
+  listDemographicInfos:  Array< {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
+  } | null > | null,
 };
 
-export type GetUserQuery = {
-  getUser:  {
-    __typename: "User",
-    id: string,
+export type GetUserinfoQueryVariables = {
+  id: number,
+};
+
+export type GetUserinfoQuery = {
+  getUSERINFO:  {
+    __typename: "USERINFO",
+    id: number,
     name: string,
-    lastname: string,
-    mail: string,
     phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+    email: string,
   } | null,
 };
 
-export type ListUsersQueryVariables = {
-  filter?: ModelUserFilterInput | null,
-  limit?: number | null,
-  nextToken?: string | null,
+export type ListUserinfOsQuery = {
+  listUSERINFOs:  Array< {
+    __typename: "USERINFO",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null > | null,
 };
 
-export type ListUsersQuery = {
-  listUsers:  {
-    __typename: "ModelUserConnection",
-    items:  Array< {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null > | null,
-    nextToken: string | null,
-    startedAt: number | null,
+export type GetEmploymentQueryVariables = {
+  userid: string,
+};
+
+export type GetEmploymentQuery = {
+  getEmployment:  {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
   } | null,
+};
+
+export type ListEmploymentsQuery = {
+  listEmployments:  Array< {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
+  } | null > | null,
+};
+
+export type GetHealthBehaviorsQueryVariables = {
+  userid: string,
+};
+
+export type GetHealthBehaviorsQuery = {
+  getHealthBehaviors:  {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null,
+};
+
+export type ListHealthBehaviorssQuery = {
+  listHealthBehaviorss:  Array< {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null > | null,
+};
+
+export type GetOralHealthQueryVariables = {
+  userid: string,
+};
+
+export type GetOralHealthQuery = {
+  getOralHealth:  {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
+  } | null,
+};
+
+export type ListOralHealthsQuery = {
+  listOralHealths:  Array< {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
+  } | null > | null,
 };
 
 export type SyncFormsQueryVariables = {
@@ -1117,6 +1418,7 @@ export type SyncFormsQuery = {
     items:  Array< {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1142,20 +1444,7 @@ export type GetFormQuery = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -1177,6 +1466,7 @@ export type ListFormsQuery = {
     items:  Array< {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1238,6 +1528,7 @@ export type GetFormQuestionQuery = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1597,69 +1888,74 @@ export type ListSubSectionsQuery = {
   } | null,
 };
 
-export type OnCreateUserSubscription = {
-  onCreateUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    lastname: string,
-    mail: string,
-    phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+export type OnCreateDemographicInfoSubscription = {
+  onCreateDemographicInfo:  {
+    __typename: "DemographicInfo",
+    id: number,
+    bornInUSA: number,
+    yearsInFl: number,
+    latinx: number | null,
+    race: string | null,
+    education: string | null,
+    maritalstatus: string | null,
+    livingWithPartner: number | null,
+    biologicalChildren: number | null,
+    stepChildren: number | null,
+    underageChildren: number | null,
+    gender: string | null,
+    pregnant: number | null,
   } | null,
 };
 
-export type OnUpdateUserSubscription = {
-  onUpdateUser:  {
-    __typename: "User",
-    id: string,
+export type OnCreateUserinfoSubscription = {
+  onCreateUSERINFO:  {
+    __typename: "USERINFO",
+    id: number,
     name: string,
-    lastname: string,
-    mail: string,
     phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+    email: string,
   } | null,
 };
 
-export type OnDeleteUserSubscription = {
-  onDeleteUser:  {
-    __typename: "User",
-    id: string,
-    name: string,
-    lastname: string,
-    mail: string,
-    phone: string,
-    age: number,
-    forms:  {
-      __typename: "ModelFormConnection",
-      nextToken: string | null,
-      startedAt: number | null,
-    } | null,
-    _version: number,
-    _deleted: boolean | null,
-    _lastChangedAt: number,
-    createdAt: string,
-    updatedAt: string,
+export type OnCreateEmploymentSubscription = {
+  onCreateEmployment:  {
+    __typename: "Employment",
+    k1_work: number | null,
+    k1_willing_adress: number | null,
+    k1_employer_st: string | null,
+    k1_employer_city: string | null,
+    k1_employer_zip: string | null,
+    k1_employment: number | null,
+    userid: string,
+  } | null,
+};
+
+export type OnCreateHealthBehaviorsSubscription = {
+  onCreateHealthBehaviors:  {
+    __typename: "HealthBehaviors",
+    c1_regular_doctor: number | null,
+    c1_visits_2yr: number | null,
+    c3_num_medications: number | null,
+    c3_vitamins: number | null,
+    c4_med_time: number | null,
+    c4_med_day: number | null,
+    c4_med_forget: number | null,
+    c4_med_stop: number | null,
+    userid: string,
+  } | null,
+};
+
+export type OnCreateOralHealthSubscription = {
+  onCreateOralHealth:  {
+    __typename: "OralHealth",
+    d1_brush_teeth: number | null,
+    d1_use_floss: number | null,
+    d1_use_mouthwash: number | null,
+    d2_teethbrush_per_day: number | null,
+    d2_use_cleaning_agent: number | null,
+    d3_floss_per_day: number | null,
+    d4_mouthwash_per_day: number | null,
+    userid: string,
   } | null,
 };
 
@@ -1672,20 +1968,7 @@ export type OnCreateFormSubscription = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -1704,20 +1987,7 @@ export type OnUpdateFormSubscription = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -1736,20 +2006,7 @@ export type OnDeleteFormSubscription = {
       nextToken: string | null,
       startedAt: number | null,
     } | null,
-    user:  {
-      __typename: "User",
-      id: string,
-      name: string,
-      lastname: string,
-      mail: string,
-      phone: string,
-      age: number,
-      _version: number,
-      _deleted: boolean | null,
-      _lastChangedAt: number,
-      createdAt: string,
-      updatedAt: string,
-    } | null,
+    UserID: string,
     finished: boolean | null,
     _version: number,
     _deleted: boolean | null,
@@ -1779,6 +2036,7 @@ export type OnCreateFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1814,6 +2072,7 @@ export type OnUpdateFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,
@@ -1849,6 +2108,7 @@ export type OnDeleteFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      UserID: string,
       finished: boolean | null,
       _version: number,
       _deleted: boolean | null,

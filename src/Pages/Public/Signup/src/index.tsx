@@ -24,6 +24,11 @@ import birthday from '../../../../assets/Icons/birthday.png';
 import phone from '../../../../assets/Icons/phone.png';
 import mail from '../../../../assets/Icons/mail.png';
 import gender from '../../../../assets/Icons/gender.png';
+import DatePicker from 'react-datepicker';
+
+import 'react-datepicker/dist/react-datepicker.css';
+import InputValidator from '../../../../utils/InputValidator';
+
 
 const initialInputState: ISignUp = {
   password: '',
@@ -38,6 +43,7 @@ const initialInputState: ISignUp = {
 
 const SignUpPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
+  const [startDate, setStartDate] = useState(new Date());
   const applicationState = useApplicationState();
   const history = useHistory();
 
@@ -51,38 +57,71 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   };
 
   const handleInput = (event:ChangeEvent<HTMLInputElement>) => {
-    if (event.target.name === 'address') {
-      setPageInputs({...pageInputs, address: event.target.value});
-    }
+    try {
+      const name: string = event.target.name.toString();
+      const value: string = event.target.value;
 
-    if (event.target.name === 'birthdate') {
-      setPageInputs({...pageInputs, birthdate: event.target.value});
-    }
+      for (const key of Object.keys(pageInputs)) {
+        if (name === key) {
+          if (name === 'phoneNumber') {
+            if (
+              !InputValidator.checkForOnlyNumbers(
+                  value.toString(),
+                  20)
+            ) {
+              throw new Error('Wrong Input Format');
+            }
+          }
 
-    if (event.target.name === 'email') {
-      setPageInputs({...pageInputs, email: event.target.value});
-    }
+          if (name === 'address') {
+            if (
+              !InputValidator.checkForAlphanumeric(
+                  value,
+                  30,
+              )
+            ) {
+              throw new Error('Wrong Input Format');
+            }
+          }
 
-    if (event.target.name === 'gender') {
-      setPageInputs({...pageInputs, gender: event.target.value});
-    }
+          if (name === 'email') {
+            if (
+              !InputValidator.checkForAlphanumericWithSymbols(value, 50)
+            ) {
+              throw new Error('Wrong Input Format');
+            }
+          }
 
-    if (event.target.name === 'name') {
-      setPageInputs({...pageInputs, name: event.target.value});
-    }
+          if (name === 'name') {
+            if (
+              !InputValidator.chekForString(value, 50)
+            ) {
+              throw new Error('Wrong Input Format');
+            }
+          }
 
-    if (event.target.name === 'phoneNumber') {
-      setPageInputs({...pageInputs, phoneNumber: event.target.value});
-    }
 
-    if (event.target.name === 'password') {
-      setPageInputs({...pageInputs, password: event.target.value});
-    }
-
-    if (event.target.name === 'confirmPassword') {
-      setPageInputs({...pageInputs, confirmPassword: event.target.value});
+          setPageInputs({...pageInputs, [key]: value});
+        }
+      }
+    } catch (e) {
+      console.log(e);
     }
   };
+
+  useEffect(()=>{
+    if (startDate) {
+      try {
+        setPageInputs({
+          ...pageInputs,
+          birthdate:
+              `${startDate.toISOString().split('T')[0].replaceAll('-', '/')}`,
+        });
+      } catch (e) {
+
+      }
+    }
+  }, [startDate]);
 
   const signUp = async () => {
     try {
@@ -105,8 +144,12 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   };
 
   const startSignup = () =>{
-    signUp().then();
+    const {password, confirmPassword} = pageInputs;
+    if (password === confirmPassword) {
+      signUp();
+    }
   };
+
 
   return (
     <main className="Sign-up-Body">
@@ -135,6 +178,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
             <img src={address} alt="Address Icons8"/>
             <input type="text"
               name='address'
+              value={pageInputs.address}
               placeholder="Address"
               onChange={handleInput}
             />
@@ -142,17 +186,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
 
           <label htmlFor="birthdate">
             <img src={birthday} alt="Birthday Icons8"/>
-            <input type="text"
-              name='birthdate'
-              placeholder='Birthday'
-              onChange={handleInput}
+            <DatePicker
+              selected={startDate}
+              onChange={(date: Date) => setStartDate(date)}
             />
           </label>
+
 
           <label htmlFor="email">
             <img src={mail} alt="Mail Icons8"/>
             <input type="text"
               name='email'
+              value={pageInputs.email}
               placeholder='Email'
               onChange={handleInput}
             />
@@ -171,6 +216,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
             <img src={user} alt="User Icons8"/>
             <input type="text"
               name='name'
+              value={pageInputs.name}
               placeholder='Name'
               onChange={handleInput}
             />
@@ -182,6 +228,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
               name='phoneNumber'
               placeholder='PhoneNumber'
               onChange={handleInput}
+              value={pageInputs.phoneNumber}
             />
           </label>
 
@@ -191,6 +238,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
               name='password'
               placeholder='Password'
               onChange={handleInput}
+              value={pageInputs.password}
             />
           </label>
 
@@ -200,6 +248,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
               name='confirmPassword'
               placeholder='Confirm Password'
               onChange={handleInput}
+              value={pageInputs.confirmPassword}
             />
           </label>
           <button type="button" onClick={startSignup}>

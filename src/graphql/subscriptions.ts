@@ -2,66 +2,74 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateUser = /* GraphQL */ `
-  subscription OnCreateUser {
-    onCreateUser {
+export const onCreateDemographicInfo = /* GraphQL */ `
+  subscription OnCreateDemographicInfo {
+    onCreateDemographicInfo {
       id
-      name
-      lastname
-      mail
-      phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+      bornInUSA
+      yearsInFl
+      latinx
+      race
+      education
+      maritalstatus
+      livingWithPartner
+      biologicalChildren
+      stepChildren
+      underageChildren
+      gender
+      pregnant
     }
   }
 `;
-export const onUpdateUser = /* GraphQL */ `
-  subscription OnUpdateUser {
-    onUpdateUser {
+export const onCreateUserinfo = /* GraphQL */ `
+  subscription OnCreateUserinfo {
+    onCreateUSERINFO {
       id
       name
-      lastname
-      mail
       phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+      email
     }
   }
 `;
-export const onDeleteUser = /* GraphQL */ `
-  subscription OnDeleteUser {
-    onDeleteUser {
-      id
-      name
-      lastname
-      mail
-      phone
-      age
-      forms {
-        nextToken
-        startedAt
-      }
-      _version
-      _deleted
-      _lastChangedAt
-      createdAt
-      updatedAt
+export const onCreateEmployment = /* GraphQL */ `
+  subscription OnCreateEmployment {
+    onCreateEmployment {
+      k1_work
+      k1_willing_adress
+      k1_employer_st
+      k1_employer_city
+      k1_employer_zip
+      k1_employment
+      userid
+    }
+  }
+`;
+export const onCreateHealthBehaviors = /* GraphQL */ `
+  subscription OnCreateHealthBehaviors {
+    onCreateHealthBehaviors {
+      c1_regular_doctor
+      c1_visits_2yr
+      c3_num_medications
+      c3_vitamins
+      c4_med_time
+      c4_med_day
+      c4_med_forget
+      c4_med_stop
+      userid
+    }
+  }
+`;
+export const onCreateOralHealth = /* GraphQL */ `
+  subscription OnCreateOralHealth {
+    onCreateOralHealth {
+      d1_brush_teeth
+      d1_use_floss
+      d1_use_mouthwash
+      d2_teethbrush_per_day
+      d2_use_cleaning_agent
+      d3_floss_per_day
+      d4_mouthwash_per_day
+      userid
     }
   }
 `;
@@ -73,19 +81,7 @@ export const onCreateForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
       _version
       _deleted
@@ -103,19 +99,7 @@ export const onUpdateForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
       _version
       _deleted
@@ -133,19 +117,7 @@ export const onDeleteForm = /* GraphQL */ `
         nextToken
         startedAt
       }
-      user {
-        id
-        name
-        lastname
-        mail
-        phone
-        age
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
+      UserID
       finished
       _version
       _deleted
@@ -173,6 +145,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        UserID
         finished
         _version
         _deleted
@@ -206,6 +179,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        UserID
         finished
         _version
         _deleted
@@ -239,6 +213,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        UserID
         finished
         _version
         _deleted
