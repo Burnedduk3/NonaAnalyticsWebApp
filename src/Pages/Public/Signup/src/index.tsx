@@ -27,7 +27,7 @@ import gender from '../../../../assets/Icons/gender.png';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-import InputValidator from '../../../../utils/InputValidator';
+// import InputValidator from '../../../../utils/InputValidator';
 
 
 const initialInputState: ISignUp = {
@@ -63,42 +63,42 @@ const SignUpPage : React.FC = (): JSX.Element =>{
 
       for (const key of Object.keys(pageInputs)) {
         if (name === key) {
-          if (name === 'phoneNumber') {
-            if (
-              !InputValidator.checkForOnlyNumbers(
-                  value.toString(),
-                  20)
-            ) {
-              throw new Error('Wrong Input Format');
-            }
-          }
-
-          if (name === 'address') {
-            if (
-              !InputValidator.checkForAlphanumeric(
-                  value,
-                  30,
-              )
-            ) {
-              throw new Error('Wrong Input Format');
-            }
-          }
-
-          if (name === 'email') {
-            if (
-              !InputValidator.checkForAlphanumericWithSymbols(value, 50)
-            ) {
-              throw new Error('Wrong Input Format');
-            }
-          }
-
-          if (name === 'name') {
-            if (
-              !InputValidator.chekForString(value, 50)
-            ) {
-              throw new Error('Wrong Input Format');
-            }
-          }
+          // if (name === 'phoneNumber') {
+          //   if (
+          //     !InputValidator.checkForOnlyNumbers(
+          //         value.toString(),
+          //         20)
+          //   ) {
+          //     throw new Error('Wrong Input Format');
+          //   }
+          // }
+          //
+          // if (name === 'address') {
+          //   if (
+          //     !InputValidator.checkForAlphanumeric(
+          //         value,
+          //         30,
+          //     )
+          //   ) {
+          //     throw new Error('Wrong Input Format');
+          //   }
+          // }
+          //
+          // if (name === 'email') {
+          //   if (
+          //     !InputValidator.checkForAlphanumericWithSymbols(value, 50)
+          //   ) {
+          //     throw new Error('Wrong Input Format');
+          //   }
+          // }
+          //
+          // if (name === 'name') {
+          //   if (
+          //     !InputValidator.chekForString(value, 50)
+          //   ) {
+          //     throw new Error('Wrong Input Format');
+          //   }
+          // }
 
 
           setPageInputs({...pageInputs, [key]: value});
