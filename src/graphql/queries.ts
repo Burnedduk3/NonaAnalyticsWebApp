@@ -17,10 +17,6 @@ export const syncForms = /* GraphQL */ `
     ) {
       items {
         id
-        formQuestions {
-          nextToken
-          startedAt
-        }
         UserID
         finished
         _version
@@ -39,15 +35,6 @@ export const getForm = /* GraphQL */ `
     getForm(id: $id) {
       id
       formQuestions {
-        items {
-          id
-          response
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         nextToken
         startedAt
       }
@@ -70,10 +57,6 @@ export const listForms = /* GraphQL */ `
     listForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        formQuestions {
-          nextToken
-          startedAt
-        }
         UserID
         finished
         _version
@@ -103,27 +86,6 @@ export const syncFormQuestions = /* GraphQL */ `
       items {
         id
         response
-        question {
-          id
-          question
-          stack
-          items
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        form {
-          id
-          UserID
-          finished
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -144,28 +106,6 @@ export const getFormQuestion = /* GraphQL */ `
         id
         question
         stack
-        usedForms {
-          nextToken
-          startedAt
-        }
-        category {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         items
         _version
         _deleted
@@ -175,10 +115,6 @@ export const getFormQuestion = /* GraphQL */ `
       }
       form {
         id
-        formQuestions {
-          nextToken
-          startedAt
-        }
         UserID
         finished
         _version
@@ -205,27 +141,6 @@ export const listFormQuestions = /* GraphQL */ `
       items {
         id
         response
-        question {
-          id
-          question
-          stack
-          items
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        form {
-          id
-          UserID
-          finished
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -254,28 +169,6 @@ export const syncQuestions = /* GraphQL */ `
         id
         question
         stack
-        usedForms {
-          nextToken
-          startedAt
-        }
-        category {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         items
         _version
         _deleted
@@ -295,25 +188,12 @@ export const getQuestion = /* GraphQL */ `
       question
       stack
       usedForms {
-        items {
-          id
-          response
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         nextToken
         startedAt
       }
       category {
         id
         name
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -323,19 +203,6 @@ export const getQuestion = /* GraphQL */ `
       subSection {
         id
         name
-        section {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -362,28 +229,6 @@ export const listQuestions = /* GraphQL */ `
         id
         question
         stack
-        usedForms {
-          nextToken
-          startedAt
-        }
-        category {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         items
         _version
         _deleted
@@ -412,10 +257,6 @@ export const syncCategories = /* GraphQL */ `
       items {
         id
         name
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -433,17 +274,6 @@ export const getCategory = /* GraphQL */ `
       id
       name
       questions {
-        items {
-          id
-          question
-          stack
-          items
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         nextToken
         startedAt
       }
@@ -465,10 +295,6 @@ export const listCategorys = /* GraphQL */ `
       items {
         id
         name
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -496,10 +322,6 @@ export const syncSections = /* GraphQL */ `
       items {
         id
         name
-        subSections {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -517,15 +339,6 @@ export const getSection = /* GraphQL */ `
       id
       name
       subSections {
-        items {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         nextToken
         startedAt
       }
@@ -547,10 +360,6 @@ export const listSections = /* GraphQL */ `
       items {
         id
         name
-        subSections {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -578,19 +387,6 @@ export const syncSubSections = /* GraphQL */ `
       items {
         id
         name
-        section {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -610,10 +406,6 @@ export const getSubSection = /* GraphQL */ `
       section {
         id
         name
-        subSections {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
@@ -621,17 +413,6 @@ export const getSubSection = /* GraphQL */ `
         updatedAt
       }
       questions {
-        items {
-          id
-          question
-          stack
-          items
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
         nextToken
         startedAt
       }
@@ -653,19 +434,6 @@ export const listSubSections = /* GraphQL */ `
       items {
         id
         name
-        section {
-          id
-          name
-          _version
-          _deleted
-          _lastChangedAt
-          createdAt
-          updatedAt
-        }
-        questions {
-          nextToken
-          startedAt
-        }
         _version
         _deleted
         _lastChangedAt
