@@ -1,5 +1,5 @@
-import {API, graphqlOperation} from 'aws-amplify';
-import {createDemographicInfo} from '../../../../graphql/mutations';
+// import {API, graphqlOperation} from 'aws-amplify';
+// import {createDemographicInfo} from '../../../../graphql/mutations';
 
 interface tempObject {
     bornInUSA:number,
@@ -31,23 +31,23 @@ const saveQuestionsToAurora = async (
   const {bornInUSA, yearsInFl} = sendToDBObject;
 
   if (bornInUSA && yearsInFl) {
-    const {data, errors}: any = await API.graphql(
-        graphqlOperation(
-            createDemographicInfo,
-            {
-              createDemographicInfoInput: {
-                id: Math.floor(Math.random() * 60) + 1,
-                bornInUSA: bornInUSA,
-                yearsInFl: yearsInFl,
-              },
-            },
-        ),
-    );
-    console.log(data);
-
-    if (errors) {
-      throw new Error('Error sending responses to de Database');
-    }
+    // const {data, errors}: any = await API.graphql(
+    //     graphqlOperation(
+    //         createDemographicInfo,
+    //         {
+    //           createDemographicInfoInput: {
+    //             id: Math.floor(Math.random() * 60) + 1,
+    //             bornInUSA: bornInUSA,
+    //             yearsInFl: yearsInFl,
+    //           },
+    //         },
+    //     ),
+    // );
+    // console.log(data);
+    //
+    // if (errors) {
+    //   throw new Error('Error sending responses to de Database');
+    // }
   } else {
     throw new Error('No Current form ID or subsection to save info');
   }

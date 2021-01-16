@@ -2,82 +2,20 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const onCreateDemographicInfo = /* GraphQL */ `
-  subscription OnCreateDemographicInfo {
-    onCreateDemographicInfo {
-      id
-      bornInUSA
-      yearsInFl
-      latinx
-      race
-      education
-      maritalstatus
-      livingWithPartner
-      biologicalChildren
-      stepChildren
-      underageChildren
-      gender
-      pregnant
-    }
-  }
-`;
-export const onCreateUserinfo = /* GraphQL */ `
-  subscription OnCreateUserinfo {
-    onCreateUSERINFO {
-      id
-      name
-      phone
-      email
-    }
-  }
-`;
-export const onCreateEmployment = /* GraphQL */ `
-  subscription OnCreateEmployment {
-    onCreateEmployment {
-      k1_work
-      k1_willing_adress
-      k1_employer_st
-      k1_employer_city
-      k1_employer_zip
-      k1_employment
-      userid
-    }
-  }
-`;
-export const onCreateHealthBehaviors = /* GraphQL */ `
-  subscription OnCreateHealthBehaviors {
-    onCreateHealthBehaviors {
-      c1_regular_doctor
-      c1_visits_2yr
-      c3_num_medications
-      c3_vitamins
-      c4_med_time
-      c4_med_day
-      c4_med_forget
-      c4_med_stop
-      userid
-    }
-  }
-`;
-export const onCreateOralHealth = /* GraphQL */ `
-  subscription OnCreateOralHealth {
-    onCreateOralHealth {
-      d1_brush_teeth
-      d1_use_floss
-      d1_use_mouthwash
-      d2_teethbrush_per_day
-      d2_use_cleaning_agent
-      d3_floss_per_day
-      d4_mouthwash_per_day
-      userid
-    }
-  }
-`;
 export const onCreateForm = /* GraphQL */ `
   subscription OnCreateForm {
     onCreateForm {
       id
       formQuestions {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -96,6 +34,15 @@ export const onUpdateForm = /* GraphQL */ `
     onUpdateForm {
       id
       formQuestions {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -114,6 +61,15 @@ export const onDeleteForm = /* GraphQL */ `
     onDeleteForm {
       id
       formQuestions {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -136,6 +92,28 @@ export const onCreateFormQuestion = /* GraphQL */ `
         id
         question
         stack
+        usedForms {
+          nextToken
+          startedAt
+        }
+        category {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        subSection {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         items
         _version
         _deleted
@@ -145,6 +123,10 @@ export const onCreateFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        formQuestions {
+          nextToken
+          startedAt
+        }
         UserID
         finished
         _version
@@ -170,6 +152,28 @@ export const onUpdateFormQuestion = /* GraphQL */ `
         id
         question
         stack
+        usedForms {
+          nextToken
+          startedAt
+        }
+        category {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        subSection {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         items
         _version
         _deleted
@@ -179,6 +183,10 @@ export const onUpdateFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        formQuestions {
+          nextToken
+          startedAt
+        }
         UserID
         finished
         _version
@@ -204,6 +212,28 @@ export const onDeleteFormQuestion = /* GraphQL */ `
         id
         question
         stack
+        usedForms {
+          nextToken
+          startedAt
+        }
+        category {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        subSection {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         items
         _version
         _deleted
@@ -213,6 +243,10 @@ export const onDeleteFormQuestion = /* GraphQL */ `
       }
       form {
         id
+        formQuestions {
+          nextToken
+          startedAt
+        }
         UserID
         finished
         _version
@@ -236,12 +270,25 @@ export const onCreateQuestion = /* GraphQL */ `
       question
       stack
       usedForms {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
       category {
         id
         name
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -251,6 +298,19 @@ export const onCreateQuestion = /* GraphQL */ `
       subSection {
         id
         name
+        section {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -273,12 +333,25 @@ export const onUpdateQuestion = /* GraphQL */ `
       question
       stack
       usedForms {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
       category {
         id
         name
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -288,6 +361,19 @@ export const onUpdateQuestion = /* GraphQL */ `
       subSection {
         id
         name
+        section {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -310,12 +396,25 @@ export const onDeleteQuestion = /* GraphQL */ `
       question
       stack
       usedForms {
+        items {
+          id
+          response
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
       category {
         id
         name
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -325,6 +424,19 @@ export const onDeleteQuestion = /* GraphQL */ `
       subSection {
         id
         name
+        section {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
+        questions {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -346,6 +458,17 @@ export const onCreateCategory = /* GraphQL */ `
       id
       name
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -363,6 +486,17 @@ export const onUpdateCategory = /* GraphQL */ `
       id
       name
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -380,6 +514,17 @@ export const onDeleteCategory = /* GraphQL */ `
       id
       name
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -397,6 +542,15 @@ export const onCreateSection = /* GraphQL */ `
       id
       name
       subSections {
+        items {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -414,6 +568,15 @@ export const onUpdateSection = /* GraphQL */ `
       id
       name
       subSections {
+        items {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -431,6 +594,15 @@ export const onDeleteSection = /* GraphQL */ `
       id
       name
       subSections {
+        items {
+          id
+          name
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -450,6 +622,10 @@ export const onCreateSubSection = /* GraphQL */ `
       section {
         id
         name
+        subSections {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -457,6 +633,17 @@ export const onCreateSubSection = /* GraphQL */ `
         updatedAt
       }
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -476,6 +663,10 @@ export const onUpdateSubSection = /* GraphQL */ `
       section {
         id
         name
+        subSections {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -483,6 +674,17 @@ export const onUpdateSubSection = /* GraphQL */ `
         updatedAt
       }
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }
@@ -502,6 +704,10 @@ export const onDeleteSubSection = /* GraphQL */ `
       section {
         id
         name
+        subSections {
+          nextToken
+          startedAt
+        }
         _version
         _deleted
         _lastChangedAt
@@ -509,6 +715,17 @@ export const onDeleteSubSection = /* GraphQL */ `
         updatedAt
       }
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          _version
+          _deleted
+          _lastChangedAt
+          createdAt
+          updatedAt
+        }
         nextToken
         startedAt
       }

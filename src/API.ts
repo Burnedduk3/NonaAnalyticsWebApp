@@ -2,118 +2,6 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
-export type CreateDemographicInfoInput = {
-  id: number,
-  bornInUSA: number,
-  yearsInFl: number,
-  latinx?: number | null,
-  race?: string | null,
-  education?: string | null,
-  maritalstatus?: string | null,
-  livingWithPartner?: number | null,
-  biologicalChildren?: number | null,
-  stepChildren?: number | null,
-  underageChildren?: number | null,
-  gender?: string | null,
-  pregnant?: number | null,
-};
-
-export type UpdateDemographicInfoInput = {
-  id: number,
-  bornInUSA?: number | null,
-  yearsInFl?: number | null,
-  latinx?: number | null,
-  race?: string | null,
-  education?: string | null,
-  maritalstatus?: string | null,
-  livingWithPartner?: number | null,
-  biologicalChildren?: number | null,
-  stepChildren?: number | null,
-  underageChildren?: number | null,
-  gender?: string | null,
-  pregnant?: number | null,
-};
-
-export type CreateUSERINFOInput = {
-  id: number,
-  name: string,
-  phone: string,
-  email: string,
-};
-
-export type UpdateUSERINFOInput = {
-  id: number,
-  name?: string | null,
-  phone?: string | null,
-  email?: string | null,
-};
-
-export type CreateEmploymentInput = {
-  k1_work?: number | null,
-  k1_willing_adress?: number | null,
-  k1_employer_st?: string | null,
-  k1_employer_city?: string | null,
-  k1_employer_zip?: string | null,
-  k1_employment?: number | null,
-  userid: string,
-};
-
-export type UpdateEmploymentInput = {
-  k1_work?: number | null,
-  k1_willing_adress?: number | null,
-  k1_employer_st?: string | null,
-  k1_employer_city?: string | null,
-  k1_employer_zip?: string | null,
-  k1_employment?: number | null,
-  userid: string,
-};
-
-export type CreateHealthBehaviorsInput = {
-  c1_regular_doctor?: number | null,
-  c1_visits_2yr?: number | null,
-  c3_num_medications?: number | null,
-  c3_vitamins?: number | null,
-  c4_med_time?: number | null,
-  c4_med_day?: number | null,
-  c4_med_forget?: number | null,
-  c4_med_stop?: number | null,
-  userid: string,
-};
-
-export type UpdateHealthBehaviorsInput = {
-  c1_regular_doctor?: number | null,
-  c1_visits_2yr?: number | null,
-  c3_num_medications?: number | null,
-  c3_vitamins?: number | null,
-  c4_med_time?: number | null,
-  c4_med_day?: number | null,
-  c4_med_forget?: number | null,
-  c4_med_stop?: number | null,
-  userid: string,
-};
-
-export type CreateOralHealthInput = {
-  d1_brush_teeth?: number | null,
-  d1_use_floss?: number | null,
-  d1_use_mouthwash?: number | null,
-  d2_teethbrush_per_day?: number | null,
-  d2_use_cleaning_agent?: number | null,
-  d3_floss_per_day?: number | null,
-  d4_mouthwash_per_day?: number | null,
-  userid: string,
-};
-
-export type UpdateOralHealthInput = {
-  d1_brush_teeth?: number | null,
-  d1_use_floss?: number | null,
-  d1_use_mouthwash?: number | null,
-  d2_teethbrush_per_day?: number | null,
-  d2_use_cleaning_agent?: number | null,
-  d3_floss_per_day?: number | null,
-  d4_mouthwash_per_day?: number | null,
-  userid: string,
-};
-
 export type CreateFormInput = {
   id?: string | null,
   UserID: string,
@@ -403,279 +291,6 @@ export type ModelSubSectionFilterInput = {
   not?: ModelSubSectionFilterInput | null,
 };
 
-export type DeleteDemographicInfoMutationVariables = {
-  id: number,
-};
-
-export type DeleteDemographicInfoMutation = {
-  deleteDemographicInfo:  {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null,
-};
-
-export type CreateDemographicInfoMutationVariables = {
-  createDemographicInfoInput: CreateDemographicInfoInput,
-};
-
-export type CreateDemographicInfoMutation = {
-  createDemographicInfo:  {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null,
-};
-
-export type UpdateDemographicInfoMutationVariables = {
-  updateDemographicInfoInput: UpdateDemographicInfoInput,
-};
-
-export type UpdateDemographicInfoMutation = {
-  updateDemographicInfo:  {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null,
-};
-
-export type DeleteUserinfoMutationVariables = {
-  id: number,
-};
-
-export type DeleteUserinfoMutation = {
-  deleteUSERINFO:  {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null,
-};
-
-export type CreateUserinfoMutationVariables = {
-  createUSERINFOInput: CreateUSERINFOInput,
-};
-
-export type CreateUserinfoMutation = {
-  createUSERINFO:  {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null,
-};
-
-export type UpdateUserinfoMutationVariables = {
-  updateUSERINFOInput: UpdateUSERINFOInput,
-};
-
-export type UpdateUserinfoMutation = {
-  updateUSERINFO:  {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null,
-};
-
-export type DeleteEmploymentMutationVariables = {
-  userid: string,
-};
-
-export type DeleteEmploymentMutation = {
-  deleteEmployment:  {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null,
-};
-
-export type CreateEmploymentMutationVariables = {
-  createEmploymentInput: CreateEmploymentInput,
-};
-
-export type CreateEmploymentMutation = {
-  createEmployment:  {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null,
-};
-
-export type UpdateEmploymentMutationVariables = {
-  updateEmploymentInput: UpdateEmploymentInput,
-};
-
-export type UpdateEmploymentMutation = {
-  updateEmployment:  {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null,
-};
-
-export type DeleteHealthBehaviorsMutationVariables = {
-  userid: string,
-};
-
-export type DeleteHealthBehaviorsMutation = {
-  deleteHealthBehaviors:  {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null,
-};
-
-export type CreateHealthBehaviorsMutationVariables = {
-  createHealthBehaviorsInput: CreateHealthBehaviorsInput,
-};
-
-export type CreateHealthBehaviorsMutation = {
-  createHealthBehaviors:  {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null,
-};
-
-export type UpdateHealthBehaviorsMutationVariables = {
-  updateHealthBehaviorsInput: UpdateHealthBehaviorsInput,
-};
-
-export type UpdateHealthBehaviorsMutation = {
-  updateHealthBehaviors:  {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null,
-};
-
-export type DeleteOralHealthMutationVariables = {
-  userid: string,
-};
-
-export type DeleteOralHealthMutation = {
-  deleteOralHealth:  {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null,
-};
-
-export type CreateOralHealthMutationVariables = {
-  createOralHealthInput: CreateOralHealthInput,
-};
-
-export type CreateOralHealthMutation = {
-  createOralHealth:  {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null,
-};
-
-export type UpdateOralHealthMutationVariables = {
-  updateOralHealthInput: UpdateOralHealthInput,
-};
-
-export type UpdateOralHealthMutation = {
-  updateOralHealth:  {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null,
-};
-
 export type CreateFormMutationVariables = {
   input: CreateFormInput,
   condition?: ModelFormConditionInput | null,
@@ -687,6 +302,16 @@ export type CreateFormMutation = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -711,6 +336,16 @@ export type UpdateFormMutation = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -735,6 +370,16 @@ export type DeleteFormMutation = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -763,6 +408,31 @@ export type CreateFormQuestionMutation = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -773,6 +443,11 @@ export type CreateFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -804,6 +479,31 @@ export type UpdateFormQuestionMutation = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -814,6 +514,11 @@ export type UpdateFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -845,6 +550,31 @@ export type DeleteFormQuestionMutation = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -855,6 +585,11 @@ export type DeleteFormQuestionMutation = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -884,6 +619,16 @@ export type CreateQuestionMutation = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -891,6 +636,11 @@ export type CreateQuestionMutation = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -901,6 +651,21 @@ export type CreateQuestionMutation = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -929,6 +694,16 @@ export type UpdateQuestionMutation = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -936,6 +711,11 @@ export type UpdateQuestionMutation = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -946,6 +726,21 @@ export type UpdateQuestionMutation = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -974,6 +769,16 @@ export type DeleteQuestionMutation = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -981,6 +786,11 @@ export type DeleteQuestionMutation = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -991,6 +801,21 @@ export type DeleteQuestionMutation = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1018,6 +843,18 @@ export type CreateCategoryMutation = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1041,6 +878,18 @@ export type UpdateCategoryMutation = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1064,6 +913,18 @@ export type DeleteCategoryMutation = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1087,6 +948,16 @@ export type CreateSectionMutation = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1110,6 +981,16 @@ export type UpdateSectionMutation = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1133,6 +1014,16 @@ export type DeleteSectionMutation = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1158,6 +1049,11 @@ export type CreateSubSectionMutation = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1166,6 +1062,18 @@ export type CreateSubSectionMutation = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1191,6 +1099,11 @@ export type UpdateSubSectionMutation = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1199,6 +1112,18 @@ export type UpdateSubSectionMutation = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1224,6 +1149,11 @@ export type DeleteSubSectionMutation = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1232,6 +1162,18 @@ export type DeleteSubSectionMutation = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1241,168 +1183,6 @@ export type DeleteSubSectionMutation = {
     createdAt: string,
     updatedAt: string,
   } | null,
-};
-
-export type GetDemographicInfoQueryVariables = {
-  id: number,
-};
-
-export type GetDemographicInfoQuery = {
-  getDemographicInfo:  {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null,
-};
-
-export type ListDemographicInfosQuery = {
-  listDemographicInfos:  Array< {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null > | null,
-};
-
-export type GetUserinfoQueryVariables = {
-  id: number,
-};
-
-export type GetUserinfoQuery = {
-  getUSERINFO:  {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null,
-};
-
-export type ListUserinfOsQuery = {
-  listUSERINFOs:  Array< {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null > | null,
-};
-
-export type GetEmploymentQueryVariables = {
-  userid: string,
-};
-
-export type GetEmploymentQuery = {
-  getEmployment:  {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null,
-};
-
-export type ListEmploymentsQuery = {
-  listEmployments:  Array< {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null > | null,
-};
-
-export type GetHealthBehaviorsQueryVariables = {
-  userid: string,
-};
-
-export type GetHealthBehaviorsQuery = {
-  getHealthBehaviors:  {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null,
-};
-
-export type ListHealthBehaviorssQuery = {
-  listHealthBehaviorss:  Array< {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null > | null,
-};
-
-export type GetOralHealthQueryVariables = {
-  userid: string,
-};
-
-export type GetOralHealthQuery = {
-  getOralHealth:  {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null,
-};
-
-export type ListOralHealthsQuery = {
-  listOralHealths:  Array< {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null > | null,
 };
 
 export type SyncFormsQueryVariables = {
@@ -1418,6 +1198,11 @@ export type SyncFormsQuery = {
     items:  Array< {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -1441,6 +1226,16 @@ export type GetFormQuery = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1466,6 +1261,11 @@ export type ListFormsQuery = {
     items:  Array< {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -1493,6 +1293,29 @@ export type SyncFormQuestionsQuery = {
       __typename: "FormQuestion",
       id: string,
       response: string,
+      question:  {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      form:  {
+        __typename: "Form",
+        id: string,
+        UserID: string,
+        finished: boolean | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1518,6 +1341,31 @@ export type GetFormQuestionQuery = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -1528,6 +1376,11 @@ export type GetFormQuestionQuery = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -1557,6 +1410,29 @@ export type ListFormQuestionsQuery = {
       __typename: "FormQuestion",
       id: string,
       response: string,
+      question:  {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      form:  {
+        __typename: "Form",
+        id: string,
+        UserID: string,
+        finished: boolean | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1583,6 +1459,31 @@ export type SyncQuestionsQuery = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -1607,6 +1508,16 @@ export type GetQuestionQuery = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1614,6 +1525,11 @@ export type GetQuestionQuery = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1624,6 +1540,21 @@ export type GetQuestionQuery = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1653,6 +1584,31 @@ export type ListQuestionsQuery = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -1679,6 +1635,11 @@ export type SyncCategoriesQuery = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1701,6 +1662,18 @@ export type GetCategoryQuery = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1725,6 +1698,11 @@ export type ListCategorysQuery = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1750,6 +1728,11 @@ export type SyncSectionsQuery = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1772,6 +1755,16 @@ export type GetSectionQuery = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1796,6 +1789,11 @@ export type ListSectionsQuery = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1821,6 +1819,21 @@ export type SyncSubSectionsQuery = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1845,6 +1858,11 @@ export type GetSubSectionQuery = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1853,6 +1871,18 @@ export type GetSubSectionQuery = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1877,6 +1907,21 @@ export type ListSubSectionsQuery = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -1888,83 +1933,22 @@ export type ListSubSectionsQuery = {
   } | null,
 };
 
-export type OnCreateDemographicInfoSubscription = {
-  onCreateDemographicInfo:  {
-    __typename: "DemographicInfo",
-    id: number,
-    bornInUSA: number,
-    yearsInFl: number,
-    latinx: number | null,
-    race: string | null,
-    education: string | null,
-    maritalstatus: string | null,
-    livingWithPartner: number | null,
-    biologicalChildren: number | null,
-    stepChildren: number | null,
-    underageChildren: number | null,
-    gender: string | null,
-    pregnant: number | null,
-  } | null,
-};
-
-export type OnCreateUserinfoSubscription = {
-  onCreateUSERINFO:  {
-    __typename: "USERINFO",
-    id: number,
-    name: string,
-    phone: string,
-    email: string,
-  } | null,
-};
-
-export type OnCreateEmploymentSubscription = {
-  onCreateEmployment:  {
-    __typename: "Employment",
-    k1_work: number | null,
-    k1_willing_adress: number | null,
-    k1_employer_st: string | null,
-    k1_employer_city: string | null,
-    k1_employer_zip: string | null,
-    k1_employment: number | null,
-    userid: string,
-  } | null,
-};
-
-export type OnCreateHealthBehaviorsSubscription = {
-  onCreateHealthBehaviors:  {
-    __typename: "HealthBehaviors",
-    c1_regular_doctor: number | null,
-    c1_visits_2yr: number | null,
-    c3_num_medications: number | null,
-    c3_vitamins: number | null,
-    c4_med_time: number | null,
-    c4_med_day: number | null,
-    c4_med_forget: number | null,
-    c4_med_stop: number | null,
-    userid: string,
-  } | null,
-};
-
-export type OnCreateOralHealthSubscription = {
-  onCreateOralHealth:  {
-    __typename: "OralHealth",
-    d1_brush_teeth: number | null,
-    d1_use_floss: number | null,
-    d1_use_mouthwash: number | null,
-    d2_teethbrush_per_day: number | null,
-    d2_use_cleaning_agent: number | null,
-    d3_floss_per_day: number | null,
-    d4_mouthwash_per_day: number | null,
-    userid: string,
-  } | null,
-};
-
 export type OnCreateFormSubscription = {
   onCreateForm:  {
     __typename: "Form",
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -1984,6 +1968,16 @@ export type OnUpdateFormSubscription = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2003,6 +1997,16 @@ export type OnDeleteFormSubscription = {
     id: string,
     formQuestions:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2026,6 +2030,31 @@ export type OnCreateFormQuestionSubscription = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -2036,6 +2065,11 @@ export type OnCreateFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -2062,6 +2096,31 @@ export type OnUpdateFormQuestionSubscription = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -2072,6 +2131,11 @@ export type OnUpdateFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -2098,6 +2162,31 @@ export type OnDeleteFormQuestionSubscription = {
       id: string,
       question: string,
       stack: number,
+      usedForms:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
+      category:  {
+        __typename: "Category",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      subSection:  {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
       items: Array< string | null > | null,
       _version: number,
       _deleted: boolean | null,
@@ -2108,6 +2197,11 @@ export type OnDeleteFormQuestionSubscription = {
     form:  {
       __typename: "Form",
       id: string,
+      formQuestions:  {
+        __typename: "ModelFormQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       UserID: string,
       finished: boolean | null,
       _version: number,
@@ -2132,6 +2226,16 @@ export type OnCreateQuestionSubscription = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2139,6 +2243,11 @@ export type OnCreateQuestionSubscription = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2149,6 +2258,21 @@ export type OnCreateQuestionSubscription = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2172,6 +2296,16 @@ export type OnUpdateQuestionSubscription = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2179,6 +2313,11 @@ export type OnUpdateQuestionSubscription = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2189,6 +2328,21 @@ export type OnUpdateQuestionSubscription = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2212,6 +2366,16 @@ export type OnDeleteQuestionSubscription = {
     stack: number,
     usedForms:  {
       __typename: "ModelFormQuestionConnection",
+      items:  Array< {
+        __typename: "FormQuestion",
+        id: string,
+        response: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2219,6 +2383,11 @@ export type OnDeleteQuestionSubscription = {
       __typename: "Category",
       id: string,
       name: string,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2229,6 +2398,21 @@ export type OnDeleteQuestionSubscription = {
       __typename: "SubSection",
       id: string,
       name: string,
+      section:  {
+        __typename: "Section",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      questions:  {
+        __typename: "ModelQuestionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2251,6 +2435,18 @@ export type OnCreateCategorySubscription = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2269,6 +2465,18 @@ export type OnUpdateCategorySubscription = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2287,6 +2495,18 @@ export type OnDeleteCategorySubscription = {
     name: string,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2305,6 +2525,16 @@ export type OnCreateSectionSubscription = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2323,6 +2553,16 @@ export type OnUpdateSectionSubscription = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2341,6 +2581,16 @@ export type OnDeleteSectionSubscription = {
     name: string,
     subSections:  {
       __typename: "ModelSubSectionConnection",
+      items:  Array< {
+        __typename: "SubSection",
+        id: string,
+        name: string,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2361,6 +2611,11 @@ export type OnCreateSubSectionSubscription = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2369,6 +2624,18 @@ export type OnCreateSubSectionSubscription = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2389,6 +2656,11 @@ export type OnUpdateSubSectionSubscription = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2397,6 +2669,18 @@ export type OnUpdateSubSectionSubscription = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
@@ -2417,6 +2701,11 @@ export type OnDeleteSubSectionSubscription = {
       __typename: "Section",
       id: string,
       name: string,
+      subSections:  {
+        __typename: "ModelSubSectionConnection",
+        nextToken: string | null,
+        startedAt: number | null,
+      } | null,
       _version: number,
       _deleted: boolean | null,
       _lastChangedAt: number,
@@ -2425,6 +2714,18 @@ export type OnDeleteSubSectionSubscription = {
     } | null,
     questions:  {
       __typename: "ModelQuestionConnection",
+      items:  Array< {
+        __typename: "Question",
+        id: string,
+        question: string,
+        stack: number,
+        items: Array< string | null > | null,
+        _version: number,
+        _deleted: boolean | null,
+        _lastChangedAt: number,
+        createdAt: string,
+        updatedAt: string,
+      } | null > | null,
       nextToken: string | null,
       startedAt: number | null,
     } | null,
