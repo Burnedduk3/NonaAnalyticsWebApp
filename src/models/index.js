@@ -4,7 +4,7 @@ import { schema } from './schema';
 
 
 
-const { Form, FormQuestion, Question, Category, SubSection, Section, DemographicInfo, USERINFO, Employment, HealthBehaviors, OralHealth } = initSchema(schema);
+const { Form, FormQuestion, Question, Category, SubSection, Section } = initSchema(schema);
 
 export {
   Form,
@@ -12,10 +12,5 @@ export {
   Question,
   Category,
   SubSection,
-  Section,
-  DemographicInfo,
-  USERINFO,
-  Employment,
-  HealthBehaviors,
-  OralHealth
+  Section
 };
