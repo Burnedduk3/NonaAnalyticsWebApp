@@ -63,6 +63,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                 input: {
                   UserID: user.username,
                   _version: 1,
+                  finished: false,
                 },
               },
           ));
