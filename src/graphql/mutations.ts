@@ -5,9 +5,8 @@
 export const createForm = /* GraphQL */ `
   mutation CreateForm(
     $input: CreateFormInput!
-    $condition: ModelFormConditionInput
   ) {
-    createForm(input: $input, condition: $condition) {
+    createForm(input: $input) {
       id
       formQuestions {
         nextToken
