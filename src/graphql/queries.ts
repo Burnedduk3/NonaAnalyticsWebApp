@@ -2,47 +2,21 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const syncForms = /* GraphQL */ `
-  query SyncForms(
-    $filter: ModelFormFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncForms(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        UserID
-        finished
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
-    }
-  }
-`;
 export const getForm = /* GraphQL */ `
   query GetForm($id: ID!) {
     getForm(id: $id) {
       id
       formQuestions {
+        items {
+          id
+          response
+          createdAt
+          updatedAt
+        }
         nextToken
-        startedAt
       }
       UserID
       finished
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -57,43 +31,15 @@ export const listForms = /* GraphQL */ `
     listForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
+        formQuestions {
+          nextToken
+        }
         UserID
         finished
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncFormQuestions = /* GraphQL */ `
-  query SyncFormQuestions(
-    $filter: ModelFormQuestionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncFormQuestions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        response
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -106,26 +52,35 @@ export const getFormQuestion = /* GraphQL */ `
         id
         question
         stack
+        usedForms {
+          nextToken
+        }
+        category {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        subSection {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         items
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       form {
         id
+        formQuestions {
+          nextToken
+        }
         UserID
         finished
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -141,43 +96,25 @@ export const listFormQuestions = /* GraphQL */ `
       items {
         id
         response
-        _version
-        _deleted
-        _lastChangedAt
+        question {
+          id
+          question
+          stack
+          items
+          createdAt
+          updatedAt
+        }
+        form {
+          id
+          UserID
+          finished
+          createdAt
+          updatedAt
+        }
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncQuestions = /* GraphQL */ `
-  query SyncQuestions(
-    $filter: ModelQuestionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncQuestions(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        question
-        stack
-        items
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -188,31 +125,39 @@ export const getQuestion = /* GraphQL */ `
       question
       stack
       usedForms {
+        items {
+          id
+          response
+          createdAt
+          updatedAt
+        }
         nextToken
-        startedAt
       }
       category {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        questions {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        section {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        questions {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       items
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -229,42 +174,26 @@ export const listQuestions = /* GraphQL */ `
         id
         question
         stack
+        usedForms {
+          nextToken
+        }
+        category {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        subSection {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         items
-        _version
-        _deleted
-        _lastChangedAt
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncCategories = /* GraphQL */ `
-  query SyncCategories(
-    $filter: ModelCategoryFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncCategories(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -274,12 +203,16 @@ export const getCategory = /* GraphQL */ `
       id
       name
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          createdAt
+          updatedAt
+        }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -295,41 +228,13 @@ export const listCategorys = /* GraphQL */ `
       items {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        questions {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncSections = /* GraphQL */ `
-  query SyncSections(
-    $filter: ModelSectionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSections(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -339,12 +244,14 @@ export const getSection = /* GraphQL */ `
       id
       name
       subSections {
+        items {
+          id
+          name
+          createdAt
+          updatedAt
+        }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -360,41 +267,13 @@ export const listSections = /* GraphQL */ `
       items {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        subSections {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
-    }
-  }
-`;
-export const syncSubSections = /* GraphQL */ `
-  query SyncSubSections(
-    $filter: ModelSubSectionFilterInput
-    $limit: Int
-    $nextToken: String
-    $lastSync: AWSTimestamp
-  ) {
-    syncSubSections(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-      lastSync: $lastSync
-    ) {
-      items {
-        id
-        name
-        _version
-        _deleted
-        _lastChangedAt
-        createdAt
-        updatedAt
-      }
-      nextToken
-      startedAt
     }
   }
 `;
@@ -406,19 +285,23 @@ export const getSubSection = /* GraphQL */ `
       section {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        subSections {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       questions {
+        items {
+          id
+          question
+          stack
+          items
+          createdAt
+          updatedAt
+        }
         nextToken
-        startedAt
       }
-      _version
-      _deleted
-      _lastChangedAt
       createdAt
       updatedAt
     }
@@ -434,14 +317,19 @@ export const listSubSections = /* GraphQL */ `
       items {
         id
         name
-        _version
-        _deleted
-        _lastChangedAt
+        section {
+          id
+          name
+          createdAt
+          updatedAt
+        }
+        questions {
+          nextToken
+        }
         createdAt
         updatedAt
       }
       nextToken
-      startedAt
     }
   }
 `;
