@@ -1,6 +1,6 @@
 projects:
-  NonaDevAPI:
-    schemaPath: amplify/backend/api/NonaDevAPI/build/schema.graphql
+  lifeprojectapp:
+    schemaPath: amplify/backend/api/lifeprojectapp/build/schema.graphql
     includes:
       - src/graphql/**/*.ts
     excludes:
