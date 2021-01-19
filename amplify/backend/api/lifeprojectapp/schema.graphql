@@ -17,6 +17,7 @@ type Question @model {
   question: String!
   stack: Int!
   stackPhrase: String
+  placeHolder: String
   usedForms: [FormQuestion] @connection(name: "QuestionsString")
   category: Category @connection(name: "Category")
   subSection: SubSection @connection(name: "SubSectionQuestions")

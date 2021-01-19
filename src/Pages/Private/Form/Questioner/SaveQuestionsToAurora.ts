@@ -26,7 +26,7 @@ const saveQuestionsToAurora = async (
   }
 
   const {bornInUSA, yearsInFl} = sendToDBObject;
-
+  console.log(sendToDBObject);
   if (bornInUSA && yearsInFl) {
     const {data, errors}: any = await API.graphql(
         graphqlOperation(

@@ -1406,6 +1406,7 @@ export const createForm = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1445,6 +1446,7 @@ export const updateForm = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1484,6 +1486,7 @@ export const deleteForm = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1520,6 +1523,7 @@ export const createFormQuestion = /* GraphQL */ `
         question
         stack
         stackPhrase
+        placeHolder
         usedForms {
           items {
             id
@@ -1603,6 +1607,7 @@ export const updateFormQuestion = /* GraphQL */ `
         question
         stack
         stackPhrase
+        placeHolder
         usedForms {
           items {
             id
@@ -1686,6 +1691,7 @@ export const deleteFormQuestion = /* GraphQL */ `
         question
         stack
         stackPhrase
+        placeHolder
         usedForms {
           items {
             id
@@ -1766,6 +1772,7 @@ export const createQuestion = /* GraphQL */ `
       question
       stack
       stackPhrase
+      placeHolder
       usedForms {
         items {
           id
@@ -1775,6 +1782,7 @@ export const createQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1800,6 +1808,7 @@ export const createQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1839,6 +1848,7 @@ export const createQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1918,6 +1928,7 @@ export const updateQuestion = /* GraphQL */ `
       question
       stack
       stackPhrase
+      placeHolder
       usedForms {
         items {
           id
@@ -1927,6 +1938,7 @@ export const updateQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1952,6 +1964,7 @@ export const updateQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1991,6 +2004,7 @@ export const updateQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -2070,6 +2084,7 @@ export const deleteQuestion = /* GraphQL */ `
       question
       stack
       stackPhrase
+      placeHolder
       usedForms {
         items {
           id
@@ -2079,6 +2094,7 @@ export const deleteQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -2104,6 +2120,7 @@ export const deleteQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -2143,6 +2160,7 @@ export const deleteQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -2226,6 +2244,7 @@ export const createCategory = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -2266,6 +2285,7 @@ export const updateCategory = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -2306,6 +2326,7 @@ export const deleteCategory = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -2874,6 +2895,7 @@ export const createSubSection = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -2925,6 +2947,7 @@ export const createSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -3018,6 +3041,7 @@ export const createSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -3157,6 +3181,7 @@ export const updateSubSection = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -3208,6 +3233,7 @@ export const updateSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -3301,6 +3327,7 @@ export const updateSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -3440,6 +3467,7 @@ export const deleteSubSection = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -3491,6 +3519,7 @@ export const deleteSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -3584,6 +3613,7 @@ export const deleteSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt

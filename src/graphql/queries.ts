@@ -895,6 +895,7 @@ export const getForm = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -955,6 +956,7 @@ export const getFormQuestion = /* GraphQL */ `
         question
         stack
         stackPhrase
+        placeHolder
         usedForms {
           items {
             id
@@ -1040,6 +1042,7 @@ export const listFormQuestions = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -1083,6 +1086,7 @@ export const getQuestion = /* GraphQL */ `
       question
       stack
       stackPhrase
+      placeHolder
       usedForms {
         items {
           id
@@ -1092,6 +1096,7 @@ export const getQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1117,6 +1122,7 @@ export const getQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1156,6 +1162,7 @@ export const getQuestion = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1237,6 +1244,7 @@ export const listQuestions = /* GraphQL */ `
         question
         stack
         stackPhrase
+        placeHolder
         usedForms {
           items {
             id
@@ -1301,6 +1309,7 @@ export const getCategory = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -1343,6 +1352,7 @@ export const listCategorys = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1646,6 +1656,7 @@ export const getSubSection = /* GraphQL */ `
           question
           stack
           stackPhrase
+          placeHolder
           usedForms {
             nextToken
           }
@@ -1697,6 +1708,7 @@ export const getSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1790,6 +1802,7 @@ export const getSubSection = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
@@ -1895,6 +1908,7 @@ export const listSubSections = /* GraphQL */ `
             question
             stack
             stackPhrase
+            placeHolder
             items
             createdAt
             updatedAt
