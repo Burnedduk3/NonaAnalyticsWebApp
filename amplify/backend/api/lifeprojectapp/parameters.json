@@ -1,0 +1,11 @@
+{
+  "AppSyncApiName": "lifeprojectapp",
+  "DynamoDBBillingMode": "PAY_PER_REQUEST",
+  "DynamoDBEnableServerSideEncryption": false,
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authlifeprojectappbd83af08",
+      "Outputs.UserPoolId"
+    ]
+  }
+}
