@@ -21,7 +21,7 @@ const saveQuestionsToAurora = async (
       sendToDBObject.bornInUSA = parseInt(questions[keyArray[i]]);
     }
     if (i === 1) {
-      sendToDBObject.yearsInFl = questions[keyArray[i]] === 'yes'? 1: 0;
+      sendToDBObject.yearsInFl = 0;
     }
   }
 
