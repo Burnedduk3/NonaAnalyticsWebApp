@@ -1,0 +1,9 @@
+#set( $updateList = {} )
+#foreach( $entry in $ctx.args.updateLowMoodInput.keySet() )
+  #set( $discard = $updateList.put($entry, "'$ctx.args.updateLowMoodInput[$entry]'") )
+#end
+#set( $update = $updateList.toString().replace("{","").replace("}","") )
+{
+  "version": "2018-05-29",
+  "statements":   ["UPDATE LowMood SET $update WHERE userid=$ctx.args.updateLowMoodInput.userid", "SELECT * FROM LowMood WHERE userid='$ctx.args.updateLowMoodInput.userid'"]
+}

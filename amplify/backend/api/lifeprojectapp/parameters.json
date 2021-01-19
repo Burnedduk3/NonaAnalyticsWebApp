@@ -1,11 +1,15 @@
 {
-  "AppSyncApiName": "lifeprojectapp",
+  "AppSyncApiName": "nonaformsapp",
   "DynamoDBBillingMode": "PAY_PER_REQUEST",
   "DynamoDBEnableServerSideEncryption": false,
   "AuthCognitoUserPoolId": {
     "Fn::GetAtt": [
-      "authlifeprojectappbd83af08",
+      "authnonaformsappe218cc21",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "rdsRegion": "us-east-2",
+  "rdsClusterIdentifier": "database-aurora-2",
+  "rdsSecretStoreArn": "arn:aws:rds:us-east-2:342495404680:cluster:database-aurora-2",
+  "rdsDatabaseName": "dbaurora"
 }

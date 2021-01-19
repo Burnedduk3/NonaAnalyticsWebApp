@@ -31,6 +31,7 @@ import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
+import saveQuestionsToAurora from './SaveQuestionsToAurora';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -108,6 +109,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     const {subSection, stack} = params;
     let nextStack: number = stack? parseInt(stack) : 0;
     let nextSubSection: string = subSection? subSection : '';
+    if (subSection === 'Demographics' && stack && parseInt(stack) === 0) {
+      saveQuestionsToAurora(responseState);
+    }
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;

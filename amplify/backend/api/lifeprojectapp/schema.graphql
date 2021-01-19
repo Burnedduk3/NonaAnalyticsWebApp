@@ -33,6 +33,8 @@ type Section @model {
   id: ID!
   name: String!
   subSections: [SubSection] @connection(name: "SubSection")
+  next: Section
+  previous: Section
 }
 
 type SubSection @model {
@@ -40,4 +42,1287 @@ type SubSection @model {
   name: String!
   section: Section @connection(name: "SubSection")
   questions: [Question] @connection(name: "SubSectionQuestions")
+  next: SubSection
+  previous: SubSection
+}
+
+input CreateDemographicInfoInput {
+  id: Int!
+  bornInUSA: Int!
+  yearsInFl: Int!
+  latinx: Int
+  race: String
+  education: String
+  maritalstatus: String
+  livingWithPartner: Int
+  biologicalChildren: Int
+  stepChildren: Int
+  underageChildren: Int
+  gender: String
+  pregnant: Int
+}
+
+type DemographicInfo {
+  id: Int!
+  bornInUSA: Int!
+  yearsInFl: Int!
+  latinx: Int
+  race: String
+  education: String
+  maritalstatus: String
+  livingWithPartner: Int
+  biologicalChildren: Int
+  stepChildren: Int
+  underageChildren: Int
+  gender: String
+  pregnant: Int
+}
+
+input UpdateDemographicInfoInput {
+  id: Int!
+  bornInUSA: Int
+  yearsInFl: Int
+  latinx: Int
+  race: String
+  education: String
+  maritalstatus: String
+  livingWithPartner: Int
+  biologicalChildren: Int
+  stepChildren: Int
+  underageChildren: Int
+  gender: String
+  pregnant: Int
+}
+
+input CreateEmploymentInput {
+  k1_work: Int
+  k1_willing_adress: Int
+  k1_employer_st: String
+  k1_employer_city: String
+  k1_employer_zip: String
+  k1_employment: Int
+  userid: String!
+}
+
+type Employment {
+  k1_work: Int
+  k1_willing_adress: Int
+  k1_employer_st: String
+  k1_employer_city: String
+  k1_employer_zip: String
+  k1_employment: Int
+  userid: String!
+}
+
+input UpdateEmploymentInput {
+  k1_work: Int
+  k1_willing_adress: Int
+  k1_employer_st: String
+  k1_employer_city: String
+  k1_employer_zip: String
+  k1_employment: Int
+  userid: String!
+}
+
+input CreateHealthBehaviorsInput {
+  c1_regular_doctor: Int
+  c1_visits_2yr: Int
+  c3_num_medications: Int
+  c3_vitamins: Int
+  c4_med_time: Int
+  c4_med_day: Int
+  c4_med_forget: Int
+  c4_med_stop: Int
+  userid: String!
+}
+
+type HealthBehaviors {
+  c1_regular_doctor: Int
+  c1_visits_2yr: Int
+  c3_num_medications: Int
+  c3_vitamins: Int
+  c4_med_time: Int
+  c4_med_day: Int
+  c4_med_forget: Int
+  c4_med_stop: Int
+  userid: String!
+}
+
+input UpdateHealthBehaviorsInput {
+  c1_regular_doctor: Int
+  c1_visits_2yr: Int
+  c3_num_medications: Int
+  c3_vitamins: Int
+  c4_med_time: Int
+  c4_med_day: Int
+  c4_med_forget: Int
+  c4_med_stop: Int
+  userid: String!
+}
+
+input CreateHealthBehaviors2Input {
+  e1_tobacco_days: Int
+  e1_tobacco_how_many: Int
+  e2_non_tobacco_days: Int
+  e2_non_tobacco_how_many: Int
+  e3_alcohol_days: Int
+  e3_alcohol_how_many: Int
+  e4_skin_in_sun: Int
+  e5_avoid_sun: Int
+  e5_wear_protection: Int
+  e5_15spf: Int
+  e6_vigorous_exercise: Int
+  e7_moderate_exercise: Int
+  e8_exercise_summary: Int
+  e9_heredity: Int
+  e9_lifestyle: Int
+  e9_stresses: Int
+  e9_strategies: Int
+  e9_doctor_regular_basis: Int
+  e9_follow_recommendations: Int
+  e9_environmental: Int
+  e9_attitude: Int
+  userid: String!
+}
+
+type HealthBehaviors2 {
+  e1_tobacco_days: Int
+  e1_tobacco_how_many: Int
+  e2_non_tobacco_days: Int
+  e2_non_tobacco_how_many: Int
+  e3_alcohol_days: Int
+  e3_alcohol_how_many: Int
+  e4_skin_in_sun: Int
+  e5_avoid_sun: Int
+  e5_wear_protection: Int
+  e5_15spf: Int
+  e6_vigorous_exercise: Int
+  e7_moderate_exercise: Int
+  e8_exercise_summary: Int
+  e9_heredity: Int
+  e9_lifestyle: Int
+  e9_stresses: Int
+  e9_strategies: Int
+  e9_doctor_regular_basis: Int
+  e9_follow_recommendations: Int
+  e9_environmental: Int
+  e9_attitude: Int
+  userid: String!
+}
+
+input UpdateHealthBehaviors2Input {
+  e1_tobacco_days: Int
+  e1_tobacco_how_many: Int
+  e2_non_tobacco_days: Int
+  e2_non_tobacco_how_many: Int
+  e3_alcohol_days: Int
+  e3_alcohol_how_many: Int
+  e4_skin_in_sun: Int
+  e5_avoid_sun: Int
+  e5_wear_protection: Int
+  e5_15spf: Int
+  e6_vigorous_exercise: Int
+  e7_moderate_exercise: Int
+  e8_exercise_summary: Int
+  e9_heredity: Int
+  e9_lifestyle: Int
+  e9_stresses: Int
+  e9_strategies: Int
+  e9_doctor_regular_basis: Int
+  e9_follow_recommendations: Int
+  e9_environmental: Int
+  e9_attitude: Int
+  userid: String!
+}
+
+input CreateHighMoodInput {
+  h2_high_mood_episode: Int
+  h3_mood_higher_usual: Int
+  h3_irritable_usual: Int
+  h3_hyper: Int
+  h3_thoughts_race: Int
+  userid: String!
+}
+
+type HighMood {
+  h2_high_mood_episode: Int
+  h3_mood_higher_usual: Int
+  h3_irritable_usual: Int
+  h3_hyper: Int
+  h3_thoughts_race: Int
+  userid: String!
+}
+
+input UpdateHighMoodInput {
+  h2_high_mood_episode: Int
+  h3_mood_higher_usual: Int
+  h3_irritable_usual: Int
+  h3_hyper: Int
+  h3_thoughts_race: Int
+  userid: String!
+}
+
+input CreateLowMoodInput {
+  g1_sad_depressed: Int
+  g1_discouraged: Int
+  g1_no_interest: Int
+  g1_down_on_yourself: Int
+  g1_lonely: Int
+  g3_long_depression: Int
+  g4_depressed: Int
+  g4_discouraged: Int
+  g4_no_interest: Int
+  g4_down: Int
+  userid: String!
+}
+
+type LowMood {
+  g1_sad_depressed: Int
+  g1_discouraged: Int
+  g1_no_interest: Int
+  g1_down_on_yourself: Int
+  g1_lonely: Int
+  g3_long_depression: Int
+  g4_depressed: Int
+  g4_discouraged: Int
+  g4_no_interest: Int
+  g4_down: Int
+  userid: String!
+}
+
+input UpdateLowMoodInput {
+  g1_sad_depressed: Int
+  g1_discouraged: Int
+  g1_no_interest: Int
+  g1_down_on_yourself: Int
+  g1_lonely: Int
+  g3_long_depression: Int
+  g4_depressed: Int
+  g4_discouraged: Int
+  g4_no_interest: Int
+  g4_down: Int
+  userid: String!
+}
+
+input CreateNeighborhoodInput {
+  p1_friendly: String
+  p1_trusted: String
+  p1_share_values: String
+  p1_willing: String
+  p2_know_by_name: Int
+  p2_conversation: Int
+  p2_friends: Int
+  p2_socially: Int
+  p2_ask_help: Int
+  userid: String!
+}
+
+type Neighborhood {
+  p1_friendly: String
+  p1_trusted: String
+  p1_share_values: String
+  p1_willing: String
+  p2_know_by_name: Int
+  p2_conversation: Int
+  p2_friends: Int
+  p2_socially: Int
+  p2_ask_help: Int
+  userid: String!
+}
+
+input UpdateNeighborhoodInput {
+  p1_friendly: String
+  p1_trusted: String
+  p1_share_values: String
+  p1_willing: String
+  p2_know_by_name: Int
+  p2_conversation: Int
+  p2_friends: Int
+  p2_socially: Int
+  p2_ask_help: Int
+  userid: String!
+}
+
+input CreateOralHealthInput {
+  d1_brush_teeth: Int
+  d1_use_floss: Int
+  d1_use_mouthwash: Int
+  d2_teethbrush_per_day: Int
+  d2_use_cleaning_agent: Int
+  d3_floss_per_day: Int
+  d4_mouthwash_per_day: Int
+  userid: String!
+}
+
+type OralHealth {
+  d1_brush_teeth: Int
+  d1_use_floss: Int
+  d1_use_mouthwash: Int
+  d2_teethbrush_per_day: Int
+  d2_use_cleaning_agent: Int
+  d3_floss_per_day: Int
+  d4_mouthwash_per_day: Int
+  userid: String!
+}
+
+input UpdateOralHealthInput {
+  d1_brush_teeth: Int
+  d1_use_floss: Int
+  d1_use_mouthwash: Int
+  d2_teethbrush_per_day: Int
+  d2_use_cleaning_agent: Int
+  d3_floss_per_day: Int
+  d4_mouthwash_per_day: Int
+  userid: String!
+}
+
+input CreatePetsInput {
+  m1_pet: Int
+  m1_type_pets: String
+  m1_dontlike: Int
+  m1_spend_every_day_pet: Int
+  m1_understood_pet: Int
+  m1_love_pet: Int
+  m1_talk_alot_pet: Int
+  m1_pet_happy: Int
+  m1_pet_friend: Int
+  m1_pet_comfort: Int
+  m1_lonely_without_: Int
+  userid: String!
+}
+
+type Pets {
+  m1_pet: Int
+  m1_type_pets: String
+  m1_dontlike: Int
+  m1_spend_every_day_pet: Int
+  m1_understood_pet: Int
+  m1_love_pet: Int
+  m1_talk_alot_pet: Int
+  m1_pet_happy: Int
+  m1_pet_friend: Int
+  m1_pet_comfort: Int
+  m1_lonely_without_: Int
+  userid: String!
+}
+
+input UpdatePetsInput {
+  m1_pet: Int
+  m1_type_pets: String
+  m1_dontlike: Int
+  m1_spend_every_day_pet: Int
+  m1_understood_pet: Int
+  m1_love_pet: Int
+  m1_talk_alot_pet: Int
+  m1_pet_happy: Int
+  m1_pet_friend: Int
+  m1_pet_comfort: Int
+  m1_lonely_without_: Int
+  userid: String!
+}
+
+input CreateQualityOfLifeInput {
+  qol_general: Int!
+  health_general: Int!
+  health_compared_to_others: Int!
+  full_of_pep: Int!
+  alert_and_focused: Int!
+  stress: Int!
+  worry: Int!
+  happiness: Int!
+  anger: Int!
+  enjoyment: Int!
+  sadness: Int!
+  ladder_qol: Int!
+  userid: String!
+}
+
+type QualityOfLife {
+  qol_general: Int!
+  health_general: Int!
+  health_compared_to_others: Int!
+  full_of_pep: Int!
+  alert_and_focused: Int!
+  stress: Int!
+  worry: Int!
+  happiness: Int!
+  anger: Int!
+  enjoyment: Int!
+  sadness: Int!
+  ladder_qol: Int!
+  userid: String!
+}
+
+input UpdateQualityOfLifeInput {
+  qol_general: Int
+  health_general: Int
+  health_compared_to_others: Int
+  full_of_pep: Int
+  alert_and_focused: Int
+  stress: Int
+  worry: Int
+  happiness: Int
+  anger: Int
+  enjoyment: Int
+  sadness: Int
+  ladder_qol: Int
+  userid: String!
+}
+
+input CreateReligiousnessInput {
+  n1_hard_times: Int
+  n1_stress: Int
+  n1_understand: Int
+  n1_comfort: Int
+  n1_meaning: Int
+  n1_taking_care: Int
+  n1_purpose: Int
+  n1_reason: Int
+  n1_spiritual_strength: Int
+  n1_strenth_in_difficult_times: Int
+  n1_wellbeing: Int
+  n1_comfort_dailylife: Int
+  n1_strength_dailylife: Int
+  n2_touched_beauty: Int
+  n2_inspiration: Int
+  n2_grateful: Int
+  n2_hopegful: Int
+  n2_life_hopeful: Int
+  n3_experience_awe: Int
+  n3_connection_mbs: Int
+  n3_consistent: Int
+  n3_coherence: Int
+  n3_live_better: Int
+  n3_happy_in_life: Int
+  n3_peaceful_within_self: Int
+  n3_inner_peace: Int
+  n3_peaceful_need_to: Int
+  n3_harmony: Int
+  n3_optimistic_imporove: Int
+  n3_optimistic_uncertainty: Int
+  n3_enjoy_life: Int
+  n4_satisfied_mbs: Int
+  userid: String!
+}
+
+type Religiousness {
+  n1_hard_times: Int
+  n1_stress: Int
+  n1_understand: Int
+  n1_comfort: Int
+  n1_meaning: Int
+  n1_taking_care: Int
+  n1_purpose: Int
+  n1_reason: Int
+  n1_spiritual_strength: Int
+  n1_strenth_in_difficult_times: Int
+  n1_wellbeing: Int
+  n1_comfort_dailylife: Int
+  n1_strength_dailylife: Int
+  n2_touched_beauty: Int
+  n2_inspiration: Int
+  n2_grateful: Int
+  n2_hopegful: Int
+  n2_life_hopeful: Int
+  n3_experience_awe: Int
+  n3_connection_mbs: Int
+  n3_consistent: Int
+  n3_coherence: Int
+  n3_live_better: Int
+  n3_happy_in_life: Int
+  n3_peaceful_within_self: Int
+  n3_inner_peace: Int
+  n3_peaceful_need_to: Int
+  n3_harmony: Int
+  n3_optimistic_imporove: Int
+  n3_optimistic_uncertainty: Int
+  n3_enjoy_life: Int
+  n4_satisfied_mbs: Int
+  userid: String!
+}
+
+input UpdateReligiousnessInput {
+  n1_hard_times: Int
+  n1_stress: Int
+  n1_understand: Int
+  n1_comfort: Int
+  n1_meaning: Int
+  n1_taking_care: Int
+  n1_purpose: Int
+  n1_reason: Int
+  n1_spiritual_strength: Int
+  n1_strenth_in_difficult_times: Int
+  n1_wellbeing: Int
+  n1_comfort_dailylife: Int
+  n1_strength_dailylife: Int
+  n2_touched_beauty: Int
+  n2_inspiration: Int
+  n2_grateful: Int
+  n2_hopegful: Int
+  n2_life_hopeful: Int
+  n3_experience_awe: Int
+  n3_connection_mbs: Int
+  n3_consistent: Int
+  n3_coherence: Int
+  n3_live_better: Int
+  n3_happy_in_life: Int
+  n3_peaceful_within_self: Int
+  n3_inner_peace: Int
+  n3_peaceful_need_to: Int
+  n3_harmony: Int
+  n3_optimistic_imporove: Int
+  n3_optimistic_uncertainty: Int
+  n3_enjoy_life: Int
+  n4_satisfied_mbs: Int
+  userid: String!
+}
+
+input CreateSleepQualityIndexInput {
+  t1_usual_bedtime: String
+  t1_minutes_to_sleep: Int
+  t1_usual_wakeup: String
+  t1_hours_of_sleep: Int
+  t2_cannot_sleep_30_min: Int
+  t2_wake_up_middle_night: Int
+  t2_bathroom: Int
+  t2_breathe_comfortable: Int
+  t2_cough_snore: Int
+  t2_cold: Int
+  t2_hot: Int
+  t2_bad_dreams: Int
+  t2_pain: Int
+  t2_other: Int
+  t3_medicine: Int
+  t3_trouble_awake: Int
+  t3_enthusiasm: Int
+  t3_overall_sleep: Int
+  userid: String!
+}
+
+type SleepQualityIndex {
+  t1_usual_bedtime: String
+  t1_minutes_to_sleep: Int
+  t1_usual_wakeup: String
+  t1_hours_of_sleep: Int
+  t2_cannot_sleep_30_min: Int
+  t2_wake_up_middle_night: Int
+  t2_bathroom: Int
+  t2_breathe_comfortable: Int
+  t2_cough_snore: Int
+  t2_cold: Int
+  t2_hot: Int
+  t2_bad_dreams: Int
+  t2_pain: Int
+  t2_other: Int
+  t3_medicine: Int
+  t3_trouble_awake: Int
+  t3_enthusiasm: Int
+  t3_overall_sleep: Int
+  userid: String!
+}
+
+input UpdateSleepQualityIndexInput {
+  t1_usual_bedtime: String
+  t1_minutes_to_sleep: Int
+  t1_usual_wakeup: String
+  t1_hours_of_sleep: Int
+  t2_cannot_sleep_30_min: Int
+  t2_wake_up_middle_night: Int
+  t2_bathroom: Int
+  t2_breathe_comfortable: Int
+  t2_cough_snore: Int
+  t2_cold: Int
+  t2_hot: Int
+  t2_bad_dreams: Int
+  t2_pain: Int
+  t2_other: Int
+  t3_medicine: Int
+  t3_trouble_awake: Int
+  t3_enthusiasm: Int
+  t3_overall_sleep: Int
+  userid: String!
+}
+
+input CreateSocialNetworksInput {
+  o1_hours_week: Int
+  o2_different_friends: Int
+  o3_hours_month: Int
+  o4_personally_socialize: Int
+  o5_rely: Int
+  o5_open_up: Int
+  o5_demands: Int
+  o5_argue: Int
+  o6_emotionally_close: Int
+  o6_uncomfortable: Int
+  o6_want_to_be: Int
+  o6_comfortable_without: Int
+  o7_depend: Int
+  o7_important: Int
+  o7_miss_you: Int
+  o7_pay_attention: Int
+  o7_interested: Int
+  userid: String!
+}
+
+type SocialNetworks {
+  o1_hours_week: Int
+  o2_different_friends: Int
+  o3_hours_month: Int
+  o4_personally_socialize: Int
+  o5_rely: Int
+  o5_open_up: Int
+  o5_demands: Int
+  o5_argue: Int
+  o6_emotionally_close: Int
+  o6_uncomfortable: Int
+  o6_want_to_be: Int
+  o6_comfortable_without: Int
+  o7_depend: Int
+  o7_important: Int
+  o7_miss_you: Int
+  o7_pay_attention: Int
+  o7_interested: Int
+  userid: String!
+}
+
+input UpdateSocialNetworksInput {
+  o1_hours_week: Int
+  o2_different_friends: Int
+  o3_hours_month: Int
+  o4_personally_socialize: Int
+  o5_rely: Int
+  o5_open_up: Int
+  o5_demands: Int
+  o5_argue: Int
+  o6_emotionally_close: Int
+  o6_uncomfortable: Int
+  o6_want_to_be: Int
+  o6_comfortable_without: Int
+  o7_depend: Int
+  o7_important: Int
+  o7_miss_you: Int
+  o7_pay_attention: Int
+  o7_interested: Int
+  userid: String!
+}
+
+input CreateStressfulLifeExperiencesInput {
+  i1_times: Int
+  i2_memories: Int
+  i2_physical: Int
+  i2_avoid_think: Int
+  i2_avoid_activities: Int
+  i2_reactions: Int
+  i3_how_old: Int
+  i3_how_many_years: Int
+  i3_past_30: Int
+  i3_past_24_months: Int
+  i4_life_threat: Int
+  i4_death: Int
+  i4_betrayal: Int
+  i4_arguments: Int
+  i4_motor_accident: Int
+  i4_legal_problem: Int
+  i4_any: Int
+  i4_describe: String
+  i5_financial: Int
+  i5_career: Int
+  i5_health: Int
+  i5_love_life: Int
+  i5_friendships: Int
+  i5_family_relationship: Int
+  i5_lovedones_health: Int
+  i5_other_lovedones: Int
+  i5_life_overall: Int
+  i5_describe: String
+  i6_keep_calm: Int
+  i6_manage_stress: Int
+  i6_new_approach: Int
+  i6_get_along: Int
+  i6_humor: Int
+  i6_describe: String
+  i7_promotion: Int
+  i7_finance_imp: Int
+  i7_love_life_imp: Int
+  i7_health_imp: Int
+  i7_any: Int
+  i7_describe: String
+  userid: String!
+}
+
+type StressfulLifeExperiences {
+  i1_times: Int
+  i2_memories: Int
+  i2_physical: Int
+  i2_avoid_think: Int
+  i2_avoid_activities: Int
+  i2_reactions: Int
+  i3_how_old: Int
+  i3_how_many_years: Int
+  i3_past_30: Int
+  i3_past_24_months: Int
+  i4_life_threat: Int
+  i4_death: Int
+  i4_betrayal: Int
+  i4_arguments: Int
+  i4_motor_accident: Int
+  i4_legal_problem: Int
+  i4_any: Int
+  i4_describe: String
+  i5_financial: Int
+  i5_career: Int
+  i5_health: Int
+  i5_love_life: Int
+  i5_friendships: Int
+  i5_family_relationship: Int
+  i5_lovedones_health: Int
+  i5_other_lovedones: Int
+  i5_life_overall: Int
+  i5_describe: String
+  i6_keep_calm: Int
+  i6_manage_stress: Int
+  i6_new_approach: Int
+  i6_get_along: Int
+  i6_humor: Int
+  i6_describe: String
+  i7_promotion: Int
+  i7_finance_imp: Int
+  i7_love_life_imp: Int
+  i7_health_imp: Int
+  i7_any: Int
+  i7_describe: String
+  userid: String!
+}
+
+input UpdateStressfulLifeExperiencesInput {
+  i1_times: Int
+  i2_memories: Int
+  i2_physical: Int
+  i2_avoid_think: Int
+  i2_avoid_activities: Int
+  i2_reactions: Int
+  i3_how_old: Int
+  i3_how_many_years: Int
+  i3_past_30: Int
+  i3_past_24_months: Int
+  i4_life_threat: Int
+  i4_death: Int
+  i4_betrayal: Int
+  i4_arguments: Int
+  i4_motor_accident: Int
+  i4_legal_problem: Int
+  i4_any: Int
+  i4_describe: String
+  i5_financial: Int
+  i5_career: Int
+  i5_health: Int
+  i5_love_life: Int
+  i5_friendships: Int
+  i5_family_relationship: Int
+  i5_lovedones_health: Int
+  i5_other_lovedones: Int
+  i5_life_overall: Int
+  i5_describe: String
+  i6_keep_calm: Int
+  i6_manage_stress: Int
+  i6_new_approach: Int
+  i6_get_along: Int
+  i6_humor: Int
+  i6_describe: String
+  i7_promotion: Int
+  i7_finance_imp: Int
+  i7_love_life_imp: Int
+  i7_health_imp: Int
+  i7_any: Int
+  i7_describe: String
+  userid: String!
+}
+
+input CreateTimeUseInput {
+  q1_work_hours: Int
+  q1_volunteer_hours: Int
+  q1_leisure_hours: Int
+  q3_loved_ones: Int
+  q3_friends: Int
+  q3_no_technology: Int
+  q3_technology: Int
+  userid: String!
+}
+
+type TimeUse {
+  q1_work_hours: Int
+  q1_volunteer_hours: Int
+  q1_leisure_hours: Int
+  q3_loved_ones: Int
+  q3_friends: Int
+  q3_no_technology: Int
+  q3_technology: Int
+  userid: String!
+}
+
+input UpdateTimeUseInput {
+  q1_work_hours: Int
+  q1_volunteer_hours: Int
+  q1_leisure_hours: Int
+  q3_loved_ones: Int
+  q3_friends: Int
+  q3_no_technology: Int
+  q3_technology: Int
+  userid: String!
+}
+
+input CreateUSERINFOInput {
+  id: Int!
+  name: String!
+  phone: String!
+  email: String!
+}
+
+type USERINFO {
+  id: Int!
+  name: String!
+  phone: String!
+  email: String!
+}
+
+input UpdateUSERINFOInput {
+  id: Int!
+  name: String
+  phone: String
+  email: String
+}
+
+input CreateYourHealthInput {
+  height_feet: Int
+  height_inches: Int
+  weight: Int
+  b3_CD_clotting_disorder: Int
+  b3_CD_high_blood_pressure: Int
+  b3_CD_heart_attack: Int
+  b3_CD_high_cholesterol: Int
+  b3_CD_any: Int
+  b3_JBD_osteoarthritis: Int
+  b3_JBD_rheumatoid_arthritis: Int
+  b3_JBD_osteoporosis: Int
+  b3_RD_asthma_chronicbronc: Int
+  b3_RD_COPD: Int
+  b3_RD_seasonal_allergies: Int
+  b3_PD_ADD_ADHD: Int
+  b3_PD_anxiety: Int
+  b3_PD_depression: Int
+  b3_PD_bipolar_disorder: Int
+  b3_PD_PTSD: Int
+  b3_PD_substance_abuse: Int
+  b3_PD_any: Int
+  b3_CANCER_skin: Int
+  b3_CANCER_any: Int
+  b3_OTHER_autoimmune_disorder: Int
+  b3_OTHER_inflammatory_skin_disorder: Int
+  b3_OTHER_diabetes_insulin_dependant: Int
+  b3_OTHER_diabetes_not_insulin_dependant: Int
+  b3_OTHER_migraine: Int
+  b3_OTHER_stomach_intestine_ulcer: Int
+  b3_OTHER_acid_reflux: Int
+  b3_OTHER_thyroid_disorders: Int
+  b3_OTHER_chronic_pain: Int
+  b3_OTHER_NONE_APPLY: Int
+  b4_dizziness: Int
+  b4_short_breath: Int
+  b4_heart_pound: Int
+  b4_tired_out: Int
+  b4_muscle_tensiion: Int
+  b4_restless: Int
+  b4_anxious: Int
+  b4_irritable: Int
+  b5_memory: Int
+  b5_slow_talking_moving: Int
+  b5_concentration: Int
+  b5_sleep_problems: Int
+  b5_constipation: Int
+  b5_nausea: Int
+  b5_poor_appetite: Int
+  b5_worrying: Int
+  b5_feeling_angry: Int
+  b6_back_pain: Int
+  b6_neck_pain: Int
+  b6_menstrual_cramps: Int
+  b6_chest_pain: Int
+  b6_sexual_pain: Int
+  b6_headaches: Int
+  b6_any_other_serious_pain: Int
+  b6_uncontrollable_anxiety: Int
+  b6_angry_explode: Int
+  b10_hours_sleep: Int
+  b11_energy: Int
+  b14_home_management: Int
+  b14_ability_to_work: Int
+  b14_speed_quality_work: Int
+  b14_social_quality: Int
+  b14_close_relationship: Int
+  b15_days_unable_to_work: Int
+  b16_days_reduced_work: Int
+  userid: String!
+}
+
+type YourHealth {
+  height_feet: Int
+  height_inches: Int
+  weight: Int
+  b3_CD_clotting_disorder: Int
+  b3_CD_high_blood_pressure: Int
+  b3_CD_heart_attack: Int
+  b3_CD_high_cholesterol: Int
+  b3_CD_any: Int
+  b3_JBD_osteoarthritis: Int
+  b3_JBD_rheumatoid_arthritis: Int
+  b3_JBD_osteoporosis: Int
+  b3_RD_asthma_chronicbronc: Int
+  b3_RD_COPD: Int
+  b3_RD_seasonal_allergies: Int
+  b3_PD_ADD_ADHD: Int
+  b3_PD_anxiety: Int
+  b3_PD_depression: Int
+  b3_PD_bipolar_disorder: Int
+  b3_PD_PTSD: Int
+  b3_PD_substance_abuse: Int
+  b3_PD_any: Int
+  b3_CANCER_skin: Int
+  b3_CANCER_any: Int
+  b3_OTHER_autoimmune_disorder: Int
+  b3_OTHER_inflammatory_skin_disorder: Int
+  b3_OTHER_diabetes_insulin_dependant: Int
+  b3_OTHER_diabetes_not_insulin_dependant: Int
+  b3_OTHER_migraine: Int
+  b3_OTHER_stomach_intestine_ulcer: Int
+  b3_OTHER_acid_reflux: Int
+  b3_OTHER_thyroid_disorders: Int
+  b3_OTHER_chronic_pain: Int
+  b3_OTHER_NONE_APPLY: Int
+  b4_dizziness: Int
+  b4_short_breath: Int
+  b4_heart_pound: Int
+  b4_tired_out: Int
+  b4_muscle_tensiion: Int
+  b4_restless: Int
+  b4_anxious: Int
+  b4_irritable: Int
+  b5_memory: Int
+  b5_slow_talking_moving: Int
+  b5_concentration: Int
+  b5_sleep_problems: Int
+  b5_constipation: Int
+  b5_nausea: Int
+  b5_poor_appetite: Int
+  b5_worrying: Int
+  b5_feeling_angry: Int
+  b6_back_pain: Int
+  b6_neck_pain: Int
+  b6_menstrual_cramps: Int
+  b6_chest_pain: Int
+  b6_sexual_pain: Int
+  b6_headaches: Int
+  b6_any_other_serious_pain: Int
+  b6_uncontrollable_anxiety: Int
+  b6_angry_explode: Int
+  b10_hours_sleep: Int
+  b11_energy: Int
+  b14_home_management: Int
+  b14_ability_to_work: Int
+  b14_speed_quality_work: Int
+  b14_social_quality: Int
+  b14_close_relationship: Int
+  b15_days_unable_to_work: Int
+  b16_days_reduced_work: Int
+  userid: String!
+}
+
+input UpdateYourHealthInput {
+  height_feet: Int
+  height_inches: Int
+  weight: Int
+  b3_CD_clotting_disorder: Int
+  b3_CD_high_blood_pressure: Int
+  b3_CD_heart_attack: Int
+  b3_CD_high_cholesterol: Int
+  b3_CD_any: Int
+  b3_JBD_osteoarthritis: Int
+  b3_JBD_rheumatoid_arthritis: Int
+  b3_JBD_osteoporosis: Int
+  b3_RD_asthma_chronicbronc: Int
+  b3_RD_COPD: Int
+  b3_RD_seasonal_allergies: Int
+  b3_PD_ADD_ADHD: Int
+  b3_PD_anxiety: Int
+  b3_PD_depression: Int
+  b3_PD_bipolar_disorder: Int
+  b3_PD_PTSD: Int
+  b3_PD_substance_abuse: Int
+  b3_PD_any: Int
+  b3_CANCER_skin: Int
+  b3_CANCER_any: Int
+  b3_OTHER_autoimmune_disorder: Int
+  b3_OTHER_inflammatory_skin_disorder: Int
+  b3_OTHER_diabetes_insulin_dependant: Int
+  b3_OTHER_diabetes_not_insulin_dependant: Int
+  b3_OTHER_migraine: Int
+  b3_OTHER_stomach_intestine_ulcer: Int
+  b3_OTHER_acid_reflux: Int
+  b3_OTHER_thyroid_disorders: Int
+  b3_OTHER_chronic_pain: Int
+  b3_OTHER_NONE_APPLY: Int
+  b4_dizziness: Int
+  b4_short_breath: Int
+  b4_heart_pound: Int
+  b4_tired_out: Int
+  b4_muscle_tensiion: Int
+  b4_restless: Int
+  b4_anxious: Int
+  b4_irritable: Int
+  b5_memory: Int
+  b5_slow_talking_moving: Int
+  b5_concentration: Int
+  b5_sleep_problems: Int
+  b5_constipation: Int
+  b5_nausea: Int
+  b5_poor_appetite: Int
+  b5_worrying: Int
+  b5_feeling_angry: Int
+  b6_back_pain: Int
+  b6_neck_pain: Int
+  b6_menstrual_cramps: Int
+  b6_chest_pain: Int
+  b6_sexual_pain: Int
+  b6_headaches: Int
+  b6_any_other_serious_pain: Int
+  b6_uncontrollable_anxiety: Int
+  b6_angry_explode: Int
+  b10_hours_sleep: Int
+  b11_energy: Int
+  b14_home_management: Int
+  b14_ability_to_work: Int
+  b14_speed_quality_work: Int
+  b14_social_quality: Int
+  b14_close_relationship: Int
+  b15_days_unable_to_work: Int
+  b16_days_reduced_work: Int
+  userid: String!
+}
+
+input CreateYourPersonalityInput {
+  j1_reserved: Int
+  j1_helpful: Int
+  j1_broadminded: Int
+  j1_moody: Int
+  j1_outgoing: Int
+  j1_emotionally_stable: Int
+  j1_critical: Int
+  j1_adventurous: Int
+  j1_nervous: Int
+  j1_unreliable: Int
+  j1_quiet: Int
+  j2_softhearted: Int
+  j2_creative: Int
+  j2_calm: Int
+  j2_friendly: Int
+  j2_careless: Int
+  j2_uncompassionate: Int
+  j2_curious: Int
+  j2_upset: Int
+  j2_talkative: Int
+  j2_sympathetic: Int
+  j2_organized: Int
+  j2_sensitive: Int
+  j3_interests: Int
+  j3_opinions: Int
+  j3_purpose: Int
+  j3_think_a_lot: Int
+  j3_do_a_lot: Int
+  userid: String!
+}
+
+type YourPersonality {
+  j1_reserved: Int
+  j1_helpful: Int
+  j1_broadminded: Int
+  j1_moody: Int
+  j1_outgoing: Int
+  j1_emotionally_stable: Int
+  j1_critical: Int
+  j1_adventurous: Int
+  j1_nervous: Int
+  j1_unreliable: Int
+  j1_quiet: Int
+  j2_softhearted: Int
+  j2_creative: Int
+  j2_calm: Int
+  j2_friendly: Int
+  j2_careless: Int
+  j2_uncompassionate: Int
+  j2_curious: Int
+  j2_upset: Int
+  j2_talkative: Int
+  j2_sympathetic: Int
+  j2_organized: Int
+  j2_sensitive: Int
+  j3_interests: Int
+  j3_opinions: Int
+  j3_purpose: Int
+  j3_think_a_lot: Int
+  j3_do_a_lot: Int
+  userid: String!
+}
+
+input UpdateYourPersonalityInput {
+  j1_reserved: Int
+  j1_helpful: Int
+  j1_broadminded: Int
+  j1_moody: Int
+  j1_outgoing: Int
+  j1_emotionally_stable: Int
+  j1_critical: Int
+  j1_adventurous: Int
+  j1_nervous: Int
+  j1_unreliable: Int
+  j1_quiet: Int
+  j2_softhearted: Int
+  j2_creative: Int
+  j2_calm: Int
+  j2_friendly: Int
+  j2_careless: Int
+  j2_uncompassionate: Int
+  j2_curious: Int
+  j2_upset: Int
+  j2_talkative: Int
+  j2_sympathetic: Int
+  j2_organized: Int
+  j2_sensitive: Int
+  j3_interests: Int
+  j3_opinions: Int
+  j3_purpose: Int
+  j3_think_a_lot: Int
+  j3_do_a_lot: Int
+  userid: String!
+}
+
+type Mutation {
+  deleteDemographicInfo(id: Int!): DemographicInfo
+  createDemographicInfo(createDemographicInfoInput: CreateDemographicInfoInput!): DemographicInfo
+  updateDemographicInfo(updateDemographicInfoInput: UpdateDemographicInfoInput!): DemographicInfo
+  deleteEmployment(userid: String!): Employment
+  createEmployment(createEmploymentInput: CreateEmploymentInput!): Employment
+  updateEmployment(updateEmploymentInput: UpdateEmploymentInput!): Employment
+  deleteHealthBehaviors(userid: String!): HealthBehaviors
+  createHealthBehaviors(createHealthBehaviorsInput: CreateHealthBehaviorsInput!): HealthBehaviors
+  updateHealthBehaviors(updateHealthBehaviorsInput: UpdateHealthBehaviorsInput!): HealthBehaviors
+  deleteHealthBehaviors2(userid: String!): HealthBehaviors2
+  createHealthBehaviors2(createHealthBehaviors2Input: CreateHealthBehaviors2Input!): HealthBehaviors2
+  updateHealthBehaviors2(updateHealthBehaviors2Input: UpdateHealthBehaviors2Input!): HealthBehaviors2
+  deleteHighMood(userid: String!): HighMood
+  createHighMood(createHighMoodInput: CreateHighMoodInput!): HighMood
+  updateHighMood(updateHighMoodInput: UpdateHighMoodInput!): HighMood
+  deleteLowMood(userid: String!): LowMood
+  createLowMood(createLowMoodInput: CreateLowMoodInput!): LowMood
+  updateLowMood(updateLowMoodInput: UpdateLowMoodInput!): LowMood
+  deleteNeighborhood(userid: String!): Neighborhood
+  createNeighborhood(createNeighborhoodInput: CreateNeighborhoodInput!): Neighborhood
+  updateNeighborhood(updateNeighborhoodInput: UpdateNeighborhoodInput!): Neighborhood
+  deleteOralHealth(userid: String!): OralHealth
+  createOralHealth(createOralHealthInput: CreateOralHealthInput!): OralHealth
+  updateOralHealth(updateOralHealthInput: UpdateOralHealthInput!): OralHealth
+  deletePets(userid: String!): Pets
+  createPets(createPetsInput: CreatePetsInput!): Pets
+  updatePets(updatePetsInput: UpdatePetsInput!): Pets
+  deleteQualityOfLife(userid: String!): QualityOfLife
+  createQualityOfLife(createQualityOfLifeInput: CreateQualityOfLifeInput!): QualityOfLife
+  updateQualityOfLife(updateQualityOfLifeInput: UpdateQualityOfLifeInput!): QualityOfLife
+  deleteReligiousness(userid: String!): Religiousness
+  createReligiousness(createReligiousnessInput: CreateReligiousnessInput!): Religiousness
+  updateReligiousness(updateReligiousnessInput: UpdateReligiousnessInput!): Religiousness
+  deleteSleepQualityIndex(userid: String!): SleepQualityIndex
+  createSleepQualityIndex(createSleepQualityIndexInput: CreateSleepQualityIndexInput!): SleepQualityIndex
+  updateSleepQualityIndex(updateSleepQualityIndexInput: UpdateSleepQualityIndexInput!): SleepQualityIndex
+  deleteSocialNetworks(userid: String!): SocialNetworks
+  createSocialNetworks(createSocialNetworksInput: CreateSocialNetworksInput!): SocialNetworks
+  updateSocialNetworks(updateSocialNetworksInput: UpdateSocialNetworksInput!): SocialNetworks
+  deleteStressfulLifeExperiences(userid: String!): StressfulLifeExperiences
+  createStressfulLifeExperiences(createStressfulLifeExperiencesInput: CreateStressfulLifeExperiencesInput!): StressfulLifeExperiences
+  updateStressfulLifeExperiences(updateStressfulLifeExperiencesInput: UpdateStressfulLifeExperiencesInput!): StressfulLifeExperiences
+  deleteTimeUse(userid: String!): TimeUse
+  createTimeUse(createTimeUseInput: CreateTimeUseInput!): TimeUse
+  updateTimeUse(updateTimeUseInput: UpdateTimeUseInput!): TimeUse
+  deleteUSERINFO(id: Int!): USERINFO
+  createUSERINFO(createUSERINFOInput: CreateUSERINFOInput!): USERINFO
+  updateUSERINFO(updateUSERINFOInput: UpdateUSERINFOInput!): USERINFO
+  deleteYourHealth(userid: String!): YourHealth
+  createYourHealth(createYourHealthInput: CreateYourHealthInput!): YourHealth
+  updateYourHealth(updateYourHealthInput: UpdateYourHealthInput!): YourHealth
+  deleteYourPersonality(userid: String!): YourPersonality
+  createYourPersonality(createYourPersonalityInput: CreateYourPersonalityInput!): YourPersonality
+  updateYourPersonality(updateYourPersonalityInput: UpdateYourPersonalityInput!): YourPersonality
+}
+
+type Query {
+  getDemographicInfo(id: Int!): DemographicInfo
+  listDemographicInfos: [DemographicInfo]
+  getEmployment(userid: String!): Employment
+  listEmployments: [Employment]
+  getHealthBehaviors(userid: String!): HealthBehaviors
+  listHealthBehaviorss: [HealthBehaviors]
+  getHealthBehaviors2(userid: String!): HealthBehaviors2
+  listHealthBehaviors2s: [HealthBehaviors2]
+  getHighMood(userid: String!): HighMood
+  listHighMoods: [HighMood]
+  getLowMood(userid: String!): LowMood
+  listLowMoods: [LowMood]
+  getNeighborhood(userid: String!): Neighborhood
+  listNeighborhoods: [Neighborhood]
+  getOralHealth(userid: String!): OralHealth
+  listOralHealths: [OralHealth]
+  getPets(userid: String!): Pets
+  listPetss: [Pets]
+  getQualityOfLife(userid: String!): QualityOfLife
+  listQualityOfLifes: [QualityOfLife]
+  getReligiousness(userid: String!): Religiousness
+  listReligiousnesss: [Religiousness]
+  getSleepQualityIndex(userid: String!): SleepQualityIndex
+  listSleepQualityIndexs: [SleepQualityIndex]
+  getSocialNetworks(userid: String!): SocialNetworks
+  listSocialNetworkss: [SocialNetworks]
+  getStressfulLifeExperiences(userid: String!): StressfulLifeExperiences
+  listStressfulLifeExperiencess: [StressfulLifeExperiences]
+  getTimeUse(userid: String!): TimeUse
+  listTimeUses: [TimeUse]
+  getUSERINFO(id: Int!): USERINFO
+  listUSERINFOs: [USERINFO]
+  getYourHealth(userid: String!): YourHealth
+  listYourHealths: [YourHealth]
+  getYourPersonality(userid: String!): YourPersonality
+  listYourPersonalitys: [YourPersonality]
+}
+
+type Subscription {
+  onCreateDemographicInfo: DemographicInfo @aws_subscribe(mutations: ["createDemographicInfo"])
+  onCreateEmployment: Employment @aws_subscribe(mutations: ["createEmployment"])
+  onCreateHealthBehaviors: HealthBehaviors @aws_subscribe(mutations: ["createHealthBehaviors"])
+  onCreateHealthBehaviors2: HealthBehaviors2 @aws_subscribe(mutations: ["createHealthBehaviors2"])
+  onCreateHighMood: HighMood @aws_subscribe(mutations: ["createHighMood"])
+  onCreateLowMood: LowMood @aws_subscribe(mutations: ["createLowMood"])
+  onCreateNeighborhood: Neighborhood @aws_subscribe(mutations: ["createNeighborhood"])
+  onCreateOralHealth: OralHealth @aws_subscribe(mutations: ["createOralHealth"])
+  onCreatePets: Pets @aws_subscribe(mutations: ["createPets"])
+  onCreateQualityOfLife: QualityOfLife @aws_subscribe(mutations: ["createQualityOfLife"])
+  onCreateReligiousness: Religiousness @aws_subscribe(mutations: ["createReligiousness"])
+  onCreateSleepQualityIndex: SleepQualityIndex @aws_subscribe(mutations: ["createSleepQualityIndex"])
+  onCreateSocialNetworks: SocialNetworks @aws_subscribe(mutations: ["createSocialNetworks"])
+  onCreateStressfulLifeExperiences: StressfulLifeExperiences @aws_subscribe(mutations: ["createStressfulLifeExperiences"])
+  onCreateTimeUse: TimeUse @aws_subscribe(mutations: ["createTimeUse"])
+  onCreateUSERINFO: USERINFO @aws_subscribe(mutations: ["createUSERINFO"])
+  onCreateYourHealth: YourHealth @aws_subscribe(mutations: ["createYourHealth"])
+  onCreateYourPersonality: YourPersonality @aws_subscribe(mutations: ["createYourPersonality"])
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
 }
