@@ -1,7 +1,6 @@
 /* tslint:disable */
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
-
 export const getDemographicInfo = /* GraphQL */ `
   query GetDemographicInfo($id: Int!) {
     getDemographicInfo(id: $id) {

@@ -4058,10 +4058,6 @@ export type GetFormQuestionQuery = {
     form:  {
       __typename: "Form",
       id: string,
-      UserID: string,
-      finished: boolean | null,
-      createdAt: string,
-      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -4137,7 +4133,6 @@ export type ListQuestionsQuery = {
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
       items: Array< string | null > | null,
       createdAt: string,
       updatedAt: string,
