@@ -1,5 +1,5 @@
 import {API, graphqlOperation} from 'aws-amplify';
-import {createDemographicInfo} from '../../../../graphql/mutations';
+import {createCustomers} from '../../../../graphql/mutations';
 
 interface tempObject {
     bornInUSA:number,
@@ -30,12 +30,12 @@ const saveQuestionsToAurora = async (
   if (bornInUSA && yearsInFl) {
     const {data, errors}: any = await API.graphql(
         graphqlOperation(
-            createDemographicInfo,
+            createCustomers,
             {
               createDemographicInfoInput: {
-                id: Math.floor(Math.random() * 60) + 1,
-                bornInUSA: bornInUSA,
-                yearsInFl: yearsInFl,
+                id: Math.floor(Math.random() * 6000) + 1,
+                bornInUSA: 'test',
+                yearsInFl: 'test',
               },
             },
         ),

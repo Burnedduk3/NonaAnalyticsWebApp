@@ -1260,6 +1260,9 @@ type Mutation {
   deleteYourPersonality(userid: String!): YourPersonality
   createYourPersonality(createYourPersonalityInput: CreateYourPersonalityInput!): YourPersonality
   updateYourPersonality(updateYourPersonalityInput: UpdateYourPersonalityInput!): YourPersonality
+  deleteCustomers(id: Int!): Customers
+  createCustomers(createCustomersInput: CreateCustomersInput!): Customers
+  updateCustomers(updateCustomersInput: UpdateCustomersInput!): Customers
 }
 
 type Query {
@@ -1299,6 +1302,8 @@ type Query {
   listYourHealths: [YourHealth]
   getYourPersonality(userid: String!): YourPersonality
   listYourPersonalitys: [YourPersonality]
+  getCustomers(id: Int!): Customers
+  listCustomerss: [Customers]
 }
 
 type Subscription {
@@ -1320,6 +1325,28 @@ type Subscription {
   onCreateUSERINFO: USERINFO @aws_subscribe(mutations: ["createUSERINFO"])
   onCreateYourHealth: YourHealth @aws_subscribe(mutations: ["createYourHealth"])
   onCreateYourPersonality: YourPersonality @aws_subscribe(mutations: ["createYourPersonality"])
+  onCreateCustomers: Customers @aws_subscribe(mutations: ["createCustomers"])
+}
+
+input CreateCustomersInput {
+  id: Int!
+  name: String!
+  phone: String!
+  email: String!
+}
+
+type Customers {
+  id: Int!
+  name: String!
+  phone: String!
+  email: String!
+}
+
+input UpdateCustomersInput {
+  id: Int!
+  name: String
+  phone: String
+  email: String
 }
 
 schema {

@@ -774,6 +774,20 @@ export type UpdateYourPersonalityInput = {
   userid: string,
 };
 
+export type CreateCustomersInput = {
+  id: number,
+  name: string,
+  phone: string,
+  email: string,
+};
+
+export type UpdateCustomersInput = {
+  id: number,
+  name?: string | null,
+  phone?: string | null,
+  email?: string | null,
+};
+
 export type CreateFormInput = {
   id?: string | null,
   UserID: string,
@@ -2586,6 +2600,48 @@ export type UpdateYourPersonalityMutation = {
     j3_think_a_lot: number | null,
     j3_do_a_lot: number | null,
     userid: string,
+  } | null,
+};
+
+export type DeleteCustomersMutationVariables = {
+  id: number,
+};
+
+export type DeleteCustomersMutation = {
+  deleteCustomers:  {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null,
+};
+
+export type CreateCustomersMutationVariables = {
+  createCustomersInput: CreateCustomersInput,
+};
+
+export type CreateCustomersMutation = {
+  createCustomers:  {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null,
+};
+
+export type UpdateCustomersMutationVariables = {
+  updateCustomersInput: UpdateCustomersInput,
+};
+
+export type UpdateCustomersMutation = {
+  updateCustomers:  {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
   } | null,
 };
 
@@ -6241,6 +6297,30 @@ export type ListYourPersonalitysQuery = {
   } | null > | null,
 };
 
+export type GetCustomersQueryVariables = {
+  id: number,
+};
+
+export type GetCustomersQuery = {
+  getCustomers:  {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null,
+};
+
+export type ListCustomerssQuery = {
+  listCustomerss:  Array< {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
+  } | null > | null,
+};
+
 export type GetFormQueryVariables = {
   id: string,
 };
@@ -7983,6 +8063,16 @@ export type OnCreateYourPersonalitySubscription = {
     j3_think_a_lot: number | null,
     j3_do_a_lot: number | null,
     userid: string,
+  } | null,
+};
+
+export type OnCreateCustomersSubscription = {
+  onCreateCustomers:  {
+    __typename: "Customers",
+    id: number,
+    name: string,
+    phone: string,
+    email: string,
   } | null,
 };
 

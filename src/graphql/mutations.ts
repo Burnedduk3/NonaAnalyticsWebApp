@@ -1390,6 +1390,36 @@ export const updateYourPersonality = /* GraphQL */ `
     }
   }
 `;
+export const deleteCustomers = /* GraphQL */ `
+  mutation DeleteCustomers($id: Int!) {
+    deleteCustomers(id: $id) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+export const createCustomers = /* GraphQL */ `
+  mutation CreateCustomers($createCustomersInput: CreateCustomersInput!) {
+    createCustomers(createCustomersInput: $createCustomersInput) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
+export const updateCustomers = /* GraphQL */ `
+  mutation UpdateCustomers($updateCustomersInput: UpdateCustomersInput!) {
+    updateCustomers(updateCustomersInput: $updateCustomersInput) {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
 export const createForm = /* GraphQL */ `
   mutation CreateForm(
     $input: CreateFormInput!

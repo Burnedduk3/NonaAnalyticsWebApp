@@ -442,6 +442,16 @@ export const onCreateYourPersonality = /* GraphQL */ `
     }
   }
 `;
+export const onCreateCustomers = /* GraphQL */ `
+  subscription OnCreateCustomers {
+    onCreateCustomers {
+      id
+      name
+      phone
+      email
+    }
+  }
+`;
 export const onCreateForm = /* GraphQL */ `
   subscription OnCreateForm {
     onCreateForm {
