@@ -32,6 +32,7 @@ import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
 import saveQuestionsToAurora from './SaveQuestionsToAurora';
+import RadioButtonGroup from '../Components/RadioButtonGroup';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -249,6 +250,19 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                                 LadderConstants.default.defaultValue:
                                 item.items
                           }
+                        />
+                      );
+                    }
+                    if (item.category.name === 'RadioGroup') {
+                      return (
+                        <RadioButtonGroup
+                          items={item.items}
+                          currentState={responseState}
+                          setResponse={setResponseState}
+                          question={item.question}
+                          questionId={item.questionId}
+                          radioGroup={item.id}
+                          stackPhrase={item.stackPhrase}
                         />
                       );
                     }
