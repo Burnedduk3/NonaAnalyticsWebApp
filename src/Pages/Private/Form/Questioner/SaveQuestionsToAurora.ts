@@ -32,10 +32,11 @@ const saveQuestionsToAurora = async (
         graphqlOperation(
             createCustomers,
             {
-              createDemographicInfoInput: {
+              createCustomersInput: {
                 id: Math.floor(Math.random() * 6000) + 1,
-                bornInUSA: 'test',
-                yearsInFl: 'test',
+                name: 'test',
+                phone: 'test',
+                email: 'test',
               },
             },
         ),
