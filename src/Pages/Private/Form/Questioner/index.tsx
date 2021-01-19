@@ -119,7 +119,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             questionID,
             questionResponse,
             userState?.userState.currentForm,
-        ).then();
+        );
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
