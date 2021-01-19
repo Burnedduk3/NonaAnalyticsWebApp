@@ -27,27 +27,23 @@ const saveQuestionsToAurora = async (
 
   const {bornInUSA, yearsInFl} = sendToDBObject;
   console.log(sendToDBObject);
-  if (bornInUSA && yearsInFl) {
-    const {data, errors}: any = await API.graphql(
-        graphqlOperation(
-            createCustomers,
-            {
-              createCustomersInput: {
-                id: Math.floor(Math.random() * 6000) + 1,
-                name: 'test',
-                phone: 'test',
-                email: 'test',
-              },
+  const {data, errors}: any = await API.graphql(
+      graphqlOperation(
+          createCustomers,
+          {
+            createCustomersInput: {
+              id: Math.floor(Math.random() * 6000) + 1,
+              name: 'test',
+              phone: 'test',
+              email: 'test',
             },
-        ),
-    );
-    console.log(data);
+          },
+      ),
+  );
+  console.log(data);
 
-    if (errors) {
-      throw new Error('Error sending responses to de Database');
-    }
-  } else {
-    throw new Error('No Current form ID or subsection to save info');
+  if (errors) {
+    throw new Error('Error sending responses to de Database');
   }
 };
 
