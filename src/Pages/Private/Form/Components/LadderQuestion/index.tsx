@@ -1,7 +1,5 @@
 import React from 'react';
 
-import './CONSTANTS';
-
 import './styles.scss';
 import {ILadderQuestionProps} from './interfaces';
 
