@@ -24,8 +24,6 @@ const saveQuestionsToAurora = async (
       sendToDBObject.yearsInFl = 0;
     }
   }
-
-  const {bornInUSA, yearsInFl} = sendToDBObject;
   console.log(sendToDBObject);
   const {data, errors}: any = await API.graphql(
       graphqlOperation(
