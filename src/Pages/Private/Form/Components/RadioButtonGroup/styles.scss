@@ -1,0 +1,92 @@
+.question-container-with-header {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  max-height: 90vh;
+  flex-wrap: wrap;
+  border-bottom: 1px solid gray;
+
+  .stack-phrase {
+    width: 100%;
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+
+    h3 {
+      margin: 0 0 0 150px;
+      font-size: 1.6em;
+      font-weight: normal;
+    }
+  }
+
+  .radio-button-container {
+    display: flex;
+    width: 100%;
+    justify-content: flex-end;
+    flex-wrap: wrap;
+
+    .header-container {
+      display: flex;
+      width: 100%;
+      margin: 0 0 20px 0;
+
+      .empty-space {
+        width: 30%;
+        min-width: 50px;
+      }
+
+      .radio-buttons-header {
+        display: flex;
+        width: 70%;
+        justify-content: space-evenly;
+        min-width: 890px;
+
+        .text-header-container {
+          min-width: 150px;
+          display: flex;
+          justify-content: center;
+
+          h4 {
+            width: 100%;
+            text-align: center;
+            margin: 0;
+            font-size: 1.2em;
+            max-width: 180px;
+          }
+        }
+      }
+    }
+  }
+
+  .question-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-evenly;
+
+    .question {
+      display: flex;
+      width: 30%;
+      justify-content: center;
+
+      p {
+        font-size: 1.2em;
+        margin: 0 0 0 50px;
+      }
+    }
+
+    .option-container {
+      display: flex;
+      justify-content: space-evenly;
+      width: 70%;
+      min-width: 350px;
+
+      .input-container {
+        display: flex;
+        justify-content: center;
+        width: 100%;
+        max-width: 180px;
+      }
+    }
+  }
+}
