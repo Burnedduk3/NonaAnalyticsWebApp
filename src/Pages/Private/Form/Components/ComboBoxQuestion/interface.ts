@@ -1,7 +1,9 @@
+import {IQuestionerState} from '../../Questioner/interface';
+
 export interface IComboBoxProps{
     question: string,
     items: [],
     questionId: string,
-    setResponse: (response: object) => void;
-    currentState: object,
+    setResponse: (response: IQuestionerState) => void;
+    currentState: IQuestionerState,
 }

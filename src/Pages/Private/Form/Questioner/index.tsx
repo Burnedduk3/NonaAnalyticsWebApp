@@ -34,13 +34,14 @@ import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
 import saveQuestionsToAurora from './SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
+import {IQuestionerState} from './interface';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<any[]>([]);
-  const [responseState, setResponseState] = useState({});
+  const [responseState, setResponseState] = useState<IQuestionerState>({});
   const [
     firstTimeFetchingQuestions,
     setFirstTimeFetchingQuestions,
@@ -111,6 +112,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     const {subSection, stack} = params;
     let nextStack: number = stack? parseInt(stack) : 0;
     let nextSubSection: string = subSection? subSection : '';
+    console.log(responseState);
     if (subSection === 'Demographics' && stack && parseInt(stack) === 0) {
       saveQuestionsToAurora(responseState);
     }
