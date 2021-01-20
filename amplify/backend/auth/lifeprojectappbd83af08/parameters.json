@@ -1,6 +1,6 @@
 {
     "identityPoolName": "lifeprojectappbd83af08_identitypool_bd83af08",
-    "allowUnauthenticatedIdentities": false,
+    "allowUnauthenticatedIdentities": true,
     "resourceNameTruncated": "lifeprbd83af08",
     "userPoolName": "lifeprojectappbd83af08_userpool_bd83af08",
     "autoVerifiedAttributes": [

@@ -35,6 +35,8 @@ import saveQuestionsToAurora from './SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import {IQuestionerState} from './interface';
+import MultiLadderQuestion from '../Components/MultiLadder';
+import {Storage} from 'aws-amplify';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -51,6 +53,21 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const userState = useUserState();
   const {params} = match;
   const history = useHistory();
+  const [test, setTest] = useState('');
+
+  const tryStorage = async () =>{
+    const file = await Storage.get('/question-images/test.jpg', {expires: 60});
+    console.log(file.toString());
+    setTest(file.toString());
+  };
+
+  useEffect(()=>{
+    try {
+      tryStorage();
+    } catch (e) {
+
+    }
+  }, []);
 
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -186,6 +203,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       }
     }
   };
+  console.log(responseState);
   return (
     <main className="content-container">
       <LeftBar />
@@ -278,12 +296,41 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                         />
                       );
                     }
+                    if (item.category.name === 'MultiLadder') {
+                      return (
+                        <MultiLadderQuestion
+                          items={item.items}
+                          currentState={responseState}
+                          setResponse={setResponseState}
+                          question={item.question}
+                          questionId={item.questionId}
+                          radioGroup={item.id}
+                          stackPhrase={item.stackPhrase}
+                        />
+                      );
+                    }
+
+                    if (item.category.name === 'Images') {
+                      return (
+                        <MultiLadderQuestion
+                          items={item.items}
+                          currentState={responseState}
+                          setResponse={setResponseState}
+                          question={item.question}
+                          questionId={item.questionId}
+                          radioGroup={item.id}
+                          stackPhrase={item.stackPhrase}
+                        />
+                      );
+                    }
+
                     return <></>;
                   },
               )
             }
           </>
         )}
+        <img src={test} alt=""/>
         <div className="buttons-container">
           <button
             className="button next"

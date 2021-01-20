@@ -38,7 +38,6 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
               <div className={`check value`}>{value}</div>
             </label>
           ),
-
         )}
       </div>
     </div>
