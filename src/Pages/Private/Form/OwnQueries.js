@@ -43,6 +43,8 @@ export const getSectionsWithQuestions = /* GraphQL */ `
                         items
                         question
                         stack
+                        stackPhrase
+                        placeHolder
                         category {
                             id
                             name
