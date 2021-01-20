@@ -33,6 +33,7 @@ import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
 import saveQuestionsToAurora from './SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
+import CheckBoxComponent from '../Components/CheckBoxQuestion';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -176,8 +177,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             }
           }
         }
-        currentSection.subSections.map((subSection: ISubSection, index)=>{
-        });
         history.push(
             // eslint-disable-next-line max-len
             `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
@@ -200,6 +199,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             {
               formQuestions.map(
                   (item: any) => {
+                    console.log(item);
                     if (item.category.name === 'YesNo') {
                       return (
                         <div key={item.id} className="yes-no-container-comp">
@@ -227,10 +227,21 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     if (item.category.name === 'Open') {
                       return (
                         <TextInputComponent
-                          placeholder="type"
+                          placeholder={item.placeHolder}
                           key={item.id}
                           question={item.question}
                           questionId={item.id}
+                          setResponse={setResponseState}
+                          currentState={responseState}
+                        />
+                      );
+                    }
+                    if (item.category.name === 'MultiSelection') {
+                      return (
+                        <CheckBoxComponent
+                          items={item.items}
+                          questionId={item.questionId}
+                          question={item.question}
                           setResponse={setResponseState}
                           currentState={responseState}
                         />
@@ -246,7 +257,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           setResponse={setResponseState}
                           currentState={responseState}
                           values={
-                            item.items === null?
+                            item.items === null || item.items.length === 0?
                                 LadderConstants.default.defaultValue:
                                 item.items
                           }

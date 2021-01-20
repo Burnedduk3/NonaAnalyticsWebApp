@@ -14,6 +14,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
       setResponse,
     }:IRadioButtonGroupProps,
 ): JSX.Element =>{
+  console.log(stackPhrase);
   return (
     <div className="question-container-with-header">
       {stackPhrase && <div className="stack-phrase">
