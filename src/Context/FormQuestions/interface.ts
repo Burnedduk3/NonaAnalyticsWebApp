@@ -39,6 +39,8 @@ export interface IQuestion{
     items: Array<string> | null
     question: string
     stack: number
+    stackPhrase: string | null
+    placeHolder: string | null
     category: ICategory
 }
 

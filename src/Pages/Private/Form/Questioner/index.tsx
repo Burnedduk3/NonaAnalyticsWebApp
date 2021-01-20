@@ -201,7 +201,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             {
               formQuestions.map(
                   (item: any) => {
-                    console.log(item);
                     if (item.category.name === 'YesNo') {
                       return (
                         <div key={item.id} className="yes-no-container-comp">

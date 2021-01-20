@@ -54,6 +54,8 @@ export const fetchQuestions = async (
                   id: dbQuestion.id,
                   items: dbQuestion.items,
                   question: dbQuestion.question,
+                  placeHolder: dbQuestion.placeHolder,
+                  stackPhrase: dbQuestion.stackPhrase,
                   stack: parseInt(dbQuestion.stack),
                 };
                 if (maxStack < dbQuestion.stack) {

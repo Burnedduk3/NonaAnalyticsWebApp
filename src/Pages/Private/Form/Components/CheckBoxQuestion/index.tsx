@@ -22,6 +22,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
         text = text.join(',');
       }
       setResponse({...currentState, [questionId]: text});
+      console.log(currentState);
     }
   };
 
@@ -37,7 +38,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
               onChange={handleInput}
               name={item}
             />
-            <span className="checkmark"/>
+            <div className="checkmark"/>
             {item}
           </label>
         ))}
