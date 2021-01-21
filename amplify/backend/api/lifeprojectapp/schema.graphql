@@ -3,6 +3,7 @@ type Form @model {
   formQuestions: [FormQuestion] @connection(name: "FormQuestions")
   UserID: String!
   finished: Boolean
+  percentage: Int!
 }
 
 type FormQuestion @model {

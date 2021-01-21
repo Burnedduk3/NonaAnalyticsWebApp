@@ -926,6 +926,7 @@ export const getForm = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -936,6 +937,7 @@ export const getForm = /* GraphQL */ `
       }
       UserID
       finished
+      percentage
       createdAt
       updatedAt
     }
@@ -961,6 +963,7 @@ export const listForms = /* GraphQL */ `
         }
         UserID
         finished
+        percentage
         createdAt
         updatedAt
       }
@@ -1033,6 +1036,7 @@ export const getFormQuestion = /* GraphQL */ `
         }
         UserID
         finished
+        percentage
         createdAt
         updatedAt
       }
@@ -1086,6 +1090,7 @@ export const listFormQuestions = /* GraphQL */ `
           }
           UserID
           finished
+          percentage
           createdAt
           updatedAt
         }
@@ -1124,6 +1129,7 @@ export const getQuestion = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
