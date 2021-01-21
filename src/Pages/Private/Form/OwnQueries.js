@@ -45,6 +45,7 @@ export const getSectionsWithQuestions = /* GraphQL */ `
                         stack
                         stackPhrase
                         placeHolder
+                        imagesPath
                         category {
                             id
                             name

@@ -1,0 +1,72 @@
+@import "src/Global/styles/Colors";
+@import "../../../../../assets/font-awesome/scss/fontawesome.scss";
+@import "../../../../../assets/font-awesome/scss/solid.scss";
+@import "../../../../../assets/font-awesome/scss/brands.scss";
+
+.input-container-image {
+  color: $primary-color;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+  margin: 20px 0;
+  max-height: 250px;
+
+  h4 {
+    width: 100%;
+    font-size: 2.5em;
+    text-align: center;
+    color: $primary-color;
+    margin: 0;
+  }
+
+  .response-container {
+    display: flex;
+    margin: 20px 0;
+    justify-content: space-evenly;
+    width: 50%;
+    min-width: 300px;
+
+    input[type=radio] {
+      position: absolute;
+      visibility: hidden;
+    }
+
+    input[type=radio]:checked ~ .value {
+      background-blend-mode: screen;
+    }
+
+    .value img {
+      object-fit: contain;
+    }
+
+    label {
+      display: block;
+      position: relative;
+      font-weight: 300;
+      font-size: 1.35em;
+      margin: 10px auto;
+      height: 80px;
+      z-index: 9;
+      cursor: pointer;
+    }
+
+    .check {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 100%;
+      height: 60px;
+      width: 60px;
+      z-index: 5;
+      background-size: cover;
+      background-blend-mode: hue;
+      background-position: 50% 50%;
+    }
+
+    .check::before {
+      font-size: 1em;
+      border-radius: 100%;
+    }
+  }
+}
