@@ -6,6 +6,7 @@ import {
 export const addSection = (
     data: IFormQuestionsContextPayload,
 ) : IFormQuestionsContextState => {
+  console.log(data);
   if (!(data && data.fetchedSections)) {
     throw new Error('no data was found');
   }
