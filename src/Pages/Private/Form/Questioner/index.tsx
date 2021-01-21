@@ -35,6 +35,8 @@ import saveQuestionsToAurora from './SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import {IQuestionerState} from './interface';
+import MultiLadderQuestion from '../Components/MultiLadder';
+import ImageOneSelection from '../Components/ImageQuestion';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -186,6 +188,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       }
     }
   };
+  console.log(responseState);
   return (
     <main className="content-container">
       <LeftBar />
@@ -278,10 +281,39 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                         />
                       );
                     }
+                    if (item.category.name === 'MultiLadder') {
+                      return (
+                        <MultiLadderQuestion
+                          items={item.items}
+                          currentState={responseState}
+                          setResponse={setResponseState}
+                          question={item.question}
+                          questionId={item.questionId}
+                          radioGroup={item.id}
+                          stackPhrase={item.stackPhrase}
+                        />
+                      );
+                    }
+
+                    if (item.category.name === 'Images') {
+                      return (
+                        <ImageOneSelection
+                          items={item.items}
+                          currentState={responseState}
+                          setResponse={setResponseState}
+                          question={item.question}
+                          questionId={item.questionId}
+                          radioGroup={item.id}
+                          imagesPath={item.imagesPath}
+                        />
+                      );
+                    }
+
                     return <></>;
                   },
               )
             }
+
           </>
         )}
         <div className="buttons-container">

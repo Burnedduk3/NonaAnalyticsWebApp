@@ -1,13 +1,14 @@
 import {
-    IStateQuestionResponse,
+  IStateQuestionResponse,
 } from '../../../../Public/PreQuestioner/src/interface';
 
-export interface ILadderQuestionProps{
-    questionText: string
+export interface IImageQuestionProps{
+    question: string
     questionId: string
     radioGroup: string
-    values: Array<string>
+    items: Array<string>
     setResponse: (response: IStateQuestionResponse) => void;
     currentState: object,
     checked?: string
+    imagesPath: Array<string>
 }

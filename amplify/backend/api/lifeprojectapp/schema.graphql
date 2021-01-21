@@ -21,7 +21,9 @@ type Question @model {
   usedForms: [FormQuestion] @connection(name: "QuestionsString")
   category: Category @connection(name: "Category")
   subSection: SubSection @connection(name: "SubSectionQuestions")
+  order: Int!
   items: [String]
+  imagesPath: [String]
 }
 
 type Category @model {
@@ -34,8 +36,7 @@ type Section @model {
   id: ID!
   name: String!
   subSections: [SubSection] @connection(name: "SubSection")
-  next: Section
-  previous: Section
+  order: Int!
 }
 
 type SubSection @model {
@@ -43,8 +44,7 @@ type SubSection @model {
   name: String!
   section: Section @connection(name: "SubSection")
   questions: [Question] @connection(name: "SubSectionQuestions")
-  next: SubSection
-  previous: SubSection
+  order: Int!
 }
 
 input CreateDemographicInfoInput {

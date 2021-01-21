@@ -2,19 +2,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;600;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
 
-.inputContainer {
+.inputContainerCheck {
+  width: 35vw;
+  min-width: 300px;
+  margin: 1vh 1vw;
 
   p {
     width: 100%;
-    font-size: 1.5em;
-    text-align: center;
+    height: auto;
+    font-size: 1.3em;
     color: $primary-color;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
     text-transform: uppercase;
+    margin-bottom: 8px;
   }
 
-    /* Customize the label (the container) */
   .container {
     display: block;
     position: relative;
@@ -27,27 +30,29 @@
     user-select: none;
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
-  }
+    color: $primary-color;
 
-  .container input {
-    position: absolute;
-    opacity: 0;
-    cursor: pointer;
-    height: 25px;
-    width: 100px;
-    border: solid 2px $primary-color;
-    margin-left: -30px;
-  }
+    input {
+      position: absolute;
+      opacity: 0;
+      cursor: pointer;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      z-index: 2;
+    }
 
-  .checkmark {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 25px;
-    width: 25px;
-    background-color: $whiter-background;
-    border-radius: 7px;
-    border: solid 2px $primary-color;
+    .checkmark {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 25px;
+      width: 25px;
+      background-color: $whiter-background;
+      border-radius: 7px;
+      border: solid 2px $primary-color;
+    }
   }
 
   .container input:checked ~ .checkmark {

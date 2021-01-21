@@ -916,7 +916,9 @@ export const getForm = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
@@ -1001,28 +1003,20 @@ export const getFormQuestion = /* GraphQL */ `
           section {
             id
             name
+            order
             createdAt
             updatedAt
           }
           questions {
             nextToken
           }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
+          order
           createdAt
           updatedAt
         }
+        order
         items
+        imagesPath
         createdAt
         updatedAt
       }
@@ -1075,10 +1069,13 @@ export const listFormQuestions = /* GraphQL */ `
           subSection {
             id
             name
+            order
             createdAt
             updatedAt
           }
+          order
           items
+          imagesPath
           createdAt
           updatedAt
         }
@@ -1117,7 +1114,9 @@ export const getQuestion = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
@@ -1143,7 +1142,9 @@ export const getQuestion = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
@@ -1161,18 +1162,7 @@ export const getQuestion = /* GraphQL */ `
           subSections {
             nextToken
           }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
+          order
           createdAt
           updatedAt
         }
@@ -1183,70 +1173,21 @@ export const getQuestion = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
           nextToken
         }
-        next {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
+        order
         createdAt
         updatedAt
       }
+      order
       items
+      imagesPath
       createdAt
       updatedAt
     }
@@ -1289,28 +1230,20 @@ export const listQuestions = /* GraphQL */ `
           section {
             id
             name
+            order
             createdAt
             updatedAt
           }
           questions {
             nextToken
           }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
+          order
           createdAt
           updatedAt
         }
+        order
         items
+        imagesPath
         createdAt
         updatedAt
       }
@@ -1342,10 +1275,13 @@ export const getCategory = /* GraphQL */ `
           subSection {
             id
             name
+            order
             createdAt
             updatedAt
           }
+          order
           items
+          imagesPath
           createdAt
           updatedAt
         }
@@ -1373,7 +1309,9 @@ export const listCategorys = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
@@ -1398,143 +1336,20 @@ export const getSection = /* GraphQL */ `
           section {
             id
             name
+            order
             createdAt
             updatedAt
           }
           questions {
             nextToken
           }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
+          order
           createdAt
           updatedAt
         }
         nextToken
       }
-      next {
-        id
-        name
-        subSections {
-          items {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        next {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      previous {
-        id
-        name
-        subSections {
-          items {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        next {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      order
       createdAt
       updatedAt
     }
@@ -1554,53 +1369,13 @@ export const listSections = /* GraphQL */ `
           items {
             id
             name
+            order
             createdAt
             updatedAt
           }
           nextToken
         }
-        next {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
+        order
         createdAt
         updatedAt
       }
@@ -1620,53 +1395,13 @@ export const getSubSection = /* GraphQL */ `
           items {
             id
             name
+            order
             createdAt
             updatedAt
           }
           nextToken
         }
-        next {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
+        order
         createdAt
         updatedAt
       }
@@ -1689,203 +1424,19 @@ export const getSubSection = /* GraphQL */ `
           subSection {
             id
             name
+            order
             createdAt
             updatedAt
           }
+          order
           items
+          imagesPath
           createdAt
           updatedAt
         }
         nextToken
       }
-      next {
-        id
-        name
-        section {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            items
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        next {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
-      previous {
-        id
-        name
-        section {
-          id
-          name
-          subSections {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            items
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        next {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        createdAt
-        updatedAt
-      }
+      order
       createdAt
       updatedAt
     }
@@ -1907,18 +1458,7 @@ export const listSubSections = /* GraphQL */ `
           subSections {
             nextToken
           }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
+          order
           createdAt
           updatedAt
         }
@@ -1929,66 +1469,15 @@ export const listSubSections = /* GraphQL */ `
             stack
             stackPhrase
             placeHolder
+            order
             items
+            imagesPath
             createdAt
             updatedAt
           }
           nextToken
         }
-        next {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
-        previous {
-          id
-          name
-          section {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
-          next {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          previous {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
+        order
         createdAt
         updatedAt
       }
