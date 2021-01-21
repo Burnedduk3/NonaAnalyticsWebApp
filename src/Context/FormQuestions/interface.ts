@@ -41,6 +41,7 @@ export interface IQuestion{
     stack: number
     stackPhrase: string | null
     placeHolder: string | null
+    imagesPath: string | null
     category: ICategory
 }
 
