@@ -28,7 +28,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
 
 
   return (
-    <div className="inputContainer">
+    <div className="inputContainerCheck">
       <p>{question}</p>
       <div className="items">
         {items.map((item) => (
