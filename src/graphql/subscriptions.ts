@@ -476,6 +476,7 @@ export const onCreateForm = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -486,6 +487,7 @@ export const onCreateForm = /* GraphQL */ `
       }
       UserID
       finished
+      percentage
       createdAt
       updatedAt
     }
@@ -515,6 +517,7 @@ export const onUpdateForm = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -525,6 +528,7 @@ export const onUpdateForm = /* GraphQL */ `
       }
       UserID
       finished
+      percentage
       createdAt
       updatedAt
     }
@@ -554,6 +558,7 @@ export const onDeleteForm = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -564,6 +569,7 @@ export const onDeleteForm = /* GraphQL */ `
       }
       UserID
       finished
+      percentage
       createdAt
       updatedAt
     }
@@ -634,6 +640,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
         }
         UserID
         finished
+        percentage
         createdAt
         updatedAt
       }
@@ -707,6 +714,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
         }
         UserID
         finished
+        percentage
         createdAt
         updatedAt
       }
@@ -780,6 +788,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
         }
         UserID
         finished
+        percentage
         createdAt
         updatedAt
       }
@@ -816,6 +825,7 @@ export const onCreateQuestion = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -913,6 +923,7 @@ export const onUpdateQuestion = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
@@ -1010,6 +1021,7 @@ export const onDeleteQuestion = /* GraphQL */ `
             id
             UserID
             finished
+            percentage
             createdAt
             updatedAt
           }
