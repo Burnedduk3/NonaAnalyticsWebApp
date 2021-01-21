@@ -82,6 +82,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     }
   }, [params]);
 
+
   const setQuestioner = () =>{
     if (FormApplicationState &&
         FormApplicationState.formState &&
@@ -181,10 +182,15 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             }
           }
         }
-        history.push(
-            // eslint-disable-next-line max-len
-            `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
-        );
+        console.log(FormApplicationState.formState);
+        if (!(FormApplicationState.formState.currentSection === null)) {
+          history.push(
+              // eslint-disable-next-line max-len
+              `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
+          );
+        } else {
+          history.push('/');
+        }
       }
     }
   };
@@ -296,13 +302,15 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     }
 
                     if (item.category.name === 'Images') {
+                      console.log(item);
                       return (
                         <ImageOneSelection
+                          key={item.id}
                           items={item.items}
                           currentState={responseState}
                           setResponse={setResponseState}
                           question={item.question}
-                          questionId={item.questionId}
+                          questionId={item.id}
                           radioGroup={item.id}
                           imagesPath={item.imagesPath}
                         />

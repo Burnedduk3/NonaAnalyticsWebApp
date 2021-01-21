@@ -63,6 +63,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                 input: {
                   UserID: user.username,
                   finished: false,
+                  percentage: 0,
                 },
               },
           ));

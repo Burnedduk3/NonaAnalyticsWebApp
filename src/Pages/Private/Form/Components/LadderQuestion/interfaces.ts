@@ -1,5 +1,5 @@
 import {
-    IStateQuestionResponse,
+  IStateQuestionResponse,
 } from '../../../../Public/PreQuestioner/src/interface';
 
 export interface ILadderQuestionProps{

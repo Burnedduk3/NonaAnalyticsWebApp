@@ -24,12 +24,14 @@ export interface IFormQuestionsContext{
 export interface ISection{
     id: string
     name: string
+    order: number
     subSections: Array<ISubSection>
 }
 
 export interface ISubSection{
     id: string
     name: string
+    order: number
     questions: Array<IQuestion>
     maxStack: number
 }
@@ -43,6 +45,7 @@ export interface IQuestion{
     placeHolder: string | null
     imagesPath: string | null
     category: ICategory
+    order: number
 }
 
 export interface ICategory{

@@ -33,7 +33,7 @@
     }
 
     input[type=radio]:checked ~ .value {
-      background-blend-mode: screen;
+      background-blend-mode: color-burn;
     }
 
     .value img {
@@ -51,15 +51,19 @@
       cursor: pointer;
     }
 
+    p {
+      text-align: center;
+    }
+
     .check {
       display: flex;
       justify-content: center;
       align-items: center;
-      border-radius: 100%;
       height: 60px;
       width: 60px;
       z-index: 5;
-      background-size: cover;
+      background-size: contain;
+      background-repeat: no-repeat;
       background-blend-mode: hue;
       background-position: 50% 50%;
     }

@@ -33,10 +33,12 @@ export const getSectionsWithQuestions = /* GraphQL */ `
         items {
         name
         id
+        order
         subSections {
             items {
                 id
                 name
+                order
                 questions {
                     items {
                         id
@@ -46,6 +48,7 @@ export const getSectionsWithQuestions = /* GraphQL */ `
                         stackPhrase
                         placeHolder
                         imagesPath
+                        order
                         category {
                             id
                             name

@@ -25,15 +25,12 @@ export const nextSection = (
   const newPrevious = state.currentSection;
   let newNext: ISection | null = null;
   if (state && state.sections) {
-    let nextIndex:number = 0;
-    state.sections.reverse().map((section, index)=>{
-      if (section.name === newCurrent?.name ) {
-        nextIndex = index;
+    if (newCurrent) {
+      if (newCurrent.order + 1 < state.sections.length) {
+        newNext = state.sections[newCurrent.order + 1];
       }
-      if (index === nextIndex + 1) {
-        newNext = section;
-      }
-    });
+      console.log(newCurrent.order + 1 % state.sections.length);
+    }
     state.nextSection = newNext;
     state.currentSection = newCurrent;
     state.previous = newPrevious;

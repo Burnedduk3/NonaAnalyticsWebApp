@@ -64,10 +64,10 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                   />
                   <div
                     className={`check value`}
-                    style={{backgroundImage: `linear-gradient(black, black),
+                    style={{backgroundImage: `linear-gradient(white, white),
                     url(${images[index]})`}}
                   />
-
+                  <p>{value}</p>
                 </label>
               ),
             )}
