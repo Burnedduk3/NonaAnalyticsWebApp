@@ -79,12 +79,13 @@ export const fetchQuestions = async (
                 }
                 subSectionQuestions.push(question);
               });
+
               return {
                 id: subSection.id,
                 maxStack: maxStack,
                 name: subSection.name,
                 order: subSection.order,
-                questions: subSectionQuestions,
+                questions: orderedQuestions,
               };
             });
 

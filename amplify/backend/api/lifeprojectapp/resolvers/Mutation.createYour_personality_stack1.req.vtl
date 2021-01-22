@@ -1,0 +1,12 @@
+#set( $cols = [] )
+#set( $vals = [] )
+#foreach( $entry in $ctx.args.createYour_personality_stack1Input.keySet() )
+  #set( $discard = $cols.add($entry) )
+  #set( $discard = $vals.add("'$ctx.args.createYour_personality_stack1Input[$entry]'") )
+#end
+#set( $valStr = $vals.toString().replace("[","(").replace("]",")") )
+#set( $colStr = $cols.toString().replace("[","(").replace("]",")") )
+{
+  "version": "2018-05-29",
+  "statements":   ["INSERT INTO Your_personality_stack1 $colStr VALUES $valStr", "SELECT * FROM Your_personality_stack1 WHERE id='$ctx.args.createYour_personality_stack1Input.id'"]
+}

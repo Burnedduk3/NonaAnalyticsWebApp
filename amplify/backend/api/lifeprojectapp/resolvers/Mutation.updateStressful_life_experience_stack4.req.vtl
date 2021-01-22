@@ -1,0 +1,9 @@
+#set( $updateList = {} )
+#foreach( $entry in $ctx.args.updateStressful_life_experience_stack4Input.keySet() )
+  #set( $discard = $updateList.put($entry, "'$ctx.args.updateStressful_life_experience_stack4Input[$entry]'") )
+#end
+#set( $update = $updateList.toString().replace("{","").replace("}","") )
+{
+  "version": "2018-05-29",
+  "statements":   ["UPDATE Stressful_life_experience_stack4 SET $update WHERE id=$ctx.args.updateStressful_life_experience_stack4Input.id", "SELECT * FROM Stressful_life_experience_stack4 WHERE id='$ctx.args.updateStressful_life_experience_stack4Input.id'"]
+}

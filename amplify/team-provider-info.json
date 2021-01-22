@@ -1,28 +1,28 @@
 {
-  "dev": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-lifeprojectapp-dev-165745-authRole",
-      "UnauthRoleArn": "arn:aws:iam::342495404680:role/amplify-lifeprojectapp-dev-165745-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::342495404680:role/amplify-lifeprojectapp-dev-165745-authRole",
-      "Region": "us-east-2",
-      "DeploymentBucketName": "amplify-lifeprojectapp-dev-165745-deployment",
-      "UnauthRoleName": "amplify-lifeprojectapp-dev-165745-unauthRole",
-      "StackName": "amplify-lifeprojectapp-dev-165745",
-      "StackId": "arn:aws:cloudformation:us-east-2:342495404680:stack/amplify-lifeprojectapp-dev-165745/746e5d10-5a77-11eb-9bcc-024143d45676",
-      "AmplifyAppId": "d2hpw3e55gbxyq"
-    },
-    "categories": {
-      "auth": {
-        "lifeprojectappbd83af08": {}
-      },
-      "api": {
-        "lifeprojectapp": {
-          "rdsRegion": "us-east-2",
-          "rdsClusterIdentifier": "arn:aws:rds:us-east-2:342495404680:cluster:database-aurora-2",
-          "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-2:342495404680:secret:rds-db-credentials/cluster-JZUOCPFXUK4BKDN5P5Q3M5WDAI/admin-dMFygc",
-          "rdsDatabaseName": "dbaurora"
+    "dev": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-lifeprojectapp-dev-165745-authRole",
+            "UnauthRoleArn": "arn:aws:iam::342495404680:role/amplify-lifeprojectapp-dev-165745-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::342495404680:role/amplify-lifeprojectapp-dev-165745-authRole",
+            "Region": "us-east-2",
+            "DeploymentBucketName": "amplify-lifeprojectapp-dev-165745-deployment",
+            "UnauthRoleName": "amplify-lifeprojectapp-dev-165745-unauthRole",
+            "StackName": "amplify-lifeprojectapp-dev-165745",
+            "StackId": "arn:aws:cloudformation:us-east-2:342495404680:stack/amplify-lifeprojectapp-dev-165745/746e5d10-5a77-11eb-9bcc-024143d45676",
+            "AmplifyAppId": "d2hpw3e55gbxyq"
+        },
+        "categories": {
+            "auth": {
+                "lifeprojectappbd83af08": {}
+            },
+            "api": {
+                "lifeprojectapp": {
+                    "rdsRegion": "us-east-2",
+                    "rdsClusterIdentifier": "arn:aws:rds:us-east-2:342495404680:cluster:database-aurora-2",
+                    "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-2:342495404680:secret:rds-db-credentials/cluster-JZUOCPFXUK4BKDN5P5Q3M5WDAI/admin-dMFygc",
+                    "rdsDatabaseName": "dbaurora"
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -1,0 +1,12 @@
+#set( $cols = [] )
+#set( $vals = [] )
+#foreach( $entry in $ctx.args.createReligiousness_spirituality_stack4Input.keySet() )
+  #set( $discard = $cols.add($entry) )
+  #set( $discard = $vals.add("'$ctx.args.createReligiousness_spirituality_stack4Input[$entry]'") )
+#end
+#set( $valStr = $vals.toString().replace("[","(").replace("]",")") )
+#set( $colStr = $cols.toString().replace("[","(").replace("]",")") )
+{
+  "version": "2018-05-29",
+  "statements":   ["INSERT INTO Religiousness_spirituality_stack4 $colStr VALUES $valStr", "SELECT * FROM Religiousness_spirituality_stack4 WHERE id='$ctx.args.createReligiousness_spirituality_stack4Input.id'"]
+}
