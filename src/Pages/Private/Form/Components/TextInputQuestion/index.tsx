@@ -3,7 +3,7 @@ import './styles.scss';
 import {ITextInputProps} from './interface';
 
 const TextInputComponent: React.FC<ITextInputProps> = ({
-  question, questionId, setResponse, currentState, placeholder,
+  question, questionId, setResponse, currentState, placeholder, order,
 }:ITextInputProps) => {
   return (
     <div className="inputContainer">
@@ -16,7 +16,11 @@ const TextInputComponent: React.FC<ITextInputProps> = ({
           className="text-input"
           onChange={
             (e) =>
-              setResponse({...currentState, [questionId]: e.target.value})
+              setResponse({...currentState, [questionId]: {
+                response: e.target.value,
+                order,
+              }},
+              )
           }
         />
       </label>

@@ -1,3 +1,6 @@
 export interface IQuestionerState{
-    [key: string]: string
+    [key: string]: {
+        response:string
+        order: number
+    }
 }

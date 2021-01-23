@@ -6,4 +6,5 @@ export interface ITextInputProps{
     placeholder: string;
     currentState: IQuestionerState;
     setResponse: (response: IQuestionerState) => void;
+    order: number;
 }

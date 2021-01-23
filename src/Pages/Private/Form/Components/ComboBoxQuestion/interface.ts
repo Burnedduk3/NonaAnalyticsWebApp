@@ -6,4 +6,5 @@ export interface IComboBoxProps{
     questionId: string,
     setResponse: (response: IQuestionerState) => void;
     currentState: IQuestionerState,
+    order: number
 }

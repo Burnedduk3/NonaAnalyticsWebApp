@@ -1,12 +1,11 @@
-import {
-  IStateQuestionResponse,
-} from '../../../../Public/PreQuestioner/src/interface';
+import {IQuestionerState} from '../../Questioner/interface';
 
 export interface IYesNoProps{
     question: string,
     radioGroup: string,
     questionId: string,
-    setResponse: (response: IStateQuestionResponse) => void;
+    setResponse: (response: IQuestionerState) => void;
     currentState: object,
-    checked?: string
+    checked?: string,
+    order: number
 }

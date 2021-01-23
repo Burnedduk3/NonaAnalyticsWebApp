@@ -8,4 +8,5 @@ export interface IMultiladder{
     currentState: IQuestionerState;
     setResponse: (response: IQuestionerState) => void;
     radioGroup: string;
+    order: number
 }

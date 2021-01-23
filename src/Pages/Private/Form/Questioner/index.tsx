@@ -30,8 +30,11 @@ import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
-import saveQuestionsToDynamo from './SaveQuestionsToDynamo';
-import saveQuestionsToAurora from './SaveQuestionsToAurora';
+import saveQuestionsToDynamo from '../api/Dynamo/SaveQuestionsToDynamo';
+import
+saveQuestionsToAurora,
+{ISaveDataAuroraParams}
+  from '../api/aurora/SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import {IQuestionerState} from './interface';
@@ -82,7 +85,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     }
   }, [params]);
 
-
   const setQuestioner = () =>{
     if (FormApplicationState &&
         FormApplicationState.formState &&
@@ -111,20 +113,29 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   // TODO Send data to the athena database
   // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
-    const {params} = match;
-    const {subSection, stack} = params;
+    const {stack, subSection, section} = params;
+    if (stack && section && subSection) {
+      const functionParams: ISaveDataAuroraParams = {
+        stack: stack,
+        section: section,
+        subSection: subSection,
+      };
+      if (userState) {
+        saveQuestionsToAurora(
+            functionParams,
+            responseState,
+            userState.userState.currentForm,
+        );
+      }
+    }
     let nextStack: number = stack? parseInt(stack) : 0;
     let nextSubSection: string = subSection? subSection : '';
-    console.log(responseState);
-    if (subSection === 'Demographics' && stack && parseInt(stack) === 0) {
-      saveQuestionsToAurora(responseState);
-    }
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
         saveQuestionsToDynamo(
             questionID,
-            questionResponse,
+            questionResponse.response,
             userState?.userState.currentForm,
         );
         setResponseState({});
@@ -182,7 +193,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             }
           }
         }
-        console.log(FormApplicationState.formState);
         if (!(FormApplicationState.formState.currentSection === null)) {
           history.push(
               // eslint-disable-next-line max-len
@@ -194,6 +204,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       }
     }
   };
+
   console.log(responseState);
   return (
     <main className="content-container">
@@ -219,6 +230,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                             radioGroup={item.id}
                             setResponse={setResponseState}
                             currentState={responseState}
+                            order={item.order}
                           />
                         </div>
                       );
@@ -231,6 +243,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           setResponse={setResponseState}
                           items={item.items}
                           currentState={responseState}
+                          order={item.order}
                         />
                       );
                     }
@@ -243,6 +256,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           questionId={item.id}
                           setResponse={setResponseState}
                           currentState={responseState}
+                          order={item.order}
                         />
                       );
                     }
@@ -254,6 +268,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           question={item.question}
                           setResponse={setResponseState}
                           currentState={responseState}
+                          order={item.order}
                         />
                       );
                     }
@@ -264,6 +279,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           questionText={item.question}
                           questionId={item.id}
                           radioGroup={item.id}
+                          order={item.order}
                           setResponse={setResponseState}
                           currentState={responseState}
                           values={
@@ -283,6 +299,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           question={item.question}
                           questionId={item.questionId}
                           radioGroup={item.id}
+                          order={item.order}
                           stackPhrase={item.stackPhrase}
                         />
                       );
@@ -297,6 +314,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           questionId={item.questionId}
                           radioGroup={item.id}
                           stackPhrase={item.stackPhrase}
+                          order={item.order}
                         />
                       );
                     }
@@ -313,6 +331,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                           questionId={item.id}
                           radioGroup={item.id}
                           imagesPath={item.imagesPath}
+                          order={item.order}
                         />
                       );
                     }

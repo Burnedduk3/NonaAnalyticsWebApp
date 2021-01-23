@@ -12,6 +12,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
       radioGroup,
       currentState,
       setResponse,
+      order,
     }:IRadioButtonGroupProps,
 ): JSX.Element =>{
   console.log(stackPhrase);
@@ -65,7 +66,10 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                         value="no"
                         onClick={
                           () => setResponse(
-                              {...currentState, [questionId]: option},
+                              {...currentState, [questionId]: {
+                                order,
+                                response: option,
+                              }},
                           )
                         }
                       />

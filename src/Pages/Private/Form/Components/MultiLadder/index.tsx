@@ -11,6 +11,7 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
       radioGroup,
       setResponse,
       stackPhrase,
+      order,
     }:IMultiladder,
 ):JSX.Element => {
   return (
@@ -41,7 +42,10 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                     value={value}
                     onClick={
                       () => setResponse(
-                          {...currentState, [questionId]: value.toString()},
+                          {...currentState, [questionId]: {
+                            response: value.toString(),
+                            order,
+                          }},
                       )
                     }
                   />

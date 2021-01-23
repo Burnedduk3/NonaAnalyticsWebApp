@@ -13,6 +13,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       currentState,
       setResponse,
       items,
+      order,
     }:IImageQuestionProps,
 ): JSX.Element =>{
   const [images, setImages] = useState<string[]>([]);
@@ -58,7 +59,11 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                     value={value}
                     onClick={
                       () => setResponse(
-                          {...currentState, [questionId]: value.toString()},
+                          {...currentState, [questionId]: {
+                            response: value.toString(),
+                            order,
+                          },
+                          },
                       )
                     }
                   />

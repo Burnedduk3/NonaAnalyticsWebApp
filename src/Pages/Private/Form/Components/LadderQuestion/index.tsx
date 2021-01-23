@@ -11,6 +11,7 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
       radioGroup,
       currentState,
       setResponse,
+      order,
     }:ILadderQuestionProps,
 ): JSX.Element =>{
   return (
@@ -31,7 +32,12 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
                 value={value}
                 onClick={
                   () => setResponse(
-                      {...currentState, [questionId]: value.toString()},
+                      {...currentState, [questionId]:
+                              {
+                                response: value.toString(),
+                                order,
+                              },
+                      },
                   )
                 }
               />

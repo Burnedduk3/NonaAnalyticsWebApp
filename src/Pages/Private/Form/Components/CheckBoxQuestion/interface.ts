@@ -6,4 +6,5 @@ export interface ICheckBoxProps{
     questionId: string,
     setResponse: (response: IQuestionerState) => void;
     currentState: IQuestionerState,
+    order: number,
 }

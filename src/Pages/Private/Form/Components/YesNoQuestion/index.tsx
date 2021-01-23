@@ -3,7 +3,7 @@ import './styles.scss';
 import {IYesNoProps} from './interface';
 
 const YesNoQuestion: React.FC<IYesNoProps> = ({
-  question, radioGroup, questionId, setResponse, currentState, checked,
+  question, radioGroup, questionId, setResponse, currentState, checked, order,
 }:IYesNoProps): JSX.Element => (
   <div className="inputContainer">
     <p className="question-text">{question}</p>
@@ -15,7 +15,14 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
           type="radio"
           name={radioGroup}
           value="yes"
-          onClick={() => setResponse({...currentState, [questionId]: 'yes'})}
+          onClick={() => setResponse({
+            ...currentState,
+            [questionId]: {
+              response: '1',
+              order,
+            },
+          },
+          )}
           defaultChecked={checked === 'yes'}
         />
         <div className="check positive" />
@@ -27,7 +34,15 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
           type="radio"
           name={radioGroup}
           value="no"
-          onClick={() => setResponse({...currentState, [questionId]: 'no'})}
+          onClick={() => setResponse(
+              {
+                ...currentState,
+                [questionId]: {
+                  response: '0',
+                  order,
+                }},
+          )
+          }
           defaultChecked={checked === 'no'}
         />
         <div className="check negative" />

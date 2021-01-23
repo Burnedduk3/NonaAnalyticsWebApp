@@ -1,5 +1,5 @@
 import {API, graphqlOperation} from 'aws-amplify';
-import {createFormQuestion} from '../../../../graphql/mutations';
+import {createFormQuestion} from '../../../../../graphql/mutations';
 
 const saveQuestionsToDynamo = async (
     questionID:string,

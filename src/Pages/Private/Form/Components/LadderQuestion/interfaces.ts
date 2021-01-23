@@ -1,13 +1,12 @@
-import {
-  IStateQuestionResponse,
-} from '../../../../Public/PreQuestioner/src/interface';
+import {IQuestionerState} from '../../Questioner/interface';
 
 export interface ILadderQuestionProps{
     questionText: string
     questionId: string
     radioGroup: string
     values: Array<string>
-    setResponse: (response: IStateQuestionResponse) => void;
+    setResponse: (response: IQuestionerState) => void;
     currentState: object,
     checked?: string
+    order: number
 }

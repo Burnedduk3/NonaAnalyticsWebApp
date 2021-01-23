@@ -3,11 +3,11 @@ import './styles.scss';
 import {ICheckBoxProps} from './interface';
 
 const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
-  question, items, questionId, currentState, setResponse,
+  question, items, questionId, currentState, setResponse, order,
 }: ICheckBoxProps): JSX.Element => {
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>{
     if (questionId in currentState) {
-      let text: string | Array<string> = currentState[questionId];
+      let text: string | Array<string> = currentState[questionId].response;
       text = text.trim().split(',');
       if (Array.isArray(text)) {
         if (event.target.checked) {
@@ -21,7 +21,12 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
         }
         text = text.join(',');
       }
-      setResponse({...currentState, [questionId]: text});
+      setResponse({...currentState, [questionId]:
+            {
+              response: text,
+              order,
+            },
+      });
       console.log(currentState);
     }
   };
