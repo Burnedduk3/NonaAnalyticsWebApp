@@ -27,7 +27,13 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
               order,
             },
       });
-      console.log(currentState);
+    } else {
+      setResponse({...currentState, [questionId]:
+            {
+              response: event.target.name,
+              order,
+            },
+      });
     }
   };
 

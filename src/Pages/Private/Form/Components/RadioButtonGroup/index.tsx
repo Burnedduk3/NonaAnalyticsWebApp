@@ -15,7 +15,6 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
       order,
     }:IRadioButtonGroupProps,
 ): JSX.Element =>{
-  console.log(stackPhrase);
   return (
     <div className="question-container-with-header">
       {stackPhrase && <div className="stack-phrase">

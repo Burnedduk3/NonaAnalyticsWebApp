@@ -205,7 +205,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     }
   };
 
-  console.log(responseState);
   return (
     <main className="content-container">
       <LeftBar />
@@ -264,7 +263,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                       return (
                         <CheckBoxComponent
                           items={item.items}
-                          questionId={item.questionId}
+                          questionId={item.id}
                           question={item.question}
                           setResponse={setResponseState}
                           currentState={responseState}
@@ -293,11 +292,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     if (item.category.name === 'RadioGroup') {
                       return (
                         <RadioButtonGroup
+                          key={item.id}
                           items={item.items}
                           currentState={responseState}
                           setResponse={setResponseState}
                           question={item.question}
-                          questionId={item.questionId}
+                          questionId={item.id}
                           radioGroup={item.id}
                           order={item.order}
                           stackPhrase={item.stackPhrase}
@@ -307,11 +307,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     if (item.category.name === 'MultiLadder') {
                       return (
                         <MultiLadderQuestion
+                          key={item.id}
                           items={item.items}
                           currentState={responseState}
                           setResponse={setResponseState}
                           question={item.question}
-                          questionId={item.questionId}
+                          questionId={item.id}
                           radioGroup={item.id}
                           stackPhrase={item.stackPhrase}
                           order={item.order}
@@ -320,7 +321,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     }
 
                     if (item.category.name === 'Images') {
-                      console.log(item);
                       return (
                         <ImageOneSelection
                           key={item.id}
