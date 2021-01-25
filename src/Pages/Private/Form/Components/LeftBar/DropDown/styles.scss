@@ -2,13 +2,18 @@
 
 .drop-down-menu {
   text-decoration: none;
-  margin: 25px 0 0 0;
+
+  ul{
+    padding-inline: 0;
+  }
 
   .main-options {
     padding: 10px 0;
     background-color: #1f637b;
 
     .menu-status {
+      display: flex;
+      justify-content: flex-end;
       background-color: $non-checked;
       color: white;
       padding: 0 10px;
@@ -41,6 +46,18 @@
         top: 0;
         opacity: 0;
       }
+    }
+  }
+
+  .main-options{
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+
+    a {
+      width: 60%;
+      max-width: 150px;
     }
   }
 

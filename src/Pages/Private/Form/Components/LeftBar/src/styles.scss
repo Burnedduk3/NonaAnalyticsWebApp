@@ -5,26 +5,37 @@
   width: 15vw;
   min-width: 300px;
   background-color: $primary-color;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
 
-  .form-nona-logo-container {
+  .header-aside-container{
+    width: 100%;
     display: flex;
-    justify-content: center;
+    min-width: 300px;
+    flex-wrap: wrap;
 
-    .form-nona-logo {
-      width: 250px;
+    .form-nona-logo-container {
+      display: flex;
+      justify-content: center;
+
+      .form-nona-logo {
+        width: 250px;
+      }
     }
-  }
 
-  .progress-bar-container {
-    width: 120px;
-    margin: 0 auto;
-  }
+    .progress-bar-container {
+      width: 120px;
+      margin: 0 auto;
+    }
 
-  .progress-bar-subtitle {
-    text-align: center;
-    color: white;
-    font-size: 15px;
-    margin: 15px 0 0 0;
+    .progress-bar-subtitle {
+      text-align: center;
+      color: white;
+      font-size: 15px;
+      margin: 15px 0 0 0;
+    }
   }
 
   .last-section {
