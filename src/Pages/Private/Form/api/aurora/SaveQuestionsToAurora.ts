@@ -29,6 +29,7 @@ const saveQuestionsToAurora = async (
         section: section,
       },
     };
+
     await API.graphql(
         graphqlOperation(
             createCreateUserResponse,
