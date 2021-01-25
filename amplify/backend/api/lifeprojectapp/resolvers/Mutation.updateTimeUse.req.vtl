@@ -1,9 +1,0 @@
-#set( $updateList = {} )
-#foreach( $entry in $ctx.args.updateTimeUseInput.keySet() )
-  #set( $discard = $updateList.put($entry, "'$ctx.args.updateTimeUseInput[$entry]'") )
-#end
-#set( $update = $updateList.toString().replace("{","").replace("}","") )
-{
-  "version": "2018-05-29",
-  "statements":   ["UPDATE TimeUse SET $update WHERE userid=$ctx.args.updateTimeUseInput.userid", "SELECT * FROM TimeUse WHERE userid='$ctx.args.updateTimeUseInput.userid'"]
-}

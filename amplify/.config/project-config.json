@@ -2,7 +2,7 @@
   "providers": [
     "awscloudformation"
   ],
-  "projectName": "LifeProjectApp",
+  "projectName": "LifeProjectFinalApp",
   "version": "3.0",
   "frontend": "javascript",
   "javascript": {

@@ -2,30 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const getUserResponses = /* GraphQL */ `
-  query GetUserResponses($ID: String!) {
-    getUserResponses(ID: $ID) {
-      ID
-      response
-      questionId
-      formID
-      section
-      subSection
-    }
-  }
-`;
-export const listUserResponsess = /* GraphQL */ `
-  query ListUserResponsess {
-    listUserResponsess {
-      ID
-      response
-      questionId
-      formID
-      section
-      subSection
-    }
-  }
-`;
 export const getForm = /* GraphQL */ `
   query GetForm($id: ID!) {
     getForm(id: $id) {
@@ -34,27 +10,6 @@ export const getForm = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -78,12 +33,6 @@ export const listForms = /* GraphQL */ `
       items {
         id
         formQuestions {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         UserID
@@ -108,36 +57,17 @@ export const getFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         category {
           id
           name
-          questions {
-            nextToken
-          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -152,12 +82,6 @@ export const getFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         UserID
@@ -187,22 +111,6 @@ export const listFormQuestions = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -212,9 +120,6 @@ export const listFormQuestions = /* GraphQL */ `
         }
         form {
           id
-          formQuestions {
-            nextToken
-          }
           UserID
           finished
           percentage
@@ -240,27 +145,6 @@ export const getQuestion = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -270,19 +154,6 @@ export const getQuestion = /* GraphQL */ `
         id
         name
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -294,27 +165,11 @@ export const getQuestion = /* GraphQL */ `
         section {
           id
           name
-          subSections {
-            nextToken
-          }
           order
           createdAt
           updatedAt
         }
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -344,36 +199,17 @@ export const listQuestions = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         category {
           id
           name
-          questions {
-            nextToken
-          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -401,22 +237,6 @@ export const getCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -442,19 +262,6 @@ export const listCategorys = /* GraphQL */ `
         id
         name
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -473,16 +280,6 @@ export const getSection = /* GraphQL */ `
         items {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -506,13 +303,6 @@ export const listSections = /* GraphQL */ `
         id
         name
         subSections {
-          items {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -532,13 +322,6 @@ export const getSubSection = /* GraphQL */ `
         id
         name
         subSections {
-          items {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -552,22 +335,6 @@ export const getSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -596,27 +363,11 @@ export const listSubSections = /* GraphQL */ `
         section {
           id
           name
-          subSections {
-            nextToken
-          }
           order
           createdAt
           updatedAt
         }
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order

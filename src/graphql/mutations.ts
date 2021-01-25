@@ -2,46 +2,6 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
-export const deleteUserResponses = /* GraphQL */ `
-  mutation DeleteUserResponses($ID: String!) {
-    deleteUserResponses(ID: $ID) {
-      ID
-      response
-      questionId
-      formID
-      section
-      subSection
-    }
-  }
-`;
-export const createUserResponses = /* GraphQL */ `
-  mutation CreateUserResponses(
-    $createUserResponsesInput: CreateUserResponsesInput!
-  ) {
-    createUserResponses(createUserResponsesInput: $createUserResponsesInput) {
-      ID
-      response
-      questionId
-      formID
-      section
-      subSection
-    }
-  }
-`;
-export const updateUserResponses = /* GraphQL */ `
-  mutation UpdateUserResponses(
-    $updateUserResponsesInput: UpdateUserResponsesInput!
-  ) {
-    updateUserResponses(updateUserResponsesInput: $updateUserResponsesInput) {
-      ID
-      response
-      questionId
-      formID
-      section
-      subSection
-    }
-  }
-`;
 export const createForm = /* GraphQL */ `
   mutation CreateForm(
     $input: CreateFormInput!
@@ -53,27 +13,6 @@ export const createForm = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -98,27 +37,6 @@ export const updateForm = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -143,27 +61,6 @@ export const deleteForm = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -192,36 +89,17 @@ export const createFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         category {
           id
           name
-          questions {
-            nextToken
-          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -236,12 +114,6 @@ export const createFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         UserID
@@ -270,36 +142,17 @@ export const updateFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         category {
           id
           name
-          questions {
-            nextToken
-          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -314,12 +167,6 @@ export const updateFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         UserID
@@ -348,36 +195,17 @@ export const deleteFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         category {
           id
           name
-          questions {
-            nextToken
-          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -392,12 +220,6 @@ export const deleteFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
-          items {
-            id
-            response
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         UserID
@@ -426,27 +248,6 @@ export const createQuestion = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -456,19 +257,6 @@ export const createQuestion = /* GraphQL */ `
         id
         name
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -480,27 +268,11 @@ export const createQuestion = /* GraphQL */ `
         section {
           id
           name
-          subSections {
-            nextToken
-          }
           order
           createdAt
           updatedAt
         }
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -531,27 +303,6 @@ export const updateQuestion = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -561,19 +312,6 @@ export const updateQuestion = /* GraphQL */ `
         id
         name
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -585,27 +323,11 @@ export const updateQuestion = /* GraphQL */ `
         section {
           id
           name
-          subSections {
-            nextToken
-          }
           order
           createdAt
           updatedAt
         }
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -636,27 +358,6 @@ export const deleteQuestion = /* GraphQL */ `
         items {
           id
           response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
           createdAt
           updatedAt
         }
@@ -666,19 +367,6 @@ export const deleteQuestion = /* GraphQL */ `
         id
         name
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         createdAt
@@ -690,27 +378,11 @@ export const deleteQuestion = /* GraphQL */ `
         section {
           id
           name
-          subSections {
-            nextToken
-          }
           order
           createdAt
           updatedAt
         }
         questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -741,22 +413,6 @@ export const createCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -786,22 +442,6 @@ export const updateCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -831,22 +471,6 @@ export const deleteCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -873,16 +497,6 @@ export const createSection = /* GraphQL */ `
         items {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -907,16 +521,6 @@ export const updateSection = /* GraphQL */ `
         items {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -941,16 +545,6 @@ export const deleteSection = /* GraphQL */ `
         items {
           id
           name
-          section {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            nextToken
-          }
           order
           createdAt
           updatedAt
@@ -975,13 +569,6 @@ export const createSubSection = /* GraphQL */ `
         id
         name
         subSections {
-          items {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -995,22 +582,6 @@ export const createSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -1038,13 +609,6 @@ export const updateSubSection = /* GraphQL */ `
         id
         name
         subSections {
-          items {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -1058,22 +622,6 @@ export const updateSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
@@ -1101,13 +649,6 @@ export const deleteSubSection = /* GraphQL */ `
         id
         name
         subSections {
-          items {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           nextToken
         }
         order
@@ -1121,22 +662,6 @@ export const deleteSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
-          usedForms {
-            nextToken
-          }
-          category {
-            id
-            name
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            order
-            createdAt
-            updatedAt
-          }
           order
           items
           imagesPath
