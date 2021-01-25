@@ -7,5 +7,9 @@
       "authlifeprojectfinalauth",
       "Outputs.UserPoolId"
     ]
-  }
+  },
+  "rdsRegion": "us-east-2",
+  "rdsClusterIdentifier": "lifeprojectdatabase",
+  "rdsSecretStoreArn": "arn:aws:rds:us-east-2:342495404680:cluster:lifeprojectdatabase",
+  "rdsDatabaseName": "CreateUserResponse"
 }

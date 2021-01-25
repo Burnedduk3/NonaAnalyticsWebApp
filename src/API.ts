@@ -2,6 +2,24 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreateCreateUserResponseInput = {
+  ID: string,
+  formID?: string | null,
+  questionId?: string | null,
+  response?: string | null,
+  subSection?: string | null,
+  section?: string | null,
+};
+
+export type UpdateCreateUserResponseInput = {
+  ID: string,
+  formID?: string | null,
+  questionId?: string | null,
+  response?: string | null,
+  subSection?: string | null,
+  section?: string | null,
+};
+
 export type CreateFormInput = {
   id?: string | null,
   UserID: string,
@@ -303,6 +321,54 @@ export type ModelSubSectionFilterInput = {
   and?: Array< ModelSubSectionFilterInput | null > | null,
   or?: Array< ModelSubSectionFilterInput | null > | null,
   not?: ModelSubSectionFilterInput | null,
+};
+
+export type DeleteCreateUserResponseMutationVariables = {
+  ID: string,
+};
+
+export type DeleteCreateUserResponseMutation = {
+  deleteCreateUserResponse:  {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
+  } | null,
+};
+
+export type CreateCreateUserResponseMutationVariables = {
+  createCreateUserResponseInput: CreateCreateUserResponseInput,
+};
+
+export type CreateCreateUserResponseMutation = {
+  createCreateUserResponse:  {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
+  } | null,
+};
+
+export type UpdateCreateUserResponseMutationVariables = {
+  updateCreateUserResponseInput: UpdateCreateUserResponseInput,
+};
+
+export type UpdateCreateUserResponseMutation = {
+  updateCreateUserResponse:  {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
+  } | null,
 };
 
 export type CreateFormMutationVariables = {
@@ -1085,6 +1151,34 @@ export type DeleteSubSectionMutation = {
   } | null,
 };
 
+export type GetCreateUserResponseQueryVariables = {
+  ID: string,
+};
+
+export type GetCreateUserResponseQuery = {
+  getCreateUserResponse:  {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
+  } | null,
+};
+
+export type ListCreateUserResponsesQuery = {
+  listCreateUserResponses:  Array< {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
+  } | null > | null,
+};
+
 export type GetFormQueryVariables = {
   id: string,
 };
@@ -1533,6 +1627,18 @@ export type ListSubSectionsQuery = {
       updatedAt: string,
     } | null > | null,
     nextToken: string | null,
+  } | null,
+};
+
+export type OnCreateCreateUserResponseSubscription = {
+  onCreateCreateUserResponse:  {
+    __typename: "CreateUserResponse",
+    ID: string,
+    formID: string | null,
+    questionId: string | null,
+    response: string | null,
+    subSection: string | null,
+    section: string | null,
   } | null,
 };
 

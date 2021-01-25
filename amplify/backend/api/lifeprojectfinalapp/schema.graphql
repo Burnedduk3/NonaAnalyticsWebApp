@@ -48,3 +48,51 @@ type SubSection @model {
   questions: [Question] @connection(name: "SubSectionQuestions")
   order: Int!
 }
+
+input CreateCreateUserResponseInput {
+  ID: String!
+  formID: String
+  questionId: String
+  response: String
+  subSection: String
+  section: String
+}
+
+type CreateUserResponse {
+  ID: String!
+  formID: String
+  questionId: String
+  response: String
+  subSection: String
+  section: String
+}
+
+input UpdateCreateUserResponseInput {
+  ID: String!
+  formID: String
+  questionId: String
+  response: String
+  subSection: String
+  section: String
+}
+
+type Mutation {
+  deleteCreateUserResponse(ID: String!): CreateUserResponse
+  createCreateUserResponse(createCreateUserResponseInput: CreateCreateUserResponseInput!): CreateUserResponse
+  updateCreateUserResponse(updateCreateUserResponseInput: UpdateCreateUserResponseInput!): CreateUserResponse
+}
+
+type Query {
+  getCreateUserResponse(ID: String!): CreateUserResponse
+  listCreateUserResponses: [CreateUserResponse]
+}
+
+type Subscription {
+  onCreateCreateUserResponse: CreateUserResponse @aws_subscribe(mutations: ["createCreateUserResponse"])
+}
+
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}

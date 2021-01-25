@@ -2,6 +2,18 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const onCreateCreateUserResponse = /* GraphQL */ `
+  subscription OnCreateCreateUserResponse {
+    onCreateCreateUserResponse {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
 export const onCreateForm = /* GraphQL */ `
   subscription OnCreateForm {
     onCreateForm {

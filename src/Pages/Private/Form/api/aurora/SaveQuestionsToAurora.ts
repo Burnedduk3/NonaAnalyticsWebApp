@@ -1,8 +1,8 @@
 import {IQuestionerState} from '../../Questioner/interface';
 import uniqid from 'uniqid';
-// import {API, graphqlOperation} from 'aws-amplify';
-// import {createUserResponses} from '../../../../../graphql/mutations';
-// import {CreateUserResponsesMutationVariables} from '../../../../../API';
+import {API, graphqlOperation} from 'aws-amplify';
+import {createCreateUserResponse} from '../../../../../graphql/mutations';
+import {CreateCreateUserResponseMutationVariables} from '../../../../../API';
 
 export interface ISaveDataAuroraParams {
     section:string,
@@ -20,26 +20,26 @@ const saveQuestionsToAurora = async (
   await Object.entries(questions).map(async (item: any)=>{
     const uniqueId = uniqid(replacedSubSection, replacedStack);
     console.log(uniqueId, formId);
-    // const parameters: CreateUserResponsesMutationVariables = {
-    //   createUserResponsesInput: {
-    //     formID: formId,
-    //     ID: uniqueId,
-    //     questionId: item[0],
-    //     response: item[1].response,
-    //     subSection: subSection,
-    //     section: section,
-    //   },
-    // };
-    // console.log('before');
-    // const result = await API.graphql(
-    //     graphqlOperation(
-    //         createUserResponses,
-    //         {
-    //           ...parameters,
-    //         },
-    //     ),
-    // );
-    // console.log(result);
+    const parameters: CreateCreateUserResponseMutationVariables = {
+      createCreateUserResponseInput: {
+        formID: formId,
+        ID: uniqueId,
+        questionId: item[0],
+        response: item[1].response,
+        subSection: subSection,
+        section: section,
+      },
+    };
+    console.log('before');
+    const result = await API.graphql(
+        graphqlOperation(
+            createCreateUserResponse,
+            {
+              ...parameters,
+            },
+        ),
+    );
+    console.log(result);
   });
 };
 

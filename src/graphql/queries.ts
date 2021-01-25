@@ -2,6 +2,30 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const getCreateUserResponse = /* GraphQL */ `
+  query GetCreateUserResponse($ID: String!) {
+    getCreateUserResponse(ID: $ID) {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
+export const listCreateUserResponses = /* GraphQL */ `
+  query ListCreateUserResponses {
+    listCreateUserResponses {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
 export const getForm = /* GraphQL */ `
   query GetForm($id: ID!) {
     getForm(id: $id) {

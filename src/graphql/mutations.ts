@@ -2,6 +2,50 @@
 /* eslint-disable */
 // this is an auto generated file. This will be overwritten
 
+export const deleteCreateUserResponse = /* GraphQL */ `
+  mutation DeleteCreateUserResponse($ID: String!) {
+    deleteCreateUserResponse(ID: $ID) {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
+export const createCreateUserResponse = /* GraphQL */ `
+  mutation CreateCreateUserResponse(
+    $createCreateUserResponseInput: CreateCreateUserResponseInput!
+  ) {
+    createCreateUserResponse(
+      createCreateUserResponseInput: $createCreateUserResponseInput
+    ) {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
+export const updateCreateUserResponse = /* GraphQL */ `
+  mutation UpdateCreateUserResponse(
+    $updateCreateUserResponseInput: UpdateCreateUserResponseInput!
+  ) {
+    updateCreateUserResponse(
+      updateCreateUserResponseInput: $updateCreateUserResponseInput
+    ) {
+      ID
+      formID
+      questionId
+      response
+      subSection
+      section
+    }
+  }
+`;
 export const createForm = /* GraphQL */ `
   mutation CreateForm(
     $input: CreateFormInput!
