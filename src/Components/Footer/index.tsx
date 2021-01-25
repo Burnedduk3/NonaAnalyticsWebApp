@@ -18,17 +18,34 @@ const Footer: React.FC = (): JSX.Element => {
                 <p>{footerConst.firstCol.text}</p>
               </div>
               <div className="two-col">
-                {Object.values(footerConst.secCol).map(
-                    (item) => (
-                      <p
-                        key={item.name}
-                      >
-                        <Link to={item.path}>
-                          {item.name}
-                        </Link>
-                      </p>
-                    ),
-                )}
+                <div>
+                  {Object.values(footerConst.secCol).map(
+                      (item) => (
+                        <p
+                          key={item.name}
+                        >
+                          <Link to={item.path}>
+                            {item.name}
+                          </Link>
+                        </p>
+                      ),
+                  )}
+                </div>
+              </div>
+              <div className="third-col">
+                <div>
+                  {Object.values(footerConst.thirdCol).map(
+                      (item) => (
+                        <p
+                          key={item.name}
+                        >
+                          <Link to={item.path}>
+                            {item.name}
+                          </Link>
+                        </p>
+                      ),
+                  )}
+                </div>
               </div>
               <div className="four-col">
                 <h3>{footerConst.fourthCol.title}</h3>

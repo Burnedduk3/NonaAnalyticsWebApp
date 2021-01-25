@@ -1,5 +1,5 @@
 export interface IMember{
-    memberClass: 'eng' | 'med';
+    memberClass: string;
     name: string;
     title: string;
 }

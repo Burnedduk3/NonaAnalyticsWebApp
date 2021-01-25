@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;300;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
 .our-mission {
   position: relative;
   width: 100%;
   padding-top: 20vh;
-  background-image: url("../../../../assets/Images/OurMissionImage.jpg");
+  background-image: url("../../../../assets/Images/OurMissionImage.png");
   background-size: cover;
   opacity: 0.9;
   z-index: -1;
@@ -14,6 +17,28 @@
     background-color: white;
     z-index: 1;
     opacity: 1;
+  }
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  p {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
+
+  button {
+    margin-top: 10vh;
+    background: transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #ff707087;
+    border-radius: 33px;
+    width: 18vw;
+    height: 3.5em;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 1em;
   }
 }
 
@@ -27,6 +52,23 @@
   .perks {
     display: flex;
   }
+
+  h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  button {
+    margin-top: 10vh;
+    background: transparent linear-gradient(90deg, #db0011 0%, #ff1c26 100%) 0% 0% no-repeat padding-box;
+    box-shadow: 0px 0px 15px #ff707087;
+    border-radius: 33px;
+    width: 18vw;
+    height: 3.5em;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    font-size: 1em;
+  }
 }
 
 .our-team {
@@ -37,6 +79,15 @@
 
   .subtitle {
     color: #ff5c63;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
+  }
+
+  .subsubtitle {
+    margin-top: 5vh;
+    color: #ff5c63;
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 600;
   }
 
   .sm {
@@ -44,7 +95,8 @@
     margin-top: 5vh;
   }
 
-  .meds {
+  .medsContainer {
+    margin-top: 5vh;
     display: flex;
     justify-content: center;
   }

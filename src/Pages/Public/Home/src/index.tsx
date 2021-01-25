@@ -9,6 +9,7 @@ import {
   SHOW_FOOTER,
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
+import Member from '../Components/Member/index';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -24,6 +25,9 @@ const Home: React.FC = (): JSX.Element => {
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>
+          <button className="red-button">
+            {HomeTexts.sections.first.button.text}
+          </button>
         </div>
       </div>
       <div className="what-do-we-do">
@@ -42,8 +46,37 @@ const Home: React.FC = (): JSX.Element => {
             )
           }
         </div>
+        <button className="red-button">
+          {HomeTexts.sections.button.text}
+        </button>
       </div>
       <div className="our-team">
+        <h3 className="subtitle">{HomeTexts.sections.third.title}</h3>
+        {
+          Object.values(HomeTexts.sections.third.members.first).map(
+              (item) => (
+                <Member key={item.name}
+                  memberClass={item.role}
+                  name={item.name}
+                  title={item.title}
+                />
+              ),
+          )
+        }
+        <h2 className="subsubtitle">{HomeTexts.sections.third.subtitle}</h2>
+        <div className='medsContainer'>
+          {
+            Object.values(HomeTexts.sections.third.members.second).map(
+                (item) => (
+                  <Member key={item.name}
+                    memberClass={item.role}
+                    name={item.name}
+                    title={item.title}
+                  />
+                ),
+            )
+          }
+        </div>
       </div>
     </>
   );

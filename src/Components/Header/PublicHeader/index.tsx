@@ -6,6 +6,7 @@ import {IPublicHeaderProps} from './interface';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
 import {useApplicationState} from '../../../Context/ApplicationState/Provider';
 import {useHistory} from 'react-router-dom';
+import arrow from '../../../assets/Icons/long-arrow-right.png';
 
 
 const PublicHeader: React.FC<IPublicHeaderProps> = (
@@ -40,6 +41,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         <span className="call-text">{HeaderTexts.home.span_text}</span>
         <button type="button" className="call-button" onClick={QuickStart}>
           {HeaderTexts.home.span_button}
+          <img src={arrow} alt="Icons8 long-arrow-right" />
         </button>
       </div>
     </header>

@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;400;300;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;700&display=swap');
+
 .eng,
 .med {
   display: flex;
@@ -24,6 +27,16 @@
   box-sizing: border-box;
   margin: 3vh 3vh;
   padding: 1em 3em;
+
+  .name-container {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+  }
+
+  .title-container {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+  }
 }
 
 .eng {
@@ -38,9 +51,14 @@
     text-align: right;
     justify-content: flex-end;
     padding-right: 2em;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
   }
 
   .title-container {
     width: 60%;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
   }
+
 }
