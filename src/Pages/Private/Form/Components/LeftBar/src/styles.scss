@@ -8,7 +8,7 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-between;
 
   .header-aside-container{
     width: 100%;
@@ -19,6 +19,8 @@
     .form-nona-logo-container {
       display: flex;
       justify-content: center;
+      width: 100%;
+      margin: 50px 0;
 
       .form-nona-logo {
         width: 250px;

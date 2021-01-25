@@ -19,7 +19,6 @@ const saveQuestionsToAurora = async (
   const replacedStack = `stack${stack}`;
   await Object.entries(questions).map(async (item: any)=>{
     const uniqueId = uniqid(replacedSubSection, replacedStack);
-    console.log(uniqueId, formId);
     const parameters: CreateCreateUserResponseMutationVariables = {
       createCreateUserResponseInput: {
         formID: formId,
@@ -30,8 +29,7 @@ const saveQuestionsToAurora = async (
         section: section,
       },
     };
-    console.log('before');
-    const result = await API.graphql(
+    await API.graphql(
         graphqlOperation(
             createCreateUserResponse,
             {
@@ -39,7 +37,6 @@ const saveQuestionsToAurora = async (
             },
         ),
     );
-    console.log(result);
   });
 };
 

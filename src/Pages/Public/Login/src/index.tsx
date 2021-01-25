@@ -34,7 +34,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const userState = useUserState();
 
   useEffect(() => {
-    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
   }, []);
 
   const goHome = () =>{
