@@ -30,6 +30,7 @@ const Home: React.FC = (): JSX.Element => {
           </button>
         </div>
       </div>
+
       <div className="what-do-we-do">
         <h3 className="subtitle">{HomeTexts.title}</h3>
         <div className="perks">
@@ -50,6 +51,7 @@ const Home: React.FC = (): JSX.Element => {
           {HomeTexts.sections.button.text}
         </button>
       </div>
+
       <div className="our-team">
         <h3 className="subtitle">{HomeTexts.sections.third.title}</h3>
         {

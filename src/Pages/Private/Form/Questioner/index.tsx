@@ -33,7 +33,9 @@ import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import saveQuestionsToDynamo from '../api/Dynamo/SaveQuestionsToDynamo';
 import
 saveQuestionsToAurora,
-{ISaveDataAuroraParams}
+{
+  ISaveDataAuroraParams,
+}
   from '../api/aurora/SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
@@ -45,7 +47,7 @@ import ImageOneSelection from '../Components/ImageQuestion';
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  const [formQuestions, setFormQuestions] = useState<any[]>([]);
+  const [formQuestions, setFormQuestions] = useState<Array<IQuestion>>([]);
   const [responseState, setResponseState] = useState<IQuestionerState>({});
   const [
     firstTimeFetchingQuestions,
@@ -58,8 +60,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const history = useHistory();
 
   useEffect( () => {
-    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_HEADER, payload: undefined});
     setLoading(true);
     try {
       fetchQuestions(
@@ -96,7 +98,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           if (section.name === params.section) {
             section.subSections.map((subSection: ISubSection)=>{
               if (subSection.name === params.subSection) {
-                const showableQuestions:Array<any> = [];
+                const showableQuestions:Array<IQuestion> = [];
                 subSection.questions.map((question: IQuestion)=>{
                   if (question.stack.toString() === params.stack) {
                     showableQuestions.push(question);
