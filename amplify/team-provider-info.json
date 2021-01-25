@@ -19,7 +19,7 @@
                 "lifeprojectapp": {
                     "rdsRegion": "us-east-2",
                     "rdsClusterIdentifier": "arn:aws:rds:us-east-2:342495404680:cluster:database-aurora-2",
-                    "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-2:342495404680:secret:rds-db-credentials/cluster-JZUOCPFXUK4BKDN5P5Q3M5WDAI/admin-dMFygc",
+                    "rdsSecretStoreArn": "arn:aws:secretsmanager:us-east-2:342495404680:secret:rds-db-credentials/cluster-AG5WUSSPJWB4ESCP63P45MTUPU/admin-wXqM59",
                     "rdsDatabaseName": "dbaurora"
                 }
             }
