@@ -105,7 +105,7 @@ export const fetchQuestions = async (
         return section;
       });
       if (firstTime) {
-        currentState.previous = null;
+        currentState.previousSection = null;
         currentState.nextSection = nextSection;
         currentState.currentSection = currentSection;
       }
