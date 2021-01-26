@@ -19,7 +19,7 @@ import {
   GET_SECTIONS,
   NEXT_SECTION,
 } from '../../../../Context/FormQuestions/ActionTypes';
-import {fetchQuestions} from './FetchQuestions';
+import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
@@ -60,15 +60,16 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const history = useHistory();
 
   useEffect( () => {
-    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    ApplicationState.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    console.log('questioner', ApplicationState?.appState);
     setLoading(true);
     try {
       fetchQuestions(
-          FormApplicationState?.formState,
+          FormApplicationState.formState,
           firstTimeFetchingQuestions,
       ).then((data: any) =>{
-        FormApplicationState?.formStateDispatch(
+        FormApplicationState.formStateDispatch(
             {
               type: GET_SECTIONS,
               payload: {
@@ -91,8 +92,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     if (FormApplicationState &&
         FormApplicationState.formState &&
         FormApplicationState.formState.sections &&
-        FormApplicationState?.formState.sections?.length > 0) {
-      const questioner = FormApplicationState?.formState.sections;
+        FormApplicationState.formState.sections.length > 0) {
+      const questioner = FormApplicationState.formState.sections;
       if (questioner) {
         questioner.map((section:ISection) =>{
           if (section.name === params.section) {
@@ -149,6 +150,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     });
     if (FormApplicationState && FormApplicationState.formState) {
       const currentSection = FormApplicationState.formState.currentSection;
+      console.log(currentSection);
       if (currentSection && currentSection.subSections) {
         for (
           let index = 0;
@@ -165,6 +167,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             } else {
               if (index === currentSection.subSections.length - 1 ) {
                 // Here it changes the Section
+                console.log('Hola');
                 FormApplicationState.formStateDispatch(
                     {
                       type: NEXT_SECTION,
@@ -211,140 +214,142 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     <main className="content-container">
       <LeftBar />
       <div className="form-container">
-        {loading && (
-          <div className="spinner-wrapper">
-            <Spinner />
-          </div>
-        )}
-        {/* eslint-disable-next-line max-len */}
-        {(!loading && !error) && (
-          <>
-            {
-              formQuestions.map(
-                  (item: any) => {
-                    if (item.category.name === 'YesNo') {
-                      return (
-                        <div key={item.id} className="yes-no-container-comp">
-                          <YesNoQuestion
+        <div className="questioner-container">
+          {loading && (
+            <div className="spinner-wrapper">
+              <Spinner />
+            </div>
+          )}
+          {/* eslint-disable-next-line max-len */}
+          {(!loading && !error) && (
+            <>
+              {
+                formQuestions.map(
+                    (item: any) => {
+                      if (item.category.name === 'YesNo') {
+                        return (
+                          <div key={item.id} className="yes-no-container-comp">
+                            <YesNoQuestion
+                              question={item.question}
+                              questionId={item.id}
+                              radioGroup={item.id}
+                              setResponse={setResponseState}
+                              currentState={responseState}
+                              order={item.order}
+                            />
+                          </div>
+                        );
+                      } if (item.category.name === 'Combo') {
+                        return (
+                          <ComboBoxComponent
+                            key={item.id}
                             question={item.question}
                             questionId={item.id}
-                            radioGroup={item.id}
+                            setResponse={setResponseState}
+                            items={item.items}
+                            currentState={responseState}
+                            order={item.order}
+                          />
+                        );
+                      }
+                      if (item.category.name === 'Open') {
+                        return (
+                          <TextInputComponent
+                            placeholder={item.placeHolder}
+                            key={item.id}
+                            question={item.question}
+                            questionId={item.id}
                             setResponse={setResponseState}
                             currentState={responseState}
                             order={item.order}
                           />
-                        </div>
-                      );
-                    } if (item.category.name === 'Combo') {
-                      return (
-                        <ComboBoxComponent
-                          key={item.id}
-                          question={item.question}
-                          questionId={item.id}
-                          setResponse={setResponseState}
-                          items={item.items}
-                          currentState={responseState}
-                          order={item.order}
-                        />
-                      );
-                    }
-                    if (item.category.name === 'Open') {
-                      return (
-                        <TextInputComponent
-                          placeholder={item.placeHolder}
-                          key={item.id}
-                          question={item.question}
-                          questionId={item.id}
-                          setResponse={setResponseState}
-                          currentState={responseState}
-                          order={item.order}
-                        />
-                      );
-                    }
-                    if (item.category.name === 'MultiSelection') {
-                      return (
-                        <CheckBoxComponent
-                          items={item.items}
-                          questionId={item.id}
-                          question={item.question}
-                          setResponse={setResponseState}
-                          currentState={responseState}
-                          order={item.order}
-                        />
-                      );
-                    }
-                    if (item.category.name === 'Ladder') {
-                      return (
-                        <LadderQuestion
-                          key={item.id}
-                          questionText={item.question}
-                          questionId={item.id}
-                          radioGroup={item.id}
-                          order={item.order}
-                          setResponse={setResponseState}
-                          currentState={responseState}
-                          values={
+                        );
+                      }
+                      if (item.category.name === 'MultiSelection') {
+                        return (
+                          <CheckBoxComponent
+                            items={item.items}
+                            questionId={item.id}
+                            question={item.question}
+                            setResponse={setResponseState}
+                            currentState={responseState}
+                            order={item.order}
+                          />
+                        );
+                      }
+                      if (item.category.name === 'Ladder') {
+                        return (
+                          <LadderQuestion
+                            key={item.id}
+                            questionText={item.question}
+                            questionId={item.id}
+                            radioGroup={item.id}
+                            order={item.order}
+                            setResponse={setResponseState}
+                            currentState={responseState}
+                            values={
                             item.items === null || item.items.length === 0?
                                 LadderConstants.default.defaultValue:
                                 item.items
-                          }
-                        />
-                      );
-                    }
-                    if (item.category.name === 'RadioGroup') {
-                      return (
-                        <RadioButtonGroup
-                          key={item.id}
-                          items={item.items}
-                          currentState={responseState}
-                          setResponse={setResponseState}
-                          question={item.question}
-                          questionId={item.id}
-                          radioGroup={item.id}
-                          order={item.order}
-                          stackPhrase={item.stackPhrase}
-                        />
-                      );
-                    }
-                    if (item.category.name === 'MultiLadder') {
-                      return (
-                        <MultiLadderQuestion
-                          key={item.id}
-                          items={item.items}
-                          currentState={responseState}
-                          setResponse={setResponseState}
-                          question={item.question}
-                          questionId={item.id}
-                          radioGroup={item.id}
-                          stackPhrase={item.stackPhrase}
-                          order={item.order}
-                        />
-                      );
-                    }
+                            }
+                          />
+                        );
+                      }
+                      if (item.category.name === 'RadioGroup') {
+                        return (
+                          <RadioButtonGroup
+                            key={item.id}
+                            items={item.items}
+                            currentState={responseState}
+                            setResponse={setResponseState}
+                            question={item.question}
+                            questionId={item.id}
+                            radioGroup={item.id}
+                            order={item.order}
+                            stackPhrase={item.stackPhrase}
+                          />
+                        );
+                      }
+                      if (item.category.name === 'MultiLadder') {
+                        return (
+                          <MultiLadderQuestion
+                            key={item.id}
+                            items={item.items}
+                            currentState={responseState}
+                            setResponse={setResponseState}
+                            question={item.question}
+                            questionId={item.id}
+                            radioGroup={item.id}
+                            stackPhrase={item.stackPhrase}
+                            order={item.order}
+                          />
+                        );
+                      }
 
-                    if (item.category.name === 'Images') {
-                      return (
-                        <ImageOneSelection
-                          key={item.id}
-                          items={item.items}
-                          currentState={responseState}
-                          setResponse={setResponseState}
-                          question={item.question}
-                          questionId={item.id}
-                          radioGroup={item.id}
-                          imagesPath={item.imagesPath}
-                          order={item.order}
-                        />
-                      );
-                    }
+                      if (item.category.name === 'Images') {
+                        return (
+                          <ImageOneSelection
+                            key={item.id}
+                            items={item.items}
+                            currentState={responseState}
+                            setResponse={setResponseState}
+                            question={item.question}
+                            questionId={item.id}
+                            radioGroup={item.id}
+                            imagesPath={item.imagesPath}
+                            order={item.order}
+                          />
+                        );
+                      }
 
-                    return <></>;
-                  },
-              )
-            }
+                      return <></>;
+                    },
+                )
+              }
 
-          </>
-        )}
+            </>
+          )}
+        </div>
         <div className="buttons-container">
           <button
             className="button next"

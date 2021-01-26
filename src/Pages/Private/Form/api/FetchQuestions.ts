@@ -21,6 +21,7 @@ export const fetchQuestions = async (
             getSectionsWithQuestions,
             {},
         ));
+    console.log(databaseQuestions);
     if (databaseQuestions &&
             databaseQuestions.data &&
             databaseQuestions.data.listSections
@@ -104,7 +105,7 @@ export const fetchQuestions = async (
         return section;
       });
       if (firstTime) {
-        currentState.previous = null;
+        currentState.previousSection = null;
         currentState.nextSection = nextSection;
         currentState.currentSection = currentSection;
       }
