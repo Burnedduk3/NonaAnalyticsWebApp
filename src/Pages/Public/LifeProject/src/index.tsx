@@ -20,7 +20,7 @@ const LifeProject: React.FC = (): JSX.Element => {
   }, []);
   return (
     <>
-      <div className="content">
+      <div className="contentLife">
         <h3 className="subtitle">{LifeProjectText.firstPart.title}</h3>
         <ul>
           {

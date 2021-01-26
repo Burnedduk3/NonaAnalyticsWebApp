@@ -25,7 +25,7 @@ const Home: React.FC = (): JSX.Element => {
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>
-          <button className="red-button">
+          <button className="red-button" >
             {HomeTexts.sections.first.button.text}
           </button>
         </div>
