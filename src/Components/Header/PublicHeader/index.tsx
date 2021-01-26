@@ -15,7 +15,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
   const history = useHistory();
 
   const QuickStart = () => {
-    history.push(RoutingConstants.menu.lifeProject.path);
+    history.push(RoutingConstants.form.path);
   };
 
   const home = () => (

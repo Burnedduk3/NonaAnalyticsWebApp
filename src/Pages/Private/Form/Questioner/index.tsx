@@ -65,10 +65,10 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     setLoading(true);
     try {
       fetchQuestions(
-          FormApplicationState?.formState,
+          FormApplicationState.formState,
           firstTimeFetchingQuestions,
       ).then((data: any) =>{
-        FormApplicationState?.formStateDispatch(
+        FormApplicationState.formStateDispatch(
             {
               type: GET_SECTIONS,
               payload: {
