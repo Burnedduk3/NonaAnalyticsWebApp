@@ -96,6 +96,24 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
       </h1>
     </header>
   );
+  const startSurvey = () => (
+    <header className="header header-startSurvey">
+      <PublicNavBar theme="dark" />
+      <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
+      <h1 className="main-title">
+        <span
+          className="title-primary"
+        >
+          {HeaderTexts.startSurvey.text}
+        </span>
+        <br />
+      </h1>
+    </header>
+  );
 
   const ApplicationState = useApplicationState();
   return (
@@ -109,9 +127,11 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
           {(page === RoutingConstants.menu.lifeProject.path) && (
             lifeProject()
           )}
-          {(page === RoutingConstants.menu.bePart.path ||
-              page === RoutingConstants.form.path) && (
+          {(page === RoutingConstants.menu.bePart.path) && (
             bePart()
+          )}
+          {(page === RoutingConstants.form.path) && (
+            startSurvey()
           )}
         </>
       }

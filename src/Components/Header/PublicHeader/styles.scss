@@ -190,6 +190,34 @@
     }
   }
 
+  &-startSurvey {
+    padding-bottom: 5vh;
+
+    .container {
+      background-image: url("../../../assets/Images/StartSurveyImage.jpg");
+      opacity: 0.5;
+    }
+
+    .social {
+      top: 20vh;
+
+      .fab {
+        color: $secondary-color;
+      }
+    }
+
+    .main-title {
+      margin-left: 20vh;
+      max-width: 70vw !important;
+
+      .title-primary {
+        font-size: 0.5em !important;
+        line-height: 1.8;
+        margin-top: 0;
+      }
+    }
+  }
+
   .main-title {
     max-width: 45%;
     color: white;
