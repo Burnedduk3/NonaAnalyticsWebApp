@@ -21,6 +21,7 @@ export const fetchQuestions = async (
             getSectionsWithQuestions,
             {},
         ));
+    console.log(databaseQuestions);
     if (databaseQuestions &&
             databaseQuestions.data &&
             databaseQuestions.data.listSections

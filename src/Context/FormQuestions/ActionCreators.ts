@@ -1,21 +1,6 @@
 import {
-  IFormQuestionsContextPayload,
   IFormQuestionsContextState, ISection,
 } from './interface';
-
-export const addSection = (
-    data: IFormQuestionsContextPayload,
-) : IFormQuestionsContextState => {
-  if (!(data && data.fetchedSections)) {
-    throw new Error('no data was found');
-  }
-  return {
-    currentSection: data.fetchedSections.currentSection,
-    nextSection: data.fetchedSections.nextSection,
-    previous: data.fetchedSections.previous,
-    sections: data.fetchedSections.sections,
-  };
-};
 
 export const nextSection = (
     state: IFormQuestionsContextState,
@@ -28,11 +13,16 @@ export const nextSection = (
       if (newCurrent.order + 1 < state.sections.length) {
         newNext = state.sections[newCurrent.order + 1];
       }
-      console.log(newCurrent.order + 1 % state.sections.length);
     }
     state.nextSection = newNext;
     state.currentSection = newCurrent;
-    state.previous = newPrevious;
+    state.previousSection = newPrevious;
   }
+  return state;
+};
+
+export const fetchQuestioner = (
+    state: IFormQuestionsContextState,
+):IFormQuestionsContextState => {
   return state;
 };

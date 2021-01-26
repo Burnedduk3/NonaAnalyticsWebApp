@@ -1,11 +1,7 @@
-import {addSection, nextSection} from './ActionCreators';
+import {fetchQuestioner, nextSection} from './ActionCreators';
 import {
-  ADD_SECTION,
-  DELETE_SECTION,
-  GET_SECTIONS,
   NEXT_SECTION,
-  SET_CURRENT_CURRENT_SECTION,
-  SET_CURRENT_STACK,
+  FETCH_QUESTIONER,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -16,7 +12,10 @@ export const initialState: IFormQuestionsContextState = {
   sections: [],
   currentSection: null,
   nextSection: null,
-  previous: null,
+  previousSection: null,
+  currentStack: null,
+  currentSubSectionIndex: null,
+  subSectionsArray: null,
 };
 
 const FormQuestionsReducer = (
@@ -24,26 +23,8 @@ const FormQuestionsReducer = (
     {type, payload}: IFormQuestionsContextReducer,
 ):IFormQuestionsContextState => {
   switch (type) {
-    case GET_SECTIONS: {
-      if (payload) {
-        return addSection(payload);
-      }
-      return state;
-    }
-    case ADD_SECTION: {
-      return initialState;
-    }
-
-    case DELETE_SECTION: {
-      return initialState;
-    }
-
-    case SET_CURRENT_STACK: {
-      return initialState;
-    }
-
-    case SET_CURRENT_CURRENT_SECTION: {
-      return initialState;
+    case FETCH_QUESTIONER: {
+      return fetchQuestioner(state);
     }
 
     case NEXT_SECTION: {

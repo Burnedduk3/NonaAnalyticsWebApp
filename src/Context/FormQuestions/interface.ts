@@ -1,8 +1,13 @@
+import {SubSection} from '../../models';
+
 export interface IFormQuestionsContextState{
     sections: Array<ISection> | null;
     currentSection: ISection | null;
     nextSection: ISection | null;
-    previous: ISection | null;
+    previousSection: ISection | null;
+    currentSubSectionIndex: number | null;
+    subSectionsArray: Array<ISubSection> | null;
+    currentStack: number | null;
 }
 
 export interface IFormQuestionsContextPayload{
