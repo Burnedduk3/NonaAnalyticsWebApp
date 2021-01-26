@@ -3,9 +3,8 @@ import ApplicationStateReducer, {initialState} from './Reducer';
 import {IAppStateContext} from './interface';
 
 type ContextValue = IAppStateContext | null ;
-let context: IAppStateContext | null = null;
 
-export const ApplicationStateContext = createContext<ContextValue>(context);
+export const ApplicationStateContext = createContext<ContextValue>(null);
 
 // eslint-disable-next-line react/prop-types
 const ApplicationStateProvider: React.FC = ({children}): JSX.Element => {
@@ -27,11 +26,9 @@ const ApplicationStateProvider: React.FC = ({children}): JSX.Element => {
   );
 };
 
-export const useApplicationState = (): IAppStateContext => {
-  if (!context) {
-    context = React.useContext(ApplicationStateContext);
-  }
-  return context as IAppStateContext;
-};
+export const useApplicationState = () => React.useContext(
+    ApplicationStateContext,
+);
+
 
 export default ApplicationStateProvider;

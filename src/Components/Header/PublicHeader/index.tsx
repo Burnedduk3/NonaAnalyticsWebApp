@@ -118,7 +118,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
   const ApplicationState = useApplicationState();
   return (
     <>
-      {ApplicationState.appState.hideHeader ?
+      {ApplicationState?.appState.hideHeader ?
             <></> :
         <>
           {(page === RoutingConstants.menu.home.path) && (

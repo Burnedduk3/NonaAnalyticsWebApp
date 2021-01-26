@@ -7,9 +7,8 @@ import {useApplicationState} from '../../Context/ApplicationState/Provider';
 
 const Footer: React.FC = (): JSX.Element => {
   const ApplicationState = useApplicationState();
-
   return (
-    (!ApplicationState.appState.hideFooter ?
+    (ApplicationState?.appState.hideFooter ?
         <></>:
           <footer className="footer">
             <div className="wrapper">

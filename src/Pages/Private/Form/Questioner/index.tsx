@@ -60,8 +60,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const history = useHistory();
 
   useEffect( () => {
-    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    ApplicationState.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    console.log('questioner', ApplicationState?.appState);
     setLoading(true);
     try {
       fetchQuestions(
