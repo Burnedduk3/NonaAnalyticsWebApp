@@ -48,6 +48,14 @@ const BePartPage: React.FC = (): JSX.Element => {
             },
         )
       }
+      <div className="buttons">
+        <button className="btn1">
+          {BePartContentText.buttons.first.text}
+        </button>
+        <button className="btn2">
+          {BePartContentText.buttons.second.text}
+        </button>
+      </div>
     </>
   );
 };
