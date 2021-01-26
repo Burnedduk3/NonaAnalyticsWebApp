@@ -62,7 +62,8 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   };
 
   return (
-    <main>
+    <main className="StartSurvey">
+      <h1 className="titleStartSurvey">Lets Start</h1>
       <YesNoQuestion
         question={CONSTANTS.firstQuestion}
         radioGroup="live_play"
