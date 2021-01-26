@@ -15,6 +15,10 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
   const history = useHistory();
 
   const QuickStart = () => {
+    history.push(RoutingConstants.form.path);
+  };
+
+  const LifeProjectEvent = () => {
     history.push(RoutingConstants.menu.lifeProject.path);
   };
 
@@ -34,7 +38,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         <br />
         {HeaderTexts.home.text.substr(16, HeaderTexts.home.text.length)}
       </h1>
-      <button type="button" className="quick-start">
+      <button type="button" className="quick-start" onClick={LifeProjectEvent}>
         {HeaderTexts.home.button}
       </button>
       <div className="call">

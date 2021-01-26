@@ -1,4 +1,5 @@
 import React, {useEffect} from 'react';
+import {useHistory} from 'react-router-dom';
 import './styles.scss';
 import Perk from '../Components/Perk';
 import HomeTexts from './CONSTANTS';
@@ -10,9 +11,20 @@ import {
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
 import Member from '../Components/Member/index';
+// eslint-disable-next-line max-len
+import RoutingConstants from '../../../../navigation/CONSTANTS/RoutingConstants';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
+  const history = useHistory();
+
+  const LifeProjectEvent = () => {
+    history.push(RoutingConstants.menu.lifeProject.path);
+  };
+
+  const StartSurvey = () => {
+    history.push(RoutingConstants.form.path);
+  };
 
   useEffect(()=>{
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
@@ -25,7 +37,8 @@ const Home: React.FC = (): JSX.Element => {
         <div className="our-mission-content">
           <h3 className="subtitle">{HomeTexts.sections.first.title}</h3>
           <p>{HomeTexts.sections.first.text}</p>
-          <button className="red-button" >
+          {/* eslint-disable-next-line max-len */}
+          <button className="red-button" type="button" onClick={LifeProjectEvent}>
             {HomeTexts.sections.first.button.text}
           </button>
         </div>
@@ -47,7 +60,7 @@ const Home: React.FC = (): JSX.Element => {
             )
           }
         </div>
-        <button className="red-button">
+        <button type="button" className="red-button" onClick={StartSurvey}>
           {HomeTexts.sections.button.text}
         </button>
       </div>
