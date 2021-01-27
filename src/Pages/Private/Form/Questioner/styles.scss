@@ -19,9 +19,23 @@
       min-height: 70vh;
       height: 80%;
       max-height: 80vh;
-      width: 100%;
+      max-width: 70vw;
       flex-wrap: wrap;
       justify-content: center;
+
+      .inputContainer p {
+        font-size: 1.6em;
+      }
+    }
+
+    .input-container-image .question-text {
+      font-size: 1.6em;
+      font-weight: bold;
+    }
+
+    .input-container-ladder p {
+      font-size: 1em;
+      color: $text-color;
     }
 
     .yes-no-container-comp {
@@ -45,6 +59,11 @@
         padding: 15px 80px;
         border-radius: 35px;
         color: white;
+      }
+
+      .next {
+        font-family: "Poppins", sans-serif;
+        font-weight: 500;
       }
 
       .previous {

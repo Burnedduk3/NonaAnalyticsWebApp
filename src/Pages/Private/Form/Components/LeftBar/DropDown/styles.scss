@@ -3,7 +3,7 @@
 .drop-down-menu {
   text-decoration: none;
 
-  ul{
+  ul {
     padding-inline: 0;
   }
 
@@ -16,13 +16,15 @@
       justify-content: flex-end;
       background-color: $non-checked;
       color: white;
-      padding: 0 10px;
+      padding: 0 1em;
       border-radius: 15px;
+      font-size: 0.8em;
     }
 
     .btn {
       color: white;
       margin: 10px 15px;
+      font-size: 0.8em;
     }
 
     .submenu {
@@ -49,8 +51,8 @@
     }
   }
 
-  .main-options{
-    min-height: 30px;
+  .main-options {
+    min-height: 2em;
     display: flex;
     align-items: center;
     flex-wrap: wrap;

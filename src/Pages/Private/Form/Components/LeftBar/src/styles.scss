@@ -5,12 +5,12 @@
   width: 15vw;
   min-width: 300px;
   background-color: $primary-color;
-  height: 100vh;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 
-  .header-aside-container{
+  .header-aside-container {
     width: 100%;
     display: flex;
     min-width: 300px;
@@ -20,30 +20,34 @@
       display: flex;
       justify-content: center;
       width: 100%;
-      margin: 50px 0;
+      margin: 2vh 0;
 
       .form-nona-logo {
-        width: 250px;
+        width: 16vw;
       }
     }
 
     .progress-bar-container {
-      width: 120px;
+      width: 35%;
       margin: 0 auto;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 800;
     }
 
     .progress-bar-subtitle {
       text-align: center;
       color: white;
-      font-size: 15px;
-      margin: 15px 0 0 0;
+      font-size: 0.8em;
+      margin: 2vh 0 0 0;
+      font-family: "Montserrat", sans-serif;
+      font-weight: 600;
     }
   }
 
   .last-section {
     color: white;
     overflow: hidden;
-    margin: 15px 0 0 0;
+    margin: 10px 0 0 0;
     position: sticky;
     bottom: 0;
 
@@ -51,6 +55,7 @@
       color: white;
       margin: 0 auto;
       width: 98%;
+      font-size: 0.8em;
     }
 
     .last-section-content {

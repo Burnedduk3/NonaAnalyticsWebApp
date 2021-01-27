@@ -4,12 +4,29 @@
 
 .inputContainer {
   position: relative;
+  width: 100%;
+
+  label {
+
+    i {
+      position: absolute;
+      margin-top: -1.9em;
+      margin-left: 450px;
+      width: 1em;
+      height: 1em;
+      display: block;
+      border-left:3px solid #5c5c5c;
+      border-bottom:3px solid #5c5c5c;
+      transform: rotate(-45deg);
+      transition: all 0.25s ease;
+      opacity: 50%;
+    }
+  }
+
 
   p {
     font-weight: bold;
   }
-
-  width: 100%;
 
   .combo-box {
     border: none;
@@ -24,9 +41,11 @@
     -moz-appearance: none;
     appearance: none;
     margin: 15px 0 0 0;
-    font-size: 25px;
+    font-size: 1.5em;
     color: #5c5c5c;
-    font-weight: bold;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.3);
+    z-index: 2;
   }
 
   .combo-box::-ms-expand {

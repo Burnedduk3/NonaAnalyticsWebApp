@@ -43,7 +43,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       {
         (!isLoading && images.length > 0) &&
         <div className='input-container-image'>
-          <h4 className="question-text">{question}</h4>
+          <p className="question-text">{question}</p>
           <div className="response-container">
             {items.map((value, index)=>
               (

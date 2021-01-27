@@ -25,6 +25,7 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
       >
         {items.map((item) => <option key={item} value={item}>{item}</option>)}
       </select>
+      <i></i>
     </label>
   </div>
 );
