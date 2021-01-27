@@ -43,6 +43,7 @@ import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import {IQuestionerState} from './interface';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
+import updateFormProgress from '../api/Dynamo/UpdateFormProgress';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -158,8 +159,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             questionID,
             questionResponse.response,
             userState?.userState.currentForm,
-            FormApplicationState.formState.currentProgress,
         );
+
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
@@ -167,6 +168,10 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         }
       }
     });
+    updateFormProgress(
+        userState?.userState.currentForm,
+        FormApplicationState.formState.currentProgress,
+    );
     if (FormApplicationState && FormApplicationState.formState) {
       const currentSection = FormApplicationState.formState.currentSection;
       if (currentSection && currentSection.subSections) {
