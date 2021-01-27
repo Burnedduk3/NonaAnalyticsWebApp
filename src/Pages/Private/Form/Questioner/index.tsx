@@ -143,11 +143,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
-        saveQuestionsToDynamo(
-            questionID,
-            questionResponse.response,
-            userState?.userState.currentForm,
-        );
         FormApplicationState
             .formStateDispatch({
               type: ADD_QUESTION_TO_ANSWERED,
@@ -159,6 +154,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
               },
             },
             );
+        saveQuestionsToDynamo(
+            questionID,
+            questionResponse.response,
+            userState?.userState.currentForm,
+            FormApplicationState.formState.currentProgress,
+        );
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
