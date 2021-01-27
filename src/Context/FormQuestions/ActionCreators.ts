@@ -1,4 +1,6 @@
 import {
+  IAnsweredQuestion,
+  IFormQuestionsContextPayload,
   IFormQuestionsContextState, ISection,
 } from './interface';
 
@@ -21,8 +23,26 @@ export const nextSection = (
   return state;
 };
 
-export const fetchQuestioner = (
+export const addQuestionAnswer = (
     state: IFormQuestionsContextState,
+    payload: IFormQuestionsContextPayload,
 ):IFormQuestionsContextState => {
+  if (payload.questionToAdd) {
+    const indexofQuestion = state.questionsAnswered.findIndex(
+        (element: IAnsweredQuestion) =>{
+          return element.id === payload.questionToAdd?.id;
+        },
+    );
+    if (indexofQuestion === -1) {
+      state.questionsAnswered = [
+        ...state.questionsAnswered,
+        payload.questionToAdd,
+      ];
+    }
+    const currentProgress = (
+      state.questionsAnswered.length * 100
+    )/state.totalQuestions;
+    state.currentProgress = parseFloat(currentProgress.toFixed(2));
+  }
   return state;
 };

@@ -26,9 +26,10 @@ const ApplicationStateProvider: React.FC = ({children}): JSX.Element => {
   );
 };
 
-export const useApplicationState = () => React.useContext(
-    ApplicationStateContext,
-);
+export const useApplicationState = ():IAppStateContext => {
+  const context = React.useContext(ApplicationStateContext);
+  return context as IAppStateContext;
+};
 
 
 export default ApplicationStateProvider;

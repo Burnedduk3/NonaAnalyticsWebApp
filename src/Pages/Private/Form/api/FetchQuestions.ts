@@ -13,6 +13,7 @@ export const fetchQuestions = async (
     firstTime: boolean,
 ) => {
   try {
+    let totalQuestions = 0;
     if (!currentState) {
       throw new Error('error Creating the context');
     }
@@ -21,7 +22,6 @@ export const fetchQuestions = async (
             getSectionsWithQuestions,
             {},
         ));
-    console.log(databaseQuestions);
     if (databaseQuestions &&
             databaseQuestions.data &&
             databaseQuestions.data.listSections
@@ -75,6 +75,7 @@ export const fetchQuestions = async (
                   order: parseInt(dbQuestion.order),
                   imagesPath: dbQuestion.imagesPath,
                 };
+                totalQuestions += 1;
                 if (maxStack < dbQuestion.stack) {
                   maxStack = dbQuestion.stack;
                 }
@@ -109,7 +110,7 @@ export const fetchQuestions = async (
         currentState.nextSection = nextSection;
         currentState.currentSection = currentSection;
       }
-
+      currentState.totalQuestions = totalQuestions;
       currentState.sections = sections;
       if (currentState) {
         return currentState;

@@ -21,7 +21,6 @@ const ApplicationStateReducer = (
     }
 
     case HIDE_HEADER: {
-      console.log('hola');
       return {...state, hideFooter: true};
     }
     case SHOW_FOOTER: {

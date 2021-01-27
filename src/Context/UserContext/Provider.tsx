@@ -4,7 +4,6 @@ import {IUserStateContext} from './interface';
 
 
 type ContextValue = IUserStateContext | null;
-let context: IUserStateContext | null = null;
 
 
 export const UserContext = createContext<ContextValue>(null);
@@ -29,9 +28,8 @@ const UserProvider: React.FC = ({children}):JSX.Element => {
 };
 
 export const useUserState = (): IUserStateContext => {
-  if (!context) {
-    context = React.useContext(UserContext);
-  }
+  const context = React.useContext(UserContext);
   return context as IUserStateContext;
 };
+
 export default UserProvider;

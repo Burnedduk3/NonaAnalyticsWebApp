@@ -6,9 +6,13 @@ import logo from '../../../../../../assets/Logos/logo.png';
 import DropDownComponent from '../DropDown';
 import LeftBarText from './CONSTANTS';
 import './styles.scss';
+import {
+  useFormQuestionState,
+} from '../../../../../../Context/FormQuestions/Provider';
 
 
 const LeftBar = () => {
+  const formState = useFormQuestionState();
   return (
     <aside className="aside-menu">
       <div className="header-aside-container">
@@ -17,13 +21,14 @@ const LeftBar = () => {
         </div>
         <div className="progress-bar-container">
           <CircularProgressbar
-            value={50}
-            text={`${50}%`}
-            styles={buildStyles({
-              trailColor: colors.progressBackGround,
-              pathColor: colors.secondaryColor,
-              textColor: colors.creamWhiteBackground,
-            })}
+            value={formState.formState.currentProgress}
+            text={`${formState.formState.currentProgress}%`}
+            styles={buildStyles(
+                {
+                  trailColor: colors.progressBackGround,
+                  pathColor: colors.secondaryColor,
+                  textColor: colors.creamWhiteBackground,
+                })}
           />
           <p className="progress-bar-subtitle">Survey Progress</p>
         </div>

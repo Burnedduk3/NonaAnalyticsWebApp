@@ -16,6 +16,7 @@ import {
 import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
+  ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS,
   NEXT_SECTION,
 } from '../../../../Context/FormQuestions/ActionTypes';
@@ -62,30 +63,36 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
-    console.log('questioner', ApplicationState?.appState);
     setLoading(true);
-    try {
-      fetchQuestions(
-          FormApplicationState.formState,
-          firstTimeFetchingQuestions,
-      ).then((data: any) =>{
-        FormApplicationState.formStateDispatch(
-            {
-              type: GET_SECTIONS,
-              payload: {
-                fetchedSections: data,
-              },
-            });
-        setQuestioner();
-      });
-      setFirstTimeFetchingQuestions(false);
-      setFormQuestions([]);
-      setError(false);
-      setLoading(false);
-    } catch (error) {
-      setError(true);
+    if (FormApplicationState.formState.sections?.length === 0) {
+      try {
+        fetchQuestions(
+            FormApplicationState.formState,
+            firstTimeFetchingQuestions,
+        ).then((data: any) =>{
+          FormApplicationState.formStateDispatch(
+              {
+                type: GET_SECTIONS,
+                payload: {
+                  fetchedSections: data,
+                },
+              });
+          setQuestioner();
+          setLoading(false);
+        });
+        setFirstTimeFetchingQuestions(false);
+        setError(false);
+      } catch (error) {
+        setError(true);
+        setLoading(false);
+      }
+    } else {
       setLoading(false);
     }
+  }, []);
+
+  useEffect(()=>{
+    setQuestioner();
   }, [params]);
 
   const setQuestioner = () =>{
@@ -141,6 +148,17 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             questionResponse.response,
             userState?.userState.currentForm,
         );
+        FormApplicationState
+            .formStateDispatch({
+              type: ADD_QUESTION_TO_ANSWERED,
+              payload: {
+                questionToAdd: {
+                  answer: questionResponse.response,
+                  id: questionID,
+                },
+              },
+            },
+            );
         setResponseState({});
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
@@ -150,7 +168,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     });
     if (FormApplicationState && FormApplicationState.formState) {
       const currentSection = FormApplicationState.formState.currentSection;
-      console.log(currentSection);
       if (currentSection && currentSection.subSections) {
         for (
           let index = 0;
@@ -167,7 +184,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
             } else {
               if (index === currentSection.subSections.length - 1 ) {
                 // Here it changes the Section
-                console.log('Hola');
                 FormApplicationState.formStateDispatch(
                     {
                       type: NEXT_SECTION,

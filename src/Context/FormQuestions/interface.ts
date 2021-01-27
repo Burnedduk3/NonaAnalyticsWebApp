@@ -1,18 +1,19 @@
 
 export interface IFormQuestionsContextState{
-    sections: Array<ISection> | null;
+    sections: Array<ISection>;
     currentSection: ISection | null;
     nextSection: ISection | null;
     previousSection: ISection | null;
-    currentSubSectionIndex: number | null;
-    subSectionsArray: Array<ISubSection> | null;
-    currentStack: number | null;
+    questionsAnswered: Array<IAnsweredQuestion>;
+    totalQuestions: number,
+    currentProgress: number,
 }
 
 export interface IFormQuestionsContextPayload{
     section?: ISection;
     sections?: Array<ISection>
     fetchedSections?: IFormQuestionsContextState
+    questionToAdd?: IAnsweredQuestion
 }
 
 export interface IFormQuestionsContextReducer {
@@ -30,6 +31,11 @@ export interface ISection{
     name: string
     order: number
     subSections: Array<ISubSection>
+}
+
+export interface IAnsweredQuestion{
+    id: string
+    answer: string
 }
 
 export interface ISubSection{

@@ -45,7 +45,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
     try {
       const user = await Auth.signIn(pageInputs.username, pageInputs.password);
       if (user) {
-        userState?.userStateDispatch({
+        userState.userStateDispatch({
           type: ADD_USER,
           payload: {
             address: user.attributes.address,
@@ -55,7 +55,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
             gender: user.attributes.gender,
           },
         });
-        console.log(user);
         // TODO Here we should add a cookie to mantain the session
         if (user.attributes.email_verified) {
           const formData: any = await API.graphql(graphqlOperation(createForm,
@@ -67,7 +66,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                 },
               },
           ));
-          userState?.userStateDispatch({
+          userState.userStateDispatch({
             type: EDIT_USER,
             payload: {
               currentForm: formData.data.createForm.id,
