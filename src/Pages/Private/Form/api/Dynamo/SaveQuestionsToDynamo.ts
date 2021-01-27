@@ -27,7 +27,7 @@ const saveQuestionsToDynamo = async (
       input: {
         finished,
         id: currentForm,
-        percentage: parseInt(formProgress.toFixed(2)),
+        percentage: formProgress,
       },
     };
     const updatedForm: any = await API.graphql(
