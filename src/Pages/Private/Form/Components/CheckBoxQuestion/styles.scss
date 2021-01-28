@@ -7,10 +7,10 @@
   min-width: 300px;
   margin: 1vh 1vw;
 
-  p {
+  .checkLabel {
     width: 100%;
     height: auto;
-    font-size: 1.3em;
+    font-size: 1.1em;
     color: $primary-color;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
@@ -31,6 +31,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 400;
     color: $primary-color;
+    font-size: 0.9em;
 
     input {
       position: absolute;
@@ -38,8 +39,8 @@
       cursor: pointer;
       top: 0;
       left: 0;
-      height: 25px;
-      width: 25px;
+      height: 20px;
+      width: 20px;
       z-index: 2;
     }
 
@@ -47,8 +48,8 @@
       position: absolute;
       top: 0;
       left: 0;
-      height: 25px;
-      width: 25px;
+      height: 20px;
+      width: 20px;
       background-color: $whiter-background;
       border-radius: 7px;
       border: solid 2px $primary-color;
@@ -62,4 +63,9 @@
   .container input:checked ~ .checkmark::after {
     display: none;
   }
+}
+
+.CANCERS {
+  margin-left: -35vw;
+  margin-top: -24vh;
 }

@@ -236,7 +236,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     <main className="content-container">
       <LeftBar />
       <div className="form-container">
-        <div className="questioner-container">
+        {/* eslint-disable-next-line max-len */}
+        <div className='questioner-container'>
           {loading && (
             <div className="spinner-wrapper">
               <Spinner />
@@ -250,6 +251,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                     (item: any) => {
                       if (item.category.name === 'YesNo') {
                         return (
+                        // eslint-disable-next-line max-len
                           <div key={item.id} className="yes-no-container-comp">
                             <YesNoQuestion
                               question={item.question}
@@ -310,9 +312,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
                             setResponse={setResponseState}
                             currentState={responseState}
                             values={
-                            item.items === null || item.items.length === 0?
-                                LadderConstants.default.defaultValue:
-                                item.items
+                              item.items === null || item.items.length === 0?
+                                  LadderConstants.default.defaultValue:
+                                  item.items
                             }
                           />
                         );

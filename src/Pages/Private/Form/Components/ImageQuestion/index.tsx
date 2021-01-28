@@ -48,6 +48,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
             {items.map((value, index)=>
               (
                 <label
+                  className="ImageItem"
                   key={`${questionId}-${value}`}
                   htmlFor={`${questionId}-${value}`}
                 >
