@@ -20,6 +20,10 @@ export const nextSection = (
     state.currentSection = newCurrent;
     state.previousSection = newPrevious;
   }
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(state),
+  );
   return state;
 };
 
@@ -44,5 +48,9 @@ export const addQuestionAnswer = (
     )/state.totalQuestions;
     state.currentProgress = parseFloat(currentProgress.toFixed(2));
   }
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(state),
+  );
   return state;
 };

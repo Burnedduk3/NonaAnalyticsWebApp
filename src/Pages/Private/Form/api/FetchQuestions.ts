@@ -8,15 +8,18 @@ import {getSectionsWithQuestions} from '../OwnQueries';
 
 // TODO change the function to mantain the change on the path variables
 
-export const fetchQuestions = async (
-    currentState: IFormQuestionsContextState | undefined,
-    firstTime: boolean,
-) => {
+export const fetchQuestions = async () => {
   try {
     let totalQuestions = 0;
-    if (!currentState) {
-      throw new Error('error Creating the context');
-    }
+    const newState: IFormQuestionsContextState = {
+      currentProgress: 0,
+      totalQuestions: 0,
+      questionsAnswered: [],
+      sections: [],
+      currentSection: null,
+      nextSection: null,
+      previousSection: null,
+    };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(
             getSectionsWithQuestions,
@@ -105,15 +108,13 @@ export const fetchQuestions = async (
         }
         return section;
       });
-      if (firstTime) {
-        currentState.previousSection = null;
-        currentState.nextSection = nextSection;
-        currentState.currentSection = currentSection;
-      }
-      currentState.totalQuestions = totalQuestions;
-      currentState.sections = sections;
-      if (currentState) {
-        return currentState;
+      newState.previousSection = null;
+      newState.nextSection = nextSection;
+      newState.currentSection = currentSection;
+      newState.totalQuestions = totalQuestions;
+      newState.sections = sections;
+      if (newState) {
+        return newState;
       }
       throw new Error('Error fetching the questions');
     }

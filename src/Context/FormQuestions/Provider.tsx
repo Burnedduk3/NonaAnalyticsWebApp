@@ -3,7 +3,6 @@ import FormQuestionsReducer, {initialState} from './Reducer';
 import {IFormQuestionsContext} from './interface';
 
 type ContextValue = IFormQuestionsContext | null;
-let context: IFormQuestionsContext | null;
 
 export const FormQuestionsContext = createContext<ContextValue>(null);
 
@@ -28,11 +27,7 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
   );
 };
 
-export const useFormQuestionState = ():IFormQuestionsContext =>{
-  if (!context) {
-    context = React.useContext(FormQuestionsContext);
-  }
-  return context as IFormQuestionsContext;
-};
+export const useFormQuestionState = ():IFormQuestionsContext | null =>
+  React.useContext(FormQuestionsContext);
 
 export default FormQuestionProvider;

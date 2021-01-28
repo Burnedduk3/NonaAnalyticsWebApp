@@ -1,7 +1,7 @@
 import {addQuestionAnswer, nextSection} from './ActionCreators';
 import {
   NEXT_SECTION,
-  ADD_QUESTION_TO_ANSWERED,
+  ADD_QUESTION_TO_ANSWERED, GET_SECTIONS,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -23,6 +23,20 @@ const FormQuestionsReducer = (
     {type, payload}: IFormQuestionsContextReducer,
 ):IFormQuestionsContextState => {
   switch (type) {
+    case GET_SECTIONS: {
+      if (payload && payload.fetchedSections) {
+        const {fetchedSections} = payload;
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(fetchedSections),
+        );
+        return {
+          ...fetchedSections,
+        };
+      }
+      return state;
+    }
+
     case ADD_QUESTION_TO_ANSWERED: {
       if (payload && payload.questionToAdd) {
         return addQuestionAnswer(state, payload);
@@ -36,7 +50,7 @@ const FormQuestionsReducer = (
     }
 
     default:
-      return initialState;
+      return state;
   }
 };
 

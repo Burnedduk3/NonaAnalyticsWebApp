@@ -55,10 +55,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const [error, setError] = useState<boolean>(false);
   const [formQuestions, setFormQuestions] = useState<Array<IQuestion>>([]);
   const [responseState, setResponseState] = useState<IQuestionerState>({});
-  const [
-    firstTimeFetchingQuestions,
-    setFirstTimeFetchingQuestions,
-  ] = useState<boolean>(true);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
   const userState = useUserState();
@@ -66,32 +62,31 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   const history = useHistory();
 
   useEffect( () => {
-    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_HEADER, payload: undefined});
     userState.userStateDispatch({
       type: SEARCH_LOCAL_STORAGE,
       payload: undefined,
     });
-
     setLoading(true);
-    if (FormApplicationState.formState.sections?.length === 0) {
+    if (
+      FormApplicationState &&
+        FormApplicationState.formState.sections?.length === 0
+    ) {
       try {
-        fetchQuestions(
-            FormApplicationState.formState,
-            firstTimeFetchingQuestions,
-        ).then((data: IFormQuestionsContextState | undefined) =>{
-          FormApplicationState.formStateDispatch(
-              {
-                type: GET_SECTIONS,
-                payload: {
-                  fetchedSections: data,
-                },
-              });
-          setQuestioner();
-          setLoading(false);
-        });
-        setFirstTimeFetchingQuestions(false);
-        setError(false);
+        fetchQuestions().then(
+            (data: IFormQuestionsContextState | undefined) => {
+              console.log('then', data);
+              FormApplicationState.formStateDispatch(
+                  {
+                    type: GET_SECTIONS,
+                    payload: {
+                      fetchedSections: data,
+                    },
+                  });
+              setLoading(false);
+              setError(false);
+            });
       } catch (error) {
         setError(true);
         setLoading(false);
@@ -104,6 +99,13 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   useEffect(()=>{
     setQuestioner();
   }, [params]);
+
+  useEffect(
+      ()=>{
+        setQuestioner();
+      },
+      [loading],
+  );
 
   const setQuestioner = () =>{
     if (FormApplicationState &&
@@ -153,17 +155,20 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
-        FormApplicationState
-            .formStateDispatch({
-              type: ADD_QUESTION_TO_ANSWERED,
-              payload: {
-                questionToAdd: {
-                  answer: questionResponse.response,
-                  id: questionID,
+        if (FormApplicationState) {
+          FormApplicationState
+              .formStateDispatch({
+                type: ADD_QUESTION_TO_ANSWERED,
+                payload: {
+                  questionToAdd: {
+                    answer: questionResponse.response,
+                    id: questionID,
+                  },
                 },
               },
-            },
-            );
+              );
+        }
+
         saveQuestionsToDynamo(
             questionID,
             questionResponse.response,
@@ -177,10 +182,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         }
       }
     });
-    updateFormProgress(
-        userState?.userState.currentForm,
-        FormApplicationState.formState.currentProgress,
-    );
+    if (FormApplicationState) {
+      updateFormProgress(
+          userState?.userState.currentForm,
+          FormApplicationState.formState.currentProgress,
+      );
+    }
     if (FormApplicationState && FormApplicationState.formState) {
       const currentSection = FormApplicationState.formState.currentSection;
       if (currentSection && currentSection.subSections) {
