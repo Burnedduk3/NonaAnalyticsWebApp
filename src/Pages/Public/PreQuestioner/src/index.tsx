@@ -16,6 +16,9 @@ import {useHistory} from 'react-router-dom';
 
 import './styles.scss';
 import {IQuestionerState} from '../../../Private/Form/Questioner/interface';
+import {
+  SEARCH_LOCAL_STORAGE,
+} from '../../../../Context/UserContext/ActionTypes';
 
 
 const initialState: IQuestionerState = {
@@ -40,6 +43,10 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   useEffect(()=>{
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
+    userState.userStateDispatch({
+      type: SEARCH_LOCAL_STORAGE,
+      payload: undefined,
+    });
   }, []);
 
   const onTakeSurvey = ():void =>{

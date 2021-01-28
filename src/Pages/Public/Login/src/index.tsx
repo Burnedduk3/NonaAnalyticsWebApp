@@ -53,9 +53,14 @@ const LoginPage : React.FC = (): JSX.Element =>{
             birthdate: user.attributes.birthdate,
             email: user.attributes.birthdate,
             gender: user.attributes.gender,
+            phone: user.attributes.phone_number,
+            usernameID: user.username,
+            accessToken: user.signInUserSession.accessToken.jwtToken,
+            idToken: user.signInUserSession.idToken.jwtToken,
+            refreshToken: user.signInUserSession.refreshToken.jwtToken,
           },
         });
-        // TODO Here we should add a cookie to mantain the session
+
         if (user.attributes.email_verified) {
           const formData: any = await API.graphql(graphqlOperation(createForm,
               {

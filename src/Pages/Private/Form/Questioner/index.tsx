@@ -24,6 +24,7 @@ import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
+  IFormQuestionsContextState,
   IQuestion,
   ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
@@ -44,6 +45,9 @@ import {IQuestionerState} from './interface';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
 import updateFormProgress from '../api/Dynamo/UpdateFormProgress';
+import {
+  SEARCH_LOCAL_STORAGE,
+} from '../../../../Context/UserContext/ActionTypes';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
@@ -64,13 +68,18 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   useEffect( () => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     ApplicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+    userState.userStateDispatch({
+      type: SEARCH_LOCAL_STORAGE,
+      payload: undefined,
+    });
+
     setLoading(true);
     if (FormApplicationState.formState.sections?.length === 0) {
       try {
         fetchQuestions(
             FormApplicationState.formState,
             firstTimeFetchingQuestions,
-        ).then((data: any) =>{
+        ).then((data: IFormQuestionsContextState | undefined) =>{
           FormApplicationState.formStateDispatch(
               {
                 type: GET_SECTIONS,

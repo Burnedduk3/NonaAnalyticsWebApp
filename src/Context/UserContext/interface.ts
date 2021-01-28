@@ -8,6 +8,9 @@ export interface IUserState{
     birthdate: string;
     currentForm: string;
     usernameID: string;
+    accessToken: string;
+    refreshToken: string;
+    idToken: string;
 }
 
 export interface IUserContextPayload{
@@ -20,11 +23,14 @@ export interface IUserContextPayload{
     birthdate?: string;
     currentForm?: string;
     usernameID?: string;
+    accessToken?: string;
+    refreshToken?: string;
+    idToken?: string;
 }
 
 export interface IUserContextReducer{
     type: string,
-    payload: IUserContextPayload,
+    payload?: IUserContextPayload,
 }
 
 export interface IUserStateContext{

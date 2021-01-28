@@ -1,7 +1,11 @@
 import {
-  ADD_RESPONDED_QUESTIONS, ADD_USER, DELETE_USER, EDIT_USER,
+  ADD_RESPONDED_QUESTIONS,
+  ADD_USER,
+  DELETE_USER,
+  EDIT_USER, SEARCH_LOCAL_STORAGE,
 } from './ActionTypes';
 import {IUserContextReducer, IUserState} from './interface';
+import {checkUserLocalStorage} from './ActionsCreator';
 
 export const initialState: IUserState = {
   respondedQuestions: 0,
@@ -13,6 +17,9 @@ export const initialState: IUserState = {
   gender: '',
   currentForm: '',
   usernameID: '',
+  accessToken: '',
+  refreshToken: '',
+  idToken: '',
 };
 
 const userReducer = (
@@ -21,23 +28,32 @@ const userReducer = (
 ): IUserState => {
   switch (type) {
     case ADD_USER: {
-      return {
+      const newState = {
         ...state,
         ...payload,
       };
+      localStorage.setItem('USER', JSON.stringify(newState));
+      return newState;
     }
 
     case DELETE_USER: {
+      localStorage.clear();
       return {
         ...initialState,
       };
     }
 
     case EDIT_USER: {
-      return {
+      const newState = {
         ...state,
         ...payload,
       };
+      localStorage.setItem('USER', JSON.stringify(newState));
+      return newState;
+    }
+
+    case SEARCH_LOCAL_STORAGE: {
+      return checkUserLocalStorage(state);
     }
 
     case ADD_RESPONDED_QUESTIONS: {

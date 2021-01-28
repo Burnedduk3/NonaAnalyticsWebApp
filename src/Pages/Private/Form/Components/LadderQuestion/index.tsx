@@ -16,8 +16,7 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
 ): JSX.Element =>{
   return (
     <div className='input-container-ladder'>
-      <p className="question-text">{questionText}</p>
-      <h3 className="question-label">Lader Step</h3>
+      <h3 className="question-label">{questionText}</h3>
       <div className="response-container">
         {values.map((value)=>
           (

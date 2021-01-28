@@ -15,7 +15,7 @@ const DropDownComponent = () => (
         <span className="menu-status">1</span>
       </li>
       <li className="main-options" id="health">
-        <a className="btn">Health</a >
+        <p href="" className="btn">Health</p >
         <span className="menu-status">38</span>
         <div className="submenu" id="health-submenu">
           <Link
@@ -46,7 +46,7 @@ const DropDownComponent = () => (
         </div>
       </li>
       <li className="main-options" id="mood">
-        <a className="btn">Mood</a>
+        <p href="" className="btn">Mood</p>
         <span className="menu-status">28</span>
         <ul className="submenu" id="mood-submenu">
           <Link
@@ -87,7 +87,7 @@ const DropDownComponent = () => (
         </ul>
       </li>
       <li className="main-options" id="social">
-        <a className="btn">Social</a>
+        <p href="" className="btn">Social</p>
         <span className="menu-status">22</span>
         <ul className="submenu" id="social-submenu">
           <Link
