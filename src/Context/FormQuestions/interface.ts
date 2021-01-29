@@ -1,16 +1,16 @@
 
 export interface IFormQuestionsContextState{
     sections: Array<ISection>;
-    currentSection: ISection | null;
-    nextSection: ISection | null;
-    previousSection: ISection | null;
     questionsAnswered: Array<IAnsweredQuestion>;
     totalQuestions: number,
     currentProgress: number,
     showableQuestions: Array<IQuestion>;
+    nextSection: ISection | null;
+    nextSubSection: ISubSection | null;
+    nextStack: number;
+    currentSection: ISection | null;
     currentSubSection: ISubSection | null;
     currentStack: number;
-    pathToPush: string;
 }
 
 export interface IFormQuestionsContextPayload{

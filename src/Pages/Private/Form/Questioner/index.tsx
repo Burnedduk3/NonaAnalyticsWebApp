@@ -72,13 +72,10 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           payload: undefined,
         },
     );
-    const formStorage = localStorage.getItem('QUESTIONER_STORAGE');
     setLoading(true);
     if (
       FormApplicationState &&
-        FormApplicationState.formState.sections?.length === 0 &&
-        !formStorage
-    ) {
+        FormApplicationState.formState.sections?.length === 0) {
       try {
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
@@ -98,32 +95,25 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       }
     } else {
       setLoading(false);
+      setError(false);
     }
   }, []);
 
+
   useEffect(()=>{
-    FormApplicationState?.formStateDispatch(
-        {
-          type: SET_SHOWABLE_QUESTIONS,
-          payload: undefined,
-        },
-    );
-  }, [params]);
+    if (
+      FormApplicationState &&
+        FormApplicationState.formState.sections.length > 0
+    ) {
+      FormApplicationState?.formStateDispatch(
+          {
+            type: SET_SHOWABLE_QUESTIONS,
+            payload: undefined,
+          },
+      );
+    }
+  }, [loading, params]);
 
-  useEffect(
-      ()=>{
-        FormApplicationState?.formStateDispatch(
-            {
-              type: SET_SHOWABLE_QUESTIONS,
-              payload: undefined,
-            },
-        );
-      },
-      [loading],
-  );
-
-  // TODO Send data to the athena database
-  // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
     const {stack, subSection, section} = params;
     if (stack && section && subSection) {
@@ -176,17 +166,27 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           FormApplicationState.formState.currentProgress,
       );
     }
+    console.log('primero');
     if (FormApplicationState && FormApplicationState.formState) {
-      if (!(FormApplicationState.formState.currentSection === null)) {
-        FormApplicationState.formStateDispatch(
-            {
-              type: NEXT_QUESTIONS,
-              payload: undefined,
-            },
-        );
-        history.push(FormApplicationState.formState.pathToPush);
-      } else {
-        history.push('/');
+      console.log(FormApplicationState.formState);
+      FormApplicationState.formStateDispatch(
+          {
+            type: NEXT_QUESTIONS,
+            payload: undefined,
+          },
+      );
+      console.log('Segundo');
+      console.log(FormApplicationState.formState);
+    }
+    console.log('Ultimo');
+    if (FormApplicationState) {
+      const {formState} = FormApplicationState;
+      if (formState) {
+        let path = `/${formState.currentSection?.name}`;
+        path += `/${formState.currentSubSection?.name}`+
+            `/${formState.currentStack}`;
+        console.log(path);
+        history.push(`/questioner`.concat(path));
       }
     }
   };
@@ -195,14 +195,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     <main className="content-container">
       <LeftBar />
       <div className="form-container">
-        {/* eslint-disable-next-line max-len */}
         <div className='questioner-container'>
           {loading && (
             <div className="spinner-wrapper">
               <Spinner />
             </div>
           )}
-          {/* eslint-disable-next-line max-len */}
           {(!loading && !error) && (
             <>
               {

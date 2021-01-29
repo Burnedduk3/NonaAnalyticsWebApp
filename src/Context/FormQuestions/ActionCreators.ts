@@ -9,34 +9,60 @@ export const nextQuestions = (
 ) : IFormQuestionsContextState => {
   const currentSection = state.currentSection;
   const currentSubSection = state.currentSubSection;
-  let currentStack = state.currentStack;
+  const currentStack = state.currentStack;
+  const newState = {
+    ...state,
+  };
   if (
-    (currentStack !== null) && currentSubSection !== null && currentSection !== null
+    currentStack !== null &&
+      currentSubSection !== null &&
+      currentSection !== null
   ) {
     if (currentStack + 1 <= currentSubSection.maxStack) {
-      console.log('stack change', currentStack);
-      currentStack += 1;
+      // change the stack if there are more stacks in the current subsection
+      newState.currentStack += 1;
     } else {
+      // change subsection if there is no more stack in he current section
       const indexOfSubsection = currentSection.subSections.findIndex(
           (subSection:ISubSection) => {
-            if (subSection.name === currentSubSection.name) {
+            if (subSection.name === currentSubSection?.name) {
               return subSection;
             }
           },
       );
-      if (indexOfSubsection === currentSection.subSections.length - 1) {
-        if (indexOfSubsection > 0) {
-
+      if (indexOfSubsection !== currentSection.subSections.length - 1) {
+        if (indexOfSubsection >= 0) {
+          newState.currentSubSection = currentSection
+              .subSections[indexOfSubsection + 1];
+          newState.currentStack = 0;
+        }
+      } else {
+        // change the section if there are no more subsections
+        const indexOfCurrentSection = state.sections.findIndex(
+            (section:ISection) => {
+              if (section.name === currentSubSection?.name) {
+                return section;
+              }
+            },
+        );
+        if (indexOfCurrentSection !== state.sections.length) {
+          newState.currentSection = newState.sections[
+              indexOfCurrentSection + 1
+          ];
+          newState.currentSubSection = newState.currentSection.subSections[0];
+          newState.currentStack = 0;
         }
       }
     }
   }
-
   localStorage.setItem(
       'QUESTIONER_STORAGE',
-      JSON.stringify(state),
+      JSON.stringify(newState),
   );
-  return state;
+  return {
+    ...state,
+    ...newState,
+  };
 };
 
 export const addQuestionAnswer = (
@@ -68,28 +94,20 @@ export const addQuestionAnswer = (
 };
 
 
-export const setShowableQuesitons = (
+export const setShowableQuestions = (
     state: IFormQuestionsContextState,
 ):IFormQuestionsContextState => {
-  const questioner = state.sections;
-  if (questioner) {
-    questioner.map((section:ISection) =>{
-      if (section.name === state.currentSection?.name) {
-        section.subSections.map((subSection: ISubSection)=>{
-          if (subSection.name === state.currentSubSection?.name) {
-            const showableQuestions:Array<IQuestion> = [];
-            subSection.questions.map((question: IQuestion)=>{
-              if (question.stack === state.currentStack) {
-                showableQuestions.push(question);
-              }
-            });
-            state.showableQuestions = [
-              ...showableQuestions,
-            ];
+  const {currentSubSection, currentStack} = state;
+  if (currentSubSection && currentStack !== null) {
+    const currentQuestions: Array<IQuestion> = [];
+    currentSubSection.questions.map(
+        (question: IQuestion) => {
+          if (question.stack === currentStack) {
+            currentQuestions.push(question);
           }
-        });
-      }
-    });
+        },
+    );
+    state.showableQuestions = [...currentQuestions];
   }
   localStorage.setItem(
       'QUESTIONER_STORAGE',

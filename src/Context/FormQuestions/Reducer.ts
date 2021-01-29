@@ -1,7 +1,7 @@
 import {
   addQuestionAnswer,
   nextQuestions,
-  setShowableQuesitons,
+  setShowableQuestions,
 } from './ActionCreators';
 import {
   ADD_QUESTION_TO_ANSWERED,
@@ -17,15 +17,15 @@ import {
 export const initialState: IFormQuestionsContextState = {
   sections: [],
   currentSection: null,
-  nextSection: null,
-  previousSection: null,
   questionsAnswered: [],
   currentProgress: 0,
   totalQuestions: 0,
   showableQuestions: [],
   currentStack: 0,
   currentSubSection: null,
-  pathToPush: '',
+  nextSection: null,
+  nextStack: 0,
+  nextSubSection: null,
 };
 
 const FormQuestionsReducer = (
@@ -65,11 +65,14 @@ const FormQuestionsReducer = (
     }
 
     case NEXT_QUESTIONS: {
-      return nextQuestions(state);
+      const newState = nextQuestions(state);
+      return {
+        ...newState,
+      };
     }
 
     case SET_SHOWABLE_QUESTIONS: {
-      return setShowableQuesitons(state);
+      return setShowableQuestions(state);
     }
 
     default:

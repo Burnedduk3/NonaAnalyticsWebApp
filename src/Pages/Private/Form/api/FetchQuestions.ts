@@ -17,12 +17,12 @@ export const fetchQuestions = async () => {
       questionsAnswered: [],
       sections: [],
       currentSection: null,
-      nextSection: null,
-      previousSection: null,
       showableQuestions: [],
       currentSubSection: null,
       currentStack: 0,
-      pathToPush: '',
+      nextSubSection: null,
+      nextStack: 0,
+      nextSection: null,
     };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(
@@ -39,18 +39,6 @@ export const fetchQuestions = async () => {
           .items.sort((a:any, b:any)=>{
             return a.order - b.order;
           });
-      let currentSection: ISection = {
-        id: '',
-        name: '',
-        order: -1,
-        subSections: <ISubSection[]>[],
-      };
-      let nextSection: ISection = {
-        id: '',
-        name: '',
-        order: -1,
-        subSections: <ISubSection[]>[],
-      };
 
       sections = sections.map((item, index)=>{
         const orderedSubSections = item.subSections.items
@@ -104,22 +92,12 @@ export const fetchQuestions = async () => {
           order: item.order,
           name: item.name,
         };
-        if (index === 0) {
-          currentSection = section;
-        }
-        if (index === 1) {
-          nextSection = section;
-        }
         return section;
       });
-      newState.previousSection = null;
-      newState.nextSection = nextSection;
-      newState.currentSection = currentSection;
+      newState.currentSection = sections[0];
       newState.totalQuestions = totalQuestions;
-      newState.currentSubSection = newState.currentSection.subSections[0];
+      newState.currentSubSection = sections[0].subSections[0];
       newState.sections = sections;
-      // eslint-disable-next-line max-len
-      newState.pathToPush = `/questioner/${newState.currentSection?.name}/${newState.currentSubSection.name}/${newState.currentStack}`;
       if (newState) {
         return newState;
       }
