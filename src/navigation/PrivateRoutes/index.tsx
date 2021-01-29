@@ -9,7 +9,7 @@ const PrivateRoutes : React.FC = (): JSX.Element => {
     <FormQuestionProvider>
       <Route
         exact
-        path={`${RoutingConstants.dinamicForm.path}/:section/:subSection/:stack`
+        path={`${RoutingConstants.dinamicForm.path}`
         }
         component={FormPage}
       />

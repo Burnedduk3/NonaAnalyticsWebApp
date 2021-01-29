@@ -27,7 +27,6 @@ import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
   IFormQuestionsContextState,
 } from '../../../../Context/FormQuestions/interface';
-import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
@@ -49,15 +48,13 @@ import {
 } from '../../../../Context/UserContext/ActionTypes';
 
 // eslint-disable-next-line max-len
-const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
+const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
   const [responseState, setResponseState] = useState<IQuestionerState>({});
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
   const userState = useUserState();
-  const {params} = match;
-  const history = useHistory();
 
   useEffect( () => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -79,7 +76,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       try {
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
-              FormApplicationState.formStateDispatch(
+              FormApplicationState?.formStateDispatch(
                   {
                     type: GET_SECTIONS,
                     payload: {
@@ -99,7 +96,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
     }
   }, []);
 
-
   useEffect(()=>{
     if (
       FormApplicationState &&
@@ -112,13 +108,15 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           },
       );
     }
-  }, [loading, params]);
+  }, [loading]);
 
   const SaveToDataBase = async () => {
-    const {stack, subSection, section} = params;
+    const stack = FormApplicationState?.formState.currentStack;
+    const section = FormApplicationState?.formState.currentSection?.name;
+    const subSection = FormApplicationState?.formState.currentSubSection?.name;
     if (stack && section && subSection) {
       const functionParams: ISaveDataAuroraParams = {
-        stack: stack,
+        stack: stack.toString(),
         section: section,
         subSection: subSection,
       };
@@ -165,29 +163,18 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           userState?.userState.currentForm,
           FormApplicationState.formState.currentProgress,
       );
-    }
-    console.log('primero');
-    if (FormApplicationState && FormApplicationState.formState) {
-      console.log(FormApplicationState.formState);
-      FormApplicationState.formStateDispatch(
-          {
+      FormApplicationState
+          .formStateDispatch({
             type: NEXT_QUESTIONS,
             payload: undefined,
           },
+          );
+      FormApplicationState.formStateDispatch(
+          {
+            type: SET_SHOWABLE_QUESTIONS,
+            payload: undefined,
+          },
       );
-      console.log('Segundo');
-      console.log(FormApplicationState.formState);
-    }
-    console.log('Ultimo');
-    if (FormApplicationState) {
-      const {formState} = FormApplicationState;
-      if (formState) {
-        let path = `/${formState.currentSection?.name}`;
-        path += `/${formState.currentSubSection?.name}`+
-            `/${formState.currentStack}`;
-        console.log(path);
-        history.push(`/questioner`.concat(path));
-      }
     }
   };
 
