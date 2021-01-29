@@ -22,6 +22,7 @@ export const fetchQuestions = async () => {
       showableQuestions: [],
       currentSubSection: null,
       currentStack: 0,
+      pathToPush: '',
     };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(
@@ -117,6 +118,8 @@ export const fetchQuestions = async () => {
       newState.totalQuestions = totalQuestions;
       newState.currentSubSection = newState.currentSection.subSections[0];
       newState.sections = sections;
+      // eslint-disable-next-line max-len
+      newState.pathToPush = `/questioner/${newState.currentSection?.name}/${newState.currentSubSection.name}/${newState.currentStack}`;
       if (newState) {
         return newState;
       }

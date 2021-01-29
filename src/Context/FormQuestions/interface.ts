@@ -10,6 +10,7 @@ export interface IFormQuestionsContextState{
     showableQuestions: Array<IQuestion>;
     currentSubSection: ISubSection | null;
     currentStack: number;
+    pathToPush: string;
 }
 
 export interface IFormQuestionsContextPayload{

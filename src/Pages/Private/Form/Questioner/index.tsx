@@ -17,8 +17,9 @@ import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   ADD_QUESTION_TO_ANSWERED,
-  GET_SECTIONS,
-  NEXT_SECTION, SEARCH_STORAGE_QUESTIONER, SET_SHOWABLE_QUESTIONS,
+  GET_SECTIONS, NEXT_QUESTIONS,
+  SEARCH_STORAGE_QUESTIONER,
+  SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
@@ -139,8 +140,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         );
       }
     }
-    let nextStack: number = stack? parseInt(stack) : 0;
-    let nextSubSection: string = subSection? subSection : '';
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
@@ -178,64 +177,18 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       );
     }
     if (FormApplicationState && FormApplicationState.formState) {
-      const currentSection = FormApplicationState.formState.currentSection;
-      if (currentSection && currentSection.subSections) {
-        for (
-          let index = 0;
-          index < currentSection.subSections.length;
-          index++
-        ) {
-          const subSection = currentSection.subSections[index];
-          if (params.stack !== undefined) {
-            if (
-              subSection.maxStack > parseInt(params.stack)) {
-              // it changes the stack but not the subsection
-              nextStack = parseInt(params.stack) + 1;
-              break;
-            } else {
-              if (index === currentSection.subSections.length - 1 ) {
-                // Here it changes the Section
-                FormApplicationState.formStateDispatch(
-                    {
-                      type: NEXT_SECTION,
-                      payload: undefined,
-                    });
-                nextStack = 0;
-                if (
-                  FormApplicationState &&
-                    FormApplicationState.formState &&
-                    FormApplicationState.formState.currentSection &&
-                    FormApplicationState.formState.currentSection.subSections
-                ) {
-                  nextSubSection = FormApplicationState.
-                      formState.
-                      currentSection.
-                      subSections[0].
-                      name;
-                  nextStack = 0;
-                  break;
-                }
-              } else {
-                if (subSection.name === params.subSection) {
-                  nextSubSection = currentSection.subSections[index + 1].name;
-                  nextStack = 0;
-                  break;
-                }
-              }
-            }
-          }
-        }
-        if (!(FormApplicationState.formState.currentSection === null)) {
-          history.push(
-              // eslint-disable-next-line max-len
-              `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
-          );
-        } else {
-          history.push('/');
-        }
+      if (!(FormApplicationState.formState.currentSection === null)) {
+        FormApplicationState.formStateDispatch(
+            {
+              type: NEXT_QUESTIONS,
+              payload: undefined,
+            },
+        );
+        history.push(FormApplicationState.formState.pathToPush);
+      } else {
+        history.push('/');
       }
     }
-    console.log('Stack:'+ stack + 'Sección:'+ section + 'Sub:'+ subSection);
   };
 
   return (
