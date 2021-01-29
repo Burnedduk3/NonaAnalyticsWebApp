@@ -45,7 +45,6 @@ export const nextQuestions = (
               }
             },
         );
-        console.log(indexOfCurrentSection, state.sections.length - 1);
         if (indexOfCurrentSection !== state.sections.length - 1) {
           if (indexOfCurrentSection >= 0) {
             newState.currentSection = newState.sections[

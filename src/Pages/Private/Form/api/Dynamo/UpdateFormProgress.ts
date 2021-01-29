@@ -22,7 +22,6 @@ const updateFormProgress = async (
             formMutationVariables,
         ),
     );
-    console.log(updatedForm);
     if (updatedForm.errors) {
       throw new Error('Error sending responses to de Database');
     }

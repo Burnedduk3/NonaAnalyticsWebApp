@@ -137,7 +137,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           name: pageInputs.name,
         },
       });
-      console.log(user);
     } catch (error) {
       console.log('error signing up:', error);
     }

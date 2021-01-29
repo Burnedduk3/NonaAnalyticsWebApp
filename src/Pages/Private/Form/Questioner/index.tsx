@@ -185,9 +185,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
     }
   };
 
-  console.log(FormApplicationState?.formState.currentSection);
-  console.log(FormApplicationState?.formState.currentSubSection);
-  console.log(FormApplicationState?.formState.currentStack);
   let formFinished = false;
   if (FormApplicationState) {
     formFinished = FormApplicationState.formState.finished;
