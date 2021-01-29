@@ -13,14 +13,13 @@
     width: 0.8em;
     height: 0.8em;
     display: block;
-    border-left:3px solid #5c5c5c;
-    border-bottom:3px solid #5c5c5c;
+    border-left: 3px solid #5c5c5c;
+    border-bottom: 3px solid #5c5c5c;
     transform: rotate(-45deg);
     transition: all 0.25s ease;
     opacity: 50%;
     z-index: 0;
   }
-
 
   p {
     font-weight: bold;

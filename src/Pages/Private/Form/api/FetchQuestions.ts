@@ -19,6 +19,9 @@ export const fetchQuestions = async () => {
       currentSection: null,
       nextSection: null,
       previousSection: null,
+      showableQuestions: [],
+      currentSubSection: null,
+      currentStack: 0,
     };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(
@@ -112,6 +115,7 @@ export const fetchQuestions = async () => {
       newState.nextSection = nextSection;
       newState.currentSection = currentSection;
       newState.totalQuestions = totalQuestions;
+      newState.currentSubSection = newState.currentSection.subSections[0];
       newState.sections = sections;
       if (newState) {
         return newState;

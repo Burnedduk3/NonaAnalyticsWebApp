@@ -7,6 +7,9 @@ export interface IFormQuestionsContextState{
     questionsAnswered: Array<IAnsweredQuestion>;
     totalQuestions: number,
     currentProgress: number,
+    showableQuestions: Array<IQuestion>;
+    currentSubSection: ISubSection | null;
+    currentStack: number;
 }
 
 export interface IFormQuestionsContextPayload{

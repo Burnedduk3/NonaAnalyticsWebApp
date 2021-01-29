@@ -1,7 +1,7 @@
 import {
   IAnsweredQuestion,
   IFormQuestionsContextPayload,
-  IFormQuestionsContextState, ISection,
+  IFormQuestionsContextState, IQuestion, ISection, ISubSection,
 } from './interface';
 
 export const nextSection = (
@@ -53,4 +53,38 @@ export const addQuestionAnswer = (
       JSON.stringify(state),
   );
   return state;
+};
+
+
+export const setShowableQuesitons = (
+    state: IFormQuestionsContextState,
+):IFormQuestionsContextState => {
+  const questioner = state.sections;
+  if (questioner) {
+    questioner.map((section:ISection) =>{
+      if (section.name === state.currentSection?.name) {
+        section.subSections.map((subSection: ISubSection)=>{
+          if (subSection.name === state.currentSubSection?.name) {
+            const showableQuestions:Array<IQuestion> = [];
+            subSection.questions.map((question: IQuestion)=>{
+              if (question.stack === state.currentStack) {
+                showableQuestions.push(question);
+              }
+            });
+            state.showableQuestions = [
+              ...state.showableQuestions,
+              ...showableQuestions,
+            ];
+          }
+        });
+      }
+    });
+  }
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(state),
+  );
+  return {
+    ...state,
+  };
 };

@@ -18,15 +18,13 @@ import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS,
-  NEXT_SECTION, SEARCH_STORAGE_QUESTIONER,
+  NEXT_SECTION, SEARCH_STORAGE_QUESTIONER, SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
   IFormQuestionsContextState,
-  IQuestion,
-  ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
@@ -53,7 +51,6 @@ import {
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  const [formQuestions, setFormQuestions] = useState<Array<IQuestion>>([]);
   const [responseState, setResponseState] = useState<IQuestionerState>({});
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
@@ -82,7 +79,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         !formStorage
     ) {
       try {
-        console.log('hola');
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
               FormApplicationState.formStateDispatch(
@@ -105,41 +101,26 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   }, []);
 
   useEffect(()=>{
-    setQuestioner();
+    FormApplicationState?.formStateDispatch(
+        {
+          type: SET_SHOWABLE_QUESTIONS,
+          payload: undefined,
+        },
+    );
   }, [params]);
 
   useEffect(
       ()=>{
-        setQuestioner();
+        FormApplicationState?.formStateDispatch(
+            {
+              type: SET_SHOWABLE_QUESTIONS,
+              payload: undefined,
+            },
+        );
       },
       [loading],
   );
 
-  const setQuestioner = () =>{
-    if (FormApplicationState &&
-        FormApplicationState.formState &&
-        FormApplicationState.formState.sections &&
-        FormApplicationState.formState.sections.length > 0) {
-      const questioner = FormApplicationState.formState.sections;
-      if (questioner) {
-        questioner.map((section:ISection) =>{
-          if (section.name === params.section) {
-            section.subSections.map((subSection: ISubSection)=>{
-              if (subSection.name === params.subSection) {
-                const showableQuestions:Array<IQuestion> = [];
-                subSection.questions.map((question: IQuestion)=>{
-                  if (question.stack.toString() === params.stack) {
-                    showableQuestions.push(question);
-                  }
-                });
-                setFormQuestions(showableQuestions);
-              }
-            });
-          }
-        });
-      }
-    }
-  };
   // TODO Send data to the athena database
   // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
@@ -272,7 +253,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           {(!loading && !error) && (
             <>
               {
-                formQuestions.map(
+                FormApplicationState?.formState.showableQuestions.map(
                     (item: any) => {
                       if (item.category.name === 'YesNo') {
                         return (
