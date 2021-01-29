@@ -125,7 +125,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
 
   const signUp = async () => {
     try {
-      const {user} = await Auth.signUp({
+      await Auth.signUp({
         username: pageInputs.email,
         password: pageInputs.password,
         attributes: {
