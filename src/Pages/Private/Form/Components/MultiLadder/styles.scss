@@ -16,42 +16,31 @@
     justify-content: flex-start;
 
     h3 {
-      margin: 0 0 0 150px;
-      font-size: 1.6em;
-      font-weight: normal;
+      font-size: 1em;
     }
   }
 
   .multi-ladder-button-container {
     display: flex;
+    max-width: 90%;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
     width: 100%;
-    justify-content: flex-end;
-    flex-wrap: wrap;
-  }
-
-  .question-container {
-    display: flex;
-    width: 100%;
-    justify-content: space-evenly;
-    height: 100px;
 
     .question {
       display: flex;
-      width: 30%;
-      justify-content: center;
+      justify-content: flex-start;
       align-items: center;
-
-      p {
-        font-size: 1.5em;
-        margin: 0 0 0 50px;
-      }
+      font-size: 1em;
+      color: $primary-color;
+      width: 30%;
     }
 
     .response-container {
       display: flex;
-      margin: 20px 0;
-      justify-content: space-evenly;
-      width: 50%;
+      margin: 1vh;
+      justify-content: space-around;
+      width: 70%;
       min-width: 300px;
       align-items: center;
 
@@ -71,7 +60,6 @@
         font-weight: 300;
         font-size: 1.35em;
         margin: 10px auto;
-        height: 80px;
         z-index: 9;
         cursor: pointer;
       }
@@ -82,9 +70,12 @@
         align-items: center;
         background: $non-checked;
         border-radius: 100%;
-        height: 60px;
-        width: 60px;
+        height: 2.5em;
+        width: 2.5em;
         z-index: 5;
+        font-family: "Montserrat", sans-serif;
+        font-weight: 600;
+        color: white;
       }
 
       .check::before {

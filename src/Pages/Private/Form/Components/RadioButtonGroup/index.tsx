@@ -72,6 +72,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                           )
                         }
                       />
+                      <span className="checkmark"></span>
                     </label>
                   ),
               )

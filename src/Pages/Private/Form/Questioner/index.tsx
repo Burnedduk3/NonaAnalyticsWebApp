@@ -246,6 +246,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         }
       }
     }
+    console.log('Stack:'+ stack + 'Sección:'+ section + 'Sub:'+ subSection);
   };
 
   return (
