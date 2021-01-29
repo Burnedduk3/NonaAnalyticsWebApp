@@ -20,9 +20,7 @@ export const fetchQuestions = async () => {
       showableQuestions: [],
       currentSubSection: null,
       currentStack: 0,
-      nextSubSection: null,
-      nextStack: 0,
-      nextSection: null,
+      finished: false,
     };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(

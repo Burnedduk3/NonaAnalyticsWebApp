@@ -46,6 +46,10 @@ import updateFormProgress from '../api/Dynamo/UpdateFormProgress';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
+import {Redirect} from 'react-router-dom';
+import
+RoutingConstants
+  from '../../../../navigation/CONSTANTS/RoutingConstants';
 
 // eslint-disable-next-line max-len
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element =>{
@@ -178,157 +182,177 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
     }
   };
 
+  console.log(FormApplicationState?.formState.currentSection);
+  console.log(FormApplicationState?.formState.currentSubSection);
+  console.log(FormApplicationState?.formState.currentStack);
+  let formFinished = false;
+  if (FormApplicationState) {
+    formFinished = FormApplicationState.formState.finished;
+  }
   return (
-    <main className="content-container">
-      <LeftBar />
-      <div className="form-container">
-        <div className='questioner-container'>
-          {loading && (
-            <div className="spinner-wrapper">
-              <Spinner />
+    <>
+      {
+        formFinished && <Redirect
+          to={RoutingConstants.menu.home.path}
+        />
+      }
+      {
+        !formFinished &&
+        <main className="content-container">
+          <LeftBar/>
+          <div className="form-container">
+            <div className='questioner-container'>
+              {loading && (
+                <div className="spinner-wrapper">
+                  <Spinner/>
+                </div>
+              )}
+              {(!loading && !error) && (
+                <>
+                  {
+                    FormApplicationState?.formState.showableQuestions.map(
+                        (item: any) => {
+                          if (item.category.name === 'YesNo') {
+                            return (
+                            // eslint-disable-next-line max-len
+                              <div key={item.id} className="yes-no-container-comp">
+                                <YesNoQuestion
+                                  question={item.question}
+                                  questionId={item.id}
+                                  radioGroup={item.id}
+                                  setResponse={setResponseState}
+                                  currentState={responseState}
+                                  order={item.order}
+                                />
+                              </div>
+                            );
+                          }
+                          if (item.category.name === 'Combo') {
+                            return (
+                              <ComboBoxComponent
+                                key={item.id}
+                                question={item.question}
+                                questionId={item.id}
+                                setResponse={setResponseState}
+                                items={item.items}
+                                currentState={responseState}
+                                order={item.order}
+                              />
+                            );
+                          }
+                          if (item.category.name === 'Open') {
+                            return (
+                              <TextInputComponent
+                                placeholder={item.placeHolder}
+                                key={item.id}
+                                question={item.question}
+                                questionId={item.id}
+                                setResponse={setResponseState}
+                                currentState={responseState}
+                                order={item.order}
+                              />
+                            );
+                          }
+                          if (item.category.name === 'MultiSelection') {
+                            return (
+                              <CheckBoxComponent
+                                key={item.id}
+                                items={item.items}
+                                questionId={item.id}
+                                question={item.question}
+                                setResponse={setResponseState}
+                                currentState={responseState}
+                                order={item.order}
+                              />
+                            );
+                          }
+                          if (item.category.name === 'Ladder') {
+                            return (
+                              <LadderQuestion
+                                key={item.id}
+                                questionText={item.question}
+                                questionId={item.id}
+                                radioGroup={item.id}
+                                order={item.order}
+                                setResponse={setResponseState}
+                                currentState={responseState}
+                                values={
+                                    item.items === null ||
+                                    item.items.length === 0 ?
+                                        LadderConstants.default.defaultValue :
+                                        item.items
+                                }
+                              />
+                            );
+                          }
+                          if (item.category.name === 'RadioGroup') {
+                            return (
+                              <RadioButtonGroup
+                                key={item.id}
+                                items={item.items}
+                                currentState={responseState}
+                                setResponse={setResponseState}
+                                question={item.question}
+                                questionId={item.id}
+                                radioGroup={item.id}
+                                order={item.order}
+                                stackPhrase={item.stackPhrase}
+                              />
+                            );
+                          }
+                          if (item.category.name === 'MultiLadder') {
+                            return (
+                              <MultiLadderQuestion
+                                key={item.id}
+                                items={item.items}
+                                currentState={responseState}
+                                setResponse={setResponseState}
+                                question={item.question}
+                                questionId={item.id}
+                                radioGroup={item.id}
+                                stackPhrase={item.stackPhrase}
+                                order={item.order}
+                              />
+                            );
+                          }
+
+                          if (item.category.name === 'Images') {
+                            return (
+                              <ImageOneSelection
+                                key={item.id}
+                                items={item.items}
+                                currentState={responseState}
+                                setResponse={setResponseState}
+                                question={item.question}
+                                questionId={item.id}
+                                radioGroup={item.id}
+                                imagesPath={item.imagesPath}
+                                order={item.order}
+                              />
+                            );
+                          }
+
+                          return <></>;
+                        },
+                    )
+                  }
+
+                </>
+              )}
             </div>
-          )}
-          {(!loading && !error) && (
-            <>
-              {
-                FormApplicationState?.formState.showableQuestions.map(
-                    (item: any) => {
-                      if (item.category.name === 'YesNo') {
-                        return (
-                        // eslint-disable-next-line max-len
-                          <div key={item.id} className="yes-no-container-comp">
-                            <YesNoQuestion
-                              question={item.question}
-                              questionId={item.id}
-                              radioGroup={item.id}
-                              setResponse={setResponseState}
-                              currentState={responseState}
-                              order={item.order}
-                            />
-                          </div>
-                        );
-                      } if (item.category.name === 'Combo') {
-                        return (
-                          <ComboBoxComponent
-                            key={item.id}
-                            question={item.question}
-                            questionId={item.id}
-                            setResponse={setResponseState}
-                            items={item.items}
-                            currentState={responseState}
-                            order={item.order}
-                          />
-                        );
-                      }
-                      if (item.category.name === 'Open') {
-                        return (
-                          <TextInputComponent
-                            placeholder={item.placeHolder}
-                            key={item.id}
-                            question={item.question}
-                            questionId={item.id}
-                            setResponse={setResponseState}
-                            currentState={responseState}
-                            order={item.order}
-                          />
-                        );
-                      }
-                      if (item.category.name === 'MultiSelection') {
-                        return (
-                          <CheckBoxComponent
-                            items={item.items}
-                            questionId={item.id}
-                            question={item.question}
-                            setResponse={setResponseState}
-                            currentState={responseState}
-                            order={item.order}
-                          />
-                        );
-                      }
-                      if (item.category.name === 'Ladder') {
-                        return (
-                          <LadderQuestion
-                            key={item.id}
-                            questionText={item.question}
-                            questionId={item.id}
-                            radioGroup={item.id}
-                            order={item.order}
-                            setResponse={setResponseState}
-                            currentState={responseState}
-                            values={
-                              item.items === null || item.items.length === 0?
-                                  LadderConstants.default.defaultValue:
-                                  item.items
-                            }
-                          />
-                        );
-                      }
-                      if (item.category.name === 'RadioGroup') {
-                        return (
-                          <RadioButtonGroup
-                            key={item.id}
-                            items={item.items}
-                            currentState={responseState}
-                            setResponse={setResponseState}
-                            question={item.question}
-                            questionId={item.id}
-                            radioGroup={item.id}
-                            order={item.order}
-                            stackPhrase={item.stackPhrase}
-                          />
-                        );
-                      }
-                      if (item.category.name === 'MultiLadder') {
-                        return (
-                          <MultiLadderQuestion
-                            key={item.id}
-                            items={item.items}
-                            currentState={responseState}
-                            setResponse={setResponseState}
-                            question={item.question}
-                            questionId={item.id}
-                            radioGroup={item.id}
-                            stackPhrase={item.stackPhrase}
-                            order={item.order}
-                          />
-                        );
-                      }
-
-                      if (item.category.name === 'Images') {
-                        return (
-                          <ImageOneSelection
-                            key={item.id}
-                            items={item.items}
-                            currentState={responseState}
-                            setResponse={setResponseState}
-                            question={item.question}
-                            questionId={item.id}
-                            radioGroup={item.id}
-                            imagesPath={item.imagesPath}
-                            order={item.order}
-                          />
-                        );
-                      }
-
-                      return <></>;
-                    },
-                )
-              }
-
-            </>
-          )}
-        </div>
-        <div className="buttons-container">
-          <button
-            className="button next"
-            type="button"
-            onClick={SaveToDataBase}
-          >
-            {'NEXT >'}
-          </button>
-        </div>
-      </div>
-    </main>
+            <div className="buttons-container">
+              <button
+                className="button next"
+                type="button"
+                onClick={SaveToDataBase}
+              >
+                {'NEXT >'}
+              </button>
+            </div>
+          </div>
+        </main>
+      }
+    </>
   );
 };
 

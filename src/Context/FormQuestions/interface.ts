@@ -5,12 +5,10 @@ export interface IFormQuestionsContextState{
     totalQuestions: number,
     currentProgress: number,
     showableQuestions: Array<IQuestion>;
-    nextSection: ISection | null;
-    nextSubSection: ISubSection | null;
-    nextStack: number;
     currentSection: ISection | null;
     currentSubSection: ISubSection | null;
     currentStack: number;
+    finished: boolean;
 }
 
 export interface IFormQuestionsContextPayload{

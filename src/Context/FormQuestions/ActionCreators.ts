@@ -40,17 +40,22 @@ export const nextQuestions = (
         // change the section if there are no more subsections
         const indexOfCurrentSection = state.sections.findIndex(
             (section:ISection) => {
-              if (section.name === currentSubSection?.name) {
+              if (section.name === currentSection?.name) {
                 return section;
               }
             },
         );
-        if (indexOfCurrentSection !== state.sections.length) {
-          newState.currentSection = newState.sections[
-              indexOfCurrentSection + 1
-          ];
-          newState.currentSubSection = newState.currentSection.subSections[0];
-          newState.currentStack = 0;
+        console.log(indexOfCurrentSection, state.sections.length - 1);
+        if (indexOfCurrentSection !== state.sections.length - 1) {
+          if (indexOfCurrentSection >= 0) {
+            newState.currentSection = newState.sections[
+                indexOfCurrentSection + 1
+            ];
+            newState.currentSubSection = newState.currentSection.subSections[0];
+            newState.currentStack = 0;
+          }
+        } else {
+          newState.finished = true;
         }
       }
     }

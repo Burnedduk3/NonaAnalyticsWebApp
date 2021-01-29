@@ -23,9 +23,7 @@ export const initialState: IFormQuestionsContextState = {
   showableQuestions: [],
   currentStack: 0,
   currentSubSection: null,
-  nextSection: null,
-  nextStack: 0,
-  nextSubSection: null,
+  finished: false,
 };
 
 const FormQuestionsReducer = (
