@@ -6,21 +6,19 @@
   position: relative;
   width: 100%;
 
-  label {
-
-    i {
-      position: absolute;
-      margin-top: -1.9em;
-      margin-left: 450px;
-      width: 1em;
-      height: 1em;
-      display: block;
-      border-left:3px solid #5c5c5c;
-      border-bottom:3px solid #5c5c5c;
-      transform: rotate(-45deg);
-      transition: all 0.25s ease;
-      opacity: 50%;
-    }
+  label i {
+    position: relative;
+    margin-top: -1.8em;
+    margin-left: 450px;
+    width: 0.8em;
+    height: 0.8em;
+    display: block;
+    border-left:3px solid #5c5c5c;
+    border-bottom:3px solid #5c5c5c;
+    transform: rotate(-45deg);
+    transition: all 0.25s ease;
+    opacity: 50%;
+    z-index: 0;
   }
 
 
@@ -29,6 +27,7 @@
   }
 
   .combo-box {
+    position: relative;
     border: none;
     border-bottom: 1px #d6d4da solid !important;
     outline: none;
@@ -41,11 +40,12 @@
     -moz-appearance: none;
     appearance: none;
     margin: 15px 0 0 0;
-    font-size: 1.5em;
+    font-size: 1em;
     color: #5c5c5c;
+    opacity: 50%;
     font-weight: 600;
     background: rgba(255, 255, 255, 0.3);
-    z-index: 2;
+    z-index: 1;
   }
 
   .combo-box::-ms-expand {

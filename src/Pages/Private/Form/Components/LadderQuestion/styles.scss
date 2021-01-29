@@ -9,13 +9,13 @@
   flex-wrap: wrap;
   justify-content: center;
   width: 100%;
-  margin: 20px 0;
+  margin: 0.5vh 0;
   max-height: 250px;
 
   h3 {
     font-family: "Poppins", sans-serif;
     width: 100%;
-    font-size: 1.8em;
+    font-size: 1.4em;
     text-align: center;
     color: $primary-color;
     margin: 5vh 0;
@@ -41,10 +41,8 @@
     label {
       display: block;
       position: relative;
-      font-weight: 300;
       font-size: 1.35em;
       margin: 10px auto;
-      height: 80px;
       z-index: 9;
       cursor: pointer;
       font-family: "Montserrat", sans-serif;

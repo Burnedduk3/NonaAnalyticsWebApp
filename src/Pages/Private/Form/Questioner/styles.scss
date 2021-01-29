@@ -24,17 +24,17 @@
       justify-content: center;
 
       .inputContainer p {
-        font-size: 1.6em;
+        font-size: 1.4em;
       }
     }
 
     .input-container-image .question-text {
-      font-size: 1.6em;
+      font-size: 1.4em;
       font-weight: bold;
     }
 
     .input-container-ladder p {
-      font-size: 1em;
+      font-size: 0.9em;
       color: $text-color;
     }
 
@@ -43,12 +43,14 @@
     }
 
     .buttons-container {
+      position: relative;
       width: 100%;
       display: flex;
       justify-content: center;
       margin: 30px 0 0 0;
       min-height: 8vh;
       align-content: center;
+      z-index: 10;
 
       .button {
         margin: 0 20px 0 20px;
