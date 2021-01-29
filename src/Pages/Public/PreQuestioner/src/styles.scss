@@ -1,7 +1,6 @@
 @import "src/Global/styles/Colors";
 
 .StartSurvey {
-
   .titleStartSurvey {
     margin-top: 10vh;
     margin-left: 10vw;
@@ -16,6 +15,7 @@
   .inputContainer p {
     font-size: 2em;
   }
+
   .button-container {
     display: flex;
     width: 100%;
@@ -42,4 +42,3 @@
     }
   }
 }
-

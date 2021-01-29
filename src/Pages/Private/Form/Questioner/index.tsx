@@ -17,16 +17,15 @@ import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   ADD_QUESTION_TO_ANSWERED,
-  GET_SECTIONS,
-  NEXT_SECTION, SEARCH_STORAGE_QUESTIONER,
+  GET_SECTIONS, NEXT_QUESTIONS,
+  SEARCH_STORAGE_QUESTIONER,
+  SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
   IFormQuestionsContextState,
-  IQuestion,
-  ISection, ISubSection,
 } from '../../../../Context/FormQuestions/interface';
 import {useHistory} from 'react-router-dom';
 import {useUserState} from '../../../../Context/UserContext/Provider';
@@ -53,7 +52,6 @@ import {
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteComponentProps<TQuestionerRoute>): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  const [formQuestions, setFormQuestions] = useState<Array<IQuestion>>([]);
   const [responseState, setResponseState] = useState<IQuestionerState>({});
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
@@ -104,41 +102,26 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
   }, []);
 
   useEffect(()=>{
-    setQuestioner();
+    FormApplicationState?.formStateDispatch(
+        {
+          type: SET_SHOWABLE_QUESTIONS,
+          payload: undefined,
+        },
+    );
   }, [params]);
 
   useEffect(
       ()=>{
-        setQuestioner();
+        FormApplicationState?.formStateDispatch(
+            {
+              type: SET_SHOWABLE_QUESTIONS,
+              payload: undefined,
+            },
+        );
       },
       [loading],
   );
 
-  const setQuestioner = () =>{
-    if (FormApplicationState &&
-        FormApplicationState.formState &&
-        FormApplicationState.formState.sections &&
-        FormApplicationState.formState.sections.length > 0) {
-      const questioner = FormApplicationState.formState.sections;
-      if (questioner) {
-        questioner.map((section:ISection) =>{
-          if (section.name === params.section) {
-            section.subSections.map((subSection: ISubSection)=>{
-              if (subSection.name === params.subSection) {
-                const showableQuestions:Array<IQuestion> = [];
-                subSection.questions.map((question: IQuestion)=>{
-                  if (question.stack.toString() === params.stack) {
-                    showableQuestions.push(question);
-                  }
-                });
-                setFormQuestions(showableQuestions);
-              }
-            });
-          }
-        });
-      }
-    }
-  };
   // TODO Send data to the athena database
   // TODO also in the graphql playground create a form and paste the ID
   const SaveToDataBase = async () => {
@@ -157,8 +140,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         );
       }
     }
-    let nextStack: number = stack? parseInt(stack) : 0;
-    let nextSubSection: string = subSection? subSection : '';
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
@@ -196,64 +177,18 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       );
     }
     if (FormApplicationState && FormApplicationState.formState) {
-      const currentSection = FormApplicationState.formState.currentSection;
-      if (currentSection && currentSection.subSections) {
-        for (
-          let index = 0;
-          index < currentSection.subSections.length;
-          index++
-        ) {
-          const subSection = currentSection.subSections[index];
-          if (params.stack !== undefined) {
-            if (
-              subSection.maxStack > parseInt(params.stack)) {
-              // it changes the stack but not the subsection
-              nextStack = parseInt(params.stack) + 1;
-              break;
-            } else {
-              if (index === currentSection.subSections.length - 1 ) {
-                // Here it changes the Section
-                FormApplicationState.formStateDispatch(
-                    {
-                      type: NEXT_SECTION,
-                      payload: undefined,
-                    });
-                nextStack = 0;
-                if (
-                  FormApplicationState &&
-                    FormApplicationState.formState &&
-                    FormApplicationState.formState.currentSection &&
-                    FormApplicationState.formState.currentSection.subSections
-                ) {
-                  nextSubSection = FormApplicationState.
-                      formState.
-                      currentSection.
-                      subSections[0].
-                      name;
-                  nextStack = 0;
-                  break;
-                }
-              } else {
-                if (subSection.name === params.subSection) {
-                  nextSubSection = currentSection.subSections[index + 1].name;
-                  nextStack = 0;
-                  break;
-                }
-              }
-            }
-          }
-        }
-        if (!(FormApplicationState.formState.currentSection === null)) {
-          history.push(
-              // eslint-disable-next-line max-len
-              `/questioner/${FormApplicationState.formState.currentSection?.name}/${nextSubSection}/${nextStack}`,
-          );
-        } else {
-          history.push('/');
-        }
+      if (!(FormApplicationState.formState.currentSection === null)) {
+        FormApplicationState.formStateDispatch(
+            {
+              type: NEXT_QUESTIONS,
+              payload: undefined,
+            },
+        );
+        history.push(FormApplicationState.formState.pathToPush);
+      } else {
+        history.push('/');
       }
     }
-    console.log('Stack:'+ stack + 'Sección:'+ section + 'Sub:'+ subSection);
   };
 
   return (
@@ -271,7 +206,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
           {(!loading && !error) && (
             <>
               {
-                formQuestions.map(
+                FormApplicationState?.formState.showableQuestions.map(
                     (item: any) => {
                       if (item.category.name === 'YesNo') {
                         return (

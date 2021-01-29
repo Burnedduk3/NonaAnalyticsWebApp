@@ -1,25 +1,37 @@
 import {
   IAnsweredQuestion,
   IFormQuestionsContextPayload,
-  IFormQuestionsContextState, ISection,
+  IFormQuestionsContextState, IQuestion, ISection, ISubSection,
 } from './interface';
 
-export const nextSection = (
+export const nextQuestions = (
     state: IFormQuestionsContextState,
 ) : IFormQuestionsContextState => {
-  const newCurrent = state.nextSection;
-  const newPrevious = state.currentSection;
-  let newNext: ISection | null = null;
-  if (state && state.sections) {
-    if (newCurrent) {
-      if (newCurrent.order + 1 < state.sections.length) {
-        newNext = state.sections[newCurrent.order + 1];
+  const currentSection = state.currentSection;
+  const currentSubSection = state.currentSubSection;
+  let currentStack = state.currentStack;
+  if (
+    (currentStack !== null) && currentSubSection !== null && currentSection !== null
+  ) {
+    if (currentStack + 1 <= currentSubSection.maxStack) {
+      console.log('stack change', currentStack);
+      currentStack += 1;
+    } else {
+      const indexOfSubsection = currentSection.subSections.findIndex(
+          (subSection:ISubSection) => {
+            if (subSection.name === currentSubSection.name) {
+              return subSection;
+            }
+          },
+      );
+      if (indexOfSubsection === currentSection.subSections.length - 1) {
+        if (indexOfSubsection > 0) {
+
+        }
       }
     }
-    state.nextSection = newNext;
-    state.currentSection = newCurrent;
-    state.previousSection = newPrevious;
   }
+
   localStorage.setItem(
       'QUESTIONER_STORAGE',
       JSON.stringify(state),
@@ -53,4 +65,37 @@ export const addQuestionAnswer = (
       JSON.stringify(state),
   );
   return state;
+};
+
+
+export const setShowableQuesitons = (
+    state: IFormQuestionsContextState,
+):IFormQuestionsContextState => {
+  const questioner = state.sections;
+  if (questioner) {
+    questioner.map((section:ISection) =>{
+      if (section.name === state.currentSection?.name) {
+        section.subSections.map((subSection: ISubSection)=>{
+          if (subSection.name === state.currentSubSection?.name) {
+            const showableQuestions:Array<IQuestion> = [];
+            subSection.questions.map((question: IQuestion)=>{
+              if (question.stack === state.currentStack) {
+                showableQuestions.push(question);
+              }
+            });
+            state.showableQuestions = [
+              ...showableQuestions,
+            ];
+          }
+        });
+      }
+    });
+  }
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(state),
+  );
+  return {
+    ...state,
+  };
 };
