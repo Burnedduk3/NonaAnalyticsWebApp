@@ -78,7 +78,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
             },
           });
           history.push(
-              `${RoutingConstants.dinamicForm.path}/Lake-Nona/Lake-Nona/0`,
+              `${RoutingConstants.dinamicForm.path}`,
           );
         } else {
 

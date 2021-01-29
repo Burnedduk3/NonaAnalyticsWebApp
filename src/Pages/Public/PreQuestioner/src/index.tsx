@@ -64,7 +64,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
         userState?.userState.email !== ''
     ) {
       // eslint-disable-next-line max-len
-      history.push(`${RoutingConstants.dinamicForm.path}/Lake-Nona/Lake-Nona/0`);
+      history.push(`${RoutingConstants.dinamicForm.path}`);
     }
   };
 
