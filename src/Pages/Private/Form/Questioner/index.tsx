@@ -82,7 +82,6 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
         !formStorage
     ) {
       try {
-        console.log('hola');
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
               FormApplicationState.formStateDispatch(
