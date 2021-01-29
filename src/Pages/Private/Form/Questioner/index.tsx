@@ -73,10 +73,13 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
           payload: undefined,
         },
     );
+    const cachedData = localStorage.getItem('QUESTIONER_STORAGE');
     setLoading(true);
     if (
       FormApplicationState &&
-        FormApplicationState.formState.sections?.length === 0) {
+        FormApplicationState.formState.sections?.length === 0 &&
+        !cachedData
+    ) {
       try {
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
