@@ -1,7 +1,8 @@
 import {addQuestionAnswer, nextSection} from './ActionCreators';
 import {
-  NEXT_SECTION,
-  ADD_QUESTION_TO_ANSWERED, GET_SECTIONS,
+  ADD_QUESTION_TO_ANSWERED,
+  GET_SECTIONS, NEXT_SECTION,
+  SEARCH_STORAGE_QUESTIONER,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -35,6 +36,15 @@ const FormQuestionsReducer = (
         };
       }
       return state;
+    }
+
+    case SEARCH_STORAGE_QUESTIONER: {
+      const stateCandidate = localStorage.getItem('QUESTIONER_STORAGE');
+      if (stateCandidate) {
+        return JSON.parse(stateCandidate);
+      } else {
+        return state;
+      }
     }
 
     case ADD_QUESTION_TO_ANSWERED: {

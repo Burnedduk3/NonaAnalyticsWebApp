@@ -18,7 +18,7 @@ import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS,
-  NEXT_SECTION,
+  NEXT_SECTION, SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
@@ -68,15 +68,23 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = ({match}:RouteC
       type: SEARCH_LOCAL_STORAGE,
       payload: undefined,
     });
+    FormApplicationState?.formStateDispatch(
+        {
+          type: SEARCH_STORAGE_QUESTIONER,
+          payload: undefined,
+        },
+    );
+    const formStorage = localStorage.getItem('QUESTIONER_STORAGE');
     setLoading(true);
     if (
       FormApplicationState &&
-        FormApplicationState.formState.sections?.length === 0
+        FormApplicationState.formState.sections?.length === 0 &&
+        !formStorage
     ) {
       try {
+        console.log('hola');
         fetchQuestions().then(
             (data: IFormQuestionsContextState | undefined) => {
-              console.log('then', data);
               FormApplicationState.formStateDispatch(
                   {
                     type: GET_SECTIONS,
