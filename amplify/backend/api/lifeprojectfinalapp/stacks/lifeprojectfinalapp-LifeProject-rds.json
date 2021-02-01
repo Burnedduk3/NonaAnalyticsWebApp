@@ -381,6 +381,241 @@
       "DependsOn": [
         "RelationalDatabaseDataSource"
       ]
+    },
+    "UserInfoCreateResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "RelationalDatabaseDataSource",
+            "Name"
+          ]
+        },
+        "TypeName": "Mutation",
+        "FieldName": "createUserInfo",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.createUserInfo.req.vtl"
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.createUserInfo.res.vtl"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "RelationalDatabaseDataSource"
+      ]
+    },
+    "UserInfoGetResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "RelationalDatabaseDataSource",
+            "Name"
+          ]
+        },
+        "FieldName": "getUserInfo",
+        "TypeName": "Query",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Query.getUserInfo.req.vtl"
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Query.getUserInfo.res.vtl"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "RelationalDatabaseDataSource"
+      ]
+    },
+    "UserInfoUpdateResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "RelationalDatabaseDataSource",
+            "Name"
+          ]
+        },
+        "TypeName": "Mutation",
+        "FieldName": "updateUserInfo",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.updateUserInfo.req.vtl"
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.updateUserInfo.res.vtl"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "RelationalDatabaseDataSource"
+      ]
+    },
+    "UserInfoDeleteResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "RelationalDatabaseDataSource",
+            "Name"
+          ]
+        },
+        "TypeName": "Mutation",
+        "FieldName": "deleteUserInfo",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.deleteUserInfo.req.vtl"
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Mutation.deleteUserInfo.res.vtl"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "RelationalDatabaseDataSource"
+      ]
+    },
+    "UserInfoListResolver": {
+      "Type": "AWS::AppSync::Resolver",
+      "Properties": {
+        "ApiId": {
+          "Ref": "AppSyncApiId"
+        },
+        "DataSourceName": {
+          "Fn::GetAtt": [
+            "RelationalDatabaseDataSource",
+            "Name"
+          ]
+        },
+        "TypeName": "Query",
+        "FieldName": "listUserInfos",
+        "RequestMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Query.listUserInfos.req.vtl"
+            }
+          ]
+        },
+        "ResponseMappingTemplateS3Location": {
+          "Fn::Sub": [
+            "s3://${S3DeploymentBucket}/${S3DeploymentRootKey}/resolvers/${ResolverFileName}",
+            {
+              "S3DeploymentBucket": {
+                "Ref": "S3DeploymentBucket"
+              },
+              "S3DeploymentRootKey": {
+                "Ref": "S3DeploymentRootKey"
+              },
+              "ResolverFileName": "Query.listUserInfos.res.vtl"
+            }
+          ]
+        }
+      },
+      "DependsOn": [
+        "RelationalDatabaseDataSource"
+      ]
     }
   }
 }

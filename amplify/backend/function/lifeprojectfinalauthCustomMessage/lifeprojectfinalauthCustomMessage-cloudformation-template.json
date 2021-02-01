@@ -119,7 +119,7 @@
         "Timeout": "25",
         "Code": {
           "S3Bucket": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
-          "S3Key": "amplify-builds/lifeprojectfinalauthCustomMessage-62764c6e69634c705876-build.zip"
+          "S3Key": "amplify-builds/lifeprojectfinalauthCustomMessage-7362576b5978737a4c37-build.zip"
         }
       }
     },
