@@ -1,5 +1,4 @@
 import React from 'react';
-import './styles.scss';
 import {ILeftBarSubSections} from '../src/CONSTANTS';
 import {
   useFormQuestionState,
@@ -10,11 +9,13 @@ import {
 
 export interface IDropDownProps{
   subSections: Array<ILeftBarSubSections>
+  selectors: Array<String>
 }
 
 const DropDownComponent: React.FC<IDropDownProps> = (
     {
       subSections,
+      selectors,
     }: IDropDownProps,
 ):JSX.Element => {
   const FormApplicationState = useFormQuestionState();
@@ -35,6 +36,7 @@ const DropDownComponent: React.FC<IDropDownProps> = (
             (item: ILeftBarSubSections) => {
               return (
                 <li
+                  className={selectors.join(' ')}
                   key={item.code}
                   onClick={
                     (event) => handleOnClick(event, item.code)

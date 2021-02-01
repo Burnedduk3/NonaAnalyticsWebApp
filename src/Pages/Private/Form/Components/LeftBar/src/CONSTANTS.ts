@@ -20,7 +20,7 @@ export interface ILeftBarSections {
 }
 
 export const LEFT_BAR_SECTIONS: ILeftBarSections = {
-  lake_nona: {
+  LakeNona: {
     text: 'Lake Nona',
     subSections: [
       {

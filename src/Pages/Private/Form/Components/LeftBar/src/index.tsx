@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {buildStyles, CircularProgressbar} from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import colors from '../../../../../../Global/js/colors';
@@ -12,9 +12,35 @@ import {
 } from '../../../../../../Context/FormQuestions/Provider';
 import './styles.scss';
 
+interface IShowHideOptions{
+    [key:string]: boolean;
+    LakeNona: boolean;
+    Health: boolean;
+    Social: boolean;
+    Mood: boolean;
+}
+
 
 const LeftBar: React.FC = ():JSX.Element => {
   const formState = useFormQuestionState();
+  const [showOptions, setShowOptions] = useState<IShowHideOptions>({
+    LakeNona: false,
+    Health: false,
+    Social: false,
+    Mood: false,
+  });
+
+  const handleOnClick = (event: any, key: string) =>{
+    const newState:IShowHideOptions = {
+      LakeNona: false,
+      Health: false,
+      Social: false,
+      Mood: false,
+    };
+    newState[key] = !newState[key];
+    setShowOptions({...newState});
+  };
+
   return (
     <aside className="aside-menu">
       <div className="header-aside-container">
@@ -44,12 +70,17 @@ const LeftBar: React.FC = ():JSX.Element => {
           Object.keys(LEFT_BAR_SECTIONS).map((key: string)=>{
             return <ul
               key={key}
+              onClick={(event)=>handleOnClick(event, key)}
             >
-              <li className="main-options" id="health">
-                <p className="btn">{LEFT_BAR_SECTIONS[key].text}</p>
+              <li
+                className="main-options"
+                id="health"
+              >
+                <p>{LEFT_BAR_SECTIONS[key].text}</p>
               </li>
-              <li>
+              <li className={`sub-item ${showOptions[key]? 'show': 'hide'}`}>
                 <DropDownComponent
+                  selectors={['element-list']}
                   subSections={LEFT_BAR_SECTIONS[key].subSections}
                 />
               </li>

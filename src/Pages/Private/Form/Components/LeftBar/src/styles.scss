@@ -11,6 +11,50 @@
   justify-content: space-between;
   padding: 0 0 50px 0;
 
+  .drop-down-menu {
+    text-decoration: none;
+
+    ul {
+      padding-inline: 0;
+
+      .main-options {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        background-color: #1f637b;
+        color: white;
+        cursor: pointer;
+      }
+
+      .sub-item {
+        background: white;
+        overflow: hidden;
+        color: red;
+        font-size: 14px;
+        cursor: pointer;
+
+        .element-list {
+          transition: color, background-color 300ms linear;
+          padding: 5px 0 5px 15px;
+
+          &:hover {
+            color: white;
+            background: red;
+          }
+        }
+      }
+
+      .show {
+        height: 50%;
+        max-height: 500px;
+      }
+
+      .hide {
+        height: 0;
+        max-height: 0;
+      }
+    }
+  }
+
   .header-aside-container {
     width: 100%;
     display: flex;
