@@ -1,13 +1,13 @@
 import {
   addQuestionAnswer,
-  nextQuestions,
+  nextQuestions, setByMenu,
   setShowableQuestions,
 } from './ActionCreators';
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS, NEXT_QUESTIONS,
   SEARCH_STORAGE_QUESTIONER,
-  SET_SHOWABLE_QUESTIONS,
+  SET_SHOWABLE_QUESTIONS, SET_SUBSECTION_BY_MENU,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -67,6 +67,14 @@ const FormQuestionsReducer = (
       return {
         ...newState,
       };
+    }
+
+    case SET_SUBSECTION_BY_MENU: {
+      if (payload) {
+        return setByMenu(state, payload);
+      } else {
+        return state;
+      }
     }
 
     case SET_SHOWABLE_QUESTIONS: {

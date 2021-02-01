@@ -121,3 +121,48 @@ export const setShowableQuestions = (
     ...state,
   };
 };
+
+export const setByMenu = (
+    state: IFormQuestionsContextState,
+    payload: IFormQuestionsContextPayload,
+):IFormQuestionsContextState => {
+  if (payload && payload.subSectionName) {
+    const {subSectionName} = payload;
+    let newSection: ISection = {
+      subSections: [],
+      name: '',
+      id: '',
+      order: 0,
+    };
+    let newSubSection: ISubSection = {
+      name: '',
+      questions: [],
+      maxStack: 0,
+      id: '',
+      order: 0,
+    };
+    state.sections.map((section: ISection) => {
+      section.subSections.map((subSection: ISubSection)=>{
+        if (subSection.name === subSectionName) {
+          newSection = {
+            ...section,
+          };
+          newSubSection = {
+            ...subSection,
+          };
+        }
+      });
+    });
+    state.currentSection = newSection;
+    state.currentSubSection = newSubSection;
+    state.currentStack = 0;
+  }
+
+  const newState = setShowableQuestions(state);
+
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(newState),
+  );
+  return {...newState};
+};

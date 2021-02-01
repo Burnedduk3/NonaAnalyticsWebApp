@@ -4,14 +4,16 @@ import 'react-circular-progressbar/dist/styles.css';
 import colors from '../../../../../../Global/js/colors';
 import logo from '../../../../../../assets/Logos/logo.png';
 import DropDownComponent from '../DropDown';
-import LeftBarText from './CONSTANTS';
-import './styles.scss';
+import LeftBarText, {
+  LEFT_BAR_SECTIONS,
+} from './CONSTANTS';
 import {
   useFormQuestionState,
 } from '../../../../../../Context/FormQuestions/Provider';
+import './styles.scss';
 
 
-const LeftBar = () => {
+const LeftBar: React.FC = ():JSX.Element => {
   const formState = useFormQuestionState();
   return (
     <aside className="aside-menu">
@@ -21,8 +23,12 @@ const LeftBar = () => {
         </div>
         <div className="progress-bar-container">
           <CircularProgressbar
-            value={formState.formState.currentProgress}
-            text={`${formState.formState.currentProgress}%`}
+            value={
+                formState?.formState.currentProgress?
+                formState?.formState.currentProgress:
+                0
+            }
+            text={`${formState?.formState.currentProgress}%`}
             styles={buildStyles(
                 {
                   trailColor: colors.progressBackGround,
@@ -33,7 +39,24 @@ const LeftBar = () => {
           <p className="progress-bar-subtitle">Survey Progress</p>
         </div>
       </div>
-      <DropDownComponent />
+      <div className="drop-down-menu">
+        {
+          Object.keys(LEFT_BAR_SECTIONS).map((key: string)=>{
+            return <ul
+              key={key}
+            >
+              <li className="main-options" id="health">
+                <p className="btn">{LEFT_BAR_SECTIONS[key].text}</p>
+              </li>
+              <li>
+                <DropDownComponent
+                  subSections={LEFT_BAR_SECTIONS[key].subSections}
+                />
+              </li>
+            </ul>;
+          })
+        }
+      </div>
       <div className="last-section">
         <h4 className="last-section-title">{LeftBarText.lastSection.title}</h4>
         {/* eslint-disable-next-line max-len */}

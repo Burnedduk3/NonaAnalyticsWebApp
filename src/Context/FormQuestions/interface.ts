@@ -16,6 +16,7 @@ export interface IFormQuestionsContextPayload{
     sections?: Array<ISection>
     fetchedSections?: IFormQuestionsContextState
     questionToAdd?: IAnsweredQuestion
+    subSectionName?: string
 }
 
 export interface IFormQuestionsContextReducer {
