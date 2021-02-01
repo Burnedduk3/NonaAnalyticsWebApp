@@ -11,8 +11,9 @@ import {
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
 import Member from '../Components/Member/index';
-// eslint-disable-next-line max-len
-import RoutingConstants from '../../../../navigation/CONSTANTS/RoutingConstants';
+import
+RoutingConstants
+  from '../../../../navigation/CONSTANTS/RoutingConstants';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import {
   SEARCH_LOCAL_STORAGE,

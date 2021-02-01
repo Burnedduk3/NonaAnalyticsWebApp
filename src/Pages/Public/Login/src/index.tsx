@@ -20,6 +20,7 @@ import lock from '../../../../assets/Icons/lock.png';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import {ADD_USER, EDIT_USER} from '../../../../Context/UserContext/ActionTypes';
 import {createForm} from '../../../../graphql/mutations';
+import validator from 'validator';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -42,47 +43,57 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   const signIn = async () => {
+    const {username, password} = pageInputs;
     try {
-      const user = await Auth.signIn(pageInputs.username, pageInputs.password);
-      if (user) {
-        userState.userStateDispatch({
-          type: ADD_USER,
-          payload: {
-            address: user.attributes.address,
-            name: user.attributes.name,
-            birthdate: user.attributes.birthdate,
-            email: user.attributes.birthdate,
-            gender: user.attributes.gender,
-            phone: user.attributes.phone_number,
-            usernameID: user.username,
-            accessToken: user.signInUserSession.accessToken.jwtToken,
-            idToken: user.signInUserSession.idToken.jwtToken,
-            refreshToken: user.signInUserSession.refreshToken.jwtToken,
-          },
-        });
-
-        if (user.attributes.email_verified) {
-          const formData: any = await API.graphql(graphqlOperation(createForm,
-              {
-                input: {
-                  UserID: user.username,
-                  finished: false,
-                  percentage: 0,
-                },
-              },
-          ));
+      if (
+        (validator.isEmail(username) || validator.isMobilePhone(username)) &&
+          validator.isAscii(password)
+      ) {
+        const user = await Auth.signIn(
+            pageInputs.username, pageInputs.password,
+        );
+        if (user) {
           userState.userStateDispatch({
-            type: EDIT_USER,
+            type: ADD_USER,
             payload: {
-              currentForm: formData.data.createForm.id,
+              address: user.attributes.address,
+              name: user.attributes.name,
+              birthdate: user.attributes.birthdate,
+              email: user.attributes.birthdate,
+              gender: user.attributes.gender,
+              phone: user.attributes.phone_number,
+              usernameID: user.username,
+              accessToken: user.signInUserSession.accessToken.jwtToken,
+              idToken: user.signInUserSession.idToken.jwtToken,
+              refreshToken: user.signInUserSession.refreshToken.jwtToken,
             },
           });
-          history.push(
-              `${RoutingConstants.dinamicForm.path}`,
-          );
-        } else {
 
+          if (user.attributes.email_verified) {
+            const formData: any = await API.graphql(graphqlOperation(createForm,
+                {
+                  input: {
+                    UserID: user.username,
+                    finished: false,
+                    percentage: 0,
+                  },
+                },
+            ));
+            userState.userStateDispatch({
+              type: EDIT_USER,
+              payload: {
+                currentForm: formData.data.createForm.id,
+              },
+            });
+            history.push(
+                `${RoutingConstants.dinamicForm.path}`,
+            );
+          } else {
+
+          }
         }
+      } else {
+        throw new Error('incorrect username or password');
       }
     } catch (error) {
       console.log(error);
@@ -91,16 +102,22 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   const triggerSignIn = () => {
-    signIn().then();
+    signIn();
   };
 
   const handleInput = (event:ChangeEvent<HTMLInputElement>) => {
+    const {username, password} = pageInputs;
     if (event.target.name === 'username') {
-      setPageInputs({...pageInputs, username: event.target.value});
+      if (username.length + 1 < 50) {
+        setPageInputs({...pageInputs, username: event.target.value});
+      }
     }
 
     if (event.target.name === 'password') {
-      setPageInputs({...pageInputs, password: event.target.value});
+      console.log(password.length);
+      if (password.length + 1 < 20) {
+        setPageInputs({...pageInputs, password: event.target.value});
+      }
     }
   };
 
@@ -136,6 +153,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
               type="text"
               name="username"
               placeholder="Username"
+              value={pageInputs.username}
               className="username-text-field"
               onChange={handleInput}
             />
@@ -145,6 +163,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
             <input
               type="password"
               name="password"
+              value={pageInputs.password}
               placeholder="Password"
               className="password-text-field"
               onChange={handleInput}
