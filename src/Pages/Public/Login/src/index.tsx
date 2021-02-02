@@ -38,13 +38,28 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const history = useHistory();
   const userState = useUserState();
   const formState = useFormQuestionState();
+  const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
+  const [redirectPath, setRedirectPath] = useState<string>('');
 
   useEffect(() => {
-    ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
   }, []);
+
+  useEffect(
+      () =>{
+        if (isRedirecting) {
+          redirect();
+        }
+      },
+      [isRedirecting],
+  );
 
   const goHome = () =>{
     history.push(RoutingConstants.menu.home.path);
+  };
+
+  const redirect = () => {
+    history.push(redirectPath);
   };
 
   const signIn = async () => {
@@ -92,18 +107,18 @@ const LoginPage : React.FC = (): JSX.Element =>{
                   },
                 },
             );
-            history.push(
-                `${RoutingConstants.dinamicForm.path}`,
-            );
-          } else {
-            history.push(RoutingConstants.verifyEmail.path);
+            setRedirectPath(RoutingConstants.dinamicForm.path);
+            setIsRedirecting(true);
           }
         }
       } else {
         throw new Error('incorrect username or password');
       }
     } catch (error) {
-      console.log(error);
+      if (error.name === 'UserNotConfirmedException') {
+        setRedirectPath(RoutingConstants.verifyEmail.path);
+        setIsRedirecting(true);
+      }
       setError(true);
     }
   };

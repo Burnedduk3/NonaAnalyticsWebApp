@@ -177,6 +177,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
               },
           ),
       );
+      history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       console.log('error signing up:', error);
     }
