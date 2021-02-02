@@ -18,9 +18,13 @@ import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
 import user from '../../../../assets/Icons/user.png';
 import lock from '../../../../assets/Icons/lock.png';
 import {useUserState} from '../../../../Context/UserContext/Provider';
-import {ADD_USER, EDIT_USER} from '../../../../Context/UserContext/ActionTypes';
+import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
 import {createForm} from '../../../../graphql/mutations';
 import validator from 'validator';
+import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
+import {
+  SET_CURRENT_FORM_ID,
+} from '../../../../Context/FormQuestions/ActionTypes';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -33,6 +37,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [error, setError] = useState<boolean>(false);
   const history = useHistory();
   const userState = useUserState();
+  const formState = useFormQuestionState();
 
   useEffect(() => {
     ApplicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -79,17 +84,19 @@ const LoginPage : React.FC = (): JSX.Element =>{
                   },
                 },
             ));
-            userState.userStateDispatch({
-              type: EDIT_USER,
-              payload: {
-                currentForm: formData.data.createForm.id,
-              },
-            });
+            formState.formStateDispatch(
+                {
+                  type: SET_CURRENT_FORM_ID,
+                  payload: {
+                    currentFormID: formData.data.createForm.id,
+                  },
+                },
+            );
             history.push(
                 `${RoutingConstants.dinamicForm.path}`,
             );
           } else {
-
+            history.push(RoutingConstants.verifyEmail.path);
           }
         }
       } else {
@@ -133,7 +140,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
       <div className="Login-card-container">
         <div className="go-back-container">
           <p onClick={goHome}>
-            <i className="fas fa-caret-left"></i>
+            <i className="fas fa-caret-left"/>
             {CONSTANTS.backButton}
           </p>
         </div>

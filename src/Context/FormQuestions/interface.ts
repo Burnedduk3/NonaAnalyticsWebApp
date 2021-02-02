@@ -9,6 +9,7 @@ export interface IFormQuestionsContextState{
     currentSubSection: ISubSection | null;
     currentStack: number;
     finished: boolean;
+    currentFormID: string;
 }
 
 export interface IFormQuestionsContextPayload{
@@ -17,6 +18,7 @@ export interface IFormQuestionsContextPayload{
     fetchedSections?: IFormQuestionsContextState
     questionToAdd?: IAnsweredQuestion
     subSectionName?: string
+    currentFormID?: string
 }
 
 export interface IFormQuestionsContextReducer {

@@ -8,7 +8,7 @@ import {getSectionsWithQuestions} from '../OwnQueries';
 
 // TODO change the function to mantain the change on the path variables
 
-export const fetchQuestions = async () => {
+export const fetchQuestions = async (currentFormID: string) => {
   try {
     let totalQuestions = 0;
     const newState: IFormQuestionsContextState = {
@@ -21,6 +21,7 @@ export const fetchQuestions = async () => {
       currentSubSection: null,
       currentStack: 0,
       finished: false,
+      currentFormID: currentFormID,
     };
     const databaseQuestions:any = await API.graphql(
         graphqlOperation(

@@ -15,7 +15,6 @@ export const initialState: IUserState = {
   address: '',
   birthdate: '',
   gender: '',
-  currentForm: '',
   usernameID: '',
   accessToken: '',
   refreshToken: '',

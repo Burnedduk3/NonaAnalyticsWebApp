@@ -11,6 +11,7 @@ export const deleteCreateUserResponse = /* GraphQL */ `
       response
       subSection
       section
+      userID
     }
   }
 `;
@@ -27,6 +28,7 @@ export const createCreateUserResponse = /* GraphQL */ `
       response
       subSection
       section
+      userID
     }
   }
 `;
@@ -43,6 +45,37 @@ export const updateCreateUserResponse = /* GraphQL */ `
       response
       subSection
       section
+      userID
+    }
+  }
+`;
+export const deleteUserInfo = /* GraphQL */ `
+  mutation DeleteUserInfo($userID: String!) {
+    deleteUserInfo(userID: $userID) {
+      userID
+      fName
+      lName
+      userEmail
+    }
+  }
+`;
+export const createUserInfo = /* GraphQL */ `
+  mutation CreateUserInfo($createUserInfoInput: CreateUserInfoInput!) {
+    createUserInfo(createUserInfoInput: $createUserInfoInput) {
+      userID
+      fName
+      lName
+      userEmail
+    }
+  }
+`;
+export const updateUserInfo = /* GraphQL */ `
+  mutation UpdateUserInfo($updateUserInfoInput: UpdateUserInfoInput!) {
+    updateUserInfo(updateUserInfoInput: $updateUserInfoInput) {
+      userID
+      fName
+      lName
+      userEmail
     }
   }
 `;
@@ -57,6 +90,46 @@ export const createForm = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -81,6 +154,46 @@ export const updateForm = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -105,6 +218,46 @@ export const deleteForm = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -133,17 +286,86 @@ export const createFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         category {
           id
           name
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -158,6 +380,33 @@ export const createFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         UserID
@@ -186,17 +435,86 @@ export const updateFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         category {
           id
           name
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -211,6 +529,33 @@ export const updateFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         UserID
@@ -239,17 +584,86 @@ export const deleteFormQuestion = /* GraphQL */ `
         stackPhrase
         placeHolder
         usedForms {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         category {
           id
           name
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           createdAt
           updatedAt
         }
         subSection {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -264,6 +678,33 @@ export const deleteFormQuestion = /* GraphQL */ `
       form {
         id
         formQuestions {
+          items {
+            id
+            response
+            question {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            form {
+              id
+              UserID
+              finished
+              percentage
+              createdAt
+              updatedAt
+            }
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         UserID
@@ -292,6 +733,46 @@ export const createQuestion = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -301,6 +782,35 @@ export const createQuestion = /* GraphQL */ `
         id
         name
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -312,11 +822,50 @@ export const createQuestion = /* GraphQL */ `
         section {
           id
           name
+          subSections {
+            items {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
         }
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -347,6 +896,46 @@ export const updateQuestion = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -356,6 +945,35 @@ export const updateQuestion = /* GraphQL */ `
         id
         name
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -367,11 +985,50 @@ export const updateQuestion = /* GraphQL */ `
         section {
           id
           name
+          subSections {
+            items {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
         }
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -402,6 +1059,46 @@ export const deleteQuestion = /* GraphQL */ `
         items {
           id
           response
+          question {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
+          form {
+            id
+            formQuestions {
+              nextToken
+            }
+            UserID
+            finished
+            percentage
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -411,6 +1108,35 @@ export const deleteQuestion = /* GraphQL */ `
         id
         name
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -422,11 +1148,50 @@ export const deleteQuestion = /* GraphQL */ `
         section {
           id
           name
+          subSections {
+            items {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
         }
         questions {
+          items {
+            id
+            question
+            stack
+            stackPhrase
+            placeHolder
+            usedForms {
+              nextToken
+            }
+            category {
+              id
+              name
+              createdAt
+              updatedAt
+            }
+            subSection {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            order
+            items
+            imagesPath
+            inputConfirmation
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -457,6 +1222,41 @@ export const createCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath
@@ -486,6 +1286,41 @@ export const updateCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath
@@ -515,6 +1350,41 @@ export const deleteCategory = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath
@@ -541,6 +1411,32 @@ export const createSection = /* GraphQL */ `
         items {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -565,6 +1461,32 @@ export const updateSection = /* GraphQL */ `
         items {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -589,6 +1511,32 @@ export const deleteSection = /* GraphQL */ `
         items {
           id
           name
+          section {
+            id
+            name
+            subSections {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
+          questions {
+            items {
+              id
+              question
+              stack
+              stackPhrase
+              placeHolder
+              order
+              items
+              imagesPath
+              inputConfirmation
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
           order
           createdAt
           updatedAt
@@ -613,6 +1561,23 @@ export const createSubSection = /* GraphQL */ `
         id
         name
         subSections {
+          items {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -626,6 +1591,41 @@ export const createSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath
@@ -653,6 +1653,23 @@ export const updateSubSection = /* GraphQL */ `
         id
         name
         subSections {
+          items {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -666,6 +1683,41 @@ export const updateSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath
@@ -693,6 +1745,23 @@ export const deleteSubSection = /* GraphQL */ `
         id
         name
         subSections {
+          items {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         order
@@ -706,6 +1775,41 @@ export const deleteSubSection = /* GraphQL */ `
           stack
           stackPhrase
           placeHolder
+          usedForms {
+            items {
+              id
+              response
+              createdAt
+              updatedAt
+            }
+            nextToken
+          }
+          category {
+            id
+            name
+            questions {
+              nextToken
+            }
+            createdAt
+            updatedAt
+          }
+          subSection {
+            id
+            name
+            section {
+              id
+              name
+              order
+              createdAt
+              updatedAt
+            }
+            questions {
+              nextToken
+            }
+            order
+            createdAt
+            updatedAt
+          }
           order
           items
           imagesPath

@@ -28,8 +28,7 @@ const UserProvider: React.FC = ({children}):JSX.Element => {
 };
 
 export const useUserState = (): IUserStateContext => {
-  const context = React.useContext(UserContext);
-  return context as IUserStateContext;
+  return React.useContext(UserContext) as IUserStateContext;
 };
 
 export default UserProvider;

@@ -92,10 +92,6 @@ const LeftBar: React.FC = ():JSX.Element => {
         <h4 className="last-section-title">{LeftBarText.lastSection.title}</h4>
         {/* eslint-disable-next-line max-len */}
         <p className="last-section-content">{LeftBarText.lastSection.content}</p>
-        <div className="social">
-          <i className="fab fa-instagram" />
-          <i className="fab fa-facebook-f" />
-        </div>
       </div>
     </aside>
   );

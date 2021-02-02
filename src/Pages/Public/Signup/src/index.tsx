@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ISignUp} from '../interfaces/SignUpInterface';
-import {Auth} from 'aws-amplify';
+import {API, Auth, graphqlOperation} from 'aws-amplify';
 import {useHistory} from 'react-router-dom';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
@@ -28,6 +28,8 @@ import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
+import {createUserInfo} from '../../../../graphql/mutations';
+import {CreateUserInfoInput} from '../../../../API';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -95,7 +97,14 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     }
 
     if (!validator.isMobilePhone(pageInputs.phoneNumber)) {
-      throw new Error('Wrong Phone Input try: +1123123');
+      throw new Error(
+          'Wrong Phone Input try adding the country code, +1 for USA',
+      );
+    }
+    if (pageInputs.phoneNumber.substr(0, 1) !== '+') {
+      throw new Error(
+          'Wrong Phone Input try adding the country code, +1 for USA',
+      );
     }
 
     if (!validator.isAscii(pageInputs.address)) {
@@ -126,12 +135,13 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     }
 
     const actualDate = new Date();
+    actualDate.setFullYear(
+        actualDate.getFullYear() - 18,
+    );
     if (
       !validator.isBefore(
           pageInputs.birthdate,
-          actualDate.setFullYear(
-              actualDate.getFullYear() - 18,
-          ).toString(),
+          actualDate.toDateString(),
       )
     ) {
       throw new Error('you are to young to participate');
@@ -141,7 +151,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      await Auth.signUp({
+      const newUser: any = await Auth.signUp({
         username: pageInputs.email,
         password: pageInputs.password,
         attributes: {
@@ -153,6 +163,20 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           name: pageInputs.name,
         },
       });
+      const createUserInfoInput: CreateUserInfoInput = {
+        fName: pageInputs.name,
+        lName: pageInputs.name,
+        userEmail: pageInputs.email,
+        userID: newUser.userSub,
+      };
+      await API.graphql(
+          graphqlOperation(
+              createUserInfo,
+              {
+                createUserInfoInput,
+              },
+          ),
+      );
     } catch (error) {
       console.log('error signing up:', error);
     }

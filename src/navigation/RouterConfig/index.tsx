@@ -13,51 +13,65 @@ import SignUpPage from '../../Pages/Public/Signup/src';
 import PrivateRoutes from '../PrivateRoutes';
 import PreQuestionerPage from '../../Pages/Public/PreQuestioner/src';
 import UserProvider from '../../Context/UserContext/Provider';
+import FormQuestionProvider from '../../Context/FormQuestions/Provider';
+import MailVerificationPage from '../../Pages/Public/MailVerification/src';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
   return (
     <ApplicationStateProvider>
       <UserProvider>
-        <PublicHeader page={location.pathname}/>
-        <Switch>
-          {/* public routes */}
-          <Route exact path={RoutingConstants.menu.home.path} component={Home}/>
-          <Route
-            exact
-            path={RoutingConstants.menu.lifeProject.path}
-            component={LifeProject}
-          />
-          <Route
-            exact
-            path={RoutingConstants.menu.bePart.path}
-            component={BePartPage}
-          />
+        <FormQuestionProvider>
+          <PublicHeader page={location.pathname}/>
+          <Switch>
+            {/* public routes */}
+            <Route
+              exact
+              path={RoutingConstants.menu.home.path}
+              component={Home}
+            />
+            <Route
+              exact
+              path={RoutingConstants.menu.lifeProject.path}
+              component={LifeProject}
+            />
+            <Route
+              exact
+              path={RoutingConstants.menu.bePart.path}
+              component={BePartPage}
+            />
 
-          <Route
-            exact
-            path={RoutingConstants.login.path}
-            component={LoginPage}
-          />
+            <Route
+              exact
+              path={RoutingConstants.verifyEmail.path}
+              component={MailVerificationPage}
+            />
 
-          <Route
-            exact
-            path={RoutingConstants.signUp.path}
-            component={SignUpPage}
-          />
+            <Route
+              exact
+              path={RoutingConstants.login.path}
+              component={LoginPage}
+            />
 
-          <Route
-            exact
-            path={RoutingConstants.form.path}
-            component={PreQuestionerPage}
-          />
+            <Route
+              exact
+              path={RoutingConstants.signUp.path}
+              component={SignUpPage}
+            />
 
-          <PrivateRoutes />
+            <Route
+              exact
+              path={RoutingConstants.form.path}
+              component={PreQuestionerPage}
+            />
 
-          <Route path={RoutingConstants.notFound.path} component={NotFound}/>
-          <Redirect to={RoutingConstants.notFound.path}/>
-        </Switch>
-        <Footer />
+            <PrivateRoutes />
+
+            <Route path={RoutingConstants.notFound.path} component={NotFound}/>
+            <Redirect to={RoutingConstants.notFound.path}/>
+          </Switch>
+          <Footer />
+        </FormQuestionProvider>
       </UserProvider>
     </ApplicationStateProvider>
   );

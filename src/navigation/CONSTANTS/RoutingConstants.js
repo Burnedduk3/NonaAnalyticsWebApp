@@ -10,8 +10,12 @@ const RoutingConstants = {
     },
     bePart: {
       name: 'Be Part',
-      path: '/be_part',
+      path: '/be-part',
     },
+  },
+  verifyEmail: {
+    name: 'Verify Email',
+    path: '/verify-email',
   },
   login: {
     name: 'login',

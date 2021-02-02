@@ -27,7 +27,7 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
   );
 };
 
-export const useFormQuestionState = ():IFormQuestionsContext | null =>
-  React.useContext(FormQuestionsContext);
+export const useFormQuestionState = ():IFormQuestionsContext =>
+  React.useContext(FormQuestionsContext) as IFormQuestionsContext;
 
 export default FormQuestionProvider;

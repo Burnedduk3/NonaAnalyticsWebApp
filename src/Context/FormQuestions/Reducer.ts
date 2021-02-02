@@ -6,7 +6,8 @@ import {
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS, NEXT_QUESTIONS,
-  SEARCH_STORAGE_QUESTIONER,
+  RESET_FORM_STORAGE,
+  SEARCH_STORAGE_QUESTIONER, SET_CURRENT_FORM_ID,
   SET_SHOWABLE_QUESTIONS, SET_SUBSECTION_BY_MENU,
 } from './ActionTypes';
 import {
@@ -24,6 +25,7 @@ export const initialState: IFormQuestionsContextState = {
   currentStack: 0,
   currentSubSection: null,
   finished: false,
+  currentFormID: '',
 };
 
 const FormQuestionsReducer = (
@@ -79,6 +81,26 @@ const FormQuestionsReducer = (
 
     case SET_SHOWABLE_QUESTIONS: {
       return setShowableQuestions(state);
+    }
+
+    case RESET_FORM_STORAGE: {
+      localStorage.removeItem('QUESTIONER_STORAGE');
+      return {
+        ...initialState,
+      };
+    }
+
+    case SET_CURRENT_FORM_ID: {
+      if (payload?.currentFormID) {
+        return {
+          ...state,
+          currentFormID: payload.currentFormID,
+        };
+      } else {
+        return {
+          ...state,
+        };
+      }
     }
 
     default:

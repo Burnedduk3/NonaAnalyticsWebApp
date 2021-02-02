@@ -67,7 +67,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
       type: SEARCH_LOCAL_STORAGE,
       payload: undefined,
     });
-    FormApplicationState?.formStateDispatch(
+    FormApplicationState.formStateDispatch(
         {
           type: SEARCH_STORAGE_QUESTIONER,
           payload: undefined,
@@ -75,15 +75,13 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
     );
     const cachedData = localStorage.getItem('QUESTIONER_STORAGE');
     setLoading(true);
-    if (
-      FormApplicationState &&
-        FormApplicationState.formState.sections?.length === 0 &&
+    if (FormApplicationState.formState.sections?.length === 0 &&
         !cachedData
     ) {
       try {
-        fetchQuestions().then(
+        fetchQuestions(FormApplicationState.formState.currentFormID).then(
             (data: IFormQuestionsContextState | undefined) => {
-              FormApplicationState?.formStateDispatch(
+              FormApplicationState.formStateDispatch(
                   {
                     type: GET_SECTIONS,
                     payload: {
@@ -104,11 +102,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
   }, []);
 
   useEffect(()=>{
-    if (
-      FormApplicationState &&
-        FormApplicationState.formState.sections.length > 0
+    if (FormApplicationState.formState.sections.length > 0
     ) {
-      FormApplicationState?.formStateDispatch(
+      FormApplicationState.formStateDispatch(
           {
             type: SET_SHOWABLE_QUESTIONS,
             payload: undefined,
@@ -118,9 +114,9 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
   }, [loading]);
 
   const SaveToDataBase = async () => {
-    const stack = FormApplicationState?.formState.currentStack;
-    const section = FormApplicationState?.formState.currentSection?.name;
-    const subSection = FormApplicationState?.formState.currentSubSection?.name;
+    const stack = FormApplicationState.formState.currentStack;
+    const section = FormApplicationState.formState.currentSection?.name;
+    const subSection = FormApplicationState.formState.currentSubSection?.name;
     if (stack && section && subSection) {
       const functionParams: ISaveDataAuroraParams = {
         stack: stack.toString(),
@@ -131,31 +127,28 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
         saveQuestionsToAurora(
             functionParams,
             responseState,
-            userState.userState.currentForm,
+            FormApplicationState.formState.currentFormID,
         );
       }
     }
     await Object.entries(responseState).map(async (item) => {
       try {
         const [questionID, questionResponse] = item;
-        if (FormApplicationState) {
-          FormApplicationState
-              .formStateDispatch({
-                type: ADD_QUESTION_TO_ANSWERED,
-                payload: {
-                  questionToAdd: {
-                    answer: questionResponse.response,
-                    id: questionID,
-                  },
+        FormApplicationState
+            .formStateDispatch({
+              type: ADD_QUESTION_TO_ANSWERED,
+              payload: {
+                questionToAdd: {
+                  answer: questionResponse.response,
+                  id: questionID,
                 },
               },
-              );
-        }
-
+            },
+            );
         saveQuestionsToDynamo(
             questionID,
             questionResponse.response,
-            userState?.userState.currentForm,
+            FormApplicationState.formState.currentFormID,
         );
 
         setResponseState({});
@@ -165,30 +158,26 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
         }
       }
     });
-    if (FormApplicationState) {
-      updateFormProgress(
-          userState?.userState.currentForm,
-          FormApplicationState.formState.currentProgress,
-      );
-      FormApplicationState
-          .formStateDispatch({
-            type: NEXT_QUESTIONS,
-            payload: undefined,
-          },
-          );
-      FormApplicationState.formStateDispatch(
-          {
-            type: SET_SHOWABLE_QUESTIONS,
-            payload: undefined,
-          },
-      );
-    }
+    updateFormProgress(
+        FormApplicationState.formState.currentFormID,
+        FormApplicationState.formState.currentProgress,
+    );
+    FormApplicationState
+        .formStateDispatch({
+          type: NEXT_QUESTIONS,
+          payload: undefined,
+        },
+        );
+    FormApplicationState.formStateDispatch(
+        {
+          type: SET_SHOWABLE_QUESTIONS,
+          payload: undefined,
+        },
+    );
   };
 
   let formFinished = false;
-  if (FormApplicationState) {
-    formFinished = FormApplicationState.formState.finished;
-  }
+  formFinished = FormApplicationState.formState.finished;
   return (
     <>
       {
@@ -210,7 +199,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
               {(!loading && !error) && (
                 <>
                   {
-                    FormApplicationState?.formState.showableQuestions.map(
+                    FormApplicationState.formState.showableQuestions.map(
                         (item: any) => {
                           if (item.category.name === 'YesNo') {
                             return (

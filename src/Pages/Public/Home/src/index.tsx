@@ -18,11 +18,18 @@ import {useUserState} from '../../../../Context/UserContext/Provider';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
+import {
+  useFormQuestionState,
+} from '../../../../Context/FormQuestions/Provider';
+import {
+  RESET_FORM_STORAGE,
+} from '../../../../Context/FormQuestions/ActionTypes';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
   const history = useHistory();
   const userState = useUserState();
+  const formState = useFormQuestionState();
 
   const LifeProjectEvent = () => {
     history.push(RoutingConstants.menu.lifeProject.path);
@@ -33,12 +40,18 @@ const Home: React.FC = (): JSX.Element => {
   };
 
   useEffect(()=>{
-    applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
-    applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
+    applicationState.appStateDispatch({type: SHOW_HEADER, payload: undefined});
+    applicationState.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
     userState.userStateDispatch({
       type: SEARCH_LOCAL_STORAGE,
       payload: undefined,
     });
+    formState.formStateDispatch(
+        {
+          type: RESET_FORM_STORAGE,
+          payload: undefined,
+        },
+    );
   }, []);
 
   return (

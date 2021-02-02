@@ -6,7 +6,6 @@ export interface IUserState{
     gender: string;
     address: string;
     birthdate: string;
-    currentForm: string;
     usernameID: string;
     accessToken: string;
     refreshToken: string;
@@ -21,7 +20,6 @@ export interface IUserContextPayload{
     gender?: string;
     address?: string;
     birthdate?: string;
-    currentForm?: string;
     usernameID?: string;
     accessToken?: string;
     refreshToken?: string;
