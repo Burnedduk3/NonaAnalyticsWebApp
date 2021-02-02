@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ISignUp} from '../interfaces/SignUpInterface';
-import {Auth} from 'aws-amplify';
+// import {Auth} from 'aws-amplify';
 import {useHistory} from 'react-router-dom';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
@@ -27,8 +27,7 @@ import gender from '../../../../assets/Icons/gender.png';
 import DatePicker from 'react-datepicker';
 
 import 'react-datepicker/dist/react-datepicker.css';
-// import InputValidator from '../../../../utils/InputValidator';
-
+import validator from 'validator';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -36,7 +35,7 @@ const initialInputState: ISignUp = {
   confirmPassword: '',
   birthdate: '',
   email: '',
-  gender: '',
+  gender: 'Other',
   name: '',
   phoneNumber: '',
 };
@@ -56,52 +55,19 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     history.push(RoutingConstants.menu.home.path);
   };
 
-  const handleInput = (event:ChangeEvent<HTMLInputElement>) => {
+  const handleInput = (
+      event:ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>,
+  ) => {
     try {
       const name: string = event.target.name.toString();
       const value: string = event.target.value;
 
       for (const key of Object.keys(pageInputs)) {
         if (name === key) {
-          // if (name === 'phoneNumber') {
-          //   if (
-          //     !InputValidator.checkForOnlyNumbers(
-          //         value.toString(),
-          //         20)
-          //   ) {
-          //     throw new Error('Wrong Input Format');
-          //   }
-          // }
-          //
-          // if (name === 'address') {
-          //   if (
-          //     !InputValidator.checkForAlphanumeric(
-          //         value,
-          //         30,
-          //     )
-          //   ) {
-          //     throw new Error('Wrong Input Format');
-          //   }
-          // }
-          //
-          // if (name === 'email') {
-          //   if (
-          //     !InputValidator.checkForAlphanumericWithSymbols(value, 50)
-          //   ) {
-          //     throw new Error('Wrong Input Format');
-          //   }
-          // }
-          //
-          // if (name === 'name') {
-          //   if (
-          //     !InputValidator.chekForString(value, 50)
-          //   ) {
-          //     throw new Error('Wrong Input Format');
-          //   }
-          // }
-
-
-          setPageInputs({...pageInputs, [key]: value});
+          if (pageInputs[key].length < 60 ||
+              event.target.value.length < pageInputs[key].length) {
+            setPageInputs({...pageInputs, [key]: value});
+          }
         }
       }
     } catch (e) {
@@ -123,30 +89,77 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     }
   }, [startDate]);
 
+  const checkInput = () =>{
+    if (!validator.isEmail(pageInputs.email)) {
+      throw new Error('Wrong email');
+    }
+
+    if (!validator.isMobilePhone(pageInputs.phoneNumber)) {
+      throw new Error('Wrong Phone Input try: +1123123');
+    }
+
+    if (!validator.isAscii(pageInputs.address)) {
+      throw new Error('Wrong address input');
+    }
+    const nameValidator = /^[a-zA-Z_ ]*$/g;
+    if (!nameValidator.test(pageInputs.name)) {
+      throw new Error('Wrong Name Input');
+    }
+
+    if (pageInputs.gender === 'Choose One' ||
+        !validator.isAlpha(pageInputs.gender)) {
+      throw new Error('Wrong Gender Option');
+    }
+
+    if (!validator.isAscii(pageInputs.password) ||
+        !validator.isAscii(pageInputs.confirmPassword) ||
+        pageInputs.confirmPassword !== pageInputs.password
+    ) {
+      throw new Error('Password are not equal');
+    }
+
+    if (
+      pageInputs.password.length < 8 ||
+        pageInputs.confirmPassword.length < 8
+    ) {
+      throw new Error('Password to short');
+    }
+
+    const actualDate = new Date();
+    if (
+      !validator.isBefore(
+          pageInputs.birthdate,
+          actualDate.setFullYear(
+              actualDate.getFullYear() - 18,
+          ).toString(),
+      )
+    ) {
+      throw new Error('you are to young to participate');
+    }
+  };
+
   const signUp = async () => {
     try {
-      await Auth.signUp({
-        username: pageInputs.email,
-        password: pageInputs.password,
-        attributes: {
-          email: pageInputs.email,
-          phone_number: pageInputs.phoneNumber,
-          birthdate: pageInputs.birthdate,
-          address: pageInputs.address,
-          gender: pageInputs.gender,
-          name: pageInputs.name,
-        },
-      });
+      checkInput();
+      // await Auth.signUp({
+      //   username: pageInputs.email,
+      //   password: pageInputs.password,
+      //   attributes: {
+      //     email: pageInputs.email,
+      //     phone_number: pageInputs.phoneNumber,
+      //     birthdate: pageInputs.birthdate,
+      //     address: pageInputs.address,
+      //     gender: pageInputs.gender,
+      //     name: pageInputs.name,
+      //   },
+      // });
     } catch (error) {
       console.log('error signing up:', error);
     }
   };
 
   const startSignup = () =>{
-    const {password, confirmPassword} = pageInputs;
-    if (password === confirmPassword) {
-      signUp();
-    }
+    signUp();
   };
 
 
@@ -204,11 +217,17 @@ const SignUpPage : React.FC = (): JSX.Element =>{
 
           <label htmlFor="gender">
             <img src={gender} alt="Gender Icons8"/>
-            <input type="text"
+            <select
               name='gender'
               placeholder='Gender'
               onChange={handleInput}
-            />
+              className="combo-box"
+            >
+              <option value="Choose One">Choose One</option>
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+              <option value="Other">Other</option>
+            </select>
           </label>
 
           <label htmlFor="name">
@@ -225,7 +244,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
             <img src={phone} alt="Phone Icons8"/>
             <input type="text"
               name='phoneNumber'
-              placeholder='PhoneNumber'
+              placeholder='+1 123 123 123'
               onChange={handleInput}
               value={pageInputs.phoneNumber}
             />

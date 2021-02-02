@@ -1,4 +1,5 @@
 export interface ISignUp {
+    [key:string]: string
     address: string;
     birthdate: string;
     email: string;

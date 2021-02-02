@@ -53,6 +53,8 @@
       img {
         cursor: pointer;
         min-width: 50px;
+        min-height: 50px;
+        max-height: 50px;
         width: 4%;
       }
     }

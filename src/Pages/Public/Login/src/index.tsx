@@ -108,14 +108,18 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const handleInput = (event:ChangeEvent<HTMLInputElement>) => {
     const {username, password} = pageInputs;
     if (event.target.name === 'username') {
-      if (username.length + 1 < 50) {
+      if (username.length + 1 < 60 ||
+          event.target.value.length < username.length
+      ) {
         setPageInputs({...pageInputs, username: event.target.value});
       }
     }
 
     if (event.target.name === 'password') {
-      console.log(password.length);
-      if (password.length + 1 < 20) {
+      if (
+        password.length <= 40 ||
+          event.target.value.length < password.length
+      ) {
         setPageInputs({...pageInputs, password: event.target.value});
       }
     }

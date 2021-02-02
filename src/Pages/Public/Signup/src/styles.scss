@@ -61,6 +61,8 @@
       img {
         cursor: pointer;
         min-width: 50px;
+        min-height: 50px;
+        max-height: 50px;
         width: 4%;
       }
     }
@@ -89,6 +91,39 @@
         justify-content: center;
         align-items: center;
         margin: auto 0.4vw;
+      }
+
+      .combo-box {
+        position: relative;
+        border: none;
+        border-bottom: 1px #344c69 solid;
+        outline: none;
+        display: block;
+        min-width: 300px;
+        width: 55%;
+        max-width: 700px;
+        text-align: center;
+        -webkit-appearance: none ;
+        -moz-appearance: none;
+        appearance: none;
+        margin: 2.5vh 0.4vw;
+        font-size: 1em;
+        color: #5c5c5c;
+        opacity: 1;
+        font-weight: 600;
+        background: rgba(255, 255, 255, 0.3);
+      }
+
+      .combo-box::-ms-expand {
+        display: none;
+      }
+
+      .combo-box:hover {
+        cursor: pointer;
+      }
+
+      option {
+        color: $primary-color;
       }
 
       input {
