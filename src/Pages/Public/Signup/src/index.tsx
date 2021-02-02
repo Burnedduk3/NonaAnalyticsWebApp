@@ -141,18 +141,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      // await Auth.signUp({
-      //   username: pageInputs.email,
-      //   password: pageInputs.password,
-      //   attributes: {
-      //     email: pageInputs.email,
-      //     phone_number: pageInputs.phoneNumber,
-      //     birthdate: pageInputs.birthdate,
-      //     address: pageInputs.address,
-      //     gender: pageInputs.gender,
-      //     name: pageInputs.name,
-      //   },
-      // });
+      await Auth.signUp({
+        username: pageInputs.email,
+        password: pageInputs.password,
+        attributes: {
+          email: pageInputs.email,
+          phone_number: pageInputs.phoneNumber,
+          birthdate: pageInputs.birthdate,
+          address: pageInputs.address,
+          gender: pageInputs.gender,
+          name: pageInputs.name,
+        },
+      });
     } catch (error) {
       console.log('error signing up:', error);
     }
