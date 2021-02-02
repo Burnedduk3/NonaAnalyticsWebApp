@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ISignUp} from '../interfaces/SignUpInterface';
-// import {Auth} from 'aws-amplify';
+import {Auth} from 'aws-amplify';
 import {useHistory} from 'react-router-dom';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
