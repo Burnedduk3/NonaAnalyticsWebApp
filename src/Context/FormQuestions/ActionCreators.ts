@@ -69,6 +69,68 @@ export const nextQuestions = (
   };
 };
 
+export const previousQuestion = (
+    state: IFormQuestionsContextState,
+):IFormQuestionsContextState =>{
+  const {currentStack, currentSubSection, currentSection} = state;
+  let newState = {
+    ...state,
+  };
+  if (
+    currentStack !== null &&
+      currentSubSection !== null &&
+      currentSection !== null
+  ) {
+    if (currentStack - 1 >= 0) {
+      newState.currentStack -= 1;
+    } else {
+      const indexOfSubsection = currentSection.subSections.findIndex(
+          (subSection: ISubSection) => {
+            if (subSection.name === currentSubSection?.name) {
+              return subSection;
+            }
+          },
+      );
+      if (indexOfSubsection > 0) {
+        if (indexOfSubsection !== -1 && indexOfSubsection - 1 >= 0) {
+          newState.currentSubSection = currentSection
+              .subSections[indexOfSubsection - 1];
+          newState.currentStack = newState.currentSubSection.maxStack;
+        }
+      } else {
+        const indexOfCurrentSection = state.sections.findIndex(
+            (section:ISection) => {
+              if (section.name === currentSection?.name) {
+                return section;
+              }
+            },
+        );
+        if (indexOfCurrentSection > 0 && indexOfCurrentSection -1 >= 0) {
+          newState.currentSection = newState.sections[
+              indexOfCurrentSection - 1
+          ];
+          newState.currentSubSection = newState.
+              currentSection.
+              subSections[
+                  newState.currentSection.subSections.length - 1
+              ];
+          newState.currentStack = newState.currentSubSection.maxStack;
+        } else {
+          newState.finished = true;
+        }
+      }
+    }
+  }
+  newState = setShowableQuestions(newState);
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(newState),
+  );
+  return {
+    ...newState,
+  };
+};
+
 export const addQuestionAnswer = (
     state: IFormQuestionsContextState,
     payload: IFormQuestionsContextPayload,

@@ -1,11 +1,11 @@
 import {
   addQuestionAnswer,
-  nextQuestions, setByMenu,
+  nextQuestions, previousQuestion, setByMenu,
   setShowableQuestions,
 } from './ActionCreators';
 import {
   ADD_QUESTION_TO_ANSWERED,
-  GET_SECTIONS, NEXT_QUESTIONS,
+  GET_SECTIONS, NEXT_QUESTIONS, PREVIOUS_QUESTION,
   RESET_FORM_STORAGE,
   SEARCH_STORAGE_QUESTIONER, SET_CURRENT_FORM_ID,
   SET_SHOWABLE_QUESTIONS, SET_SUBSECTION_BY_MENU,
@@ -56,6 +56,10 @@ const FormQuestionsReducer = (
       }
     }
 
+    case PREVIOUS_QUESTION: {
+      return previousQuestion(state);
+    }
+
     case ADD_QUESTION_TO_ANSWERED: {
       if (payload && payload.questionToAdd) {
         return addQuestionAnswer(state, payload);
@@ -68,6 +72,12 @@ const FormQuestionsReducer = (
       const newState = nextQuestions(state);
       return {
         ...newState,
+      };
+    }
+
+    case PREVIOUS_QUESTION: {
+      return {
+        ...state,
       };
     }
 

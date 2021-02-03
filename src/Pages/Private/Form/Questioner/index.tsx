@@ -18,6 +18,7 @@ import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS, NEXT_QUESTIONS,
+  PREVIOUS_QUESTION,
   SEARCH_STORAGE_QUESTIONER,
   SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
@@ -113,6 +114,15 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
     }
   }, [loading]);
 
+  const goPreviousSection = () => {
+    FormApplicationState
+        .formStateDispatch({
+          type: PREVIOUS_QUESTION,
+          payload: undefined,
+        },
+        );
+  };
+
   const SaveToDataBase = async () => {
     const stack = FormApplicationState.formState.currentStack;
     const section = FormApplicationState.formState.currentSection?.name;
@@ -128,6 +138,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
             functionParams,
             responseState,
             FormApplicationState.formState.currentFormID,
+            userState.userState.usernameID,
         );
       }
     }
@@ -330,6 +341,18 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
               )}
             </div>
             <div className="buttons-container">
+              {
+                (
+                  FormApplicationState.
+                      formState.
+                      currentSubSection?.
+                      name !== 'Lake-Nona'
+                ) && <button
+                  className="button previous"
+                  type="button"
+                  onClick={goPreviousSection}
+                >PREVIOUS</button>
+              }
               <button
                 className="button next"
                 type="button"

@@ -14,6 +14,7 @@ const saveQuestionsToAurora = async (
     {stack, subSection, section}:ISaveDataAuroraParams,
     questions:IQuestionerState,
     formId: string,
+    userId: string,
 ) => {
   const replacedSubSection = subSection.replaceAll(/[\s-&]+/g, '');
   const replacedStack = `stack${stack}`;
@@ -27,6 +28,7 @@ const saveQuestionsToAurora = async (
         response: item[1].response,
         subSection: subSection,
         section: section,
+        userID: userId,
       },
     };
 

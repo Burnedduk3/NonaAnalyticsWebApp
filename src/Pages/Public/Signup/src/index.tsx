@@ -25,7 +25,6 @@ import phone from '../../../../assets/Icons/phone.png';
 import mail from '../../../../assets/Icons/mail.png';
 import gender from '../../../../assets/Icons/gender.png';
 import DatePicker from 'react-datepicker';
-
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
 import {createUserInfo} from '../../../../graphql/mutations';
