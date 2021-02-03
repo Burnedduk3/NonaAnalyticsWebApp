@@ -9,6 +9,7 @@ import {
 import {
   IAnsweredQuestion,
 } from '../../../../../Context/FormQuestions/interface';
+import Spinner from '../../../../../Components/Spinner';
 
 const ImageOneSelection: React.FC<IImageQuestionProps> = (
     {
@@ -50,12 +51,14 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
 
   useEffect(()=>{
     setIsLoading(true);
-    fetchImages();
+    fetchImages().then(()=>{
+    });
     setIsLoading(false);
   }, []);
 
   return (
     <>
+      {(isLoading) && <Spinner />}
       {
         (!isLoading && images.length > 0) &&
         <div className='input-container-image'>

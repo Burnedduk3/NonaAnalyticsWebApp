@@ -389,6 +389,7 @@ const FormPage:React.FC<RouteComponentProps<
                                 question={item.question}
                                 questionId={item.id}
                                 radioGroup={item.id}
+                                setLoading={setLoading}
                                 imagesPath={item.imagesPath}
                                 order={item.order}
                               />

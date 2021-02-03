@@ -33,15 +33,16 @@ const saveQuestionsToAurora = async (
         userID: userId,
       },
     };
-
-    await API.graphql(
-        graphqlOperation(
-            createCreateUserResponse,
-            {
-              ...parameters,
-            },
-        ),
-    );
+    if (!question.sendToDB) {
+      await API.graphql(
+          graphqlOperation(
+              createCreateUserResponse,
+              {
+                ...parameters,
+              },
+          ),
+      );
+    }
   });
 };
 
