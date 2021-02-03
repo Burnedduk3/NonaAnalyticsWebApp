@@ -16,10 +16,12 @@ export interface IFormQuestionsContextPayload{
     section?: ISection;
     sections?: Array<ISection>
     fetchedSections?: IFormQuestionsContextState
-    questionToAdd?: IAnsweredQuestion
+    questionToAdd?: IAnsweredQuestionPayload
     subSectionName?: string
     currentFormID?: string
+    order?: number
 }
+
 
 export interface IFormQuestionsContextReducer {
     type: string,
@@ -41,6 +43,15 @@ export interface ISection{
 export interface IAnsweredQuestion{
     id: string
     answer: string
+    sendToDB: boolean
+    responseDbId: string
+}
+
+export interface IAnsweredQuestionPayload{
+    id: string
+    answer: string
+    sendToDB?: boolean
+    responseDbId: string
 }
 
 export interface ISubSection{

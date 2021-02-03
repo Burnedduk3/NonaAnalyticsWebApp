@@ -10,7 +10,6 @@ import {
 
 const MultiLadderQuestion: React.FC<IMultiladder> = (
     {
-      currentState,
       items,
       question,
       questionId,
@@ -63,12 +62,7 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                           false
                   }
                   onClick={
-                    () => setResponse(
-                        {...currentState, [questionId]: {
-                          response: value.toString(),
-                          order,
-                        }},
-                    )
+                    () => setResponse(value.toString(), questionId, order)
                   }
                 />
                 <div className={`check value`}>{value}</div>

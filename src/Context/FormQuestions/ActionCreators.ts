@@ -131,22 +131,22 @@ export const previousQuestion = (
   };
 };
 
-export const addQuestionAnswer = (
+export const updateQuestionAnswer = (
     state: IFormQuestionsContextState,
     payload: IFormQuestionsContextPayload,
 ):IFormQuestionsContextState => {
   if (payload.questionToAdd) {
+    const {questionToAdd} = payload;
+    console.log(questionToAdd);
     const indexofQuestion = state.questionsAnswered.findIndex(
         (element: IAnsweredQuestion) =>{
           return element.id === payload.questionToAdd?.id;
         },
     );
-    if (indexofQuestion === -1) {
-      state.questionsAnswered = [
-        ...state.questionsAnswered,
-        payload.questionToAdd,
-      ];
-    }
+    state.questionsAnswered[indexofQuestion] = {
+      ...state.questionsAnswered[indexofQuestion],
+      ...questionToAdd,
+    };
     const currentProgress = (
       state.questionsAnswered.length * 100
     )/state.totalQuestions;
@@ -234,9 +234,35 @@ export const setQuestionResponse = (
     payload: IFormQuestionsContextPayload,
 ): IFormQuestionsContextState => {
   const {questionToAdd} = payload;
-  if (payload !== undefined) {
-    console.log(questionToAdd);
+  if (questionToAdd !== undefined && questionToAdd) {
+    const findedQuestionId = state.questionsAnswered.findIndex(
+        (questionId)=>{
+          if (questionId.id === payload.questionToAdd?.id) {
+            return questionId;
+          }
+        },
+    );
+    if (findedQuestionId !== -1 && findedQuestionId >= 0) {
+      state.questionsAnswered[findedQuestionId] = {
+        ...questionToAdd,
+        sendToDB: false,
+      };
+    } else {
+      state.questionsAnswered = [
+        ...state.questionsAnswered,
+        {
+          id: questionToAdd.id,
+          sendToDB: questionToAdd.sendToDB? questionToAdd.sendToDB: true,
+          answer: questionToAdd.answer,
+          responseDbId: questionToAdd.responseDbId,
+        },
+      ];
+    }
   }
+  localStorage.setItem(
+      'QUESTIONER_STORAGE',
+      JSON.stringify(state),
+  );
   return {
     ...state,
   };

@@ -15,7 +15,6 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
       values,
       questionId,
       radioGroup,
-      currentState,
       setResponse,
       order,
     }:ILadderQuestionProps,
@@ -54,14 +53,7 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
                         false
                 }
                 onClick={
-                  () => setResponse(
-                      {...currentState, [questionId]:
-                              {
-                                response: value.toString(),
-                                order,
-                              },
-                      },
-                  )
+                  () => setResponse(value.toString(), questionId, order)
                 }
               />
               <div className={`check value`}>{value}</div>

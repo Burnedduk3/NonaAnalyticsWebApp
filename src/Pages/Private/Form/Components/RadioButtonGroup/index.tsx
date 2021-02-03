@@ -16,7 +16,6 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
       questionId,
       question,
       radioGroup,
-      currentState,
       setResponse,
       order,
     }:IRadioButtonGroupProps,
@@ -86,12 +85,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                                 false
                         }
                         onClick={
-                          () => setResponse(
-                              {...currentState, [questionId]: {
-                                order,
-                                response: option,
-                              }},
-                          )
+                          () => setResponse(option, questionId, order)
                         }
                       />
                       <span className="checkmark"/>

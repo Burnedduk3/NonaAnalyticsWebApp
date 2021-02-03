@@ -9,7 +9,7 @@ import {
 } from '../../../../../Context/FormQuestions/interface';
 
 const TextInputComponent: React.FC<ITextInputProps> = ({
-  question, questionId, setResponse, currentState, placeholder, order,
+  question, questionId, setResponse, placeholder, order,
 }:ITextInputProps) => {
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
@@ -22,7 +22,7 @@ const TextInputComponent: React.FC<ITextInputProps> = ({
           return undefined;
         }
       });
-  console.log(questionAnswer);
+
   return (
     <div className="inputContainer">
       <p>{question}</p>
@@ -32,13 +32,10 @@ const TextInputComponent: React.FC<ITextInputProps> = ({
           placeholder={placeholder}
           type="text"
           className="text-input"
+          value={questionAnswer? questionAnswer.answer: ''}
           onChange={
             (e) =>
-              setResponse({...currentState, [questionId]: {
-                response: e.target.value,
-                order,
-              }},
-              )
+              setResponse(e.target.value, questionId, order)
           }
         />
       </label>

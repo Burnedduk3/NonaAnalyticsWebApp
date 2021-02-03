@@ -1,13 +1,31 @@
 import React from 'react';
 import './styles.scss';
 import {ICheckBoxProps} from './interface';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
+import {
+  useFormQuestionState,
+} from '../../../../../Context/FormQuestions/Provider';
 
 const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
-  question, items, questionId, currentState, setResponse, order,
+  question, items, questionId, setResponse, order,
 }: ICheckBoxProps): JSX.Element => {
+  const formContext = useFormQuestionState();
+
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    if (questionId in currentState) {
-      let text: string | Array<string> = currentState[questionId].response;
+    const questionAnswer: IAnsweredQuestion | undefined = formContext.
+        formState.
+        questionsAnswered.
+        find((questionAnswer:IAnsweredQuestion)=>{
+          if (questionAnswer.id === questionId) {
+            return questionAnswer;
+          } else {
+            return undefined;
+          }
+        });
+    if (questionAnswer) {
+      let text: string | Array<string> = questionAnswer.answer;
       text = text.trim().split(',');
       if (Array.isArray(text)) {
         if (event.target.checked) {
@@ -21,19 +39,9 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
         }
         text = text.join(',');
       }
-      setResponse({...currentState, [questionId]:
-            {
-              response: text,
-              order,
-            },
-      });
+      setResponse(text, questionId, order);
     } else {
-      setResponse({...currentState, [questionId]:
-            {
-              response: event.target.name,
-              order,
-            },
-      });
+      setResponse(event.target.value, questionId, order);
     }
   };
 

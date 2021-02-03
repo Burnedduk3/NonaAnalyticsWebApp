@@ -1,10 +1,7 @@
-import {IQuestionerState} from '../../Questioner/interface';
-
 export interface ITextInputProps{
     question: string;
     questionId: string;
     placeholder: string;
-    currentState: IQuestionerState;
-    setResponse: (response: IQuestionerState) => void;
+    setResponse: (response: string, questionID: string, order: number) => void;
     order: number;
 }

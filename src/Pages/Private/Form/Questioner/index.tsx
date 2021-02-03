@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import dropConsole, {LogLevel} from '../../../../utils/DropConsole';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
-import YesNoQuestion from '../Components/YesNoQuestion';
+import {YesNoQuestionQuestioner} from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
 import LeftBar from '../Components/LeftBar/src';
 import {
@@ -16,16 +16,17 @@ import {
 import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
-  ADD_QUESTION_TO_ANSWERED,
+  UPDATE_ANSWERED_QUESTIONS,
   GET_SECTIONS, NEXT_QUESTIONS,
   PREVIOUS_QUESTION,
-  SEARCH_STORAGE_QUESTIONER,
+  SEARCH_STORAGE_QUESTIONER, SET_QUESTION_RESPONSE,
   SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
+  IAnsweredQuestion,
   IFormQuestionsContextState,
 } from '../../../../Context/FormQuestions/interface';
 import {useUserState} from '../../../../Context/UserContext/Provider';
@@ -40,7 +41,6 @@ saveQuestionsToAurora,
   from '../api/aurora/SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
-import {IQuestionerState} from './interface';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
 import updateFormProgress from '../api/Dynamo/UpdateFormProgress';
@@ -56,10 +56,47 @@ RoutingConstants
 const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element =>{
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<boolean>(false);
-  const [responseState, setResponseState] = useState<IQuestionerState>({});
+  const [responseState, setResponseState] = useState<
+      Array<IAnsweredQuestion>
+      >([]);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
   const userState = useUserState();
+
+  const setQuestionResponse = (
+      response: string,
+      questionID: string,
+      order: number,
+  ) =>{
+    FormApplicationState.formStateDispatch(
+        {
+          type: SET_QUESTION_RESPONSE,
+          payload: {
+            questionToAdd: {
+              id: questionID,
+              answer: response,
+              responseDbId: '',
+            },
+            order,
+          },
+        },
+    );
+    const questionIndex = FormApplicationState.
+        formState.
+        questionsAnswered.
+        findIndex(
+            (question)=>{
+              if (question.id === questionID) {
+                return question;
+              }
+            },
+        );
+    if (questionIndex > -1 && FormApplicationState.
+        formState.
+        questionsAnswered[questionIndex].sendToDB) {
+      setResponseState([...responseState]);
+    }
+  };
 
   useEffect( () => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -137,9 +174,12 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
           subSection: subSection,
         };
         if (userState) {
+          const questionsArray = FormApplicationState.
+              formState.
+              questionsAnswered;
           await saveQuestionsToAurora(
               functionParams,
-              responseState,
+              questionsArray,
               FormApplicationState.formState.currentFormID,
               userState.userState.usernameID,
           );
@@ -148,27 +188,36 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
         console.log(error);
       }
     }
-    await Object.entries(responseState).map(async (item) => {
-      const [questionID, questionResponse] = item;
-      FormApplicationState
-          .formStateDispatch({
-            type: ADD_QUESTION_TO_ANSWERED,
-            payload: {
-              questionToAdd: {
-                answer: questionResponse.response,
-                id: questionID,
-              },
-            },
-          },
-          );
+    const respondedQuestions = FormApplicationState.formState.questionsAnswered;
+    await respondedQuestions.map(async (RespondedQuestion) => {
+      let {id, sendToDB, answer, responseDbId} = RespondedQuestion;
       try {
-        await saveQuestionsToDynamo(
-            questionID,
-            questionResponse.response,
-            FormApplicationState.formState.currentFormID,
-        );
+        if (!sendToDB) {
+          responseDbId = await saveQuestionsToDynamo(
+              id,
+              answer,
+              FormApplicationState.formState.currentFormID,
+          );
 
-        setResponseState({});
+          sendToDB = true;
+          FormApplicationState
+              .formStateDispatch({
+                type: UPDATE_ANSWERED_QUESTIONS,
+                payload: {
+                  questionToAdd: {
+                    answer: answer,
+                    id: id,
+                    sendToDB: sendToDB,
+                    responseDbId,
+                  },
+                },
+              },
+              );
+        } else {
+          console.log('update registry');
+        }
+
+        setResponseState([]);
       } catch (saveToDBError) {
         if (saveToDBError instanceof Error) {
           dropConsole(LogLevel.HIGH, saveToDBError.message);
@@ -226,12 +275,11 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                             return (
                             // eslint-disable-next-line max-len
                               <div key={item.id} className="yes-no-container-comp">
-                                <YesNoQuestion
+                                <YesNoQuestionQuestioner
                                   question={item.question}
                                   questionId={item.id}
                                   radioGroup={item.id}
-                                  setResponse={setResponseState}
-                                  currentState={responseState}
+                                  setResponse={setQuestionResponse}
                                   order={item.order}
                                 />
                               </div>
@@ -243,9 +291,8 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                                 key={item.id}
                                 question={item.question}
                                 questionId={item.id}
-                                setResponse={setResponseState}
+                                setResponse={setQuestionResponse}
                                 items={item.items}
-                                currentState={responseState}
                                 order={item.order}
                               />
                             );
@@ -257,8 +304,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                                 key={item.id}
                                 question={item.question}
                                 questionId={item.id}
-                                setResponse={setResponseState}
-                                currentState={responseState}
+                                setResponse={setQuestionResponse}
                                 order={item.order}
                               />
                             );
@@ -270,8 +316,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                                 items={item.items}
                                 questionId={item.id}
                                 question={item.question}
-                                setResponse={setResponseState}
-                                currentState={responseState}
+                                setResponse={setQuestionResponse}
                                 order={item.order}
                               />
                             );
@@ -284,8 +329,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                                 questionId={item.id}
                                 radioGroup={item.id}
                                 order={item.order}
-                                setResponse={setResponseState}
-                                currentState={responseState}
+                                setResponse={setQuestionResponse}
                                 values={
                                     item.items === null ||
                                     item.items.length === 0 ?
@@ -300,8 +344,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                               <RadioButtonGroup
                                 key={item.id}
                                 items={item.items}
-                                currentState={responseState}
-                                setResponse={setResponseState}
+                                setResponse={setQuestionResponse}
                                 question={item.question}
                                 questionId={item.id}
                                 radioGroup={item.id}
@@ -315,8 +358,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                               <MultiLadderQuestion
                                 key={item.id}
                                 items={item.items}
-                                currentState={responseState}
-                                setResponse={setResponseState}
+                                setResponse={setQuestionResponse}
                                 question={item.question}
                                 questionId={item.id}
                                 radioGroup={item.id}
@@ -331,8 +373,7 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
                               <ImageOneSelection
                                 key={item.id}
                                 items={item.items}
-                                currentState={responseState}
-                                setResponse={setResponseState}
+                                setResponse={setQuestionResponse}
                                 question={item.question}
                                 questionId={item.id}
                                 radioGroup={item.id}

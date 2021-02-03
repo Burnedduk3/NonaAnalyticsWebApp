@@ -16,7 +16,6 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       imagesPath,
       questionId,
       radioGroup,
-      currentState,
       setResponse,
       items,
       order,
@@ -76,13 +75,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                     name={radioGroup}
                     value={value}
                     onClick={
-                      () => setResponse(
-                          {...currentState, [questionId]: {
-                            response: value.toString(),
-                            order,
-                          },
-                          },
-                      )
+                      () => setResponse(value.toString(), questionId, order)
                     }
                     defaultChecked={
                         questionAnswer ?

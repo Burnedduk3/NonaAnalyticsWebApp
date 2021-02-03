@@ -5,8 +5,8 @@ const saveQuestionsToDynamo = async (
     questionID:string,
     questionResponse:string | unknown,
     currentForm: string | undefined,
-) => {
-  const {errors}: any = await API.graphql(
+):Promise<string> => {
+  const {errors, data}: any = await API.graphql(
       graphqlOperation(
           createFormQuestion,
           {
@@ -18,6 +18,7 @@ const saveQuestionsToDynamo = async (
           },
       ),
   );
+  return data.createFormQuestion.id;
   if (errors) {
     throw new Error('Error sending responses to de Database');
   }

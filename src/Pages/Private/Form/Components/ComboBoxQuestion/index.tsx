@@ -3,7 +3,7 @@ import './styles.scss';
 import {IComboBoxProps} from './interface';
 
 const ComboBoxComponent: React.FC<IComboBoxProps> = ({
-  question, items, questionId, currentState, setResponse, order,
+  question, items, questionId, setResponse, order,
 }: IComboBoxProps): JSX.Element => (
   <div className="inputContainer">
     <p>{question}</p>
@@ -13,14 +13,7 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
         className="combo-box"
         onChange={
           (e:ChangeEvent<HTMLSelectElement>) =>
-            setResponse({
-              ...currentState,
-              [questionId]: {
-                response: e.target.value,
-                order,
-              },
-            },
-            )
+            setResponse(e.target.value, questionId, order)
         }
       >
         {items.map((item) => <option key={item} value={item}>{item}</option>)}

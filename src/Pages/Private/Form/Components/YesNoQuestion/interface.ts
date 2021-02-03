@@ -9,3 +9,11 @@ export interface IYesNoProps{
     checked?: string,
     order: number
 }
+
+export interface IYesNoPropsQuestioner{
+    question: string,
+    radioGroup: string,
+    questionId: string,
+    setResponse: (response: string, questionID: string, order: number) => void;
+    order: number
+}

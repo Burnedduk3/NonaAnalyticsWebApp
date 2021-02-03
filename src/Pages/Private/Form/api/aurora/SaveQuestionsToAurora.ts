@@ -1,8 +1,10 @@
-import {IQuestionerState} from '../../Questioner/interface';
 import uniqid from 'uniqid';
 import {API, graphqlOperation} from 'aws-amplify';
 import {createCreateUserResponse} from '../../../../../graphql/mutations';
 import {CreateCreateUserResponseMutationVariables} from '../../../../../API';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
 
 export interface ISaveDataAuroraParams {
     section:string,
@@ -12,20 +14,20 @@ export interface ISaveDataAuroraParams {
 
 const saveQuestionsToAurora = async (
     {stack, subSection, section}:ISaveDataAuroraParams,
-    questions:IQuestionerState,
+    questions:Array<IAnsweredQuestion>,
     formId: string,
     userId: string,
 ) => {
   const replacedSubSection = subSection.replaceAll(/[\s-&]+/g, '');
   const replacedStack = `stack${stack}`;
-  await Object.entries(questions).map(async (item: any)=>{
+  await questions.map(async (question: IAnsweredQuestion)=>{
     const uniqueId = uniqid(replacedSubSection, replacedStack);
     const parameters: CreateCreateUserResponseMutationVariables = {
       createCreateUserResponseInput: {
         formID: formId,
         ID: uniqueId,
-        questionId: item[0],
-        response: item[1].response,
+        questionId: question.id,
+        response: question.answer,
         subSection: subSection,
         section: section,
         userID: userId,
