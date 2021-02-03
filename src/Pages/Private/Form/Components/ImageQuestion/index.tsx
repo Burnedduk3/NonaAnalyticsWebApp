@@ -3,6 +3,12 @@ import React, {useEffect, useState} from 'react';
 import './styles.scss';
 import {IImageQuestionProps} from './interfaces';
 import {Storage} from 'aws-amplify';
+import {
+  useFormQuestionState,
+} from '../../../../../Context/FormQuestions/Provider';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
 
 const ImageOneSelection: React.FC<IImageQuestionProps> = (
     {
@@ -18,6 +24,17 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
 ): JSX.Element =>{
   const [images, setImages] = useState<string[]>([]);
   const [isLoading, setIsLoading] = useState<boolean>(true);
+  const formContext = useFormQuestionState();
+  const questionAnswer: IAnsweredQuestion | undefined = formContext.
+      formState.
+      questionsAnswered.
+      find((questionAnswer:IAnsweredQuestion)=>{
+        if (questionAnswer.id === questionId) {
+          return questionAnswer;
+        } else {
+          return undefined;
+        }
+      });
 
   const fetchImages = async () => {
     try {
@@ -66,6 +83,11 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                           },
                           },
                       )
+                    }
+                    defaultChecked={
+                        questionAnswer ?
+                            questionAnswer.answer === value:
+                        false
                     }
                   />
                   <div

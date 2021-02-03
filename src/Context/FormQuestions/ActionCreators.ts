@@ -228,3 +228,16 @@ export const setByMenu = (
   );
   return {...newState};
 };
+
+export const setQuestionResponse = (
+    state: IFormQuestionsContextState,
+    payload: IFormQuestionsContextPayload,
+): IFormQuestionsContextState => {
+  const {questionToAdd} = payload;
+  if (payload !== undefined) {
+    console.log(questionToAdd);
+  }
+  return {
+    ...state,
+  };
+};

@@ -2,6 +2,12 @@ import React from 'react';
 
 import './styles.scss';
 import {ILadderQuestionProps} from './interfaces';
+import {
+  useFormQuestionState,
+} from '../../../../../Context/FormQuestions/Provider';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
 
 const LadderQuestion: React.FC<ILadderQuestionProps> = (
     {
@@ -14,6 +20,18 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
       order,
     }:ILadderQuestionProps,
 ): JSX.Element =>{
+  const formContext = useFormQuestionState();
+  const questionAnswer: IAnsweredQuestion | undefined = formContext.
+      formState.
+      questionsAnswered.
+      find((questionAnswer:IAnsweredQuestion)=>{
+        if (questionAnswer.id === questionId) {
+          return questionAnswer;
+        } else {
+          return undefined;
+        }
+      });
+
   return (
     <div className='input-container-ladder'>
       <h3 className="question-label">{questionText}</h3>
@@ -30,6 +48,11 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
                 type="radio"
                 name={radioGroup}
                 value={value}
+                defaultChecked={
+                    questionAnswer ?
+                        questionAnswer.answer === value:
+                        false
+                }
                 onClick={
                   () => setResponse(
                       {...currentState, [questionId]:

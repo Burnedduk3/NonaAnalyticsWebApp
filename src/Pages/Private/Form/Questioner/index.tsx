@@ -127,36 +127,42 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
     const stack = FormApplicationState.formState.currentStack;
     const section = FormApplicationState.formState.currentSection?.name;
     const subSection = FormApplicationState.formState.currentSubSection?.name;
+    setLoading(true);
     if (stack && section && subSection) {
-      const functionParams: ISaveDataAuroraParams = {
-        stack: stack.toString(),
-        section: section,
-        subSection: subSection,
-      };
-      if (userState) {
-        saveQuestionsToAurora(
-            functionParams,
-            responseState,
-            FormApplicationState.formState.currentFormID,
-            userState.userState.usernameID,
-        );
+      // save questions to dynamo
+      try {
+        const functionParams: ISaveDataAuroraParams = {
+          stack: stack.toString(),
+          section: section,
+          subSection: subSection,
+        };
+        if (userState) {
+          await saveQuestionsToAurora(
+              functionParams,
+              responseState,
+              FormApplicationState.formState.currentFormID,
+              userState.userState.usernameID,
+          );
+        }
+      } catch (error) {
+        console.log(error);
       }
     }
     await Object.entries(responseState).map(async (item) => {
-      try {
-        const [questionID, questionResponse] = item;
-        FormApplicationState
-            .formStateDispatch({
-              type: ADD_QUESTION_TO_ANSWERED,
-              payload: {
-                questionToAdd: {
-                  answer: questionResponse.response,
-                  id: questionID,
-                },
+      const [questionID, questionResponse] = item;
+      FormApplicationState
+          .formStateDispatch({
+            type: ADD_QUESTION_TO_ANSWERED,
+            payload: {
+              questionToAdd: {
+                answer: questionResponse.response,
+                id: questionID,
               },
             },
-            );
-        saveQuestionsToDynamo(
+          },
+          );
+      try {
+        await saveQuestionsToDynamo(
             questionID,
             questionResponse.response,
             FormApplicationState.formState.currentFormID,
@@ -169,10 +175,14 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
         }
       }
     });
-    updateFormProgress(
-        FormApplicationState.formState.currentFormID,
-        FormApplicationState.formState.currentProgress,
-    );
+    try {
+      await updateFormProgress(
+          FormApplicationState.formState.currentFormID,
+          FormApplicationState.formState.currentProgress,
+      );
+    } catch (error) {
+      console.log(error);
+    }
     FormApplicationState
         .formStateDispatch({
           type: NEXT_QUESTIONS,
@@ -185,10 +195,10 @@ const FormPage:React.FC<RouteComponentProps<TQuestionerRoute>> = (): JSX.Element
           payload: undefined,
         },
     );
+    setLoading(false);
   };
 
-  let formFinished = false;
-  formFinished = FormApplicationState.formState.finished;
+  const formFinished = FormApplicationState.formState.finished;
   return (
     <>
       {

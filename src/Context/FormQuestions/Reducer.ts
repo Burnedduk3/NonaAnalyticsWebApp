@@ -1,13 +1,13 @@
 import {
   addQuestionAnswer,
-  nextQuestions, previousQuestion, setByMenu,
+  nextQuestions, previousQuestion, setByMenu, setQuestionResponse,
   setShowableQuestions,
 } from './ActionCreators';
 import {
   ADD_QUESTION_TO_ANSWERED,
   GET_SECTIONS, NEXT_QUESTIONS, PREVIOUS_QUESTION,
   RESET_FORM_STORAGE,
-  SEARCH_STORAGE_QUESTIONER, SET_CURRENT_FORM_ID,
+  SEARCH_STORAGE_QUESTIONER, SET_CURRENT_FORM_ID, SET_QUESTION_RESPONSE,
   SET_SHOWABLE_QUESTIONS, SET_SUBSECTION_BY_MENU,
 } from './ActionTypes';
 import {
@@ -75,7 +75,13 @@ const FormQuestionsReducer = (
       };
     }
 
-    case PREVIOUS_QUESTION: {
+    case SET_QUESTION_RESPONSE: {
+      if (payload) {
+        const newState = setQuestionResponse(state, payload);
+        return {
+          ...newState,
+        };
+      }
       return {
         ...state,
       };

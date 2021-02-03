@@ -1,6 +1,12 @@
 import React from 'react';
 import {IRadioButtonGroupProps} from './interfaces';
 import './styles.scss';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
+import {
+  useFormQuestionState,
+} from '../../../../../Context/FormQuestions/Provider';
 
 
 const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
@@ -15,6 +21,17 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
       order,
     }:IRadioButtonGroupProps,
 ): JSX.Element =>{
+  const formContext = useFormQuestionState();
+  const questionAnswer: IAnsweredQuestion | undefined = formContext.
+      formState.
+      questionsAnswered.
+      find((questionAnswer:IAnsweredQuestion)=>{
+        if (questionAnswer.id === questionId) {
+          return questionAnswer;
+        } else {
+          return undefined;
+        }
+      });
   return (
     <div className="question-container-with-header">
       {stackPhrase && <div className="stack-phrase">
@@ -62,7 +79,12 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                         className="radio-button negative"
                         type="radio"
                         name={radioGroup}
-                        value="no"
+                        value={option}
+                        defaultChecked={
+                            questionAnswer ?
+                                questionAnswer.answer === option:
+                                false
+                        }
                         onClick={
                           () => setResponse(
                               {...currentState, [questionId]: {
@@ -72,7 +94,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                           )
                         }
                       />
-                      <span className="checkmark"></span>
+                      <span className="checkmark"/>
                     </label>
                   ),
               )
