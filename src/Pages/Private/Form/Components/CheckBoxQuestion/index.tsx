@@ -12,7 +12,17 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
   question, items, questionId, setResponse, order,
 }: ICheckBoxProps): JSX.Element => {
   const formContext = useFormQuestionState();
-
+  const questionAnswer: IAnsweredQuestion | undefined = formContext.
+      formState.
+      questionsAnswered.
+      find((questionAnswer:IAnsweredQuestion)=>{
+        if (questionAnswer.id === questionId) {
+          return questionAnswer;
+        } else {
+          return undefined;
+        }
+      });
+  console.log(questionAnswer?.answer.split(';'));
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>{
     const questionAnswer: IAnsweredQuestion | undefined = formContext.
         formState.
@@ -26,7 +36,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
         });
     if (questionAnswer) {
       let text: string | Array<string> = questionAnswer.answer;
-      text = text.trim().split(',');
+      text = text.trim().split(';');
       if (Array.isArray(text)) {
         if (event.target.checked) {
           text.push(event.target.name);
@@ -37,7 +47,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
             text.splice(itemToDelete, 1);
           }
         }
-        text = text.join(',');
+        text = text.join(';');
       }
       setResponse(text, questionId, order);
     } else {
@@ -60,6 +70,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
               value={item}
               onChange={handleInput}
               name={item}
+              defaultChecked={questionAnswer?.answer.split(';').includes(item)}
             />
             <div className="checkmark"/>
             {item}
