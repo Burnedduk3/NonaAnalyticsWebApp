@@ -137,7 +137,6 @@ export const updateQuestionAnswer = (
 ):IFormQuestionsContextState => {
   if (payload.questionToAdd) {
     const {questionToAdd} = payload;
-    console.log(questionToAdd);
     const indexofQuestion = state.questionsAnswered.findIndex(
         (element: IAnsweredQuestion) =>{
           return element.id === payload.questionToAdd?.id;

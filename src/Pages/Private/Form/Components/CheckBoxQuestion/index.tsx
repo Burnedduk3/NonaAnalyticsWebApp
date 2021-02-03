@@ -22,7 +22,6 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
           return undefined;
         }
       });
-  console.log(questionAnswer?.answer.split(';'));
   const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>{
     const questionAnswer: IAnsweredQuestion | undefined = formContext.
         formState.
