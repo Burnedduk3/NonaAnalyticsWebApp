@@ -146,10 +146,6 @@ export const updateQuestionAnswer = (
       ...state.questionsAnswered[indexofQuestion],
       ...questionToAdd,
     };
-    const currentProgress = (
-      state.questionsAnswered.length * 100
-    )/state.totalQuestions;
-    state.currentProgress = parseFloat(currentProgress.toFixed(2));
   }
   localStorage.setItem(
       'QUESTIONER_STORAGE',
@@ -258,6 +254,10 @@ export const setQuestionResponse = (
       ];
     }
   }
+  const currentProgress = (
+    state.questionsAnswered.length * 100
+  )/state.totalQuestions;
+  state.currentProgress = parseFloat(currentProgress.toFixed(2));
   localStorage.setItem(
       'QUESTIONER_STORAGE',
       JSON.stringify(state),
