@@ -63,6 +63,7 @@ const FormPage:React.FC<RouteComponentProps<
       const ApplicationState = useApplicationState();
       const FormApplicationState = useFormQuestionState();
       const userState = useUserState();
+      const [currentProgress, setCurrentProgress] = useState<number>();
 
       const setQuestionResponse = (
           response: string,
@@ -141,6 +142,7 @@ const FormPage:React.FC<RouteComponentProps<
             setLoading(false);
           }
         } else {
+          setCurrentProgress(FormApplicationState.formState.currentProgress);
           setLoading(false);
           setError(false);
         }
@@ -175,6 +177,7 @@ const FormPage:React.FC<RouteComponentProps<
             currentSubSection?.
             name;
         setLoading(true);
+
         if (stack && section && subSection) {
           // save questions to dynamo
           try {
@@ -236,14 +239,22 @@ const FormPage:React.FC<RouteComponentProps<
             }
           }
         });
-        try {
-          await updateFormProgress(
-              FormApplicationState.formState.currentFormID,
-              FormApplicationState.formState.currentProgress,
-          );
-        } catch (error) {
-          console.log(error);
+        if (
+          currentProgress !== FormApplicationState.
+              formState.
+              currentProgress
+        ) {
+          setCurrentProgress(FormApplicationState.formState.currentProgress);
+          try {
+            await updateFormProgress(
+                FormApplicationState.formState.currentFormID,
+                FormApplicationState.formState.currentProgress,
+            );
+          } catch (error) {
+            console.log(error);
+          }
         }
+
         FormApplicationState
             .formStateDispatch({
               type: NEXT_QUESTIONS,
