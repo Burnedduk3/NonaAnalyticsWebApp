@@ -10,7 +10,7 @@ import {
 } from '../../../../Context/ApplicationState/Provider';
 import {
   HIDE_FOOTER,
-  HIDE_HEADER,
+  HIDE_HEADER, SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
 import './styles.scss';
 import CONSTANTS from './CONSTANTS.js';
@@ -29,6 +29,7 @@ import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
 import {createUserInfo} from '../../../../graphql/mutations';
 import {CreateUserInfoInput} from '../../../../API';
+import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -46,6 +47,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const [startDate, setStartDate] = useState(new Date());
   const applicationState = useApplicationState();
   const history = useHistory();
+  const [toggleToast, setToggleToast] = useState<boolean>(false);
 
   useEffect(()=>{
     applicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -178,7 +180,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
       );
       history.push(RoutingConstants.menu.home.path);
     } catch (error) {
-      console.log('error signing up:', error);
+      setToggleToast(true);
+      applicationState.appStateDispatch(
+          {
+            type: SET_ERROR,
+            payload: {
+              error: {
+                error: true,
+                errorMessage: error.message,
+              },
+            },
+          },
+      );
     }
   };
 
@@ -186,12 +199,24 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     signUp();
   };
 
+  const {error} = applicationState.appState;
 
   return (
     <main className="Sign-up-Body">
       <div className="logoContainer">
         <img src={logo} alt="Nona Logo"/>
       </div>
+      {error.error && <ErrorMessageToast
+        message={error.errorMessage.toString()}
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick={false}
+        pauseOnHover={false}
+        draggable={false}
+        toggleToast={toggleToast}
+        setToggleToast={setToggleToast}
+      />}
       <div className="Sign-up-Card">
         <div className="go-back-container">
           <p onClick={goHome}>

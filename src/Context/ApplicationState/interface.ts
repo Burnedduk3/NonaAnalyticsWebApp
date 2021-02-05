@@ -1,7 +1,6 @@
 export interface IApplicationInitialState{
     hideHeader: boolean
     hideFooter: boolean
-    isLoading: boolean
     error: IErrorHandler
 }
 
