@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from 'react';
-import dropConsole, {LogLevel} from '../../../../utils/DropConsole';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
 import {YesNoQuestionQuestioner} from '../Components/YesNoQuestion';
@@ -10,7 +9,7 @@ import {
 } from '../../../../Context/ApplicationState/Provider';
 import {
   HIDE_FOOTER,
-  HIDE_HEADER,
+  HIDE_HEADER, SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
 
 import './styles.scss';
@@ -26,7 +25,6 @@ import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
-  IAnsweredQuestion,
   IFormQuestionsContextState,
 } from '../../../../Context/FormQuestions/interface';
 import {useUserState} from '../../../../Context/UserContext/Provider';
@@ -38,7 +36,7 @@ saveQuestionsToAurora,
 {
   ISaveDataAuroraParams,
 }
-  from '../api/aurora/SaveQuestionsToAurora';
+  from '../api/Aurora/SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import MultiLadderQuestion from '../Components/MultiLadder';
@@ -51,38 +49,33 @@ import {Redirect} from 'react-router-dom';
 import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
+import updateQuestionAtDynamo from '../api/Dynamo/UpdateQuestionResponse';
+import updateQuestionAtAurora from '../api/Aurora/UpdateQuestionResponse';
+import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const FormPage:React.FC<RouteComponentProps<
     TQuestionerRoute>
     > = (): JSX.Element =>{
       const [loading, setLoading] = useState<boolean>(true);
-      const [error, setError] = useState<boolean>(false);
-      const [responseState, setResponseState] = useState<
-      Array<IAnsweredQuestion>
-      >([]);
       const ApplicationState = useApplicationState();
       const FormApplicationState = useFormQuestionState();
+      const applicationState = useApplicationState();
       const userState = useUserState();
       const [currentProgress, setCurrentProgress] = useState<number>();
+      const [toggleToast, setToggleToast] = useState<boolean>(false);
+      const {error} = applicationState.appState;
+
 
       const setQuestionResponse = (
           response: string,
           questionID: string,
           order: number,
       ) =>{
-        FormApplicationState.formStateDispatch(
-            {
-              type: SET_QUESTION_RESPONSE,
-              payload: {
-                questionToAdd: {
-                  id: questionID,
-                  answer: response,
-                  responseDbId: '',
-                },
-                order,
-              },
-            },
-        );
+        const questionToSave = {
+          response,
+          questionID,
+          order,
+        };
         const questionIndex = FormApplicationState.
             formState.
             questionsAnswered.
@@ -93,10 +86,39 @@ const FormPage:React.FC<RouteComponentProps<
                   }
                 },
             );
-        if (questionIndex > -1 && FormApplicationState.
-            formState.
-            questionsAnswered[questionIndex].sendToDB) {
-          setResponseState([...responseState]);
+        if (questionIndex > -1) {
+          const posibleQuestion = FormApplicationState.formState
+              .questionsAnswered[questionIndex];
+          if (posibleQuestion) {
+            FormApplicationState.formStateDispatch(
+                {
+                  type: SET_QUESTION_RESPONSE,
+                  payload: {
+                    questionToAdd: {
+                      id: questionToSave.questionID,
+                      answer: questionToSave.response,
+                      responseDbId: posibleQuestion.responseDbId,
+                      sendToDB: false,
+                    },
+                    order,
+                  },
+                },
+            );
+          }
+        } else {
+          FormApplicationState.formStateDispatch(
+              {
+                type: SET_QUESTION_RESPONSE,
+                payload: {
+                  questionToAdd: {
+                    id: questionToSave.questionID,
+                    answer: questionToSave.response,
+                    sendToDB: false,
+                  },
+                  order,
+                },
+              },
+          );
         }
       };
 
@@ -119,6 +141,17 @@ const FormPage:React.FC<RouteComponentProps<
               payload: undefined,
             },
         );
+        applicationState.appStateDispatch(
+            {
+              type: SET_ERROR,
+              payload: {
+                error: {
+                  error: false,
+                  errorMessage: '',
+                },
+              },
+            },
+        );
         const cachedData = localStorage.getItem('QUESTIONER_STORAGE');
         setLoading(true);
         if (FormApplicationState.formState.sections?.length === 0 &&
@@ -135,16 +168,45 @@ const FormPage:React.FC<RouteComponentProps<
                         },
                       });
                   setLoading(false);
-                  setError(false);
+                  applicationState.appStateDispatch(
+                      {
+                        type: SET_ERROR,
+                        payload: {
+                          error: {
+                            error: false,
+                            errorMessage: '',
+                          },
+                        },
+                      },
+                  );
                 });
           } catch (error) {
-            setError(true);
-            setLoading(false);
+            applicationState.appStateDispatch(
+                {
+                  type: SET_ERROR,
+                  payload: {
+                    error: {
+                      error: true,
+                      errorMessage: 'Not able to fetch questions',
+                    },
+                  },
+                },
+            ); setLoading(false);
           }
         } else {
           setCurrentProgress(FormApplicationState.formState.currentProgress);
           setLoading(false);
-          setError(false);
+          applicationState.appStateDispatch(
+              {
+                type: SET_ERROR,
+                payload: {
+                  error: {
+                    error: false,
+                    errorMessage: '',
+                  },
+                },
+              },
+          );
         }
       }, []);
 
@@ -177,65 +239,139 @@ const FormPage:React.FC<RouteComponentProps<
             currentSubSection?.
             name;
         setLoading(true);
-
-        if (stack && section && subSection) {
-          // save questions to dynamo
-          try {
-            const functionParams: ISaveDataAuroraParams = {
-              stack: stack.toString(),
-              section: section,
-              subSection: subSection,
-            };
-            if (userState) {
-              const questionsArray = FormApplicationState.
-                  formState.
-                  questionsAnswered;
-              await saveQuestionsToAurora(
-                  functionParams,
-                  questionsArray,
-                  FormApplicationState.formState.currentFormID,
-                  userState.userState.usernameID,
-              );
-            }
-          } catch (error) {
-            console.log(error);
-          }
-        }
         const respondedQuestions = FormApplicationState.
             formState.
             questionsAnswered;
         await respondedQuestions.map(async (RespondedQuestion) => {
           let {id, sendToDB, answer, responseDbId} = RespondedQuestion;
-          try {
-            if (!sendToDB) {
-              responseDbId = await saveQuestionsToDynamo(
-                  id,
-                  answer,
-                  FormApplicationState.formState.currentFormID,
-              );
-
-              sendToDB = true;
-              FormApplicationState
-                  .formStateDispatch({
-                    type: UPDATE_ANSWERED_QUESTIONS,
-                    payload: {
-                      questionToAdd: {
-                        answer: answer,
-                        id: id,
-                        sendToDB: sendToDB,
-                        responseDbId,
+          if (!sendToDB) {
+            if (!responseDbId) {
+              try {
+                responseDbId = await saveQuestionsToDynamo(
+                    id,
+                    answer,
+                    FormApplicationState.formState.currentFormID,
+                );
+                sendToDB = true;
+                FormApplicationState
+                    .formStateDispatch({
+                      type: UPDATE_ANSWERED_QUESTIONS,
+                      payload: {
+                        questionToAdd: {
+                          answer: answer,
+                          id: id,
+                          sendToDB: sendToDB,
+                          responseDbId,
+                        },
                       },
                     },
-                  },
-                  );
-            } else {
-              console.log('update registry');
-            }
+                    );
+                applicationState.appStateDispatch(
+                    {
+                      type: SET_ERROR,
+                      payload: {
+                        error: {
+                          error: false,
+                          errorMessage: '',
+                        },
+                      },
+                    },
+                );
+              } catch (error) {
+                applicationState.appStateDispatch(
+                    {
+                      type: SET_ERROR,
+                      payload: {
+                        error: {
+                          error: true,
+                          errorMessage: error.message,
+                        },
+                      },
+                    },
+                );
+              }
 
-            setResponseState([]);
-          } catch (saveToDBError) {
-            if (saveToDBError instanceof Error) {
-              dropConsole(LogLevel.HIGH, saveToDBError.message);
+              if (stack && section && subSection && !sendToDB) {
+                try {
+                  const functionParams: ISaveDataAuroraParams = {
+                    stack: stack.toString(),
+                    section: section,
+                    subSection: subSection,
+                  };
+                  if (userState && responseDbId) {
+                    await saveQuestionsToAurora(
+                        {...functionParams},
+                        id,
+                        answer,
+                        FormApplicationState.formState.currentFormID,
+                        userState.userState.usernameID,
+                        responseDbId,
+                    );
+                  } else {
+                    throw new Error(
+                        'Could not save responses to ' +
+                                  'database, missing values in response',
+                    );
+                  }
+                  applicationState.appStateDispatch(
+                      {
+                        type: SET_ERROR,
+                        payload: {
+                          error: {
+                            error: false,
+                            errorMessage: '',
+                          },
+                        },
+                      },
+                  );
+                } catch (error) {
+                  applicationState.appStateDispatch(
+                      {
+                        type: SET_ERROR,
+                        payload: {
+                          error: {
+                            error: true,
+                            errorMessage: error.message,
+                          },
+                        },
+                      },
+                  );
+                }
+              }
+            } else {
+              try {
+                await updateQuestionAtDynamo(
+                    responseDbId,
+                    answer,
+                );
+                await updateQuestionAtAurora(
+                    responseDbId,
+                    answer,
+                );
+                applicationState.appStateDispatch(
+                    {
+                      type: SET_ERROR,
+                      payload: {
+                        error: {
+                          error: false,
+                          errorMessage: '',
+                        },
+                      },
+                    },
+                );
+              } catch (error) {
+                applicationState.appStateDispatch(
+                    {
+                      type: SET_ERROR,
+                      payload: {
+                        error: {
+                          error: true,
+                          errorMessage: error.message,
+                        },
+                      },
+                    },
+                );
+              }
             }
           }
         });
@@ -251,26 +387,38 @@ const FormPage:React.FC<RouteComponentProps<
                 FormApplicationState.formState.currentProgress,
             );
           } catch (error) {
-            console.log(error);
+            applicationState.appStateDispatch(
+                {
+                  type: SET_ERROR,
+                  payload: {
+                    error: {
+                      error: true,
+                      errorMessage: error.message,
+                    },
+                  },
+                },
+            );
           }
         }
+        if (!ApplicationState.appState.error.error) {
+          FormApplicationState
+              .formStateDispatch({
+                type: NEXT_QUESTIONS,
+                payload: undefined,
+              },
+              );
 
-        FormApplicationState
-            .formStateDispatch({
-              type: NEXT_QUESTIONS,
-              payload: undefined,
-            },
-            );
-        FormApplicationState.formStateDispatch(
-            {
-              type: SET_SHOWABLE_QUESTIONS,
-              payload: undefined,
-            },
-        );
+          FormApplicationState.formStateDispatch(
+              {
+                type: SET_SHOWABLE_QUESTIONS,
+                payload: undefined,
+              },
+          );
+        }
         setLoading(false);
       };
-
       const formFinished = FormApplicationState.formState.finished;
+
       return (
         <>
           {
@@ -284,12 +432,23 @@ const FormPage:React.FC<RouteComponentProps<
           <LeftBar/>
           <div className="form-container">
             <div className='questioner-container'>
+              {error.error && <ErrorMessageToast
+                message={error.errorMessage.toString()}
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                closeOnClick={false}
+                pauseOnHover={false}
+                draggable={false}
+                toggleToast={toggleToast}
+                setToggleToast={setToggleToast}
+              />}
               {loading && (
                 <div className="spinner-wrapper">
                   <Spinner/>
                 </div>
               )}
-              {(!loading && !error) && (
+              {(!loading) && (
                 <>
                   {
                     FormApplicationState.formState.showableQuestions.map(

@@ -240,6 +240,9 @@ export const setQuestionResponse = (
     if (findedQuestionId !== -1 && findedQuestionId >= 0) {
       state.questionsAnswered[findedQuestionId] = {
         ...questionToAdd,
+        responseDbId: questionToAdd.responseDbId ?
+            questionToAdd.responseDbId:
+            '',
         sendToDB: false,
       };
     } else {
