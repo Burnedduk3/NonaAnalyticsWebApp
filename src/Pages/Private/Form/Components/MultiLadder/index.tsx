@@ -32,7 +32,9 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
       });
 
   return (
-    <div className="question-container-with-header">
+    <div className={`question-container ${
+        stackPhrase? 'with-header':'no-header'
+    }`}>
       {stackPhrase && <div className="stack-phrase">
         <h3>{stackPhrase}</h3>
       </div>

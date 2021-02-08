@@ -1,26 +1,51 @@
 import React, {ChangeEvent} from 'react';
 import './styles.scss';
 import {IComboBoxProps} from './interface';
+import {
+  IAnsweredQuestion,
+} from '../../../../../Context/FormQuestions/interface';
+import {
+  useFormQuestionState,
+} from '../../../../../Context/FormQuestions/Provider';
 
 const ComboBoxComponent: React.FC<IComboBoxProps> = ({
   question, items, questionId, setResponse, order,
-}: IComboBoxProps): JSX.Element => (
-  <div className="inputContainer">
-    <p>{question}</p>
-    <label htmlFor={`${questionId}`}>
-      <select
-        id={`${questionId}`}
-        className="combo-box"
-        onChange={
-          (e:ChangeEvent<HTMLSelectElement>) =>
-            setResponse(e.target.value, questionId, order)
+}: IComboBoxProps): JSX.Element => {
+  const formContext = useFormQuestionState();
+  const questionAnswer: IAnsweredQuestion | undefined = formContext.
+      formState.
+      questionsAnswered.
+      find((questionAnswer:IAnsweredQuestion)=>{
+        if (questionAnswer.id === questionId) {
+          return questionAnswer;
+        } else {
+          return undefined;
         }
-      >
-        {items.map((item) => <option key={item} value={item}>{item}</option>)}
-      </select>
-      <i></i>
-    </label>
-  </div>
-);
+      });
+
+  return (
+    <div className="inputContainer">
+      <p>{question}</p>
+      <label htmlFor={`${questionId}`}>
+        <select
+          id={`${questionId}`}
+          className="combo-box"
+          onChange={
+            (e: ChangeEvent<HTMLSelectElement>) =>
+              setResponse(e.target.value, questionId, order)
+          }
+
+        >
+          {items.map((item) => <option
+            key={item}
+            value={item}
+            selected={questionAnswer?.answer === item}
+          >{item}</option>)}
+        </select>
+        <i/>
+      </label>
+    </div>
+  );
+};
 
 export default ComboBoxComponent;

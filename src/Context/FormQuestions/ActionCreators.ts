@@ -137,7 +137,6 @@ export const updateQuestionAnswer = (
 ):IFormQuestionsContextState => {
   if (payload.questionToAdd) {
     const {questionToAdd} = payload;
-    console.log(questionToAdd);
     const indexofQuestion = state.questionsAnswered.findIndex(
         (element: IAnsweredQuestion) =>{
           return element.id === payload.questionToAdd?.id;
@@ -147,10 +146,6 @@ export const updateQuestionAnswer = (
       ...state.questionsAnswered[indexofQuestion],
       ...questionToAdd,
     };
-    const currentProgress = (
-      state.questionsAnswered.length * 100
-    )/state.totalQuestions;
-    state.currentProgress = parseFloat(currentProgress.toFixed(2));
   }
   localStorage.setItem(
       'QUESTIONER_STORAGE',
@@ -245,6 +240,9 @@ export const setQuestionResponse = (
     if (findedQuestionId !== -1 && findedQuestionId >= 0) {
       state.questionsAnswered[findedQuestionId] = {
         ...questionToAdd,
+        responseDbId: questionToAdd.responseDbId ?
+            questionToAdd.responseDbId:
+            '',
         sendToDB: false,
       };
     } else {
@@ -259,6 +257,10 @@ export const setQuestionResponse = (
       ];
     }
   }
+  const currentProgress = (
+    state.questionsAnswered.length * 100
+  )/state.totalQuestions;
+  state.currentProgress = parseFloat(currentProgress.toFixed(2));
   localStorage.setItem(
       'QUESTIONER_STORAGE',
       JSON.stringify(state),

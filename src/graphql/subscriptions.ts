@@ -12,6 +12,8 @@ export const onCreateCreateUserResponse = /* GraphQL */ `
       subSection
       section
       userID
+      createdAt
+      modifiedAt
     }
   }
 `;
@@ -30,52 +32,6 @@ export const onCreateForm = /* GraphQL */ `
     onCreateForm {
       id
       formQuestions {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       UserID
@@ -91,52 +47,6 @@ export const onUpdateForm = /* GraphQL */ `
     onUpdateForm {
       id
       formQuestions {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       UserID
@@ -152,52 +62,6 @@ export const onDeleteForm = /* GraphQL */ `
     onDeleteForm {
       id
       formQuestions {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       UserID
@@ -219,91 +83,6 @@ export const onCreateFormQuestion = /* GraphQL */ `
         stack
         stackPhrase
         placeHolder
-        usedForms {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        category {
-          id
-          name
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         order
         items
         imagesPath
@@ -313,36 +92,6 @@ export const onCreateFormQuestion = /* GraphQL */ `
       }
       form {
         id
-        formQuestions {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         UserID
         finished
         percentage
@@ -365,91 +114,6 @@ export const onUpdateFormQuestion = /* GraphQL */ `
         stack
         stackPhrase
         placeHolder
-        usedForms {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        category {
-          id
-          name
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         order
         items
         imagesPath
@@ -459,36 +123,6 @@ export const onUpdateFormQuestion = /* GraphQL */ `
       }
       form {
         id
-        formQuestions {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         UserID
         finished
         percentage
@@ -511,91 +145,6 @@ export const onDeleteFormQuestion = /* GraphQL */ `
         stack
         stackPhrase
         placeHolder
-        usedForms {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        category {
-          id
-          name
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         order
         items
         imagesPath
@@ -605,36 +154,6 @@ export const onDeleteFormQuestion = /* GraphQL */ `
       }
       form {
         id
-        formQuestions {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         UserID
         finished
         percentage
@@ -655,144 +174,17 @@ export const onCreateQuestion = /* GraphQL */ `
       stackPhrase
       placeHolder
       usedForms {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       category {
         id
         name
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        section {
-          id
-          name
-          subSections {
-            items {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
@@ -815,144 +207,17 @@ export const onUpdateQuestion = /* GraphQL */ `
       stackPhrase
       placeHolder
       usedForms {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       category {
         id
         name
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        section {
-          id
-          name
-          subSections {
-            items {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
@@ -975,144 +240,17 @@ export const onDeleteQuestion = /* GraphQL */ `
       stackPhrase
       placeHolder
       usedForms {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       category {
         id
         name
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        section {
-          id
-          name
-          subSections {
-            items {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
@@ -1132,54 +270,6 @@ export const onCreateCategory = /* GraphQL */ `
       id
       name
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       createdAt
@@ -1193,54 +283,6 @@ export const onUpdateCategory = /* GraphQL */ `
       id
       name
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       createdAt
@@ -1254,54 +296,6 @@ export const onDeleteCategory = /* GraphQL */ `
       id
       name
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       createdAt
@@ -1315,39 +309,6 @@ export const onCreateSection = /* GraphQL */ `
       id
       name
       subSections {
-        items {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -1362,39 +323,6 @@ export const onUpdateSection = /* GraphQL */ `
       id
       name
       subSections {
-        items {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -1409,39 +337,6 @@ export const onDeleteSection = /* GraphQL */ `
       id
       name
       subSections {
-        items {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -1458,79 +353,11 @@ export const onCreateSubSection = /* GraphQL */ `
       section {
         id
         name
-        subSections {
-          items {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
       }
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -1547,79 +374,11 @@ export const onUpdateSubSection = /* GraphQL */ `
       section {
         id
         name
-        subSections {
-          items {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
       }
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -1636,79 +395,11 @@ export const onDeleteSubSection = /* GraphQL */ `
       section {
         id
         name
-        subSections {
-          items {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
       }
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order

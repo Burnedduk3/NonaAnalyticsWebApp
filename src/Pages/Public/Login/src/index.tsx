@@ -8,7 +8,10 @@ RoutingConstants
 import {
   useApplicationState,
 } from '../../../../Context/ApplicationState/Provider';
-import {HIDE_FOOTER} from '../../../../Context/ApplicationState/ActionTypes';
+import {
+  HIDE_FOOTER,
+  SET_ERROR,
+} from '../../../../Context/ApplicationState/ActionTypes';
 import {useHistory} from 'react-router-dom';
 import {API, Auth, graphqlOperation} from 'aws-amplify';
 import './styles.scss';
@@ -25,6 +28,7 @@ import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   SET_CURRENT_FORM_ID,
 } from '../../../../Context/FormQuestions/ActionTypes';
+import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -34,12 +38,14 @@ const initialInputState: ILoginInterface = {
 const LoginPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
   const ApplicationState = useApplicationState();
-  const [error, setError] = useState<boolean>(false);
   const history = useHistory();
   const userState = useUserState();
   const formState = useFormQuestionState();
   const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
   const [redirectPath, setRedirectPath] = useState<string>('');
+  const [toggleToast, setToggleToast] = useState<boolean>(false);
+  const applicationState = useApplicationState();
+
 
   useEffect(() => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -118,8 +124,20 @@ const LoginPage : React.FC = (): JSX.Element =>{
       if (error.name === 'UserNotConfirmedException') {
         setRedirectPath(RoutingConstants.verifyEmail.path);
         setIsRedirecting(true);
+      } else {
+        setToggleToast(true);
+        applicationState.appStateDispatch(
+            {
+              type: SET_ERROR,
+              payload: {
+                error: {
+                  error: true,
+                  errorMessage: error.message,
+                },
+              },
+            },
+        );
       }
-      setError(true);
     }
   };
 
@@ -147,8 +165,21 @@ const LoginPage : React.FC = (): JSX.Element =>{
     }
   };
 
+  const {error} = applicationState.appState;
+
   return (
     <main className="Login-body">
+      {error.error && <ErrorMessageToast
+        message={error.errorMessage.toString()}
+        position="top-center"
+        autoClose={5000}
+        hideProgressBar={false}
+        closeOnClick={false}
+        pauseOnHover={false}
+        draggable={false}
+        toggleToast={toggleToast}
+        setToggleToast={setToggleToast}
+      />}
       <div className="logo-container">
         <img src={logo} alt="logo" className="Nona-logo"/>
       </div>
@@ -170,9 +201,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
           <hr/>
         </div>
         <form className="form-container">
-          {error && <div className="error-message">
-            <h3>{CONSTANTS.errorMessage}</h3>
-          </div>}
           <label htmlFor="username" className="label user">
             <img src={user} alt="User Icon"/>
             <input

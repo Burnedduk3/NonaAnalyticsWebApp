@@ -3,8 +3,8 @@ import {createFormQuestion} from '../../../../../graphql/mutations';
 
 const saveQuestionsToDynamo = async (
     questionID:string,
-    questionResponse:string | unknown,
-    currentForm: string | undefined,
+    questionResponse:string,
+    currentForm: string,
 ):Promise<string> => {
   const {errors, data}: any = await API.graphql(
       graphqlOperation(

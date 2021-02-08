@@ -1,6 +1,7 @@
 import {
   HIDE_FOOTER,
-  HIDE_HEADER, SET_LOADING,
+  HIDE_HEADER,
+  SET_ERROR,
   SHOW_FOOTER,
   SHOW_HEADER,
 }
@@ -10,7 +11,6 @@ import {IApplicationInitialState, IApplicationReducer} from './interface';
 export const initialState: IApplicationInitialState = {
   hideFooter: false,
   hideHeader: false,
-  isLoading: true,
   error: {
     error: false,
     errorMessage: '',
@@ -37,9 +37,11 @@ const ApplicationStateReducer = (
       return {...state, hideFooter: false};
     }
 
-    case SET_LOADING: {
-      if (payload && payload.loading !== undefined) {
-        return {...state, isLoading: payload.loading};
+    case SET_ERROR: {
+      if (payload && payload.error !== undefined) {
+        return {...state, error: {
+          ...payload.error,
+        }};
       }
       return {...state};
     }
