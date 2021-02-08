@@ -10,8 +10,8 @@ export type CreateCreateUserResponseInput = {
   subSection?: string | null,
   section?: string | null,
   userID?: string | null,
-  createdAt?: number,
-  modifiedAt?: number,
+  createdAt: number,
+  modifiedAt: number,
 };
 
 export type UpdateCreateUserResponseInput = {

@@ -331,7 +331,7 @@ const FormPage:React.FC<RouteComponentProps<
                         payload: {
                           error: {
                             error: true,
-                            errorMessage: error.message,
+                            errorMessage: 'unable to create',
                           },
                         },
                       },
@@ -366,7 +366,7 @@ const FormPage:React.FC<RouteComponentProps<
                       payload: {
                         error: {
                           error: true,
-                          errorMessage: error.message,
+                          errorMessage: 'unable to update',
                         },
                       },
                     },

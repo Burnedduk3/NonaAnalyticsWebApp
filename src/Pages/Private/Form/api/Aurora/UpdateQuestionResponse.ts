@@ -16,6 +16,7 @@ const updateQuestionAtAurora = async (
     updateCreateUserResponseInput: {
       ID: dynamoID,
       response: questionResponse,
+      modifiedAt: new Date().getTime(),
     },
   };
   const response: any = await API.graphql(

@@ -25,6 +25,8 @@ const saveQuestionsToAurora = async (
       subSection: subSection,
       section: section,
       userID: userId,
+      createdAt: new Date().getTime(),
+      modifiedAt: new Date().getTime(),
     },
   };
   const response: any = await API.graphql(
