@@ -35,6 +35,7 @@ const saveQuestionsToAurora = async (
           },
       ),
   );
+  console.log(response);
   if (response && response.data &&
   response.data.createCreateUserResponse === null) {
     throw new Error('Error saving to Aurora');

@@ -290,8 +290,7 @@ const FormPage:React.FC<RouteComponentProps<
                     },
                 );
               }
-
-              if (stack && section && subSection && !sendToDB) {
+              if (stack && section && subSection) {
                 try {
                   const functionParams: ISaveDataAuroraParams = {
                     stack: stack.toString(),
@@ -325,6 +324,7 @@ const FormPage:React.FC<RouteComponentProps<
                       },
                   );
                 } catch (error) {
+                  setToggleToast(true);
                   applicationState.appStateDispatch(
                       {
                         type: SET_ERROR,

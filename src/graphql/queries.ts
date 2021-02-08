@@ -12,6 +12,8 @@ export const getCreateUserResponse = /* GraphQL */ `
       subSection
       section
       userID
+      createdAt
+      modifiedAt
     }
   }
 `;
@@ -25,6 +27,8 @@ export const listCreateUserResponses = /* GraphQL */ `
       subSection
       section
       userID
+      createdAt
+      modifiedAt
     }
   }
 `;
@@ -53,52 +57,6 @@ export const getForm = /* GraphQL */ `
     getForm(id: $id) {
       id
       formQuestions {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       UserID
@@ -118,36 +76,6 @@ export const listForms = /* GraphQL */ `
     listForms(filter: $filter, limit: $limit, nextToken: $nextToken) {
       items {
         id
-        formQuestions {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         UserID
         finished
         percentage
@@ -169,91 +97,6 @@ export const getFormQuestion = /* GraphQL */ `
         stack
         stackPhrase
         placeHolder
-        usedForms {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        category {
-          id
-          name
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         order
         items
         imagesPath
@@ -263,36 +106,6 @@ export const getFormQuestion = /* GraphQL */ `
       }
       form {
         id
-        formQuestions {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         UserID
         finished
         percentage
@@ -314,71 +127,6 @@ export const listFormQuestions = /* GraphQL */ `
       items {
         id
         response
-        question {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
-        form {
-          id
-          formQuestions {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          UserID
-          finished
-          percentage
-          createdAt
-          updatedAt
-        }
         createdAt
         updatedAt
       }
@@ -395,144 +143,17 @@ export const getQuestion = /* GraphQL */ `
       stackPhrase
       placeHolder
       usedForms {
-        items {
-          id
-          response
-          question {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          form {
-            id
-            formQuestions {
-              nextToken
-            }
-            UserID
-            finished
-            percentage
-            createdAt
-            updatedAt
-          }
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       category {
         id
         name
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
       subSection {
         id
         name
-        section {
-          id
-          name
-          subSections {
-            items {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
@@ -559,91 +180,6 @@ export const listQuestions = /* GraphQL */ `
         stack
         stackPhrase
         placeHolder
-        usedForms {
-          items {
-            id
-            response
-            question {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            form {
-              id
-              UserID
-              finished
-              percentage
-              createdAt
-              updatedAt
-            }
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
-        category {
-          id
-          name
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          createdAt
-          updatedAt
-        }
-        subSection {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         order
         items
         imagesPath
@@ -661,54 +197,6 @@ export const getCategory = /* GraphQL */ `
       id
       name
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       createdAt
@@ -726,38 +214,6 @@ export const listCategorys = /* GraphQL */ `
       items {
         id
         name
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         createdAt
         updatedAt
       }
@@ -771,39 +227,6 @@ export const getSection = /* GraphQL */ `
       id
       name
       subSections {
-        items {
-          id
-          name
-          section {
-            id
-            name
-            subSections {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          questions {
-            items {
-              id
-              question
-              stack
-              stackPhrase
-              placeHolder
-              order
-              items
-              imagesPath
-              inputConfirmation
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -822,26 +245,6 @@ export const listSections = /* GraphQL */ `
       items {
         id
         name
-        subSections {
-          items {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
@@ -858,79 +261,11 @@ export const getSubSection = /* GraphQL */ `
       section {
         id
         name
-        subSections {
-          items {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
       }
       questions {
-        items {
-          id
-          question
-          stack
-          stackPhrase
-          placeHolder
-          usedForms {
-            items {
-              id
-              response
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          category {
-            id
-            name
-            questions {
-              nextToken
-            }
-            createdAt
-            updatedAt
-          }
-          subSection {
-            id
-            name
-            section {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            questions {
-              nextToken
-            }
-            order
-            createdAt
-            updatedAt
-          }
-          order
-          items
-          imagesPath
-          inputConfirmation
-          createdAt
-          updatedAt
-        }
         nextToken
       }
       order
@@ -949,55 +284,6 @@ export const listSubSections = /* GraphQL */ `
       items {
         id
         name
-        section {
-          id
-          name
-          subSections {
-            items {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            nextToken
-          }
-          order
-          createdAt
-          updatedAt
-        }
-        questions {
-          items {
-            id
-            question
-            stack
-            stackPhrase
-            placeHolder
-            usedForms {
-              nextToken
-            }
-            category {
-              id
-              name
-              createdAt
-              updatedAt
-            }
-            subSection {
-              id
-              name
-              order
-              createdAt
-              updatedAt
-            }
-            order
-            items
-            imagesPath
-            inputConfirmation
-            createdAt
-            updatedAt
-          }
-          nextToken
-        }
         order
         createdAt
         updatedAt
