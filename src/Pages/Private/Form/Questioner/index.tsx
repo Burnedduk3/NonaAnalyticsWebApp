@@ -290,28 +290,29 @@ const FormPage:React.FC<RouteComponentProps<
                     },
                 );
               }
-              if (stack && section && subSection) {
+              if (
+                stack !== undefined &&
+                  section !== undefined &&
+                  subSection !== undefined
+              ) {
                 try {
                   const functionParams: ISaveDataAuroraParams = {
                     stack: stack.toString(),
                     section: section,
                     subSection: subSection,
                   };
-                  if (userState && responseDbId) {
-                    await saveQuestionsToAurora(
-                        {...functionParams},
-                        id,
-                        answer,
-                        FormApplicationState.formState.currentFormID,
-                        userState.userState.usernameID,
-                        responseDbId,
-                    );
-                  } else {
-                    throw new Error(
-                        'Could not save responses to ' +
-                                  'database, missing values in response',
-                    );
+
+                  if (!responseDbId) {
+                    throw new Error('Error saving questions');
                   }
+                  await saveQuestionsToAurora(
+                      {...functionParams},
+                      id,
+                      answer,
+                      FormApplicationState.formState.currentFormID,
+                      userState.userState.usernameID,
+                      responseDbId,
+                  );
                   applicationState.appStateDispatch(
                       {
                         type: SET_ERROR,
@@ -331,7 +332,7 @@ const FormPage:React.FC<RouteComponentProps<
                         payload: {
                           error: {
                             error: true,
-                            errorMessage: 'unable to create',
+                            errorMessage: 'unable to save questions',
                           },
                         },
                       },
@@ -344,6 +345,7 @@ const FormPage:React.FC<RouteComponentProps<
                     responseDbId,
                     answer,
                 );
+
                 await updateQuestionAtAurora(
                     responseDbId,
                     answer,

@@ -22,13 +22,15 @@ import user from '../../../../assets/Icons/user.png';
 import lock from '../../../../assets/Icons/lock.png';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
-import {createForm} from '../../../../graphql/mutations';
+import {createForm, createUserInfo} from '../../../../graphql/mutations';
 import validator from 'validator';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   SET_CURRENT_FORM_ID,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
+import {getUserInfo} from '../../../../graphql/queries';
+import {CreateUserInfoInput, GetUserInfoQueryVariables} from '../../../../API';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -79,13 +81,39 @@ const LoginPage : React.FC = (): JSX.Element =>{
             pageInputs.username, pageInputs.password,
         );
         if (user) {
+          console.log(user);
+          const queryParameters: GetUserInfoQueryVariables = {
+            userID: user.username,
+          };
+          const auroraUser:any = await API.graphql(graphqlOperation(
+              getUserInfo,
+              {
+                ...queryParameters,
+              },
+          ));
+          if (auroraUser.data.getUserInfo === null) {
+            const createUserInfoInput: CreateUserInfoInput = {
+              fName: user.attributes.name,
+              lName: user.attributes.name,
+              userEmail: user.attributes.email,
+              userID: user.username,
+            };
+            await API.graphql(
+                graphqlOperation(
+                    createUserInfo,
+                    {
+                      createUserInfoInput,
+                    },
+                ),
+            );
+          }
           userState.userStateDispatch({
             type: ADD_USER,
             payload: {
               address: user.attributes.address,
               name: user.attributes.name,
               birthdate: user.attributes.birthdate,
-              email: user.attributes.birthdate,
+              email: user.attributes.email,
               gender: user.attributes.gender,
               phone: user.attributes.phone_number,
               usernameID: user.username,
@@ -126,6 +154,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
         setIsRedirecting(true);
       } else {
         setToggleToast(true);
+        console.log(error);
         applicationState.appStateDispatch(
             {
               type: SET_ERROR,

@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ISignUp} from '../interfaces/SignUpInterface';
-import {API, Auth, graphqlOperation} from 'aws-amplify';
+import {Auth} from 'aws-amplify';
 import {useHistory} from 'react-router-dom';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
@@ -27,8 +27,6 @@ import gender from '../../../../assets/Icons/gender.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
-import {createUserInfo} from '../../../../graphql/mutations';
-import {CreateUserInfoInput} from '../../../../API';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const initialInputState: ISignUp = {
@@ -152,7 +150,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      const newUser: any = await Auth.signUp({
+      await Auth.signUp({
         username: pageInputs.email,
         password: pageInputs.password,
         attributes: {
@@ -164,20 +162,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           name: pageInputs.name,
         },
       });
-      const createUserInfoInput: CreateUserInfoInput = {
-        fName: pageInputs.name,
-        lName: pageInputs.name,
-        userEmail: pageInputs.email,
-        userID: newUser.userSub,
-      };
-      await API.graphql(
-          graphqlOperation(
-              createUserInfo,
-              {
-                createUserInfoInput,
-              },
-          ),
-      );
       history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       setToggleToast(true);

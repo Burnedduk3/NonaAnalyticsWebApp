@@ -9,14 +9,13 @@ export interface ISaveDataAuroraParams {
 }
 
 const updateQuestionAtAurora = async (
-    questionResponse:string,
     dynamoID: string,
+    questionResponse:string,
 ) => {
   const parameters: UpdateCreateUserResponseMutationVariables = {
     updateCreateUserResponseInput: {
       ID: dynamoID,
       response: questionResponse,
-      modifiedAt: new Date().getTime(),
     },
   };
   const response: any = await API.graphql(

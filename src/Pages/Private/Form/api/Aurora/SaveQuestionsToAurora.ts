@@ -25,11 +25,9 @@ const saveQuestionsToAurora = async (
       subSection: subSection,
       section: section,
       userID: userId,
-      createdAt: new Date().getTime(),
-      modifiedAt: new Date().getTime(),
     },
   };
-  const response: any = await API.graphql(
+  const {data, errors}: any = await API.graphql(
       graphqlOperation(
           createCreateUserResponse,
           {
@@ -37,9 +35,8 @@ const saveQuestionsToAurora = async (
           },
       ),
   );
-  console.log(response);
-  if (response && response.data &&
-  response.data.createCreateUserResponse === null) {
+
+  if (errors || data.createCreateUserResponse === null) {
     throw new Error('Error saving to Aurora');
   }
 };

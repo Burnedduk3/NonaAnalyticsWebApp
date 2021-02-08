@@ -57,8 +57,6 @@ input CreateCreateUserResponseInput {
   subSection: String
   section: String
   userID: String
-  createdAt: AWSTimestamp!
-  modifiedAt: AWSTimestamp!
 }
 
 type CreateUserResponse {
@@ -69,8 +67,6 @@ type CreateUserResponse {
   subSection: String
   section: String
   userID: String
-  createdAt: AWSTimestamp!
-  modifiedAt: AWSTimestamp!
 }
 
 input UpdateCreateUserResponseInput {
@@ -81,8 +77,6 @@ input UpdateCreateUserResponseInput {
   subSection: String
   section: String
   userID: String
-  createdAt: AWSTimestamp
-  modifiedAt: AWSTimestamp
 }
 
 type Mutation {
