@@ -127,12 +127,10 @@ const LoginPage : React.FC = (): JSX.Element =>{
           userState.userStateDispatch({
             type: ADD_USER,
             payload: {
-              address: user.attributes.address,
               name: user.attributes.name,
               birthdate: user.attributes.birthdate,
               email: user.attributes.email,
               gender: user.attributes.gender,
-              phone: user.attributes.phone_number,
               usernameID: user.username,
               accessToken: user.signInUserSession.accessToken.jwtToken,
               idToken: user.signInUserSession.idToken.jwtToken,
