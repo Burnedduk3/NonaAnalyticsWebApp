@@ -1,0 +1,68 @@
+{
+    "AWSTemplateFormatVersion": "2010-09-09",
+    "Parameters": {
+        "authlifeprojectauthUserPoolId": {
+            "Type": "String",
+            "Default": "authlifeprojectauthUserPoolId"
+        },
+        
+        "authlifeprojectauthAppClientID": {
+            "Type": "String",
+            "Default": "authlifeprojectauthAppClientID"
+        },
+        "authlifeprojectauthAppClientIDWeb": {
+            "Type": "String",
+            "Default": "authlifeprojectauthAppClientIDWeb"
+        },
+        "AuthRoleArn": {
+            "Type": "String"
+        },
+        "UnauthRoleArn": {
+            "Type": "String"
+        },
+        "env": {
+            "Type": "String"
+        }
+    },
+    "Conditions": {
+        "ShouldNotCreateEnvResources": {
+            "Fn::Equals": [
+                {
+                    "Ref": "env"
+                },
+                "NONE"
+            ]
+        }
+    },
+    "Resources": {
+    
+        "UserGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "User",
+              "Precedence" : 1,
+              
+              "UserPoolId" : {
+                "Ref": "authlifeprojectauthUserPoolId"
+              } 
+            }
+        },
+        
+    
+        "userLifesGroup": {
+          "Type" : "AWS::Cognito::UserPoolGroup",
+          "Properties" : {
+              "GroupName" : "userLifes",
+              "Precedence" : 2,
+              
+              "UserPoolId" : {
+                "Ref": "authlifeprojectauthUserPoolId"
+              } 
+            }
+        },
+        
+    
+    
+    },
+    
+}

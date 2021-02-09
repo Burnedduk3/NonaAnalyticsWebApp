@@ -1,7 +1,7 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {ILoginInterface} from '../interfaces/LoginInterface';
 import CONSTANTS from './CONSTANTS';
-import {Link} from 'react-router-dom';
+import {Link, useHistory} from 'react-router-dom';
 import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
@@ -12,8 +12,7 @@ import {
   HIDE_FOOTER,
   SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
-import {useHistory} from 'react-router-dom';
-import {API, Auth, graphqlOperation} from 'aws-amplify';
+import {API, Auth, graphqlOperation, Hub} from 'aws-amplify';
 import './styles.scss';
 import logo from '../../../../assets/Logos/logo.png';
 import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
@@ -31,6 +30,7 @@ import {
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {getUserInfo} from '../../../../graphql/queries';
 import {CreateUserInfoInput, GetUserInfoQueryVariables} from '../../../../API';
+import {CognitoHostedUIIdentityProvider} from '@aws-amplify/auth';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -47,10 +47,27 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const applicationState = useApplicationState();
+  const [state, setState] = useState({user: null, customState: null});
 
 
   useEffect(() => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    Hub.listen('auth', ({payload: {event, data}}) => {
+      switch (event) {
+        case 'signIn':
+          setState({...state, user: data});
+          break;
+        case 'signOut':
+          setState({...state, user: null});
+          break;
+        case 'customOAuthState':
+          setState({...state, customState: data});
+      }
+    });
+
+    Auth.currentAuthenticatedUser()
+        .then((user) => setState({...state, user}))
+        .catch(() => console.log('Not signed in'));
   }, []);
 
   useEffect(
@@ -194,6 +211,13 @@ const LoginPage : React.FC = (): JSX.Element =>{
     }
   };
 
+  const fedarateFacebookSignin = async () => {
+    const data = await Auth.federatedSignIn(
+        {provider: CognitoHostedUIIdentityProvider.Facebook},
+    );
+    console.log(data);
+  };
+
   const {error} = applicationState.appState;
 
   return (
@@ -222,7 +246,11 @@ const LoginPage : React.FC = (): JSX.Element =>{
         <h2 className="page-title">Login</h2>
         <div className="login-socialMedia">
           <img src={GoogleIcon} alt="Google logo" />
-          <img src={FBIcon} alt="Facebook logo" />
+          <img
+            src={FBIcon}
+            alt="Facebook logo"
+            onClick={() => fedarateFacebookSignin()}
+          />
         </div>
         <div className="horizontal-line">
           <hr/>

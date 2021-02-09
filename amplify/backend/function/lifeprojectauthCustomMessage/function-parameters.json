@@ -1,0 +1,21 @@
+{
+  "trigger": true,
+  "modules": [
+    "verification-link"
+  ],
+  "parentResource": "lifeprojectauth",
+  "functionName": "lifeprojectauthCustomMessage",
+  "resourceName": "lifeprojectauthCustomMessage",
+  "parentStack": "auth",
+  "triggerEnvs": "[\n  {\n    \"key\": \"RESOURCENAME\",\n    \"value\": \"resourceName\"\n  }\n]",
+  "triggerDir": "C:\\Users\\jcabrera\\AppData\\Roaming\\npm\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CustomMessage",
+  "triggerTemplate": "CustomMessage.json.ejs",
+  "roleName": "lifeprojectauthCustomMessage",
+  "skipEdit": true,
+  "REDIRECTURL": "https://nonaanalytics.org/",
+  "EMAILSUBJECT": "confirm your account",
+  "EMAILMESSAGE": "Thankyou for registering",
+  "RESOURCENAME": "resourceName",
+  "enableCors": false,
+  "triggerEventPath": "CustomMessage.event.json"
+}
