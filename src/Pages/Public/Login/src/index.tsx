@@ -217,6 +217,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   const fedarateGoogleSignin = async () => {
+    console.log('Hola');
     const data = await Auth.federatedSignIn(
         {provider: CognitoHostedUIIdentityProvider.Google},
     );
