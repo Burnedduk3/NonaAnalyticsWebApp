@@ -28,7 +28,8 @@
         }
       },
       "auth": {
-        "lifeprojectauth": {}
+        "lifeprojectauth": {},
+        "lifeprojectfinalauth": {}
       }
     }
   }
