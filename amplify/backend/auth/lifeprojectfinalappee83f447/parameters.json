@@ -60,7 +60,6 @@
         "Google"
     ],
     "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"public_profile,email\",\"AttributeMapping\":{\"birthdate\":\"birthday\",\"email\":\"email\",\"gender\":\"gender\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile email\",\"AttributeMapping\":{\"birthdate\":\"birthdays\",\"email\":\"email\",\"gender\":\"genders\",\"name\":\"name\",\"username\":\"sub\"}}]",
-    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.nonaanalytics.com/\"],\"LogoutURLs\":[\"https://www.nonaanalytics.com/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
     "verificationBucketName": "lifeprojectfinalappee83f447verificationbucket",
@@ -79,5 +78,6 @@
                 "Name"
             ]
         }
-    ]
+    ],
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.nonaanalytics.org/\"],\"LogoutURLs\":[\"https://www.nonaanalytics.org/\"]}"
 }
