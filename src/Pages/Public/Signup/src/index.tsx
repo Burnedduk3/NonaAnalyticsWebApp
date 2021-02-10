@@ -19,9 +19,7 @@ import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
 import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
 import lock from '../../../../assets/Icons/lock.png';
 import user from '../../../../assets/Icons/user.png';
-import address from '../../../../assets/Icons/address.png';
 import birthday from '../../../../assets/Icons/birthday.png';
-import phone from '../../../../assets/Icons/phone.png';
 import mail from '../../../../assets/Icons/mail.png';
 import gender from '../../../../assets/Icons/gender.png';
 import DatePicker from 'react-datepicker';
@@ -209,16 +207,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           <hr/>
         </div>
         <div className="form-container">
-          <label htmlFor="address">
-            <img src={address} alt="Address Icons8"/>
-            <input type="text"
-              name='address'
-              value={pageInputs.address}
-              placeholder="Address"
-              onChange={handleInput}
-            />
-          </label>
-
           <label htmlFor="birthdate">
             <img src={birthday} alt="Birthday Icons8"/>
             <DatePicker
@@ -260,16 +248,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
               value={pageInputs.name}
               placeholder='Name'
               onChange={handleInput}
-            />
-          </label>
-
-          <label htmlFor="phoneNumber">
-            <img src={phone} alt="Phone Icons8"/>
-            <input type="text"
-              name='phoneNumber'
-              placeholder='+1 123 123 123'
-              onChange={handleInput}
-              value={pageInputs.phoneNumber}
             />
           </label>
 

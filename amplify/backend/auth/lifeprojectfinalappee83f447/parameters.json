@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "lifeprojectfinalauth_identitypool_38d2d063",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "lifepr7f19f506",
-    "userPoolName": "lifeprojectauthgroup",
+    "identityPoolName": "lifeprojectfinalappee83f447_identitypool_ee83f447",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "lifepree83f447",
+    "userPoolName": "lifeprojectfinalappee83f447_userpool_ee83f447",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -18,14 +18,12 @@
     "passwordPolicyMinLength": 8,
     "passwordPolicyCharacters": [],
     "requiredAttributes": [
-        "address",
         "birthdate",
         "email",
         "gender",
-        "name",
-        "phone_number"
+        "name"
     ],
-    "userpoolClientGenerateSecret": true,
+    "userpoolClientGenerateSecret": false,
     "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
         "email"
@@ -33,10 +31,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "lifepr7f19f506_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "lifepree83f447_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "7f19f506",
-    "resourceName": "lifeprojectfinalauth",
+    "sharedId": "ee83f447",
+    "resourceName": "lifeprojectfinalappee83f447",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
@@ -50,17 +48,22 @@
             "Arn"
         ]
     },
-    "useDefault": "manual",
+    "useDefault": "defaultSocial",
+    "hostedUI": true,
     "usernameAttributes": [
-        "email, phone_number"
+        "email"
     ],
-    "userPoolGroups": false,
-    "adminQueries": true,
     "triggers": "{\n  \"CustomMessage\": [\n    \"verification-link\"\n  ]\n}",
-    "hostedUI": false,
+    "hostedUIDomainName": "lifeprojectfinalappee83f447-ee83f447",
+    "authProvidersUserPool": [
+        "Facebook",
+        "Google"
+    ],
+    "hostedUIProviderMeta": "[{\"ProviderName\":\"Facebook\",\"authorize_scopes\":\"public_profile,email\",\"AttributeMapping\":{\"birthdate\":\"birthday\",\"email\":\"email\",\"gender\":\"gender\",\"name\":\"name\",\"username\":\"id\"}},{\"ProviderName\":\"Google\",\"authorize_scopes\":\"openid profile email\",\"AttributeMapping\":{\"birthdate\":\"birthdays\",\"email\":\"email\",\"gender\":\"genders\",\"name\":\"name\",\"username\":\"sub\"}}]",
+    "oAuthMetadata": "{\"AllowedOAuthFlows\":[\"code\"],\"AllowedOAuthScopes\":[\"phone\",\"email\",\"openid\",\"profile\",\"aws.cognito.signin.user.admin\"],\"CallbackURLs\":[\"https://www.nonaanalytics.com/\"],\"LogoutURLs\":[\"https://www.nonaanalytics.com/\"]}",
     "userPoolGroupList": [],
     "serviceName": "Cognito",
-    "verificationBucketName": "lifeprojectfinalauthverificationbucket",
+    "verificationBucketName": "lifeprojectfinalappee83f447verificationbucket",
     "usernameCaseSensitive": false,
     "parentStack": {
         "Ref": "AWS::StackId"
@@ -69,7 +72,7 @@
     "dependsOn": [
         {
             "category": "function",
-            "resourceName": "lifeprojectfinalauthCustomMessage",
+            "resourceName": "lifeprojectfinalappee83f447CustomMessage",
             "triggerProvider": "Cognito",
             "attributes": [
                 "Arn",

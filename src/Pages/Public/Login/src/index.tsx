@@ -216,6 +216,13 @@ const LoginPage : React.FC = (): JSX.Element =>{
     console.log(data);
   };
 
+  const fedarateGoogleSignin = async () => {
+    const data = await Auth.federatedSignIn(
+        {provider: CognitoHostedUIIdentityProvider.Google},
+    );
+    console.log(data);
+  };
+
   const {error} = applicationState.appState;
 
   return (
@@ -243,7 +250,11 @@ const LoginPage : React.FC = (): JSX.Element =>{
         </div>
         <h2 className="page-title">Login</h2>
         <div className="login-socialMedia">
-          <img src={GoogleIcon} alt="Google logo" />
+          <img
+            src={GoogleIcon}
+            alt="Google logo"
+            onClick={()=>fedarateGoogleSignin()}
+          />
           <img
             src={FBIcon}
             alt="Facebook logo"

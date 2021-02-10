@@ -2,6 +2,17 @@
 /* eslint-disable */
 //  This file was automatically generated and should not be edited.
 
+export type CreateUserResponse = {
+  __typename: "CreateUserResponse",
+  ID?: string,
+  formID?: string | null,
+  questionId?: string | null,
+  response?: string | null,
+  subSection?: string | null,
+  section?: string | null,
+  userID?: string | null,
+};
+
 export type CreateCreateUserResponseInput = {
   ID: string,
   formID?: string | null,
@@ -20,6 +31,14 @@ export type UpdateCreateUserResponseInput = {
   subSection?: string | null,
   section?: string | null,
   userID?: string | null,
+};
+
+export type UserInfo = {
+  __typename: "UserInfo",
+  userID?: string,
+  fName?: string | null,
+  lName?: string | null,
+  userEmail?: string | null,
 };
 
 export type CreateUserInfoInput = {
@@ -109,6 +128,93 @@ export type ModelFloatInput = {
   between?: Array< number | null > | null,
   attributeExists?: boolean | null,
   attributeType?: ModelAttributeTypes | null,
+};
+
+export type Form = {
+  __typename: "Form",
+  id?: string,
+  formQuestions?: ModelFormQuestionConnection,
+  UserID?: string,
+  finished?: boolean | null,
+  percentage?: number,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type ModelFormQuestionConnection = {
+  __typename: "ModelFormQuestionConnection",
+  items?:  Array<FormQuestion | null > | null,
+  nextToken?: string | null,
+};
+
+export type FormQuestion = {
+  __typename: "FormQuestion",
+  id?: string,
+  response?: string,
+  question?: Question,
+  form?: Form,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type Question = {
+  __typename: "Question",
+  id?: string,
+  question?: string,
+  stack?: number,
+  stackPhrase?: string | null,
+  placeHolder?: string | null,
+  usedForms?: ModelFormQuestionConnection,
+  category?: Category,
+  subSection?: SubSection,
+  order?: number,
+  items?: Array< string | null > | null,
+  imagesPath?: Array< string | null > | null,
+  inputConfirmation?: string,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type Category = {
+  __typename: "Category",
+  id?: string,
+  name?: string,
+  questions?: ModelQuestionConnection,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type ModelQuestionConnection = {
+  __typename: "ModelQuestionConnection",
+  items?:  Array<Question | null > | null,
+  nextToken?: string | null,
+};
+
+export type SubSection = {
+  __typename: "SubSection",
+  id?: string,
+  name?: string,
+  section?: Section,
+  questions?: ModelQuestionConnection,
+  order?: number,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type Section = {
+  __typename: "Section",
+  id?: string,
+  name?: string,
+  subSections?: ModelSubSectionConnection,
+  order?: number,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type ModelSubSectionConnection = {
+  __typename: "ModelSubSectionConnection",
+  items?:  Array<SubSection | null > | null,
+  nextToken?: string | null,
 };
 
 export type UpdateFormInput = {
@@ -302,6 +408,12 @@ export type ModelIDInput = {
   size?: ModelSizeInput | null,
 };
 
+export type ModelFormConnection = {
+  __typename: "ModelFormConnection",
+  items?:  Array<Form | null > | null,
+  nextToken?: string | null,
+};
+
 export type ModelFormQuestionFilterInput = {
   id?: ModelIDInput | null,
   response?: ModelStringInput | null,
@@ -333,6 +445,12 @@ export type ModelCategoryFilterInput = {
   not?: ModelCategoryFilterInput | null,
 };
 
+export type ModelCategoryConnection = {
+  __typename: "ModelCategoryConnection",
+  items?:  Array<Category | null > | null,
+  nextToken?: string | null,
+};
+
 export type ModelSectionFilterInput = {
   id?: ModelIDInput | null,
   name?: ModelStringInput | null,
@@ -340,6 +458,12 @@ export type ModelSectionFilterInput = {
   and?: Array< ModelSectionFilterInput | null > | null,
   or?: Array< ModelSectionFilterInput | null > | null,
   not?: ModelSectionFilterInput | null,
+};
+
+export type ModelSectionConnection = {
+  __typename: "ModelSectionConnection",
+  items?:  Array<Section | null > | null,
+  nextToken?: string | null,
 };
 
 export type ModelSubSectionFilterInput = {
@@ -352,132 +476,132 @@ export type ModelSubSectionFilterInput = {
 };
 
 export type DeleteCreateUserResponseMutationVariables = {
-  ID: string,
+  ID?: string,
 };
 
 export type DeleteCreateUserResponseMutation = {
-  deleteCreateUserResponse:  {
+  deleteCreateUserResponse?:  {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null,
 };
 
 export type CreateCreateUserResponseMutationVariables = {
-  createCreateUserResponseInput: CreateCreateUserResponseInput,
+  createCreateUserResponseInput?: CreateCreateUserResponseInput,
 };
 
 export type CreateCreateUserResponseMutation = {
-  createCreateUserResponse:  {
+  createCreateUserResponse?:  {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null,
 };
 
 export type UpdateCreateUserResponseMutationVariables = {
-  updateCreateUserResponseInput: UpdateCreateUserResponseInput,
+  updateCreateUserResponseInput?: UpdateCreateUserResponseInput,
 };
 
 export type UpdateCreateUserResponseMutation = {
-  updateCreateUserResponse:  {
+  updateCreateUserResponse?:  {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null,
 };
 
 export type DeleteUserInfoMutationVariables = {
-  userID: string,
+  userID?: string,
 };
 
 export type DeleteUserInfoMutation = {
-  deleteUserInfo:  {
+  deleteUserInfo?:  {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null,
 };
 
 export type CreateUserInfoMutationVariables = {
-  createUserInfoInput: CreateUserInfoInput,
+  createUserInfoInput?: CreateUserInfoInput,
 };
 
 export type CreateUserInfoMutation = {
-  createUserInfo:  {
+  createUserInfo?:  {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null,
 };
 
 export type UpdateUserInfoMutationVariables = {
-  updateUserInfoInput: UpdateUserInfoInput,
+  updateUserInfoInput?: UpdateUserInfoInput,
 };
 
 export type UpdateUserInfoMutation = {
-  updateUserInfo:  {
+  updateUserInfo?:  {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null,
 };
 
 export type CreateFormMutationVariables = {
-  input: CreateFormInput,
+  input?: CreateFormInput,
   condition?: ModelFormConditionInput | null,
 };
 
 export type CreateFormMutation = {
-  createForm:  {
+  createForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -486,21 +610,21 @@ export type CreateFormMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -508,10 +632,10 @@ export type CreateFormMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -519,39 +643,39 @@ export type CreateFormMutation = {
 };
 
 export type UpdateFormMutationVariables = {
-  input: UpdateFormInput,
+  input?: UpdateFormInput,
   condition?: ModelFormConditionInput | null,
 };
 
 export type UpdateFormMutation = {
-  updateForm:  {
+  updateForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -560,21 +684,21 @@ export type UpdateFormMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -582,10 +706,10 @@ export type UpdateFormMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -593,39 +717,39 @@ export type UpdateFormMutation = {
 };
 
 export type DeleteFormMutationVariables = {
-  input: DeleteFormInput,
+  input?: DeleteFormInput,
   condition?: ModelFormConditionInput | null,
 };
 
 export type DeleteFormMutation = {
-  deleteForm:  {
+  deleteForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -634,21 +758,21 @@ export type DeleteFormMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -656,10 +780,10 @@ export type DeleteFormMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -667,47 +791,47 @@ export type DeleteFormMutation = {
 };
 
 export type CreateFormQuestionMutationVariables = {
-  input: CreateFormQuestionInput,
+  input?: CreateFormQuestionInput,
   condition?: ModelFormQuestionConditionInput | null,
 };
 
 export type CreateFormQuestionMutation = {
-  createFormQuestion:  {
+  createFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -715,106 +839,106 @@ export type CreateFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -822,10 +946,10 @@ export type CreateFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -836,47 +960,47 @@ export type CreateFormQuestionMutation = {
 };
 
 export type UpdateFormQuestionMutationVariables = {
-  input: UpdateFormQuestionInput,
+  input?: UpdateFormQuestionInput,
   condition?: ModelFormQuestionConditionInput | null,
 };
 
 export type UpdateFormQuestionMutation = {
-  updateFormQuestion:  {
+  updateFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -884,106 +1008,106 @@ export type UpdateFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -991,10 +1115,10 @@ export type UpdateFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -1005,47 +1129,47 @@ export type UpdateFormQuestionMutation = {
 };
 
 export type DeleteFormQuestionMutationVariables = {
-  input: DeleteFormQuestionInput,
+  input?: DeleteFormQuestionInput,
   condition?: ModelFormQuestionConditionInput | null,
 };
 
 export type DeleteFormQuestionMutation = {
-  deleteFormQuestion:  {
+  deleteFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -1053,106 +1177,106 @@ export type DeleteFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -1160,10 +1284,10 @@ export type DeleteFormQuestionMutation = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -1174,43 +1298,43 @@ export type DeleteFormQuestionMutation = {
 };
 
 export type CreateQuestionMutationVariables = {
-  input: CreateQuestionInput,
+  input?: CreateQuestionInput,
   condition?: ModelQuestionConditionInput | null,
 };
 
 export type CreateQuestionMutation = {
-  createQuestion:  {
+  createQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1219,21 +1343,21 @@ export type CreateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -1241,33 +1365,33 @@ export type CreateQuestionMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1276,28 +1400,28 @@ export type CreateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1305,33 +1429,33 @@ export type CreateQuestionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1340,21 +1464,21 @@ export type CreateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -1362,43 +1486,43 @@ export type CreateQuestionMutation = {
 };
 
 export type UpdateQuestionMutationVariables = {
-  input: UpdateQuestionInput,
+  input?: UpdateQuestionInput,
   condition?: ModelQuestionConditionInput | null,
 };
 
 export type UpdateQuestionMutation = {
-  updateQuestion:  {
+  updateQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1407,21 +1531,21 @@ export type UpdateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -1429,33 +1553,33 @@ export type UpdateQuestionMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1464,28 +1588,28 @@ export type UpdateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1493,33 +1617,33 @@ export type UpdateQuestionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1528,21 +1652,21 @@ export type UpdateQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -1550,43 +1674,43 @@ export type UpdateQuestionMutation = {
 };
 
 export type DeleteQuestionMutationVariables = {
-  input: DeleteQuestionInput,
+  input?: DeleteQuestionInput,
   condition?: ModelQuestionConditionInput | null,
 };
 
 export type DeleteQuestionMutation = {
-  deleteQuestion:  {
+  deleteQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1595,21 +1719,21 @@ export type DeleteQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -1617,33 +1741,33 @@ export type DeleteQuestionMutation = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1652,28 +1776,28 @@ export type DeleteQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1681,33 +1805,33 @@ export type DeleteQuestionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -1716,21 +1840,21 @@ export type DeleteQuestionMutation = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -1738,51 +1862,51 @@ export type DeleteQuestionMutation = {
 };
 
 export type CreateCategoryMutationVariables = {
-  input: CreateCategoryInput,
+  input?: CreateCategoryInput,
   condition?: ModelCategoryConditionInput | null,
 };
 
 export type CreateCategoryMutation = {
-  createCategory:  {
+  createCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -1790,22 +1914,22 @@ export type CreateCategoryMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -1813,51 +1937,51 @@ export type CreateCategoryMutation = {
 };
 
 export type UpdateCategoryMutationVariables = {
-  input: UpdateCategoryInput,
+  input?: UpdateCategoryInput,
   condition?: ModelCategoryConditionInput | null,
 };
 
 export type UpdateCategoryMutation = {
-  updateCategory:  {
+  updateCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -1865,22 +1989,22 @@ export type UpdateCategoryMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -1888,51 +2012,51 @@ export type UpdateCategoryMutation = {
 };
 
 export type DeleteCategoryMutationVariables = {
-  input: DeleteCategoryInput,
+  input?: DeleteCategoryInput,
   condition?: ModelCategoryConditionInput | null,
 };
 
 export type DeleteCategoryMutation = {
-  deleteCategory:  {
+  deleteCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -1940,22 +2064,22 @@ export type DeleteCategoryMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -1963,56 +2087,56 @@ export type DeleteCategoryMutation = {
 };
 
 export type CreateSectionMutationVariables = {
-  input: CreateSectionInput,
+  input?: CreateSectionInput,
   condition?: ModelSectionConditionInput | null,
 };
 
 export type CreateSectionMutation = {
-  createSection:  {
+  createSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2021,56 +2145,56 @@ export type CreateSectionMutation = {
 };
 
 export type UpdateSectionMutationVariables = {
-  input: UpdateSectionInput,
+  input?: UpdateSectionInput,
   condition?: ModelSectionConditionInput | null,
 };
 
 export type UpdateSectionMutation = {
-  updateSection:  {
+  updateSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2079,56 +2203,56 @@ export type UpdateSectionMutation = {
 };
 
 export type DeleteSectionMutationVariables = {
-  input: DeleteSectionInput,
+  input?: DeleteSectionInput,
   condition?: ModelSectionConditionInput | null,
 };
 
 export type DeleteSectionMutation = {
-  deleteSection:  {
+  deleteSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2137,26 +2261,26 @@ export type DeleteSectionMutation = {
 };
 
 export type CreateSubSectionMutationVariables = {
-  input: CreateSubSectionInput,
+  input?: CreateSubSectionInput,
   condition?: ModelSubSectionConditionInput | null,
 };
 
 export type CreateSubSectionMutation = {
-  createSubSection:  {
+  createSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2164,56 +2288,56 @@ export type CreateSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2221,22 +2345,22 @@ export type CreateSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2245,26 +2369,26 @@ export type CreateSubSectionMutation = {
 };
 
 export type UpdateSubSectionMutationVariables = {
-  input: UpdateSubSectionInput,
+  input?: UpdateSubSectionInput,
   condition?: ModelSubSectionConditionInput | null,
 };
 
 export type UpdateSubSectionMutation = {
-  updateSubSection:  {
+  updateSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2272,56 +2396,56 @@ export type UpdateSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2329,22 +2453,22 @@ export type UpdateSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2353,26 +2477,26 @@ export type UpdateSubSectionMutation = {
 };
 
 export type DeleteSubSectionMutationVariables = {
-  input: DeleteSubSectionInput,
+  input?: DeleteSubSectionInput,
   condition?: ModelSubSectionConditionInput | null,
 };
 
 export type DeleteSubSectionMutation = {
-  deleteSubSection:  {
+  deleteSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2380,56 +2504,56 @@ export type DeleteSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2437,22 +2561,22 @@ export type DeleteSubSectionMutation = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -2461,92 +2585,92 @@ export type DeleteSubSectionMutation = {
 };
 
 export type GetCreateUserResponseQueryVariables = {
-  ID: string,
+  ID?: string,
 };
 
 export type GetCreateUserResponseQuery = {
-  getCreateUserResponse:  {
+  getCreateUserResponse?:  {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null,
 };
 
 export type ListCreateUserResponsesQuery = {
-  listCreateUserResponses:  Array< {
+  listCreateUserResponses?:  Array< {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null > | null,
 };
 
 export type GetUserInfoQueryVariables = {
-  userID: string,
+  userID?: string,
 };
 
 export type GetUserInfoQuery = {
-  getUserInfo:  {
+  getUserInfo?:  {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null,
 };
 
 export type ListUserInfosQuery = {
-  listUserInfos:  Array< {
+  listUserInfos?:  Array< {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null > | null,
 };
 
 export type GetFormQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetFormQuery = {
-  getForm:  {
+  getForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -2555,21 +2679,21 @@ export type GetFormQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -2577,10 +2701,10 @@ export type GetFormQuery = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -2594,36 +2718,36 @@ export type ListFormsQueryVariables = {
 };
 
 export type ListFormsQuery = {
-  listForms:  {
+  listForms?:  {
     __typename: "ModelFormConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -2631,59 +2755,59 @@ export type ListFormsQuery = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetFormQuestionQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetFormQuestionQuery = {
-  getFormQuestion:  {
+  getFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -2691,106 +2815,106 @@ export type GetFormQuestionQuery = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -2798,10 +2922,10 @@ export type GetFormQuestionQuery = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -2818,46 +2942,46 @@ export type ListFormQuestionsQueryVariables = {
 };
 
 export type ListFormQuestionsQuery = {
-  listFormQuestions:  {
+  listFormQuestions?:  {
     __typename: "ModelFormQuestionConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "FormQuestion",
       id: string,
       response: string,
-      question:  {
+      question?:  {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -2865,37 +2989,37 @@ export type ListFormQuestionsQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null,
-      form:  {
+      form?:  {
         __typename: "Form",
         id: string,
-        formQuestions:  {
+        formQuestions?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         UserID: string,
-        finished: boolean | null,
+        finished?: boolean | null,
         percentage: number,
         createdAt: string,
         updatedAt: string,
@@ -2903,47 +3027,47 @@ export type ListFormQuestionsQuery = {
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetQuestionQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetQuestionQuery = {
-  getQuestion:  {
+  getQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -2952,21 +3076,21 @@ export type GetQuestionQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -2974,33 +3098,33 @@ export type GetQuestionQuery = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3009,28 +3133,28 @@ export type GetQuestionQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3038,33 +3162,33 @@ export type GetQuestionQuery = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3073,21 +3197,21 @@ export type GetQuestionQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -3101,40 +3225,40 @@ export type ListQuestionsQueryVariables = {
 };
 
 export type ListQuestionsQuery = {
-  listQuestions:  {
+  listQuestions?:  {
     __typename: "ModelQuestionConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -3142,127 +3266,127 @@ export type ListQuestionsQuery = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetCategoryQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetCategoryQuery = {
-  getCategory:  {
+  getCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -3270,22 +3394,22 @@ export type GetCategoryQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -3299,33 +3423,33 @@ export type ListCategorysQueryVariables = {
 };
 
 export type ListCategorysQuery = {
-  listCategorys:  {
+  listCategorys?:  {
     __typename: "ModelCategoryConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3334,71 +3458,71 @@ export type ListCategorysQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetSectionQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetSectionQuery = {
-  getSection:  {
+  getSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -3413,19 +3537,19 @@ export type ListSectionsQueryVariables = {
 };
 
 export type ListSectionsQuery = {
-  listSections:  {
+  listSections?:  {
     __typename: "ModelSectionConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -3433,44 +3557,44 @@ export type ListSectionsQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type GetSubSectionQueryVariables = {
-  id: string,
+  id?: string,
 };
 
 export type GetSubSectionQuery = {
-  getSubSection:  {
+  getSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -3478,56 +3602,56 @@ export type GetSubSectionQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -3535,22 +3659,22 @@ export type GetSubSectionQuery = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -3565,19 +3689,19 @@ export type ListSubSectionsQueryVariables = {
 };
 
 export type ListSubSectionsQuery = {
-  listSubSections:  {
+  listSubSections?:  {
     __typename: "ModelSubSectionConnection",
-    items:  Array< {
+    items?:  Array< {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3585,33 +3709,33 @@ export type ListSubSectionsQuery = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3620,74 +3744,74 @@ export type ListSubSectionsQuery = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null > | null,
-    nextToken: string | null,
+    nextToken?: string | null,
   } | null,
 };
 
 export type OnCreateCreateUserResponseSubscription = {
-  onCreateCreateUserResponse:  {
+  onCreateCreateUserResponse?:  {
     __typename: "CreateUserResponse",
     ID: string,
-    formID: string | null,
-    questionId: string | null,
-    response: string | null,
-    subSection: string | null,
-    section: string | null,
-    userID: string | null,
+    formID?: string | null,
+    questionId?: string | null,
+    response?: string | null,
+    subSection?: string | null,
+    section?: string | null,
+    userID?: string | null,
   } | null,
 };
 
 export type OnCreateUserInfoSubscription = {
-  onCreateUserInfo:  {
+  onCreateUserInfo?:  {
     __typename: "UserInfo",
     userID: string,
-    fName: string | null,
-    lName: string | null,
-    userEmail: string | null,
+    fName?: string | null,
+    lName?: string | null,
+    userEmail?: string | null,
   } | null,
 };
 
 export type OnCreateFormSubscription = {
-  onCreateForm:  {
+  onCreateForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3696,21 +3820,21 @@ export type OnCreateFormSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -3718,10 +3842,10 @@ export type OnCreateFormSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -3729,34 +3853,34 @@ export type OnCreateFormSubscription = {
 };
 
 export type OnUpdateFormSubscription = {
-  onUpdateForm:  {
+  onUpdateForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3765,21 +3889,21 @@ export type OnUpdateFormSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -3787,10 +3911,10 @@ export type OnUpdateFormSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -3798,34 +3922,34 @@ export type OnUpdateFormSubscription = {
 };
 
 export type OnDeleteFormSubscription = {
-  onDeleteForm:  {
+  onDeleteForm?:  {
     __typename: "Form",
     id: string,
-    formQuestions:  {
+    formQuestions?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -3834,21 +3958,21 @@ export type OnDeleteFormSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -3856,10 +3980,10 @@ export type OnDeleteFormSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     UserID: string,
-    finished: boolean | null,
+    finished?: boolean | null,
     percentage: number,
     createdAt: string,
     updatedAt: string,
@@ -3867,42 +3991,42 @@ export type OnDeleteFormSubscription = {
 };
 
 export type OnCreateFormQuestionSubscription = {
-  onCreateFormQuestion:  {
+  onCreateFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -3910,106 +4034,106 @@ export type OnCreateFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -4017,10 +4141,10 @@ export type OnCreateFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -4031,42 +4155,42 @@ export type OnCreateFormQuestionSubscription = {
 };
 
 export type OnUpdateFormQuestionSubscription = {
-  onUpdateFormQuestion:  {
+  onUpdateFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -4074,106 +4198,106 @@ export type OnUpdateFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -4181,10 +4305,10 @@ export type OnUpdateFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -4195,42 +4319,42 @@ export type OnUpdateFormQuestionSubscription = {
 };
 
 export type OnDeleteFormQuestionSubscription = {
-  onDeleteFormQuestion:  {
+  onDeleteFormQuestion?:  {
     __typename: "FormQuestion",
     id: string,
     response: string,
-    question:  {
+    question?:  {
       __typename: "Question",
       id: string,
       question: string,
       stack: number,
-      stackPhrase: string | null,
-      placeHolder: string | null,
-      usedForms:  {
+      stackPhrase?: string | null,
+      placeHolder?: string | null,
+      usedForms?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -4238,106 +4362,106 @@ export type OnDeleteFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
-      category:  {
+      category?:  {
         __typename: "Category",
         id: string,
         name: string,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         createdAt: string,
         updatedAt: string,
       } | null,
-      subSection:  {
+      subSection?:  {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
       order: number,
-      items: Array< string | null > | null,
-      imagesPath: Array< string | null > | null,
+      items?: Array< string | null > | null,
+      imagesPath?: Array< string | null > | null,
       inputConfirmation: string,
       createdAt: string,
       updatedAt: string,
     } | null,
-    form:  {
+    form?:  {
       __typename: "Form",
       id: string,
-      formQuestions:  {
+      formQuestions?:  {
         __typename: "ModelFormQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "FormQuestion",
           id: string,
           response: string,
-          question:  {
+          question?:  {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          form:  {
+          form?:  {
             __typename: "Form",
             id: string,
             UserID: string,
-            finished: boolean | null,
+            finished?: boolean | null,
             percentage: number,
             createdAt: string,
             updatedAt: string,
@@ -4345,10 +4469,10 @@ export type OnDeleteFormQuestionSubscription = {
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       UserID: string,
-      finished: boolean | null,
+      finished?: boolean | null,
       percentage: number,
       createdAt: string,
       updatedAt: string,
@@ -4359,38 +4483,38 @@ export type OnDeleteFormQuestionSubscription = {
 };
 
 export type OnCreateQuestionSubscription = {
-  onCreateQuestion:  {
+  onCreateQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4399,21 +4523,21 @@ export type OnCreateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -4421,33 +4545,33 @@ export type OnCreateQuestionSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4456,28 +4580,28 @@ export type OnCreateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4485,33 +4609,33 @@ export type OnCreateQuestionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4520,21 +4644,21 @@ export type OnCreateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -4542,38 +4666,38 @@ export type OnCreateQuestionSubscription = {
 };
 
 export type OnUpdateQuestionSubscription = {
-  onUpdateQuestion:  {
+  onUpdateQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4582,21 +4706,21 @@ export type OnUpdateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -4604,33 +4728,33 @@ export type OnUpdateQuestionSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4639,28 +4763,28 @@ export type OnUpdateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4668,33 +4792,33 @@ export type OnUpdateQuestionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4703,21 +4827,21 @@ export type OnUpdateQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -4725,38 +4849,38 @@ export type OnUpdateQuestionSubscription = {
 };
 
 export type OnDeleteQuestionSubscription = {
-  onDeleteQuestion:  {
+  onDeleteQuestion?:  {
     __typename: "Question",
     id: string,
     question: string,
     stack: number,
-    stackPhrase: string | null,
-    placeHolder: string | null,
-    usedForms:  {
+    stackPhrase?: string | null,
+    placeHolder?: string | null,
+    usedForms?:  {
       __typename: "ModelFormQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "FormQuestion",
         id: string,
         response: string,
-        question:  {
+        question?:  {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4765,21 +4889,21 @@ export type OnDeleteQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null,
-        form:  {
+        form?:  {
           __typename: "Form",
           id: string,
-          formQuestions:  {
+          formQuestions?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           UserID: string,
-          finished: boolean | null,
+          finished?: boolean | null,
           percentage: number,
           createdAt: string,
           updatedAt: string,
@@ -4787,33 +4911,33 @@ export type OnDeleteQuestionSubscription = {
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
-    category:  {
+    category?:  {
       __typename: "Category",
       id: string,
       name: string,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4822,28 +4946,28 @@ export type OnDeleteQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       createdAt: string,
       updatedAt: string,
     } | null,
-    subSection:  {
+    subSection?:  {
       __typename: "SubSection",
       id: string,
       name: string,
-      section:  {
+      section?:  {
         __typename: "Section",
         id: string,
         name: string,
-        subSections:  {
+        subSections?:  {
           __typename: "ModelSubSectionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4851,33 +4975,33 @@ export type OnDeleteQuestionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null,
-      questions:  {
+      questions?:  {
         __typename: "ModelQuestionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "Question",
           id: string,
           question: string,
           stack: number,
-          stackPhrase: string | null,
-          placeHolder: string | null,
-          usedForms:  {
+          stackPhrase?: string | null,
+          placeHolder?: string | null,
+          usedForms?:  {
             __typename: "ModelFormQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
-          category:  {
+          category?:  {
             __typename: "Category",
             id: string,
             name: string,
             createdAt: string,
             updatedAt: string,
           } | null,
-          subSection:  {
+          subSection?:  {
             __typename: "SubSection",
             id: string,
             name: string,
@@ -4886,21 +5010,21 @@ export type OnDeleteQuestionSubscription = {
             updatedAt: string,
           } | null,
           order: number,
-          items: Array< string | null > | null,
-          imagesPath: Array< string | null > | null,
+          items?: Array< string | null > | null,
+          imagesPath?: Array< string | null > | null,
           inputConfirmation: string,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
     order: number,
-    items: Array< string | null > | null,
-    imagesPath: Array< string | null > | null,
+    items?: Array< string | null > | null,
+    imagesPath?: Array< string | null > | null,
     inputConfirmation: string,
     createdAt: string,
     updatedAt: string,
@@ -4908,46 +5032,46 @@ export type OnDeleteQuestionSubscription = {
 };
 
 export type OnCreateCategorySubscription = {
-  onCreateCategory:  {
+  onCreateCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -4955,22 +5079,22 @@ export type OnCreateCategorySubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -4978,46 +5102,46 @@ export type OnCreateCategorySubscription = {
 };
 
 export type OnUpdateCategorySubscription = {
-  onUpdateCategory:  {
+  onUpdateCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5025,22 +5149,22 @@ export type OnUpdateCategorySubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -5048,46 +5172,46 @@ export type OnUpdateCategorySubscription = {
 };
 
 export type OnDeleteCategorySubscription = {
-  onDeleteCategory:  {
+  onDeleteCategory?:  {
     __typename: "Category",
     id: string,
     name: string,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5095,22 +5219,22 @@ export type OnDeleteCategorySubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -5118,51 +5242,51 @@ export type OnDeleteCategorySubscription = {
 };
 
 export type OnCreateSectionSubscription = {
-  onCreateSection:  {
+  onCreateSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -5171,51 +5295,51 @@ export type OnCreateSectionSubscription = {
 };
 
 export type OnUpdateSectionSubscription = {
-  onUpdateSection:  {
+  onUpdateSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -5224,51 +5348,51 @@ export type OnUpdateSectionSubscription = {
 };
 
 export type OnDeleteSectionSubscription = {
-  onDeleteSection:  {
+  onDeleteSection?:  {
     __typename: "Section",
     id: string,
     name: string,
-    subSections:  {
+    subSections?:  {
       __typename: "ModelSubSectionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "SubSection",
         id: string,
         name: string,
-        section:  {
+        section?:  {
           __typename: "Section",
           id: string,
           name: string,
-          subSections:  {
+          subSections?:  {
             __typename: "ModelSubSectionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
-        questions:  {
+        questions?:  {
           __typename: "ModelQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "Question",
             id: string,
             question: string,
             stack: number,
-            stackPhrase: string | null,
-            placeHolder: string | null,
+            stackPhrase?: string | null,
+            placeHolder?: string | null,
             order: number,
-            items: Array< string | null > | null,
-            imagesPath: Array< string | null > | null,
+            items?: Array< string | null > | null,
+            imagesPath?: Array< string | null > | null,
             inputConfirmation: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
         order: number,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -5277,21 +5401,21 @@ export type OnDeleteSectionSubscription = {
 };
 
 export type OnCreateSubSectionSubscription = {
-  onCreateSubSection:  {
+  onCreateSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5299,56 +5423,56 @@ export type OnCreateSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5356,22 +5480,22 @@ export type OnCreateSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -5380,21 +5504,21 @@ export type OnCreateSubSectionSubscription = {
 };
 
 export type OnUpdateSubSectionSubscription = {
-  onUpdateSubSection:  {
+  onUpdateSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5402,56 +5526,56 @@ export type OnUpdateSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5459,22 +5583,22 @@ export type OnUpdateSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,
@@ -5483,21 +5607,21 @@ export type OnUpdateSubSectionSubscription = {
 };
 
 export type OnDeleteSubSectionSubscription = {
-  onDeleteSubSection:  {
+  onDeleteSubSection?:  {
     __typename: "SubSection",
     id: string,
     name: string,
-    section:  {
+    section?:  {
       __typename: "Section",
       id: string,
       name: string,
-      subSections:  {
+      subSections?:  {
         __typename: "ModelSubSectionConnection",
-        items:  Array< {
+        items?:  Array< {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5505,56 +5629,56 @@ export type OnDeleteSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null > | null,
-        nextToken: string | null,
+        nextToken?: string | null,
       } | null,
       order: number,
       createdAt: string,
       updatedAt: string,
     } | null,
-    questions:  {
+    questions?:  {
       __typename: "ModelQuestionConnection",
-      items:  Array< {
+      items?:  Array< {
         __typename: "Question",
         id: string,
         question: string,
         stack: number,
-        stackPhrase: string | null,
-        placeHolder: string | null,
-        usedForms:  {
+        stackPhrase?: string | null,
+        placeHolder?: string | null,
+        usedForms?:  {
           __typename: "ModelFormQuestionConnection",
-          items:  Array< {
+          items?:  Array< {
             __typename: "FormQuestion",
             id: string,
             response: string,
             createdAt: string,
             updatedAt: string,
           } | null > | null,
-          nextToken: string | null,
+          nextToken?: string | null,
         } | null,
-        category:  {
+        category?:  {
           __typename: "Category",
           id: string,
           name: string,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           createdAt: string,
           updatedAt: string,
         } | null,
-        subSection:  {
+        subSection?:  {
           __typename: "SubSection",
           id: string,
           name: string,
-          section:  {
+          section?:  {
             __typename: "Section",
             id: string,
             name: string,
@@ -5562,22 +5686,22 @@ export type OnDeleteSubSectionSubscription = {
             createdAt: string,
             updatedAt: string,
           } | null,
-          questions:  {
+          questions?:  {
             __typename: "ModelQuestionConnection",
-            nextToken: string | null,
+            nextToken?: string | null,
           } | null,
           order: number,
           createdAt: string,
           updatedAt: string,
         } | null,
         order: number,
-        items: Array< string | null > | null,
-        imagesPath: Array< string | null > | null,
+        items?: Array< string | null > | null,
+        imagesPath?: Array< string | null > | null,
         inputConfirmation: string,
         createdAt: string,
         updatedAt: string,
       } | null > | null,
-      nextToken: string | null,
+      nextToken?: string | null,
     } | null,
     order: number,
     createdAt: string,

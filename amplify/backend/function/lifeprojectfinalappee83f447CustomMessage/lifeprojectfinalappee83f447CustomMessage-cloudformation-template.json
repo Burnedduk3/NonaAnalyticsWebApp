@@ -45,6 +45,12 @@
     },
     "env": {
       "Type": "String"
+    },
+    "deploymentBucketName": {
+      "Type": "String"
+    },
+    "s3Key": {
+      "Type": "String"
     }
   },
   "Conditions": {
@@ -69,12 +75,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lifeprojectfinalauthCustomMessage",
+            "lifeprojectfinalappee83f447CustomMessage",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lifeprojectfinalauthCustomMessage",
+                  "lifeprojectfinalappee83f447CustomMessage",
                   "-",
                   {
                     "Ref": "env"
@@ -118,8 +124,12 @@
         "Runtime": "nodejs10.x",
         "Timeout": "25",
         "Code": {
-          "S3Bucket": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
-          "S3Key": "amplify-builds/lifeprojectfinalauthCustomMessage-7362576b5978737a4c37-build.zip"
+          "S3Bucket": {
+            "Ref": "deploymentBucketName"
+          },
+          "S3Key": {
+            "Ref": "s3Key"
+          }
         }
       }
     },
@@ -129,12 +139,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lifeprojectfinalauthCustomMessage",
+            "lifeprojectfinalappee83f447CustomMessage",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lifeprojectfinalauthCustomMessage",
+                  "lifeprojectfinalappee83f447CustomMessage",
                   "-",
                   {
                     "Ref": "env"

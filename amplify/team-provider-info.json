@@ -21,15 +21,16 @@
         }
       },
       "function": {
-        "lifeprojectauthCustomMessage": {
+        "lifeprojectfinalappee83f447CustomMessage": {
           "REDIRECTURL": "https://nonaanalytics.org/",
-          "EMAILSUBJECT": "confirm your account",
-          "EMAILMESSAGE": "Thankyou for registering"
+          "EMAILSUBJECT": "Confirm your account",
+          "EMAILMESSAGE": "",
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/lifeprojectfinalappee83f447CustomMessage-576e2b566752577a5376-build.zip"
         }
       },
       "auth": {
-        "lifeprojectauth": {},
-        "lifeprojectfinalauth": {}
+        "lifeprojectfinalappee83f447": {}
       }
     }
   }
