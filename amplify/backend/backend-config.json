@@ -1,19 +1,19 @@
 {
   "function": {
-    "lifeprojectfinalappee83f447CustomMessage": {
+    "lifeprojectfinalapp31ed221d31ed221dCustomMessage": {
       "build": true,
       "providerPlugin": "awscloudformation",
       "service": "Lambda"
     }
   },
   "auth": {
-    "lifeprojectfinalappee83f447": {
+    "lifeprojectfinalapp31ed221d31ed221d": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [
         {
           "category": "function",
-          "resourceName": "lifeprojectfinalappee83f447CustomMessage",
+          "resourceName": "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
           "triggerProvider": "Cognito",
           "attributes": [
             "Arn",

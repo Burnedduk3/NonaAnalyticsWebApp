@@ -75,12 +75,12 @@
         "FunctionName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lifeprojectfinalappee83f447CustomMessage",
+            "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lifeprojectfinalappee83f447CustomMessage",
+                  "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
                   "-",
                   {
                     "Ref": "env"
@@ -139,12 +139,12 @@
         "RoleName": {
           "Fn::If": [
             "ShouldNotCreateEnvResources",
-            "lifeprojectfinalappee83f447CustomMessage",
+            "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
             {
               "Fn::Join": [
                 "",
                 [
-                  "lifeprojectfinalappee83f447CustomMessage",
+                  "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
                   "-",
                   {
                     "Ref": "env"

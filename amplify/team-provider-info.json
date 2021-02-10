@@ -21,16 +21,16 @@
         }
       },
       "function": {
-        "lifeprojectfinalappee83f447CustomMessage": {
+        "lifeprojectfinalapp31ed221d31ed221dCustomMessage": {
           "REDIRECTURL": "https://nonaanalytics.org/",
-          "EMAILSUBJECT": "Confirm your account",
+          "EMAILSUBJECT": "",
           "EMAILMESSAGE": "",
           "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
-          "s3Key": "amplify-builds/lifeprojectfinalappee83f447CustomMessage-576e2b566752577a5376-build.zip"
+          "s3Key": "amplify-builds/lifeprojectfinalapp31ed221d31ed221dCustomMessage-78456b707a7339746f6d-build.zip"
         }
       },
       "auth": {
-        "lifeprojectfinalappee83f447": {}
+        "lifeprojectfinalapp31ed221d31ed221d": {}
       }
     }
   }

@@ -3,18 +3,23 @@
   "modules": [
     "verification-link"
   ],
-  "parentResource": "lifeprojectfinalappee83f447",
-  "functionName": "lifeprojectfinalappee83f447CustomMessage",
-  "resourceName": "lifeprojectfinalappee83f447CustomMessage",
+  "parentResource": "lifeprojectfinalapp31ed221d31ed221d",
+  "functionName": "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
+  "resourceName": "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
   "parentStack": "auth",
-  "triggerEnvs": "[\n  {\n    \"key\": \"RESOURCENAME\",\n    \"value\": \"resourceName\"\n  }\n]",
+  "triggerEnvs": [
+    {
+      "key": "RESOURCENAME",
+      "value": "resourceName"
+    }
+  ],
   "triggerDir": "C:\\Users\\JuanCabrera\\AppData\\Roaming\\nvm\\v14.15.0\\node_modules\\@aws-amplify\\cli\\node_modules\\amplify-category-auth\\provider-utils\\awscloudformation\\triggers\\CustomMessage",
   "triggerTemplate": "CustomMessage.json.ejs",
   "triggerEventPath": "CustomMessage.event.json",
-  "roleName": "lifeprojectfinalappee83f447CustomMessage",
+  "roleName": "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
   "skipEdit": true,
   "REDIRECTURL": "https://nonaanalytics.org/",
-  "EMAILSUBJECT": "Confirm your account",
+  "EMAILSUBJECT": "",
   "EMAILMESSAGE": "",
   "RESOURCENAME": "resourceName",
   "enableCors": false
