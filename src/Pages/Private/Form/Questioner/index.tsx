@@ -252,20 +252,6 @@ const FormPage:React.FC<RouteComponentProps<
                     answer,
                     FormApplicationState.formState.currentFormID,
                 );
-                sendToDB = true;
-                FormApplicationState
-                    .formStateDispatch({
-                      type: UPDATE_ANSWERED_QUESTIONS,
-                      payload: {
-                        questionToAdd: {
-                          answer: answer,
-                          id: id,
-                          sendToDB: sendToDB,
-                          responseDbId,
-                        },
-                      },
-                    },
-                    );
                 applicationState.appStateDispatch(
                     {
                       type: SET_ERROR,
@@ -376,6 +362,20 @@ const FormPage:React.FC<RouteComponentProps<
               }
             }
           }
+          sendToDB = true;
+          FormApplicationState
+              .formStateDispatch({
+                type: UPDATE_ANSWERED_QUESTIONS,
+                payload: {
+                  questionToAdd: {
+                    answer: answer,
+                    id: id,
+                    sendToDB: sendToDB,
+                    responseDbId,
+                  },
+                },
+              },
+              );
         });
         if (
           currentProgress !== FormApplicationState.

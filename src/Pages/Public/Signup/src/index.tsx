@@ -100,15 +100,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           'Wrong Phone Input try adding the country code, +1 for USA',
       );
     }
-    if (pageInputs.phoneNumber.substr(0, 1) !== '+') {
-      throw new Error(
-          'Wrong Phone Input try adding the country code, +1 for USA',
-      );
-    }
 
-    if (!validator.isAscii(pageInputs.address)) {
-      throw new Error('Wrong address input');
-    }
     const nameValidator = /^[a-zA-Z_ ]*$/g;
     if (!nameValidator.test(pageInputs.name)) {
       throw new Error('Wrong Name Input');
@@ -155,9 +147,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
         password: pageInputs.password,
         attributes: {
           email: pageInputs.email,
-          phone_number: pageInputs.phoneNumber,
           birthdate: pageInputs.birthdate,
-          address: pageInputs.address,
           gender: pageInputs.gender,
           name: pageInputs.name,
         },

@@ -31,11 +31,11 @@ const RoutingConstants = {
   },
   form: {
     name: 'StartForm',
-    path: '/pre-questioner',
+    path: '/pre-survey',
   },
   dinamicForm: {
     name: 'sectionQuestioner',
-    path: '/questioner',
+    path: '/lake-nona-life-project',
   },
 };
 

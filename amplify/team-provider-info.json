@@ -20,8 +20,15 @@
           "rdsDatabaseName": "LifeProject"
         }
       },
+      "function": {
+        "lifeprojectauthCustomMessage": {
+          "REDIRECTURL": "https://nonaanalytics.org/",
+          "EMAILSUBJECT": "confirm your account",
+          "EMAILMESSAGE": "Thankyou for registering"
+        }
+      },
       "auth": {
-        "lifeprojectfinalauth": {}
+        "lifeprojectauth": {}
       }
     }
   }
