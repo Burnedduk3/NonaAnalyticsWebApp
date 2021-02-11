@@ -9,20 +9,16 @@ Parameters:
     Type: String
 
   
-  
-  
-  functionlifeprojectfinalapp31ed221d31ed221dCustomMessageArn:
-    Type: String
-    Default: functionlifeprojectfinalapp31ed221d31ed221dCustomMessageArn
-  
-  functionlifeprojectfinalapp31ed221d31ed221dCustomMessageName:
-    Type: String
-    Default: functionlifeprojectfinalapp31ed221d31ed221dCustomMessageName
-  
-  
-  
 
     
+  identityPoolName:
+    Type: String
+  
+            
+  
+  allowUnauthenticatedIdentities:
+    Type: String
+            
   resourceNameTruncated:
     Type: String
   
@@ -117,25 +113,17 @@ Parameters:
     Type: String
   
             
+  
+  hostedUI:
+    Type: String
+            
         
   usernameAttributes:
     Type: CommaDelimitedList
       
-  
-  userPoolGroups:
-    Type: String
-            
-  
-  adminQueries:
-    Type: String
-            
   triggers:
     Type: String
   
-            
-  
-  hostedUI:
-    Type: String
             
   hostedUIDomainName:
     Type: String
@@ -166,10 +154,6 @@ Parameters:
     Type: String
   
             
-  verificationBucketName:
-    Type: String
-  
-            
   
   usernameCaseSensitive:
     Type: String
@@ -194,34 +178,13 @@ Conditions:
 
 Resources:
   
-  CustomMessageConfirmationBucket:
-    Type: AWS::S3::Bucket
-    DeletionPolicy: "Retain"
-    Properties:
-      BucketName:  !If [ShouldNotCreateEnvResources, !Ref verificationBucketName, !Join ['',[!Ref verificationBucketName, '-', !Ref env]]]
-      AccessControl: "Private"
-      WebsiteConfiguration:
-        IndexDocument: "index.html"
-        ErrorDocument: "index.html"
-      CorsConfiguration:
-        CorsRules:
-          -
-            AllowedHeaders:
-              - "Authorization"
-              - "Content-Length"
-            AllowedMethods:
-              - "GET"
-            AllowedOrigins:
-              - "*"
-            MaxAge: 3000
-  
   
   # BEGIN SNS ROLE RESOURCE
   SNSRole:
   # Created to allow the UserPool SMS Config to publish via the Simple Notification Service during MFA Process
     Type: AWS::IAM::Role
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, 'lifepr31ed221d_sns-role', !Join ['',[ 'sns', '31ed221d', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, 'lifeprc3d2f599_sns-role', !Join ['',[ 'sns', 'c3d2f599', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
         Statement:
@@ -233,10 +196,10 @@ Resources:
               - "sts:AssumeRole"
             Condition:
               StringEquals:
-                sts:ExternalId: lifepr31ed221d_role_external_id
+                sts:ExternalId: lifeprc3d2f599_role_external_id
       Policies:
         -
-          PolicyName: lifepr31ed221d-sns-policy
+          PolicyName: lifeprc3d2f599-sns-policy
           PolicyDocument:
             Version: "2012-10-17"
             Statement:
@@ -261,17 +224,7 @@ Resources:
       Schema:
         
         -
-          Name: birthdate
-          Required: true
-          Mutable: true
-        
-        -
           Name: email
-          Required: true
-          Mutable: true
-        
-        -
-          Name: gender
           Required: true
           Mutable: true
         
@@ -281,19 +234,6 @@ Resources:
           Mutable: true
         
       
-      
-      LambdaConfig:
-        
-        
-          CustomMessage: !Ref functionlifeprojectfinalapp31ed221d31ed221dCustomMessageArn
-        
-        
-        
-        
-        
-        
-        
-        
       
       
       AutoVerifiedAttributes: !Ref autoVerifiedAttributes
@@ -316,19 +256,10 @@ Resources:
       SmsVerificationMessage: !Ref smsVerificationMessage
       SmsConfiguration:
         SnsCallerArn: !GetAtt SNSRole.Arn
-        ExternalId: lifepr31ed221d_role_external_id
+        ExternalId: lifeprc3d2f599_role_external_id
     
   
   
-  
-  UserPoolCustomMessageLambdaInvokePermission:
-    Type: "AWS::Lambda::Permission"
-    DependsOn: UserPool
-    Properties:
-      Action: "lambda:invokeFunction"
-      Principal: "cognito-idp.amazonaws.com"
-      FunctionName: !Ref functionlifeprojectfinalapp31ed221d31ed221dCustomMessageName
-      SourceArn: !GetAtt UserPool.Arn
   
   
   
@@ -345,10 +276,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: lifepr31ed221d_app_clientWeb
-      
-      ReadAttributes: !Ref userpoolClientReadAttributes
-      WriteAttributes: !Ref userpoolClientWriteAttributes
+      ClientName: lifeprc3d2f599_app_clientWeb
       
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
       UserPoolId: !Ref UserPool
@@ -358,10 +286,7 @@ Resources:
   # Depends on UserPool for ID reference
     Type: "AWS::Cognito::UserPoolClient"
     Properties:
-      ClientName: lifepr31ed221d_app_client
-      
-      ReadAttributes: !Ref userpoolClientReadAttributes
-      WriteAttributes: !Ref userpoolClientWriteAttributes
+      ClientName: lifeprc3d2f599_app_client
       
       GenerateSecret: !Ref userpoolClientGenerateSecret
       RefreshTokenValidity: !Ref userpoolClientRefreshTokenValidity
@@ -372,7 +297,7 @@ Resources:
   # Created to execute Lambda which gets userpool app client config values
     Type: 'AWS::IAM::Role'
     Properties:
-      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', '31ed221d', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
+      RoleName: !If [ShouldNotCreateEnvResources, !Ref userpoolClientLambdaRole, !Join ['',['upClientLambdaRole', 'c3d2f599', !Select [3, !Split ['-', !Ref 'AWS::StackName']], '-', !Ref env]]]
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -426,7 +351,7 @@ Resources:
   # Marked as depending on UserPoolClientRole for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: lifepr31ed221d_userpoolclient_lambda_iam_policy
+      PolicyName: lifeprc3d2f599_userpoolclient_lambda_iam_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -443,7 +368,7 @@ Resources:
   # Marked as depending on UserPoolClientLambdaPolicy for easier to understand CFN sequencing
     Type: 'AWS::IAM::Policy'
     Properties:
-      PolicyName: lifepr31ed221d_userpoolclient_lambda_log_policy
+      PolicyName: lifeprc3d2f599_userpoolclient_lambda_log_policy
       Roles:
         - !Ref UserPoolClientRole
       PolicyDocument:
@@ -826,8 +751,50 @@ Resources:
 
   
     
+  # BEGIN IDENTITY POOL RESOURCES
+  
+
+  IdentityPool:
+  # Always created
+    Type: AWS::Cognito::IdentityPool
+    Properties:
+      IdentityPoolName: !If [ShouldNotCreateEnvResources, 'lifeprojectfinalappc3d2f599_identitypool_c3d2f599', !Join ['',['lifeprojectfinalappc3d2f599_identitypool_c3d2f599', '__', !Ref env]]]
+      
+      CognitoIdentityProviders:
+        - ClientId:  !Ref UserPoolClient
+          ProviderName: !Sub
+            - cognito-idp.${region}.amazonaws.com/${client}
+            - { region: !Ref "AWS::Region",  client: !Ref UserPool}
+        - ClientId:  !Ref UserPoolClientWeb
+          ProviderName: !Sub
+            - cognito-idp.${region}.amazonaws.com/${client}
+            - { region: !Ref "AWS::Region",  client: !Ref UserPool}
+            
+      AllowUnauthenticatedIdentities: !Ref allowUnauthenticatedIdentities
+      
+    
+    DependsOn: UserPoolClientInputs
+    
+
+  IdentityPoolRoleMap:
+  # Created to map Auth and Unauth roles to the identity pool
+  # Depends on Identity Pool for ID ref
+    Type: AWS::Cognito::IdentityPoolRoleAttachment
+    Properties:
+      IdentityPoolId: !Ref IdentityPool
+      Roles:
+          unauthenticated: !Ref unauthRoleArn
+          authenticated: !Ref authRoleArn
+    DependsOn: IdentityPool
+  
 
 Outputs :
+  
+  IdentityPoolId:
+    Value: !Ref 'IdentityPool'
+    Description:  Id for the identity pool
+  IdentityPoolName:
+    Value: !GetAtt IdentityPool.Name
   
   
   HostedUIDomain:

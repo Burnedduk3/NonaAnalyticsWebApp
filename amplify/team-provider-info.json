@@ -20,17 +20,8 @@
           "rdsDatabaseName": "LifeProject"
         }
       },
-      "function": {
-        "lifeprojectfinalapp31ed221d31ed221dCustomMessage": {
-          "REDIRECTURL": "https://nonaanalytics.org/",
-          "EMAILSUBJECT": "",
-          "EMAILMESSAGE": "",
-          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
-          "s3Key": "amplify-builds/lifeprojectfinalapp31ed221d31ed221dCustomMessage-78456b707a7339746f6d-build.zip"
-        }
-      },
       "auth": {
-        "lifeprojectfinalapp31ed221d31ed221d": {}
+        "lifeprojectfinalappc3d2f599": {}
       }
     }
   }

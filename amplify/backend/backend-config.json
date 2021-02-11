@@ -1,26 +1,10 @@
 {
-  "function": {
-    "lifeprojectfinalapp31ed221d31ed221dCustomMessage": {
-      "build": true,
-      "providerPlugin": "awscloudformation",
-      "service": "Lambda"
-    }
-  },
+  "function": {},
   "auth": {
-    "lifeprojectfinalapp31ed221d31ed221d": {
+    "lifeprojectfinalappc3d2f599": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "function",
-          "resourceName": "lifeprojectfinalapp31ed221d31ed221dCustomMessage",
-          "triggerProvider": "Cognito",
-          "attributes": [
-            "Arn",
-            "Name"
-          ]
-        }
-      ],
+      "dependsOn": [],
       "customAuth": false
     }
   },
