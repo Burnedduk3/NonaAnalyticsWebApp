@@ -87,7 +87,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
         },
       });
     } else {
-      console.log('Hola');
       history.push(redirectPath);
     }
   };
@@ -150,6 +149,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                     UserID: user.username,
                     finished: false,
                     percentage: 0,
+                    consent: false,
                   },
                 },
             ));

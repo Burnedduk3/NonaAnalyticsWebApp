@@ -93,7 +93,7 @@ export const getForm = /* GraphQL */ `
             UserID
             finished
             percentage
-            concent
+            consent
             createdAt
             updatedAt
           }
@@ -105,7 +105,7 @@ export const getForm = /* GraphQL */ `
       UserID
       finished
       percentage
-      concent
+      consent
       createdAt
       updatedAt
     }
@@ -142,7 +142,7 @@ export const listForms = /* GraphQL */ `
               UserID
               finished
               percentage
-              concent
+              consent
               createdAt
               updatedAt
             }
@@ -154,7 +154,7 @@ export const listForms = /* GraphQL */ `
         UserID
         finished
         percentage
-        concent
+        consent
         createdAt
         updatedAt
       }
@@ -195,7 +195,7 @@ export const getFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
-              concent
+              consent
               createdAt
               updatedAt
             }
@@ -290,7 +290,7 @@ export const getFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
-              concent
+              consent
               createdAt
               updatedAt
             }
@@ -302,7 +302,7 @@ export const getFormQuestion = /* GraphQL */ `
         UserID
         finished
         percentage
-        concent
+        consent
         createdAt
         updatedAt
       }
@@ -383,7 +383,7 @@ export const listFormQuestions = /* GraphQL */ `
           UserID
           finished
           percentage
-          concent
+          consent
           createdAt
           updatedAt
         }
@@ -443,7 +443,7 @@ export const getQuestion = /* GraphQL */ `
             UserID
             finished
             percentage
-            concent
+            consent
             createdAt
             updatedAt
           }
@@ -590,7 +590,7 @@ export const listQuestions = /* GraphQL */ `
               UserID
               finished
               percentage
-              concent
+              consent
               createdAt
               updatedAt
             }
