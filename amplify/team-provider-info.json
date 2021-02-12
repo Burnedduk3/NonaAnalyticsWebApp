@@ -20,8 +20,24 @@
           "rdsDatabaseName": "LifeProject"
         }
       },
+      "function": {
+        "lifeprojectfinalappc3d2f599CustomMessage": {
+          "REDIRECTURL": "https://nonaanalytics.org/",
+          "EMAILSUBJECT": "Confirmation Email",
+          "EMAILMESSAGE": "",
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/lifeprojectfinalappc3d2f599CustomMessage-776349417379787a5168-build.zip"
+        },
+        "lifeprojectfinalapp00a14b8300a14b83CustomMessage": {
+          "REDIRECTURL": "https://nonaanalytics.org",
+          "EMAILSUBJECT": "https://nonaanalytics.org/",
+          "EMAILMESSAGE": "verify email",
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/lifeprojectfinalapp00a14b8300a14b83CustomMessage-7643374438372b594954-build.zip"
+        }
+      },
       "auth": {
-        "lifeprojectfinalappc3d2f599": {}
+        "lifeprojectfinalapp00a14b8300a14b83": {}
       }
     }
   }

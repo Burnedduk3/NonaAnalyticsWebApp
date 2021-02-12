@@ -6,7 +6,7 @@ export interface IApplicationInitialState{
 
 export interface IErrorHandler{
     error: boolean,
-    errorMessage: String
+    errorMessage: string
 }
 
 export interface IApplicationPayload{

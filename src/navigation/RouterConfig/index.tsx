@@ -15,6 +15,7 @@ import PreQuestionerPage from '../../Pages/Public/PreQuestioner/src';
 import UserProvider from '../../Context/UserContext/Provider';
 import FormQuestionProvider from '../../Context/FormQuestions/Provider';
 import MailVerificationPage from '../../Pages/Public/MailVerification/src';
+import Consent from '../../Pages/Private/Consent/src';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -61,8 +62,14 @@ const RouterConfig: React.FC = (): JSX.Element => {
 
             <Route
               exact
-              path={RoutingConstants.form.path}
+              path={RoutingConstants.preSurvey.path}
               component={PreQuestionerPage}
+            />
+
+            <Route
+              exact
+              path={RoutingConstants.consent.path}
+              component={Consent}
             />
 
             <PrivateRoutes />

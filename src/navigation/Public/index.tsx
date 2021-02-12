@@ -50,7 +50,7 @@ const PublicRoutes : React.FC = (): JSX.Element => {
 
       <Route
         exact
-        path={RoutingConstants.form.path}
+        path={RoutingConstants.preSurvey.path}
         component={PreQuestionerPage}
       />
     </>

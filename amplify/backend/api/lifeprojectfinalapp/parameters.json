@@ -5,5 +5,11 @@
   "rdsRegion": "us-east-2",
   "rdsClusterIdentifier": "lifeprojectdatabase",
   "rdsSecretStoreArn": "arn:aws:rds:us-east-2:342495404680:cluster:lifeprojectdatabase",
-  "rdsDatabaseName": "CreateUserResponse"
+  "rdsDatabaseName": "CreateUserResponse",
+  "AuthCognitoUserPoolId": {
+    "Fn::GetAtt": [
+      "authlifeprojectfinalapp00a14b8300a14b83",
+      "Outputs.UserPoolId"
+    ]
+  }
 }

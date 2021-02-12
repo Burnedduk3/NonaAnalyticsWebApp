@@ -29,13 +29,11 @@ import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const initialInputState: ISignUp = {
   password: '',
-  address: '',
   confirmPassword: '',
   birthdate: '',
   email: '',
   gender: 'Other',
   name: '',
-  phoneNumber: '',
 };
 
 const SignUpPage : React.FC = (): JSX.Element =>{
@@ -91,12 +89,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const checkInput = () =>{
     if (!validator.isEmail(pageInputs.email)) {
       throw new Error('Wrong email');
-    }
-
-    if (!validator.isMobilePhone(pageInputs.phoneNumber)) {
-      throw new Error(
-          'Wrong Phone Input try adding the country code, +1 for USA',
-      );
     }
 
     const nameValidator = /^[a-zA-Z_ ]*$/g;

@@ -70,6 +70,7 @@ export const onCreateForm = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }
@@ -81,6 +82,7 @@ export const onCreateForm = /* GraphQL */ `
       UserID
       finished
       percentage
+      concent
       createdAt
       updatedAt
     }
@@ -131,6 +133,7 @@ export const onUpdateForm = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }
@@ -142,6 +145,7 @@ export const onUpdateForm = /* GraphQL */ `
       UserID
       finished
       percentage
+      concent
       createdAt
       updatedAt
     }
@@ -192,6 +196,7 @@ export const onDeleteForm = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }
@@ -203,6 +208,7 @@ export const onDeleteForm = /* GraphQL */ `
       UserID
       finished
       percentage
+      concent
       createdAt
       updatedAt
     }
@@ -241,6 +247,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -335,6 +342,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -346,6 +354,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
         UserID
         finished
         percentage
+        concent
         createdAt
         updatedAt
       }
@@ -387,6 +396,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -481,6 +491,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -492,6 +503,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
         UserID
         finished
         percentage
+        concent
         createdAt
         updatedAt
       }
@@ -533,6 +545,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -627,6 +640,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
               UserID
               finished
               percentage
+              concent
               createdAt
               updatedAt
             }
@@ -638,6 +652,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
         UserID
         finished
         percentage
+        concent
         createdAt
         updatedAt
       }
@@ -695,6 +710,7 @@ export const onCreateQuestion = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }
@@ -855,6 +871,7 @@ export const onUpdateQuestion = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }
@@ -1015,6 +1032,7 @@ export const onDeleteQuestion = /* GraphQL */ `
             UserID
             finished
             percentage
+            concent
             createdAt
             updatedAt
           }

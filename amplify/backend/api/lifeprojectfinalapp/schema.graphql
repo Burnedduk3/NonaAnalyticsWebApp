@@ -4,6 +4,7 @@ type Form @model {
   UserID: String!
   finished: Boolean
   percentage: Float!
+  concent: Boolean
 }
 
 type FormQuestion @model {

@@ -5,7 +5,7 @@ export interface IErrorMessageProps {
     closeOnClick: boolean,
     pauseOnHover: boolean,
     draggable: boolean,
-    message: string
+    message: string,
     toggleToast: boolean,
     setToggleToast: (toggleToast:boolean) => void
 }

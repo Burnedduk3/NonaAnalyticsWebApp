@@ -36,7 +36,7 @@ const Home: React.FC = (): JSX.Element => {
   };
 
   const StartSurvey = () => {
-    history.push(RoutingConstants.form.path);
+    history.push(RoutingConstants.preSurvey.path);
   };
 
   useEffect(()=>{

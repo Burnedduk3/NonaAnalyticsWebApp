@@ -15,7 +15,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
   const history = useHistory();
 
   const QuickStart = () => {
-    history.push(RoutingConstants.form.path);
+    history.push(RoutingConstants.preSurvey.path);
   };
 
   const LifeProjectEvent = () => {
@@ -134,7 +134,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
           {(page === RoutingConstants.menu.bePart.path) && (
             bePart()
           )}
-          {(page === RoutingConstants.form.path) && (
+          {(page === RoutingConstants.preSurvey.path) && (
             startSurvey()
           )}
         </>

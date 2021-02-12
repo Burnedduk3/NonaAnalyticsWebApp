@@ -1,10 +1,31 @@
 {
-  "function": {},
+  "function": {
+    "lifeprojectfinalappc3d2f599CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    },
+    "lifeprojectfinalapp00a14b8300a14b83CustomMessage": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda"
+    }
+  },
   "auth": {
-    "lifeprojectfinalappc3d2f599": {
+    "lifeprojectfinalapp00a14b8300a14b83": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
-      "dependsOn": [],
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "lifeprojectfinalapp00a14b8300a14b83CustomMessage",
+          "triggerProvider": "Cognito",
+          "attributes": [
+            "Arn",
+            "Name"
+          ]
+        }
+      ],
       "customAuth": false
     }
   },
@@ -14,24 +35,21 @@
       "providerPlugin": "awscloudformation",
       "output": {
         "authConfig": {
-          "defaultAuthentication": {
-            "authenticationType": "API_KEY",
-            "apiKeyConfig": {
-              "apiKeyExpirationDays": 7,
-              "description": ""
-            }
-          },
           "additionalAuthenticationProviders": [
             {
               "authenticationType": "AMAZON_COGNITO_USER_POOLS",
               "userPoolConfig": {
-                "userPoolId": "authlifeprojectfinalauth"
+                "userPoolId": "authlifeprojectfinalapp00a14b8300a14b83"
               }
-            },
-            {
-              "authenticationType": "AWS_IAM"
             }
-          ]
+          ],
+          "defaultAuthentication": {
+            "authenticationType": "API_KEY",
+            "apiKeyConfig": {
+              "apiKeyExpirationDays": 365,
+              "description": ""
+            }
+          }
         }
       },
       "rdsInit": true

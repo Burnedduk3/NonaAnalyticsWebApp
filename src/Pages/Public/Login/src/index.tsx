@@ -12,7 +12,7 @@ import {
   HIDE_FOOTER,
   SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
-import {API, Auth, graphqlOperation, Hub} from 'aws-amplify';
+import {API, Auth, graphqlOperation} from 'aws-amplify';
 import './styles.scss';
 import logo from '../../../../assets/Logos/logo.png';
 import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
@@ -47,27 +47,21 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const applicationState = useApplicationState();
-  const [state, setState] = useState({user: null, customState: null});
 
 
   useEffect(() => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    Hub.listen('auth', ({payload: {event, data}}) => {
-      switch (event) {
-        case 'signIn':
-          setState({...state, user: data});
-          break;
-        case 'signOut':
-          setState({...state, user: null});
-          break;
-        case 'customOAuthState':
-          setState({...state, customState: data});
-      }
-    });
-
-    Auth.currentAuthenticatedUser()
-        .then((user) => setState({...state, user}))
-        .catch(() => console.log('Not signed in'));
+    applicationState.appStateDispatch(
+        {
+          type: SET_ERROR,
+          payload: {
+            error: {
+              error: false,
+              errorMessage: '',
+            },
+          },
+        },
+    );
   }, []);
 
   useEffect(
@@ -84,7 +78,18 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   const redirect = () => {
-    history.push(redirectPath);
+    if (redirectPath === RoutingConstants.verifyEmail.path) {
+      history.push({
+        pathname: redirectPath,
+        state: {
+          mail: pageInputs.username,
+          password: pageInputs.password,
+        },
+      });
+    } else {
+      console.log('Hola');
+      history.push(redirectPath);
+    }
   };
 
   const signIn = async () => {
@@ -156,7 +161,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                   },
                 },
             );
-            setRedirectPath(RoutingConstants.dinamicForm.path);
+            setRedirectPath(RoutingConstants.consent.path);
             setIsRedirecting(true);
           }
         }
@@ -169,7 +174,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
         setIsRedirecting(true);
       } else {
         setToggleToast(true);
-        console.log(error);
         applicationState.appStateDispatch(
             {
               type: SET_ERROR,
@@ -217,7 +221,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
   };
 
   const fedarateGoogleSignin = async () => {
-    console.log('Hola');
     const data = await Auth.federatedSignIn(
         {provider: CognitoHostedUIIdentityProvider.Google},
     );
@@ -229,7 +232,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
   return (
     <main className="Login-body">
       {error.error && <ErrorMessageToast
-        message={error.errorMessage.toString()}
+        message={error.errorMessage}
         position="top-center"
         autoClose={5000}
         hideProgressBar={false}

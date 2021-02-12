@@ -29,9 +29,13 @@ const RoutingConstants = {
     name: '404',
     path: '/404',
   },
-  form: {
+  preSurvey: {
     name: 'StartForm',
     path: '/pre-survey',
+  },
+  consent: {
+    name: 'StartForm',
+    path: '/consent',
   },
   dinamicForm: {
     name: 'sectionQuestioner',

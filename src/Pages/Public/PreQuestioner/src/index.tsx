@@ -84,7 +84,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   useEffect(
       ()=>{
         if (redirect) {
-          history.push(`${RoutingConstants.dinamicForm.path}`);
+          history.push(`${RoutingConstants.consent.path}`);
         }
       }
       , [loading],

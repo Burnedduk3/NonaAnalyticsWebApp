@@ -35,7 +35,7 @@ const HomeTexts = {
     },
     button: {
       text: 'Start Survey',
-      to: '/form',
+      to: '/preSurvey',
     },
     third: {
       title: 'Our Team',
