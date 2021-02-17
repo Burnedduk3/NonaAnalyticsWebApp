@@ -564,6 +564,7 @@ const FormPage:React.FC<RouteComponentProps<
                                 setLoading={setLoading}
                                 imagesPath={item.imagesPath}
                                 order={item.order}
+                                setIsLoading={setLoading}
                               />
                             );
                           }

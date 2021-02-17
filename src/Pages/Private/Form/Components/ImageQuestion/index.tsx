@@ -9,7 +9,6 @@ import {
 import {
   IAnsweredQuestion,
 } from '../../../../../Context/FormQuestions/interface';
-import Spinner from '../../../../../Components/Spinner';
 
 const ImageOneSelection: React.FC<IImageQuestionProps> = (
     {
@@ -20,10 +19,10 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       setResponse,
       items,
       order,
+      setIsLoading,
     }:IImageQuestionProps,
 ): JSX.Element =>{
   const [images, setImages] = useState<string[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>(true);
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
       formState.
@@ -58,9 +57,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
 
   return (
     <>
-      {(isLoading) && <Spinner />}
       {
-        (!isLoading && images.length > 0) &&
         <div className='input-container-image'>
           <p className="question-text">{question}</p>
           <div className="response-container">

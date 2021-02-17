@@ -9,4 +9,5 @@ export interface IImageQuestionProps{
     setLoading: (loading: boolean) => void
     imagesPath: Array<string>
     order: number
+    setIsLoading: (isLoading: boolean) => void
 }
