@@ -1,5 +1,11 @@
 {
   "permissions": {
+    "auth": {
+      "lifeprojectfinalapp00a14b8300a14b83": [
+        "read",
+        "update"
+      ]
+    },
     "api": {
       "lifeprojectfinalapp": [
         "read",

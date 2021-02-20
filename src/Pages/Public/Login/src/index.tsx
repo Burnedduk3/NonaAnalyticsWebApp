@@ -150,6 +150,7 @@ const LoginPage : React.FC = (): JSX.Element =>{
                     finished: false,
                     percentage: 0,
                     consent: false,
+                    sentEmail: false,
                   },
                 },
             ));

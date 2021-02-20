@@ -5,6 +5,7 @@ type Form @model {
   finished: Boolean
   percentage: Float!
   consent: Boolean
+  sentEmail: Boolean
 }
 
 type FormQuestion @model {

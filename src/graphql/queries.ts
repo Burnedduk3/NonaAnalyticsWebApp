@@ -94,6 +94,7 @@ export const getForm = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -106,6 +107,7 @@ export const getForm = /* GraphQL */ `
       finished
       percentage
       consent
+      sentEmail
       createdAt
       updatedAt
     }
@@ -143,6 +145,7 @@ export const listForms = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -155,6 +158,7 @@ export const listForms = /* GraphQL */ `
         finished
         percentage
         consent
+        sentEmail
         createdAt
         updatedAt
       }
@@ -196,6 +200,7 @@ export const getFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -291,6 +296,7 @@ export const getFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -303,6 +309,7 @@ export const getFormQuestion = /* GraphQL */ `
         finished
         percentage
         consent
+        sentEmail
         createdAt
         updatedAt
       }
@@ -384,6 +391,7 @@ export const listFormQuestions = /* GraphQL */ `
           finished
           percentage
           consent
+          sentEmail
           createdAt
           updatedAt
         }
@@ -444,6 +452,7 @@ export const getQuestion = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -591,6 +600,7 @@ export const listQuestions = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }

@@ -71,6 +71,7 @@ export const onCreateForm = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -83,6 +84,7 @@ export const onCreateForm = /* GraphQL */ `
       finished
       percentage
       consent
+      sentEmail
       createdAt
       updatedAt
     }
@@ -134,6 +136,7 @@ export const onUpdateForm = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -146,6 +149,7 @@ export const onUpdateForm = /* GraphQL */ `
       finished
       percentage
       consent
+      sentEmail
       createdAt
       updatedAt
     }
@@ -197,6 +201,7 @@ export const onDeleteForm = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -209,6 +214,7 @@ export const onDeleteForm = /* GraphQL */ `
       finished
       percentage
       consent
+      sentEmail
       createdAt
       updatedAt
     }
@@ -248,6 +254,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -343,6 +350,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -355,6 +363,7 @@ export const onCreateFormQuestion = /* GraphQL */ `
         finished
         percentage
         consent
+        sentEmail
         createdAt
         updatedAt
       }
@@ -397,6 +406,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -492,6 +502,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -504,6 +515,7 @@ export const onUpdateFormQuestion = /* GraphQL */ `
         finished
         percentage
         consent
+        sentEmail
         createdAt
         updatedAt
       }
@@ -546,6 +558,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -641,6 +654,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
               finished
               percentage
               consent
+              sentEmail
               createdAt
               updatedAt
             }
@@ -653,6 +667,7 @@ export const onDeleteFormQuestion = /* GraphQL */ `
         finished
         percentage
         consent
+        sentEmail
         createdAt
         updatedAt
       }
@@ -711,6 +726,7 @@ export const onCreateQuestion = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -872,6 +888,7 @@ export const onUpdateQuestion = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }
@@ -1033,6 +1050,7 @@ export const onDeleteQuestion = /* GraphQL */ `
             finished
             percentage
             consent
+            sentEmail
             createdAt
             updatedAt
           }

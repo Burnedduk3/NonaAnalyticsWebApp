@@ -34,6 +34,14 @@
           "EMAILMESSAGE": "verify email",
           "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
           "s3Key": "amplify-builds/lifeprojectfinalapp00a14b8300a14b83CustomMessage-7643374438372b594954-build.zip"
+        },
+        "mailSenderDone": {
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/mailSenderDone-487a5341653633667844-build.zip"
+        },
+        "undoneMail": {
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/undoneMail-6d4537333272596f7854-build.zip"
         }
       },
       "auth": {

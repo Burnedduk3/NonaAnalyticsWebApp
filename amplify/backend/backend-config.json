@@ -25,6 +25,29 @@
           ]
         }
       ]
+    },
+    "undoneMail": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "lifeprojectfinalapp00a14b8300a14b83",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "api",
+          "resourceName": "lifeprojectfinalapp",
+          "attributes": [
+            "GraphQLAPIIdOutput",
+            "GraphQLAPIEndpointOutput",
+            "GraphQLAPIKeyOutput"
+          ]
+        }
+      ]
     }
   },
   "auth": {

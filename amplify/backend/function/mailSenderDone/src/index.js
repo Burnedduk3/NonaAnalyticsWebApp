@@ -15,7 +15,7 @@ const {print} = graphql;
 
 const listUnfinishedForms = gql`
     query ListUnfinishedForms {
-        listForms(filter: {percentage: {gt: 99}, consent: {eq: true}}) {
+        listForms(filter: {percentage: {gt: 99}, consent: {eq: true}, sentEmail: {eq: false}}) {
             items {
                 UserID
                 finished
@@ -25,6 +25,7 @@ const listUnfinishedForms = gql`
         }
     }
 `;
+
 exports.handler = async function(event) {
   const Source = 'nicobetancur@icloud.com';
   const ToAddresses = [];

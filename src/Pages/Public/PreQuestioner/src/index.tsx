@@ -68,6 +68,8 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
             UserID: usernameID,
             finished: false,
             percentage: 0,
+            sentEmail: false,
+            consent: false,
           },
         },
     ));
