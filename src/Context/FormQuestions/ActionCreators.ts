@@ -243,14 +243,12 @@ export const setQuestionResponse = (
         responseDbId: questionToAdd.responseDbId ?
             questionToAdd.responseDbId:
             '',
-        sendToDB: false,
       };
     } else {
       state.questionsAnswered = [
         ...state.questionsAnswered,
         {
           id: questionToAdd.id,
-          sendToDB: questionToAdd.sendToDB? questionToAdd.sendToDB: true,
           answer: questionToAdd.answer,
           responseDbId: questionToAdd.responseDbId,
         },
