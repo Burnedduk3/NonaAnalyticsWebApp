@@ -87,9 +87,9 @@ const FormPage:React.FC<RouteComponentProps<
                 },
             );
         if (questionIndex > -1) {
-          const posibleQuestion = FormApplicationState.formState
+          const possibleQuestion = FormApplicationState.formState
               .questionsAnswered[questionIndex];
-          if (posibleQuestion) {
+          if (possibleQuestion) {
             FormApplicationState.formStateDispatch(
                 {
                   type: SET_QUESTION_RESPONSE,
@@ -97,7 +97,7 @@ const FormPage:React.FC<RouteComponentProps<
                     questionToAdd: {
                       id: questionToSave.questionID,
                       answer: questionToSave.response,
-                      responseDbId: posibleQuestion.responseDbId,
+                      responseDbId: possibleQuestion.responseDbId,
                       sendToDB: false,
                     },
                     order,
@@ -252,17 +252,6 @@ const FormPage:React.FC<RouteComponentProps<
                     answer,
                     FormApplicationState.formState.currentFormID,
                 );
-                applicationState.appStateDispatch(
-                    {
-                      type: SET_ERROR,
-                      payload: {
-                        error: {
-                          error: false,
-                          errorMessage: '',
-                        },
-                      },
-                    },
-                );
               } catch (error) {
                 applicationState.appStateDispatch(
                     {
@@ -299,17 +288,7 @@ const FormPage:React.FC<RouteComponentProps<
                       userState.userState.usernameID,
                       responseDbId,
                   );
-                  applicationState.appStateDispatch(
-                      {
-                        type: SET_ERROR,
-                        payload: {
-                          error: {
-                            error: false,
-                            errorMessage: '',
-                          },
-                        },
-                      },
-                  );
+                  sendToDB = true;
                 } catch (error) {
                   setToggleToast(true);
                   applicationState.appStateDispatch(
@@ -362,7 +341,6 @@ const FormPage:React.FC<RouteComponentProps<
               }
             }
           }
-          sendToDB = true;
           FormApplicationState
               .formStateDispatch({
                 type: UPDATE_ANSWERED_QUESTIONS,
@@ -417,6 +395,17 @@ const FormPage:React.FC<RouteComponentProps<
               },
           );
         }
+        applicationState.appStateDispatch(
+            {
+              type: SET_ERROR,
+              payload: {
+                error: {
+                  error: false,
+                  errorMessage: '',
+                },
+              },
+            },
+        );
         setLoading(false);
       };
       const formFinished = FormApplicationState.formState.finished;

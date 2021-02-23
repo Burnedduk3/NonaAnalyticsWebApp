@@ -57,7 +57,6 @@ const Consent: React.FC = ():JSX.Element =>{
                 formMutationVariables,
             ),
         );
-        console.log(response);
         if (response.data) {
           setRedirect(true);
         }

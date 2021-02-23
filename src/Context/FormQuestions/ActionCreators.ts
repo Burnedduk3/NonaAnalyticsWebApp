@@ -230,19 +230,17 @@ export const setQuestionResponse = (
 ): IFormQuestionsContextState => {
   const {questionToAdd} = payload;
   if (questionToAdd !== undefined && questionToAdd) {
-    const findedQuestionId = state.questionsAnswered.findIndex(
+    const foundQuestionId = state.questionsAnswered.findIndex(
         (questionId)=>{
           if (questionId.id === payload.questionToAdd?.id) {
             return questionId;
           }
         },
     );
-    if (findedQuestionId !== -1 && findedQuestionId >= 0) {
-      state.questionsAnswered[findedQuestionId] = {
+    if (foundQuestionId >= 0) {
+      state.questionsAnswered[foundQuestionId] = {
         ...questionToAdd,
-        responseDbId: questionToAdd.responseDbId ?
-            questionToAdd.responseDbId:
-            '',
+        responseDbId: questionToAdd.responseDbId,
         sendToDB: false,
       };
     } else {
@@ -250,7 +248,7 @@ export const setQuestionResponse = (
         ...state.questionsAnswered,
         {
           id: questionToAdd.id,
-          sendToDB: questionToAdd.sendToDB? questionToAdd.sendToDB: true,
+          sendToDB: false,
           answer: questionToAdd.answer,
           responseDbId: questionToAdd.responseDbId,
         },
