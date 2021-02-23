@@ -113,6 +113,7 @@ const FormPage:React.FC<RouteComponentProps<
                   questionToAdd: {
                     id: questionToSave.questionID,
                     answer: questionToSave.response,
+                    sendToDB: false,
                   },
                   order,
                 },
@@ -262,20 +263,19 @@ const FormPage:React.FC<RouteComponentProps<
                         },
                       },
                     },
-                  },
-              );
-            }
-            if (
-              stack !== undefined &&
+                );
+              }
+              if (
+                stack !== undefined &&
                   section !== undefined &&
                   subSection !== undefined
-            ) {
-              try {
-                const functionParams: ISaveDataAuroraParams = {
-                  stack: stack.toString(),
-                  section: section,
-                  subSection: subSection,
-                };
+              ) {
+                try {
+                  const functionParams: ISaveDataAuroraParams = {
+                    stack: stack.toString(),
+                    section: section,
+                    subSection: subSection,
+                  };
 
                   if (!responseDbId) {
                     throw new Error('Error saving questions');
@@ -303,13 +303,17 @@ const FormPage:React.FC<RouteComponentProps<
                       },
                   );
                 }
-                await saveQuestionsToAurora(
-                    {...functionParams},
-                    id,
-                    answer,
-                    FormApplicationState.formState.currentFormID,
-                    userState.userState.usernameID,
+              }
+            } else {
+              try {
+                await updateQuestionAtDynamo(
                     responseDbId,
+                    answer,
+                );
+
+                await updateQuestionAtAurora(
+                    responseDbId,
+                    answer,
                 );
                 applicationState.appStateDispatch(
                     {
@@ -323,54 +327,18 @@ const FormPage:React.FC<RouteComponentProps<
                     },
                 );
               } catch (error) {
-                setToggleToast(true);
                 applicationState.appStateDispatch(
                     {
                       type: SET_ERROR,
                       payload: {
                         error: {
                           error: true,
-                          errorMessage: 'unable to save questions',
+                          errorMessage: 'unable to update',
                         },
                       },
                     },
                 );
               }
-            }
-          } else {
-            try {
-              await updateQuestionAtDynamo(
-                  responseDbId,
-                  answer,
-              );
-
-              await updateQuestionAtAurora(
-                  responseDbId,
-                  answer,
-              );
-              applicationState.appStateDispatch(
-                  {
-                    type: SET_ERROR,
-                    payload: {
-                      error: {
-                        error: false,
-                        errorMessage: '',
-                      },
-                    },
-                  },
-              );
-            } catch (error) {
-              applicationState.appStateDispatch(
-                  {
-                    type: SET_ERROR,
-                    payload: {
-                      error: {
-                        error: true,
-                        errorMessage: 'unable to update',
-                      },
-                    },
-                  },
-              );
             }
           }
           FormApplicationState
@@ -380,6 +348,7 @@ const FormPage:React.FC<RouteComponentProps<
                   questionToAdd: {
                     answer: answer,
                     id: id,
+                    sendToDB: sendToDB,
                     responseDbId,
                   },
                 },

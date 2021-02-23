@@ -44,12 +44,14 @@ export interface IAnsweredQuestion{
     id: string
     answer: string
     responseDbId: string | undefined
+    sendToDB: boolean | undefined
 }
 
 export interface IAnsweredQuestionPayload{
     id: string
     answer: string
     responseDbId?: string | undefined
+    sendToDB?: boolean
 }
 
 export interface ISubSection{
