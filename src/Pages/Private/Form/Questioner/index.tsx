@@ -87,9 +87,9 @@ const FormPage:React.FC<RouteComponentProps<
                 },
             );
         if (questionIndex > -1) {
-          const posibleQuestion = FormApplicationState.formState
+          const possibleQuestion = FormApplicationState.formState
               .questionsAnswered[questionIndex];
-          if (posibleQuestion) {
+          if (possibleQuestion) {
             FormApplicationState.formStateDispatch(
                 {
                   type: SET_QUESTION_RESPONSE,
@@ -97,7 +97,8 @@ const FormPage:React.FC<RouteComponentProps<
                     questionToAdd: {
                       id: questionToSave.questionID,
                       answer: questionToSave.response,
-                      responseDbId: posibleQuestion.responseDbId,
+                      responseDbId: possibleQuestion.responseDbId,
+                      sendToDB: false,
                     },
                     order,
                   },
@@ -241,34 +242,24 @@ const FormPage:React.FC<RouteComponentProps<
             formState.
             questionsAnswered;
         await respondedQuestions.map(async (RespondedQuestion) => {
-          let {id, answer, responseDbId} = RespondedQuestion;
-          console.log(id, answer, responseDbId);
-          if (!responseDbId) {
-            try {
-              responseDbId = await saveQuestionsToDynamo(
-                  id,
-                  answer,
-                  FormApplicationState.formState.currentFormID,
-              );
-              applicationState.appStateDispatch(
-                  {
-                    type: SET_ERROR,
-                    payload: {
-                      error: {
-                        error: false,
-                        errorMessage: '',
-                      },
-                    },
-                  },
-              );
-            } catch (error) {
-              applicationState.appStateDispatch(
-                  {
-                    type: SET_ERROR,
-                    payload: {
-                      error: {
-                        error: true,
-                        errorMessage: error.message,
+          let {id, sendToDB, answer, responseDbId} = RespondedQuestion;
+          if (!sendToDB) {
+            if (!responseDbId) {
+              try {
+                responseDbId = await saveQuestionsToDynamo(
+                    id,
+                    answer,
+                    FormApplicationState.formState.currentFormID,
+                );
+              } catch (error) {
+                applicationState.appStateDispatch(
+                    {
+                      type: SET_ERROR,
+                      payload: {
+                        error: {
+                          error: true,
+                          errorMessage: error.message,
+                        },
                       },
                     },
                   },
@@ -286,8 +277,31 @@ const FormPage:React.FC<RouteComponentProps<
                   subSection: subSection,
                 };
 
-                if (!responseDbId) {
-                  throw new Error('Error saving questions');
+                  if (!responseDbId) {
+                    throw new Error('Error saving questions');
+                  }
+                  await saveQuestionsToAurora(
+                      {...functionParams},
+                      id,
+                      answer,
+                      FormApplicationState.formState.currentFormID,
+                      userState.userState.usernameID,
+                      responseDbId,
+                  );
+                  sendToDB = true;
+                } catch (error) {
+                  setToggleToast(true);
+                  applicationState.appStateDispatch(
+                      {
+                        type: SET_ERROR,
+                        payload: {
+                          error: {
+                            error: true,
+                            errorMessage: 'unable to save questions',
+                          },
+                        },
+                      },
+                  );
                 }
                 await saveQuestionsToAurora(
                     {...functionParams},
@@ -412,6 +426,17 @@ const FormPage:React.FC<RouteComponentProps<
               },
           );
         }
+        applicationState.appStateDispatch(
+            {
+              type: SET_ERROR,
+              payload: {
+                error: {
+                  error: false,
+                  errorMessage: '',
+                },
+              },
+            },
+        );
         setLoading(false);
       };
       const formFinished = FormApplicationState.formState.finished;
