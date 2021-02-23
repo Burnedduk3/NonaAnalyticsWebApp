@@ -28,7 +28,7 @@ const MailVerificationPage : React.FC = (): JSX.Element =>{
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const location = useLocation();
   // @ts-ignore
-  const {mail, password} = location.state;
+  const {mail} = location.state;
   const goHome = () =>{
     history.push(RoutingConstants.menu.home.path);
   };
@@ -56,7 +56,7 @@ const MailVerificationPage : React.FC = (): JSX.Element =>{
     try {
       setIsLoading(true);
       verifyInput();
-      const response = await Auth.confirmSignUp(mail, verificationCode);
+      await Auth.confirmSignUp(mail, verificationCode);
       setIsLoading(false);
       setIsRedirecting(true);
     } catch (err) {
