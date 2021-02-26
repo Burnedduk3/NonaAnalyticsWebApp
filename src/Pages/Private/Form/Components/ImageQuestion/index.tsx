@@ -20,6 +20,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       items,
       order,
       setIsLoading,
+      inputConfirmation,
     }:IImageQuestionProps,
 ): JSX.Element =>{
   const [images, setImages] = useState<string[]>([]);
@@ -75,7 +76,12 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                     name={radioGroup}
                     value={value}
                     onClick={
-                      () => setResponse(value.toString(), questionId, order)
+                      () => setResponse(
+                          value.toString(),
+                          questionId,
+                          order,
+                          inputConfirmation,
+                      )
                     }
                     defaultChecked={
                         questionAnswer ?

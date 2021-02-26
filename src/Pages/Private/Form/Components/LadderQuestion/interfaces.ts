@@ -4,7 +4,13 @@ export interface ILadderQuestionProps{
     questionId: string
     radioGroup: string
     values: Array<string>
-    setResponse: (response: string, questionID: string, order: number) => void;
+    setResponse: (
+        response: string,
+        questionID: string,
+        order: number,
+        validation: string
+    ) => void;
     checked?: string
     order: number
+    inputConfirmation:string;
 }

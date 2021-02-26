@@ -41,7 +41,11 @@
         },
         "undoneMail": {
           "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
-          "s3Key": "amplify-builds/undoneMail-582f515a3568495a6876-build.zip"
+          "s3Key": "amplify-builds/undoneMail-6c654549747a32586c6f-build.zip"
+        },
+        "sleepStatistics": {
+          "deploymentBucketName": "amplify-amplifyb37c55dfd33a4-staging-10736-deployment",
+          "s3Key": "amplify-builds/sleepStatistics-3334535a464d2f347a69-build.zip"
         }
       },
       "auth": {

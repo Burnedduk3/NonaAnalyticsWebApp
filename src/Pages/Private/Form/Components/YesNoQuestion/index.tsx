@@ -61,7 +61,7 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
 };
 
 export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
-  question, radioGroup, questionId, setResponse, order,
+  question, radioGroup, questionId, setResponse, order, inputConfirmation,
 }:IYesNoPropsQuestioner): JSX.Element => {
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
@@ -85,8 +85,10 @@ export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
             type="radio"
             name={radioGroup}
             value="yes"
-            onClick={() => setResponse('1', questionId, order)}
-            defaultChecked={questionAnswer?.answer === '1'}
+            onClick={
+              () => setResponse('yes', questionId, order, inputConfirmation)
+            }
+            defaultChecked={questionAnswer?.answer === 'yes'}
           />
           <div className="check positive"/>
         </label>
@@ -97,8 +99,10 @@ export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
             type="radio"
             name={radioGroup}
             value="no"
-            onClick={() => setResponse('0', questionId, order)}
-            defaultChecked={questionAnswer?.answer === '0'}
+            onClick={
+              () => setResponse('no', questionId, order, inputConfirmation)
+            }
+            defaultChecked={questionAnswer?.answer === 'no'}
           />
           <div className="check negative"/>
         </label>

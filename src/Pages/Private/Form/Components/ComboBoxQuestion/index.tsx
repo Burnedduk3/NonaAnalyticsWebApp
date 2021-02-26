@@ -9,7 +9,7 @@ import {
 } from '../../../../../Context/FormQuestions/Provider';
 
 const ComboBoxComponent: React.FC<IComboBoxProps> = ({
-  question, items, questionId, setResponse, order,
+  question, items, questionId, setResponse, order, inputConfirmation,
 }: IComboBoxProps): JSX.Element => {
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
@@ -32,7 +32,7 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
           className="combo-box"
           onChange={
             (e: ChangeEvent<HTMLSelectElement>) =>
-              setResponse(e.target.value, questionId, order)
+              setResponse(e.target.value, questionId, order, inputConfirmation)
           }
 
         >

@@ -45,6 +45,7 @@ export interface IAnsweredQuestion{
     answer: string
     responseDbId: string | undefined
     sendToDB: boolean | undefined
+    validation: string
 }
 
 export interface IAnsweredQuestionPayload{
@@ -52,6 +53,7 @@ export interface IAnsweredQuestionPayload{
     answer: string
     responseDbId?: string | undefined
     sendToDB?: boolean
+    validation?: string
 }
 
 export interface ISubSection{
@@ -69,9 +71,10 @@ export interface IQuestion{
     stack: number
     stackPhrase: string | null
     placeHolder: string | null
-    imagesPath: string | null
+    imagesPath: Array<string> | null
     category: ICategory
     order: number
+    inputConfirmation: string
 }
 
 export interface ICategory{

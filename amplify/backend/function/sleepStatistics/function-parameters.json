@@ -1,0 +1,12 @@
+{
+  "permissions": {
+    "api": {
+      "lifeprojectfinalapp": [
+        "create",
+        "read",
+        "update"
+      ]
+    }
+  },
+  "lambdaLayers": []
+}

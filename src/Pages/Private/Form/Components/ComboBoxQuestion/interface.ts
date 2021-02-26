@@ -1,7 +1,13 @@
 export interface IComboBoxProps{
     question: string,
-    items: [],
+    items: Array<string>,
     questionId: string,
-    setResponse: (response: string, questionID: string, order: number) => void;
-    order: number
+    setResponse: (
+        response: string,
+        questionID: string,
+        order: number,
+        validation: string
+    ) => void;
+    order: number,
+    inputConfirmation:string
 }

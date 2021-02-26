@@ -17,6 +17,7 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
       setResponse,
       stackPhrase,
       order,
+      inputConfirmation,
     }:IMultiladder,
 ):JSX.Element => {
   const formContext = useFormQuestionState();
@@ -64,7 +65,12 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                           false
                   }
                   onClick={
-                    () => setResponse(value.toString(), questionId, order)
+                    () => setResponse(
+                        value.toString(),
+                        questionId,
+                        order,
+                        inputConfirmation,
+                    )
                   }
                 />
                 <div className={`check value`}>{value}</div>

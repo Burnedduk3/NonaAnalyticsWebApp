@@ -9,7 +9,7 @@ import {
 } from '../../../../../Context/FormQuestions/Provider';
 
 const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
-  question, items, questionId, setResponse, order,
+  question, items, questionId, setResponse, order, inputConfirmation,
 }: ICheckBoxProps): JSX.Element => {
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
@@ -48,9 +48,9 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
         }
         text = text.join(';');
       }
-      setResponse(text, questionId, order);
+      setResponse(text, questionId, order, inputConfirmation);
     } else {
-      setResponse(event.target.value, questionId, order);
+      setResponse(event.target.value, questionId, order, inputConfirmation);
     }
   };
 

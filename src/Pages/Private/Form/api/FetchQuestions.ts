@@ -68,6 +68,7 @@ export const fetchQuestions = async (currentFormID: string) => {
                   stack: parseInt(dbQuestion.stack),
                   order: parseInt(dbQuestion.order),
                   imagesPath: dbQuestion.imagesPath,
+                  inputConfirmation: dbQuestion.inputConfirmation,
                 };
                 totalQuestions += 1;
                 if (maxStack < dbQuestion.stack) {

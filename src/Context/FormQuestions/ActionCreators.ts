@@ -229,7 +229,10 @@ export const setQuestionResponse = (
     payload: IFormQuestionsContextPayload,
 ): IFormQuestionsContextState => {
   const {questionToAdd} = payload;
-  if (questionToAdd !== undefined && questionToAdd) {
+  if (
+    questionToAdd !== undefined &&
+      questionToAdd
+  ) {
     const foundQuestionId = state.questionsAnswered.findIndex(
         (questionId)=>{
           if (questionId.id === payload.questionToAdd?.id) {
@@ -242,6 +245,7 @@ export const setQuestionResponse = (
         ...questionToAdd,
         responseDbId: questionToAdd.responseDbId,
         sendToDB: false,
+        validation: questionToAdd.validation? questionToAdd.validation:'',
       };
     } else {
       state.questionsAnswered = [
@@ -251,6 +255,7 @@ export const setQuestionResponse = (
           sendToDB: false,
           answer: questionToAdd.answer,
           responseDbId: questionToAdd.responseDbId,
+          validation: questionToAdd.validation? questionToAdd.validation:'',
         },
       ];
     }

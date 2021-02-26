@@ -25,7 +25,7 @@ import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
-  IFormQuestionsContextState,
+  IFormQuestionsContextState, IQuestion,
 } from '../../../../Context/FormQuestions/interface';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
@@ -70,11 +70,13 @@ const FormPage:React.FC<RouteComponentProps<
           response: string,
           questionID: string,
           order: number,
+          validation: string,
       ) =>{
         const questionToSave = {
           response,
           questionID,
           order,
+          validation,
         };
         const questionIndex = FormApplicationState.
             formState.
@@ -99,6 +101,7 @@ const FormPage:React.FC<RouteComponentProps<
                       answer: questionToSave.response,
                       responseDbId: possibleQuestion.responseDbId,
                       sendToDB: false,
+                      validation: questionToSave.validation,
                     },
                     order,
                   },
@@ -114,6 +117,7 @@ const FormPage:React.FC<RouteComponentProps<
                     id: questionToSave.questionID,
                     answer: questionToSave.response,
                     sendToDB: false,
+                    validation: questionToSave.response,
                   },
                   order,
                 },
@@ -152,6 +156,7 @@ const FormPage:React.FC<RouteComponentProps<
               },
             },
         );
+
         const cachedData = localStorage.getItem('QUESTIONER_STORAGE');
         setLoading(true);
         if (FormApplicationState.formState.sections?.length === 0 &&
@@ -417,178 +422,204 @@ const FormPage:React.FC<RouteComponentProps<
               to={RoutingConstants.menu.home.path}
             />
           }
-          {
-            !formFinished &&
-        <main className="content-container">
-          <LeftBar/>
-          <div className="form-container">
-            <div className='questioner-container'>
-              {error.error && <ErrorMessageToast
-                message={error.errorMessage.toString()}
-                position="top-center"
-                autoClose={5000}
-                hideProgressBar={false}
-                closeOnClick={false}
-                pauseOnHover={false}
-                draggable={false}
-                toggleToast={toggleToast}
-                setToggleToast={setToggleToast}
-              />}
-              {loading && (
-                <div className="spinner-wrapper">
-                  <Spinner/>
-                </div>
-              )}
-              {(!loading) && (
-                <>
-                  {
-                    FormApplicationState.formState.showableQuestions.map(
-                        (item: any) => {
-                          if (item.category.name === 'YesNo') {
-                            return (
-                            // eslint-disable-next-line max-len
-                              <div key={item.id} className="yes-no-container-comp">
-                                <YesNoQuestionQuestioner
-                                  question={item.question}
-                                  questionId={item.id}
-                                  radioGroup={item.id}
-                                  setResponse={setQuestionResponse}
-                                  order={item.order}
-                                />
-                              </div>
-                            );
-                          }
-                          if (item.category.name === 'Combo') {
-                            return (
-                              <ComboBoxComponent
-                                key={item.id}
-                                question={item.question}
-                                questionId={item.id}
-                                setResponse={setQuestionResponse}
-                                items={item.items}
-                                order={item.order}
-                              />
-                            );
-                          }
-                          if (item.category.name === 'Open') {
-                            return (
-                              <TextInputComponent
-                                placeholder={item.placeHolder}
-                                key={item.id}
-                                question={item.question}
-                                questionId={item.id}
-                                setResponse={setQuestionResponse}
-                                order={item.order}
-                              />
-                            );
-                          }
-                          if (item.category.name === 'MultiSelection') {
-                            return (
-                              <CheckBoxComponent
-                                key={item.id}
-                                items={item.items}
-                                questionId={item.id}
-                                question={item.question}
-                                setResponse={setQuestionResponse}
-                                order={item.order}
-                              />
-                            );
-                          }
-                          if (item.category.name === 'Ladder') {
-                            return (
-                              <LadderQuestion
-                                key={item.id}
-                                questionText={item.question}
-                                questionId={item.id}
-                                radioGroup={item.id}
-                                order={item.order}
-                                setResponse={setQuestionResponse}
-                                values={
-                                    item.items === null ||
-                                    item.items.length === 0 ?
-                                        LadderConstants.default.defaultValue :
-                                        item.items
+          {!formFinished &&
+            <main className="content-container">
+              <LeftBar/>
+              <div className="form-container">
+                <div className='questioner-container'>
+                  {error.error && <ErrorMessageToast
+                    message={error.errorMessage.toString()}
+                    position="top-center"
+                    autoClose={5000}
+                    hideProgressBar={false}
+                    closeOnClick={false}
+                    pauseOnHover={false}
+                    draggable={false}
+                    toggleToast={toggleToast}
+                    setToggleToast={setToggleToast}
+                  />}
+                  {loading && (
+                    <div className="spinner-wrapper">
+                      <Spinner/>
+                    </div>
+                  )}
+                  {(!loading) && (
+                    <>
+                      {
+                        FormApplicationState.formState.showableQuestions.map(
+                            (item: IQuestion) => {
+                              if (item.category.name === 'YesNo') {
+                                return (
+                                // eslint-disable-next-line max-len
+                                  <div key={item.id} className="yes-no-container-comp">
+                                    <YesNoQuestionQuestioner
+                                      question={item.question}
+                                      questionId={item.id}
+                                      radioGroup={item.id}
+                                      setResponse={setQuestionResponse}
+                                      order={item.order}
+                                      inputConfirmation={item.inputConfirmation}
+                                    />
+                                  </div>
+                                );
+                              }
+                              if (item.category.name === 'Combo') {
+                                if (!item.items) {
+                                  return <></>;
                                 }
-                              />
-                            );
-                          }
-                          if (item.category.name === 'RadioGroup') {
-                            return (
-                              <RadioButtonGroup
-                                key={item.id}
-                                items={item.items}
-                                setResponse={setQuestionResponse}
-                                question={item.question}
-                                questionId={item.id}
-                                radioGroup={item.id}
-                                order={item.order}
-                                stackPhrase={item.stackPhrase}
-                              />
-                            );
-                          }
-                          if (item.category.name === 'MultiLadder') {
-                            return (
-                              <MultiLadderQuestion
-                                key={item.id}
-                                items={item.items}
-                                setResponse={setQuestionResponse}
-                                question={item.question}
-                                questionId={item.id}
-                                radioGroup={item.id}
-                                stackPhrase={item.stackPhrase}
-                                order={item.order}
-                              />
-                            );
-                          }
+                                return (
+                                  <ComboBoxComponent
+                                    key={item.id}
+                                    question={item.question}
+                                    questionId={item.id}
+                                    setResponse={setQuestionResponse}
+                                    items={item.items}
+                                    order={item.order}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
+                              if (item.category.name === 'Open') {
+                                if (!item.placeHolder) {
+                                  return <></>;
+                                }
+                                return (
+                                  <TextInputComponent
+                                    placeholder={item.placeHolder}
+                                    key={item.id}
+                                    question={item.question}
+                                    questionId={item.id}
+                                    setResponse={setQuestionResponse}
+                                    order={item.order}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
+                              if (item.category.name === 'MultiSelection') {
+                                if (!item.items) {
+                                  return <></>;
+                                }
+                                return (
+                                  <CheckBoxComponent
+                                    key={item.id}
+                                    items={item.items}
+                                    questionId={item.id}
+                                    question={item.question}
+                                    setResponse={setQuestionResponse}
+                                    order={item.order}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
+                              if (item.category.name === 'Ladder') {
+                                return (
+                                  <LadderQuestion
+                                    key={item.id}
+                                    questionText={item.question}
+                                    questionId={item.id}
+                                    radioGroup={item.id}
+                                    order={item.order}
+                                    setResponse={setQuestionResponse}
+                                    values={
+                                        item.items === null ||
+                                        item.items.length === 0 ?
+                                            LadderConstants.default.
+                                                defaultValue :
+                                            item.items
+                                    }
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
+                              if (item.category.name === 'RadioGroup') {
+                                if (!item.items || !item.stackPhrase) {
+                                  return <></>;
+                                }
+                                return (
+                                  <RadioButtonGroup
+                                    key={item.id}
+                                    items={item.items}
+                                    setResponse={setQuestionResponse}
+                                    question={item.question}
+                                    questionId={item.id}
+                                    radioGroup={item.id}
+                                    order={item.order}
+                                    stackPhrase={item.stackPhrase}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
+                              if (item.category.name === 'MultiLadder') {
+                                if (!item.items || !item.stackPhrase) {
+                                  return <></>;
+                                }
+                                return (
+                                  <MultiLadderQuestion
+                                    key={item.id}
+                                    items={item.items}
+                                    setResponse={setQuestionResponse}
+                                    question={item.question}
+                                    questionId={item.id}
+                                    radioGroup={item.id}
+                                    stackPhrase={item.stackPhrase}
+                                    order={item.order}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
 
-                          if (item.category.name === 'Images') {
-                            return (
-                              <ImageOneSelection
-                                key={item.id}
-                                items={item.items}
-                                setResponse={setQuestionResponse}
-                                question={item.question}
-                                questionId={item.id}
-                                radioGroup={item.id}
-                                setLoading={setLoading}
-                                imagesPath={item.imagesPath}
-                                order={item.order}
-                                setIsLoading={setLoading}
-                              />
-                            );
-                          }
+                              if (item.category.name === 'Images') {
+                                if (!item.items || !item.imagesPath) {
+                                  return <></>;
+                                }
+                                return (
+                                  <ImageOneSelection
+                                    key={item.id}
+                                    items={item.items}
+                                    setResponse={setQuestionResponse}
+                                    question={item.question}
+                                    questionId={item.id}
+                                    radioGroup={item.id}
+                                    setLoading={setLoading}
+                                    imagesPath={item.imagesPath}
+                                    order={item.order}
+                                    setIsLoading={setLoading}
+                                    inputConfirmation={item.inputConfirmation}
+                                  />
+                                );
+                              }
 
-                          return <></>;
-                        },
-                    )
+                              return <></>;
+                            },
+                        )
+                      }
+
+                    </>
+                  )}
+                </div>
+                <div className="buttons-container">
+                  {
+                    (
+                      FormApplicationState.
+                          formState.
+                          currentSubSection?.
+                          name !== 'Lake-Nona'
+                    ) && <button
+                      className="button previous"
+                      type="button"
+                      onClick={goPreviousSection}
+                    >PREVIOUS</button>
                   }
-
-                </>
-              )}
-            </div>
-            <div className="buttons-container">
-              {
-                (
-                  FormApplicationState.
-                      formState.
-                      currentSubSection?.
-                      name !== 'Lake-Nona'
-                ) && <button
-                  className="button previous"
-                  type="button"
-                  onClick={goPreviousSection}
-                >PREVIOUS</button>
-              }
-              <button
-                className="button next"
-                type="button"
-                onClick={SaveToDataBase}
-              >
-                {'NEXT >'}
-              </button>
-            </div>
-          </div>
-        </main>
+                  <button
+                    className="button next"
+                    type="button"
+                    onClick={SaveToDataBase}
+                  >
+                    {'NEXT >'}
+                  </button>
+                </div>
+              </div>
+            </main>
           }
         </>
       );

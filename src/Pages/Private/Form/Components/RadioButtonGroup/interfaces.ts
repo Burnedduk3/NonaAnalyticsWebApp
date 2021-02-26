@@ -4,7 +4,13 @@ export interface IRadioButtonGroupProps {
     question: string
     items: Array<string>,
     questionId: string
-    setResponse: (response: string, questionID: string, order: number) => void;
+    setResponse: (
+        response: string,
+        questionID: string,
+        order: number,
+        validation: string
+    ) => void;
     radioGroup: string;
-    order:number
+    order:number;
+    inputConfirmation: string
 }
