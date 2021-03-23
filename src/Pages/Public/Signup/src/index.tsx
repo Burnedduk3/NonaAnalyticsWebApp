@@ -1,7 +1,6 @@
 import React, {ChangeEvent, useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import {ISignUp} from '../interfaces/SignUpInterface';
-import {Auth} from 'aws-amplify';
 import {useHistory} from 'react-router-dom';
 import RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
@@ -132,16 +131,16 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      await Auth.signUp({
-        username: pageInputs.email,
-        password: pageInputs.password,
-        attributes: {
-          email: pageInputs.email,
-          birthdate: pageInputs.birthdate,
-          gender: pageInputs.gender,
-          name: pageInputs.name,
-        },
-      });
+      // await Auth.signUp({
+      //   username: pageInputs.email,
+      //   password: pageInputs.password,
+      //   attributes: {
+      //     email: pageInputs.email,
+      //     birthdate: pageInputs.birthdate,
+      //     gender: pageInputs.gender,
+      //     name: pageInputs.name,
+      //   },
+      // });
       history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       setToggleToast(true);

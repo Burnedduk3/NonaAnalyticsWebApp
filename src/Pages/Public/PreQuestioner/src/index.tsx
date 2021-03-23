@@ -19,12 +19,6 @@ import {IQuestionerState} from '../../../Private/Form/Questioner/interface';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
-import {API, graphqlOperation} from 'aws-amplify';
-import {createForm} from '../../../../graphql/mutations';
-import {
-  SET_CURRENT_FORM_ID,
-} from '../../../../Context/FormQuestions/ActionTypes';
-import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 
 
 const initialState: IQuestionerState = {
@@ -41,7 +35,7 @@ const initialState: IQuestionerState = {
 const PreQuestionerPage: React.FC = (): JSX.Element =>{
   const applicationState = useApplicationState();
   const userState = useUserState();
-  const formState = useFormQuestionState();
+  // const formState = useFormQuestionState();
   const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
   const [redirect, setRedirect] = useState<boolean>(false);
@@ -60,27 +54,27 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
 
   const createQuestioner = async () =>{
     setLoading(true);
-    const {usernameID} = userState.userState;
-    const formData: any = await API.graphql(graphqlOperation(
-        createForm,
-        {
-          input: {
-            UserID: usernameID,
-            finished: false,
-            percentage: 0,
-            sentEmail: false,
-            consent: false,
-          },
-        },
-    ));
-    formState.formStateDispatch(
-        {
-          type: SET_CURRENT_FORM_ID,
-          payload: {
-            currentFormID: formData.data.createForm.id,
-          },
-        },
-    );
+    // const {usernameID} = userState.userState;
+    // const formData: any = await API.graphql(graphqlOperation(
+    //     createForm,
+    //     {
+    //       input: {
+    //         UserID: usernameID,
+    //         finished: false,
+    //         percentage: 0,
+    //         sentEmail: false,
+    //         consent: false,
+    //       },
+    //     },
+    // ));
+    // formState.formStateDispatch(
+    //     {
+    //       type: SET_CURRENT_FORM_ID,
+    //       payload: {
+    //         currentFormID: formData.data.createForm.id,
+    //       },
+    //     },
+    // );
   };
 
   useEffect(

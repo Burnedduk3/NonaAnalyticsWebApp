@@ -2,7 +2,6 @@ import React, {useEffect, useState} from 'react';
 
 import './styles.scss';
 import {IImageQuestionProps} from './interfaces';
-import {Storage} from 'aws-amplify';
 import {
   useFormQuestionState,
 } from '../../../../../Context/FormQuestions/Provider';
@@ -40,8 +39,6 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
     try {
       const srcImages: Array<string> = [];
       for (let i = 0; i < imagesPath.length; i++) {
-        const imageSrc = await Storage.get(imagesPath[i]);
-        srcImages.push(imageSrc.toString());
       }
       setImages(srcImages);
     } catch (err) {

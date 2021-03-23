@@ -16,32 +16,23 @@ import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   UPDATE_ANSWERED_QUESTIONS,
-  GET_SECTIONS, NEXT_QUESTIONS,
+  NEXT_QUESTIONS,
   PREVIOUS_QUESTION,
   SEARCH_STORAGE_QUESTIONER, SET_QUESTION_RESPONSE,
   SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
-import {fetchQuestions} from '../api/FetchQuestions';
 import {RouteComponentProps} from 'react-router';
 import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
-  IFormQuestionsContextState, IQuestion,
+  IQuestion,
 } from '../../../../Context/FormQuestions/interface';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
-import saveQuestionsToDynamo from '../api/Dynamo/SaveQuestionsToDynamo';
-import
-saveQuestionsToAurora,
-{
-  ISaveDataAuroraParams,
-}
-  from '../api/Aurora/SaveQuestionsToAurora';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
-import updateFormProgress from '../api/Dynamo/UpdateFormProgress';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
@@ -49,8 +40,6 @@ import {Redirect} from 'react-router-dom';
 import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
-import updateQuestionAtDynamo from '../api/Dynamo/UpdateQuestionResponse';
-import updateQuestionAtAurora from '../api/Aurora/UpdateQuestionResponse';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 
 const FormPage:React.FC<RouteComponentProps<
@@ -163,28 +152,7 @@ const FormPage:React.FC<RouteComponentProps<
         !cachedData
         ) {
           try {
-            fetchQuestions(FormApplicationState.formState.currentFormID).then(
-                (data: IFormQuestionsContextState | undefined) => {
-                  FormApplicationState.formStateDispatch(
-                      {
-                        type: GET_SECTIONS,
-                        payload: {
-                          fetchedSections: data,
-                        },
-                      });
-                  setLoading(false);
-                  applicationState.appStateDispatch(
-                      {
-                        type: SET_ERROR,
-                        payload: {
-                          error: {
-                            error: false,
-                            errorMessage: '',
-                          },
-                        },
-                      },
-                  );
-                });
+
           } catch (error) {
             applicationState.appStateDispatch(
                 {
@@ -244,106 +212,46 @@ const FormPage:React.FC<RouteComponentProps<
             currentSubSection?.
             name;
         setLoading(true);
+        console.log(stack, section, subSection);
         const respondedQuestions = FormApplicationState.
             formState.
             questionsAnswered;
         await respondedQuestions.map(async (RespondedQuestion) => {
-          let {id, sendToDB, answer, responseDbId} = RespondedQuestion;
+          const {id, sendToDB, answer, responseDbId} = RespondedQuestion;
           if (!sendToDB) {
             if (!responseDbId) {
               try {
-                responseDbId = await saveQuestionsToDynamo(
-                    id,
-                    answer,
-                    FormApplicationState.formState.currentFormID,
-                );
+                // TODO Create question
               } catch (error) {
+                setToggleToast(true);
                 applicationState.appStateDispatch(
                     {
                       type: SET_ERROR,
                       payload: {
                         error: {
                           error: true,
-                          errorMessage: error.message,
+                          errorMessage: 'unable to save questions',
                         },
                       },
                     },
                 );
               }
-              if (
-                stack !== undefined &&
-                  section !== undefined &&
-                  subSection !== undefined
-              ) {
-                try {
-                  const functionParams: ISaveDataAuroraParams = {
-                    stack: stack.toString(),
-                    section: section,
-                    subSection: subSection,
-                  };
-
-                  if (!responseDbId) {
-                    throw new Error('Error saving questions');
-                  }
-                  await saveQuestionsToAurora(
-                      {...functionParams},
-                      id,
-                      answer,
-                      FormApplicationState.formState.currentFormID,
-                      userState.userState.usernameID,
-                      responseDbId,
-                  );
-                  sendToDB = true;
-                } catch (error) {
-                  setToggleToast(true);
-                  applicationState.appStateDispatch(
-                      {
-                        type: SET_ERROR,
-                        payload: {
-                          error: {
-                            error: true,
-                            errorMessage: 'unable to save questions',
-                          },
-                        },
-                      },
-                  );
-                }
-              }
-            } else {
-              try {
-                await updateQuestionAtDynamo(
-                    responseDbId,
-                    answer,
-                );
-
-                await updateQuestionAtAurora(
-                    responseDbId,
-                    answer,
-                );
-                applicationState.appStateDispatch(
-                    {
-                      type: SET_ERROR,
-                      payload: {
-                        error: {
-                          error: false,
-                          errorMessage: '',
-                        },
+            }
+          } else {
+            try {
+              // TODO update questions
+            } catch (error) {
+              applicationState.appStateDispatch(
+                  {
+                    type: SET_ERROR,
+                    payload: {
+                      error: {
+                        error: true,
+                        errorMessage: 'unable to update',
                       },
                     },
-                );
-              } catch (error) {
-                applicationState.appStateDispatch(
-                    {
-                      type: SET_ERROR,
-                      payload: {
-                        error: {
-                          error: true,
-                          errorMessage: 'unable to update',
-                        },
-                      },
-                    },
-                );
-              }
+                  },
+              );
             }
           }
           FormApplicationState
@@ -367,10 +275,7 @@ const FormPage:React.FC<RouteComponentProps<
         ) {
           setCurrentProgress(FormApplicationState.formState.currentProgress);
           try {
-            await updateFormProgress(
-                FormApplicationState.formState.currentFormID,
-                FormApplicationState.formState.currentProgress,
-            );
+
           } catch (error) {
             applicationState.appStateDispatch(
                 {

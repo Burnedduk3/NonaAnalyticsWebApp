@@ -10,20 +10,13 @@ import CONSTANTS, {AcceptanceStatement} from './CONSTANTS';
 import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
-import {API, graphqlOperation} from 'aws-amplify';
-import {updateForm} from '../../../../graphql/mutations';
-import {UpdateFormMutationVariables} from '../../../../API';
-import {useHistory} from 'react-router-dom';
-import RoutingConstants
-  from '../../../../navigation/CONSTANTS/RoutingConstants';
 
 const Consent: React.FC = ():JSX.Element =>{
   const applicationState = useApplicationState();
   const [acceptInvitation, setAcceptInvitation] = useState<boolean>(false);
   const formState = useFormQuestionState();
   const [toggleToast, setToggleToast] = useState<boolean>(false);
-  const [redirect, setRedirect] = useState<boolean>(false);
-  const history = useHistory();
+  // const [redirect, setRedirect] = useState<boolean>(false);
 
 
   useEffect(()=>{
@@ -31,35 +24,35 @@ const Consent: React.FC = ():JSX.Element =>{
   },
   []);
 
-  useEffect(()=>{
-    if (redirect) {
-      history.push(
-          RoutingConstants.dinamicForm.path,
-      );
-    }
-  },
-  [redirect]);
+  // useEffect(()=>{
+  //   if (redirect) {
+  //     history.push(
+  //         RoutingConstants.dinamicForm.path,
+  //     );
+  //   }
+  // },
+  // [redirect]);
 
 
   const onAcceptConsent = async () =>{
     if (formState.formState.currentFormID && acceptInvitation) {
-      const {currentFormID} = formState.formState;
-      const formMutationVariables: UpdateFormMutationVariables = {
-        input: {
-          id: currentFormID,
-          consent: true,
-        },
-      };
+      // const {currentFormID} = formState.formState;
+      // const formMutationVariables: UpdateFormMutationVariables = {
+      //   input: {
+      //     id: currentFormID,
+      //     consent: true,
+      //   },
+      // };
       try {
-        const response:any = await API.graphql(
-            graphqlOperation(
-                updateForm,
-                formMutationVariables,
-            ),
-        );
-        if (response.data) {
-          setRedirect(true);
-        }
+        // const response:any = await API.graphql(
+        //     graphqlOperation(
+        //         updateForm,
+        //         formMutationVariables,
+        //     ),
+        // );
+        // if (response.data) {
+        //   setRedirect(true);
+        // }
       } catch (err) {
         applicationState.appStateDispatch(
             {

@@ -13,11 +13,9 @@ import './styles.scss';
 import CONSTANTS from './CONSTANTS';
 import {Link} from 'react-router-dom';
 import logo from '../../../../assets/Logos/logo.png';
-import {Auth} from 'aws-amplify';
-import {useLocation} from 'react-router-dom';
+// import {useLocation} from 'react-router-dom';
 import validator from 'validator';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
-
 
 const MailVerificationPage : React.FC = (): JSX.Element =>{
   const applicationState = useApplicationState();
@@ -26,9 +24,9 @@ const MailVerificationPage : React.FC = (): JSX.Element =>{
   const history = useHistory();
   const [verificationCode, setVerificationCode] = useState<string>('');
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const location = useLocation();
+  // const location = useLocation();
   // @ts-ignore
-  const {mail} = location.state;
+  // const {mail} = location.state;
   const goHome = () =>{
     history.push(RoutingConstants.menu.home.path);
   };
@@ -56,7 +54,7 @@ const MailVerificationPage : React.FC = (): JSX.Element =>{
     try {
       setIsLoading(true);
       verifyInput();
-      await Auth.confirmSignUp(mail, verificationCode);
+      // await Auth.confirmSignUp(mail, verificationCode);
       setIsLoading(false);
       setIsRedirecting(true);
     } catch (err) {

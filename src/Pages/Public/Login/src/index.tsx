@@ -12,25 +12,21 @@ import {
   HIDE_FOOTER,
   SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
-import {API, Auth, graphqlOperation} from 'aws-amplify';
 import './styles.scss';
 import logo from '../../../../assets/Logos/logo.png';
 import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
 import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
 import user from '../../../../assets/Icons/user.png';
 import lock from '../../../../assets/Icons/lock.png';
-import {useUserState} from '../../../../Context/UserContext/Provider';
-import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
-import {createForm, createUserInfo} from '../../../../graphql/mutations';
+// import {useUserState} from '../../../../Context/UserContext/Provider';
+// import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
 import validator from 'validator';
-import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
-import {
-  SET_CURRENT_FORM_ID,
-} from '../../../../Context/FormQuestions/ActionTypes';
+// eslint-disable-next-line max-len
+// import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
+// import {
+//   SET_CURRENT_FORM_ID,
+// } from '../../../../Context/FormQuestions/ActionTypes';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
-import {getUserInfo} from '../../../../graphql/queries';
-import {CreateUserInfoInput, GetUserInfoQueryVariables} from '../../../../API';
-import {CognitoHostedUIIdentityProvider} from '@aws-amplify/auth';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -41,8 +37,8 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
   const ApplicationState = useApplicationState();
   const history = useHistory();
-  const userState = useUserState();
-  const formState = useFormQuestionState();
+  // const userState = useUserState();
+  // const formState = useFormQuestionState();
   const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
@@ -98,74 +94,75 @@ const LoginPage : React.FC = (): JSX.Element =>{
         (validator.isEmail(username) || validator.isMobilePhone(username)) &&
           validator.isAscii(password)
       ) {
-        const user = await Auth.signIn(
-            pageInputs.username, pageInputs.password,
-        );
-        if (user) {
-          console.log(user);
-          const queryParameters: GetUserInfoQueryVariables = {
-            userID: user.username,
-          };
-          const auroraUser:any = await API.graphql(graphqlOperation(
-              getUserInfo,
-              {
-                ...queryParameters,
-              },
-          ));
-          if (auroraUser.data.getUserInfo === null) {
-            const createUserInfoInput: CreateUserInfoInput = {
-              fName: user.attributes.name,
-              lName: user.attributes.name,
-              userEmail: user.attributes.email,
-              userID: user.username,
-            };
-            await API.graphql(
-                graphqlOperation(
-                    createUserInfo,
-                    {
-                      createUserInfoInput,
-                    },
-                ),
-            );
-          }
-          userState.userStateDispatch({
-            type: ADD_USER,
-            payload: {
-              name: user.attributes.name,
-              birthdate: user.attributes.birthdate,
-              email: user.attributes.email,
-              gender: user.attributes.gender,
-              usernameID: user.username,
-              accessToken: user.signInUserSession.accessToken.jwtToken,
-              idToken: user.signInUserSession.idToken.jwtToken,
-              refreshToken: user.signInUserSession.refreshToken.jwtToken,
-            },
-          });
-
-          if (user.attributes.email_verified) {
-            const formData: any = await API.graphql(graphqlOperation(createForm,
-                {
-                  input: {
-                    UserID: user.username,
-                    finished: false,
-                    percentage: 0,
-                    consent: false,
-                    sentEmail: false,
-                  },
-                },
-            ));
-            formState.formStateDispatch(
-                {
-                  type: SET_CURRENT_FORM_ID,
-                  payload: {
-                    currentFormID: formData.data.createForm.id,
-                  },
-                },
-            );
-            setRedirectPath(RoutingConstants.consent.path);
-            setIsRedirecting(true);
-          }
-        }
+        // // const user = await Auth.signIn(
+        // //     pageInputs.username, pageInputs.password,
+        // // );
+        // // if (user) {
+        // //   console.log(user);
+        // //   const queryParameters: GetUserInfoQueryVariables = {
+        // //     userID: user.username,
+        // //   };
+        // //   const auroraUser:any = await API.graphql(graphqlOperation(
+        // //       getUserInfo,
+        // //       {
+        // //         ...queryParameters,
+        // //       },
+        // //   ));
+        // //   if (auroraUser.data.getUserInfo === null) {
+        // //     const createUserInfoInput: CreateUserInfoInput = {
+        // //       fName: user.attributes.name,
+        // //       lName: user.attributes.name,
+        // //       userEmail: user.attributes.email,
+        // //       userID: user.username,
+        // //     };
+        // //     await API.graphql(
+        // //         graphqlOperation(
+        // //             createUserInfo,
+        // //             {
+        // //               createUserInfoInput,
+        // //             },
+        // //         ),
+        // //     );
+        // //   }
+        //   userState.userStateDispatch({
+        //     type: ADD_USER,
+        //     payload: {
+        //       name: user.attributes.name,
+        //       birthdate: user.attributes.birthdate,
+        //       email: user.attributes.email,
+        //       gender: user.attributes.gender,
+        //       usernameID: user.username,
+        //       accessToken: user.signInUserSession.accessToken.jwtToken,
+        //       idToken: user.signInUserSession.idToken.jwtToken,
+        //       refreshToken: user.signInUserSession.refreshToken.jwtToken,
+        //     },
+        //   });
+        //
+        //   if (user.attributes.email_verified) {
+        // eslint-disable-next-line max-len
+        //     const formData: any = await API.graphql(graphqlOperation(createForm,
+        //         {
+        //           input: {
+        //             UserID: user.username,
+        //             finished: false,
+        //             percentage: 0,
+        //             consent: false,
+        //             sentEmail: false,
+        //           },
+        //         },
+        //     ));
+        //     formState.formStateDispatch(
+        //         {
+        //           type: SET_CURRENT_FORM_ID,
+        //           payload: {
+        //             currentFormID: formData.data.createForm.id,
+        //           },
+        //         },
+        //     );
+        //     setRedirectPath(RoutingConstants.consent.path);
+        //     setIsRedirecting(true);
+        //   }
+        // }
       } else {
         throw new Error('incorrect username or password');
       }
@@ -214,20 +211,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
     }
   };
 
-  const fedarateFacebookSignin = async () => {
-    const data = await Auth.federatedSignIn(
-        {provider: CognitoHostedUIIdentityProvider.Facebook},
-    );
-    console.log(data);
-  };
-
-  const fedarateGoogleSignin = async () => {
-    const data = await Auth.federatedSignIn(
-        {provider: CognitoHostedUIIdentityProvider.Google},
-    );
-    console.log(data);
-  };
-
   const {error} = applicationState.appState;
 
   return (
@@ -258,12 +241,12 @@ const LoginPage : React.FC = (): JSX.Element =>{
           <img
             src={GoogleIcon}
             alt="Google logo"
-            onClick={()=>fedarateGoogleSignin()}
+            // onClick={()=>fedarateGoogleSignin()}
           />
           <img
             src={FBIcon}
             alt="Facebook logo"
-            onClick={() => fedarateFacebookSignin()}
+            // onClick={() => fedarateFacebookSignin()}
           />
         </div>
         <div className="horizontal-line">
