@@ -63,42 +63,51 @@ export const useOrganizeForm = () => {
             const subSections: ISubSection[] = section.subSections.map(
                 (subSection: ISubSection): ISubSection=>{
                   let maxNumber = 0;
-                  const formQuestions: IQuestion[] = questions.map(
-                      (question:IMappedQuestions): IQuestion=>{
-                        const items: Item[] = question.items.map(
-                            (item: Item)=>{
-                              return {
-                                name: item.name,
-                                order: item.order,
-                              };
-                            });
+                  const formQuestions: IQuestion[] = questions.reduce((
+                      questions: IQuestion[],
+                      question:IMappedQuestions,
+                  ): IQuestion[] => {
+                    if (question.subSection.name === subSection.name) {
+                      const items: Item[] = question.items.map(
+                          (item: Item) => {
+                            return {
+                              name: item.name,
+                              order: item.order,
+                            };
+                          });
 
-                        const images: Image[] = question.imagesPath.map(
-                            (image: Image)=>{
-                              return {
-                                alt: image.alt,
-                                id: image.id,
-                                order: image.order,
-                                src: image.src,
-                              };
-                            });
-                        if (question.stack > maxNumber) {
-                          maxNumber = question.stack;
-                        }
+                      const images: Image[] = question.imagesPath.map(
+                          (image: Image) => {
+                            return {
+                              alt: image.alt,
+                              id: image.id,
+                              order: image.order,
+                              src: image.src,
+                            };
+                          });
+                      if (question.stack > maxNumber) {
+                        maxNumber = question.stack;
+                      }
 
-                        return {
-                          stackPhrase: question.stackPhrase,
-                          items: items,
-                          inputConfirmation: question.inputConfirmation,
-                          stack: question.stack,
-                          category: question.category,
-                          question: question.question,
-                          placeHolder: question.placeHolder,
-                          imagesPath: images,
-                          order: question.order,
-                          id: question.id,
-                        };
-                      });
+                      const mappedQuestion = {
+                        stackPhrase: question.stackPhrase,
+                        items: items,
+                        inputConfirmation: question.inputConfirmation,
+                        stack: question.stack,
+                        category: question.category,
+                        question: question.question,
+                        placeHolder: question.placeHolder,
+                        imagesPath: images,
+                        order: question.order,
+                        id: question.id,
+                      };
+                      questions.push(mappedQuestion);
+                    }
+                    return questions;
+                  }, []);
+                  formQuestions.sort((a, b) => {
+                    return a.order - b.order;
+                  });
                   return {
                     order: subSection.order,
                     id: subSection.id,
@@ -107,6 +116,9 @@ export const useOrganizeForm = () => {
                     maxStack: maxNumber,
                   };
                 });
+            subSections.sort((a, b) => {
+              return a.order - b.order;
+            });
             return {
               id: section.id,
               name: section.name,
@@ -114,6 +126,9 @@ export const useOrganizeForm = () => {
               subSections: subSections,
             };
           });
+      formSections.sort((a, b)=>{
+        return a.order - b.order;
+      });
       setFormState({
         finished: false,
         currentSection: formSections[0],

@@ -10,7 +10,7 @@ export const nextQuestions = (
   const currentSection = state.currentSection;
   const currentSubSection = state.currentSubSection;
   const currentStack = state.currentStack;
-  const newState = {
+  let newState = {
     ...state,
   };
   if (
@@ -59,6 +59,7 @@ export const nextQuestions = (
       }
     }
   }
+  newState = setShowableQuestions(newState);
   localStorage.setItem(
       'QUESTIONER_STORAGE',
       JSON.stringify(newState),

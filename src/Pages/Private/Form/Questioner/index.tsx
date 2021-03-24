@@ -9,17 +9,15 @@ import {
 } from '../../../../Context/ApplicationState/Provider';
 import {
   HIDE_FOOTER,
-  HIDE_HEADER, SET_ERROR,
+  HIDE_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
 
 import './styles.scss';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
-  UPDATE_ANSWERED_QUESTIONS,
-  NEXT_QUESTIONS,
   PREVIOUS_QUESTION,
   SET_QUESTION_RESPONSE,
-  SET_SHOWABLE_QUESTIONS, GET_SECTIONS,
+  SET_SHOWABLE_QUESTIONS, GET_SECTIONS, NEXT_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {RouteComponentProps} from 'react-router';
 import {
@@ -42,7 +40,6 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
   const applicationState = useApplicationState();
-  const [currentProgress, setCurrentProgress] = useState<number>();
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const {error} = applicationState.appState;
   const formState = useOrganizeForm();
@@ -128,11 +125,6 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
             },
           });
       setPageLoading(false);
-    }
-  }, [formState]);
-
-  useEffect(()=>{
-    if (FormApplicationState.formState.sections.length > 0) {
       FormApplicationState.formStateDispatch(
           {
             type: SET_SHOWABLE_QUESTIONS,
@@ -140,7 +132,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
           },
       );
     }
-  }, [pageLoading]);
+  }, [formState]);
+
 
   const goPreviousSection = () => {
     FormApplicationState
@@ -152,119 +145,14 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   };
 
   const SaveToDataBase = async () => {
-    const stack = FormApplicationState.formState.currentStack;
-    const section = FormApplicationState.formState.currentSection?.name;
-    const subSection = FormApplicationState.
-        formState.
-        currentSubSection?.
-        name;
-    setPageLoading(true);
-    console.log(stack, section, subSection);
-    const respondedQuestions = FormApplicationState.
-        formState.
-        questionsAnswered;
-    await respondedQuestions.map(async (RespondedQuestion) => {
-      const {id, sendToDB, answer, responseDbId} = RespondedQuestion;
-      if (!sendToDB) {
-        if (!responseDbId) {
-          try {
-            // TODO Create question
-          } catch (error) {
-            setToggleToast(true);
-            applicationState.appStateDispatch(
-                {
-                  type: SET_ERROR,
-                  payload: {
-                    error: {
-                      error: true,
-                      errorMessage: 'unable to save questions',
-                    },
-                  },
-                },
-            );
-          }
-        }
-      } else {
-        try {
-          // TODO update questions
-        } catch (error) {
-          applicationState.appStateDispatch(
-              {
-                type: SET_ERROR,
-                payload: {
-                  error: {
-                    error: true,
-                    errorMessage: 'unable to update',
-                  },
-                },
-              },
-          );
-        }
-      }
-      FormApplicationState
-          .formStateDispatch({
-            type: UPDATE_ANSWERED_QUESTIONS,
-            payload: {
-              questionToAdd: {
-                answer: answer,
-                id: id,
-                sendToDB: sendToDB,
-                responseDbId,
-              },
-            },
-          },
-          );
-    });
-    if (
-      currentProgress !== FormApplicationState.
-          formState.
-          currentProgress
-    ) {
-      setCurrentProgress(FormApplicationState.formState.currentProgress);
-      try {
-
-      } catch (error) {
-        applicationState.appStateDispatch(
-            {
-              type: SET_ERROR,
-              payload: {
-                error: {
-                  error: true,
-                  errorMessage: error.message,
-                },
-              },
-            },
-        );
-      }
-    }
-    if (!ApplicationState.appState.error.error) {
-      FormApplicationState
-          .formStateDispatch({
-            type: NEXT_QUESTIONS,
-            payload: undefined,
-          },
-          );
-
-      FormApplicationState.formStateDispatch(
-          {
-            type: SET_SHOWABLE_QUESTIONS,
-            payload: undefined,
-          },
-      );
-    }
-    applicationState.appStateDispatch(
-        {
-          type: SET_ERROR,
-          payload: {
-            error: {
-              error: false,
-              errorMessage: '',
-            },
-          },
+    FormApplicationState
+        .formStateDispatch({
+          type: NEXT_QUESTIONS,
+          payload: undefined,
         },
-    );
-    setPageLoading(false);
+        );
   };
+
   const formFinished = FormApplicationState.formState.finished;
 
   return (
