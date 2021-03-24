@@ -79,5 +79,5 @@ export interface IQuestion{
 
 export interface ICategory{
     id: string,
-    name: 'Open' | 'YesNo' | 'Combo'
+    name: string
 }

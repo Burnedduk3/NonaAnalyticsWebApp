@@ -18,7 +18,7 @@ import {
   UPDATE_ANSWERED_QUESTIONS,
   NEXT_QUESTIONS,
   PREVIOUS_QUESTION,
-  SEARCH_STORAGE_QUESTIONER, SET_QUESTION_RESPONSE,
+  SET_QUESTION_RESPONSE,
   SET_SHOWABLE_QUESTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {RouteComponentProps} from 'react-router';
@@ -26,34 +26,32 @@ import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
   IQuestion,
 } from '../../../../Context/FormQuestions/interface';
-import {useUserState} from '../../../../Context/UserContext/Provider';
 import LadderQuestion from '../Components/LadderQuestion';
 import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
-import {
-  SEARCH_LOCAL_STORAGE,
-} from '../../../../Context/UserContext/ActionTypes';
 import {Redirect} from 'react-router-dom';
 import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
+import {useOrganizeForm} from '../../../../hooks/FetchForm';
 
 const FormPage:React.FC<RouteComponentProps<
     TQuestionerRoute>
     > = (): JSX.Element =>{
-      const [loading, setLoading] = useState<boolean>(true);
+      const [pageLoading, setPageLoading] = useState<boolean>(true);
       const ApplicationState = useApplicationState();
       const FormApplicationState = useFormQuestionState();
       const applicationState = useApplicationState();
-      const userState = useUserState();
       const [currentProgress, setCurrentProgress] = useState<number>();
       const [toggleToast, setToggleToast] = useState<boolean>(false);
       const {error} = applicationState.appState;
 
+      const formState = useOrganizeForm();
+      console.log(formState);
 
       const setQuestionResponse = (
           response: string,
@@ -124,67 +122,11 @@ const FormPage:React.FC<RouteComponentProps<
           type: HIDE_HEADER,
           payload: undefined,
         });
-        userState.userStateDispatch({
-          type: SEARCH_LOCAL_STORAGE,
-          payload: undefined,
-        });
-        FormApplicationState.formStateDispatch(
-            {
-              type: SEARCH_STORAGE_QUESTIONER,
-              payload: undefined,
-            },
-        );
-        applicationState.appStateDispatch(
-            {
-              type: SET_ERROR,
-              payload: {
-                error: {
-                  error: false,
-                  errorMessage: '',
-                },
-              },
-            },
-        );
-
-        const cachedData = localStorage.getItem('QUESTIONER_STORAGE');
-        setLoading(true);
-        if (FormApplicationState.formState.sections?.length === 0 &&
-        !cachedData
-        ) {
-          try {
-
-          } catch (error) {
-            applicationState.appStateDispatch(
-                {
-                  type: SET_ERROR,
-                  payload: {
-                    error: {
-                      error: true,
-                      errorMessage: 'Not able to fetch questions',
-                    },
-                  },
-                },
-            ); setLoading(false);
-          }
-        } else {
-          setCurrentProgress(FormApplicationState.formState.currentProgress);
-          setLoading(false);
-          applicationState.appStateDispatch(
-              {
-                type: SET_ERROR,
-                payload: {
-                  error: {
-                    error: false,
-                    errorMessage: '',
-                  },
-                },
-              },
-          );
-        }
       }, []);
 
       useEffect(()=>{
         if (FormApplicationState.formState.sections.length > 0
+
         ) {
           FormApplicationState.formStateDispatch(
               {
@@ -193,7 +135,7 @@ const FormPage:React.FC<RouteComponentProps<
               },
           );
         }
-      }, [loading]);
+      }, [pageLoading]);
 
       const goPreviousSection = () => {
         FormApplicationState
@@ -211,7 +153,7 @@ const FormPage:React.FC<RouteComponentProps<
             formState.
             currentSubSection?.
             name;
-        setLoading(true);
+        setPageLoading(true);
         console.log(stack, section, subSection);
         const respondedQuestions = FormApplicationState.
             formState.
@@ -316,7 +258,7 @@ const FormPage:React.FC<RouteComponentProps<
               },
             },
         );
-        setLoading(false);
+        setPageLoading(false);
       };
       const formFinished = FormApplicationState.formState.finished;
 
@@ -343,12 +285,12 @@ const FormPage:React.FC<RouteComponentProps<
                     toggleToast={toggleToast}
                     setToggleToast={setToggleToast}
                   />}
-                  {loading && (
+                  {pageLoading && (
                     <div className="spinner-wrapper">
                       <Spinner/>
                     </div>
                   )}
-                  {(!loading) && (
+                  {(!pageLoading) && (
                     <>
                       {
                         FormApplicationState.formState.showableQuestions.map(
@@ -485,10 +427,10 @@ const FormPage:React.FC<RouteComponentProps<
                                     question={item.question}
                                     questionId={item.id}
                                     radioGroup={item.id}
-                                    setLoading={setLoading}
+                                    setLoading={setPageLoading}
                                     imagesPath={item.imagesPath}
                                     order={item.order}
-                                    setIsLoading={setLoading}
+                                    setIsLoading={setPageLoading}
                                     inputConfirmation={item.inputConfirmation}
                                   />
                                 );

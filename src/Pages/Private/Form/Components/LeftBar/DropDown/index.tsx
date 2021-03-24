@@ -1,14 +1,14 @@
 import React from 'react';
-import {ILeftBarSubSections} from '../src/CONSTANTS';
 import {
   useFormQuestionState,
 } from '../../../../../../Context/FormQuestions/Provider';
 import {
   SET_SUBSECTION_BY_MENU,
 } from '../../../../../../Context/FormQuestions/ActionTypes';
+import {ISubSection} from '../../../../../../Context/FormQuestions/interface';
 
 export interface IDropDownProps{
-  subSections: Array<ILeftBarSubSections>
+  subSections: Array<ISubSection>
   selectors: Array<String>
 }
 
@@ -20,11 +20,11 @@ const DropDownComponent: React.FC<IDropDownProps> = (
 ):JSX.Element => {
   const FormApplicationState = useFormQuestionState();
 
-  const handleOnClick = (event: any, item: string) =>{
+  const handleOnClick = (event: any, subSectionName: string) =>{
     FormApplicationState?.formStateDispatch({
       type: SET_SUBSECTION_BY_MENU,
       payload: {
-        subSectionName: item,
+        subSectionName: subSectionName,
       },
     });
   };
@@ -33,15 +33,15 @@ const DropDownComponent: React.FC<IDropDownProps> = (
     <ul>
       {
         subSections.map(
-            (item: ILeftBarSubSections) => {
+            (subSection: ISubSection) => {
               return (
                 <li
                   className={selectors.join(' ')}
-                  key={item.code}
+                  key={subSection.name}
                   onClick={
-                    (event) => handleOnClick(event, item.code)
+                    (event) => handleOnClick(event, subSection.name)
                   }>
-                  {item.text}
+                  {subSection.name.replaceAll('-', ' ')}
                 </li>
               );
             })

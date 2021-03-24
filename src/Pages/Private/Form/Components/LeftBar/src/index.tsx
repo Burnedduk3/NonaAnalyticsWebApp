@@ -5,12 +5,12 @@ import colors from '../../../../../../Global/js/colors';
 import logo from '../../../../../../assets/Logos/logo.png';
 import DropDownComponent from '../DropDown';
 import LeftBarText, {
-  LEFT_BAR_SECTIONS,
 } from './CONSTANTS';
 import {
   useFormQuestionState,
 } from '../../../../../../Context/FormQuestions/Provider';
 import './styles.scss';
+import {useSectionsAndSubSections} from '../../../../../../hooks/GetSections';
 
 interface IShowHideOptions{
     [key:string]: boolean;
@@ -23,6 +23,7 @@ interface IShowHideOptions{
 
 const LeftBar: React.FC = ():JSX.Element => {
   const formState = useFormQuestionState();
+  const sections = useSectionsAndSubSections();
   const [showOptions, setShowOptions] = useState<IShowHideOptions>({
     LakeNona: false,
     Health: false,
@@ -67,25 +68,35 @@ const LeftBar: React.FC = ():JSX.Element => {
       </div>
       <div className="drop-down-menu">
         {
-          Object.keys(LEFT_BAR_SECTIONS).map((key: string)=>{
-            return <ul
-              key={key}
-              onClick={(event)=>handleOnClick(event, key)}
-            >
-              <li
-                className="main-options"
-                id="health"
-              >
-                <p>{LEFT_BAR_SECTIONS[key].text}</p>
-              </li>
-              <li className={`sub-item ${showOptions[key]? 'show': 'hide'}`}>
-                <DropDownComponent
-                  selectors={['element-list']}
-                  subSections={LEFT_BAR_SECTIONS[key].subSections}
-                />
-              </li>
-            </ul>;
-          })
+          sections && (
+            sections.map((section)=>{
+              const objectKey = section.name.replaceAll('-', '');
+              return (
+                <ul
+                  key={section.name}
+                  onClick={(event) =>
+                    handleOnClick(event, objectKey)}
+                >
+                  <li
+                    className="main-options"
+                    id="health"
+                  >
+                    <p>{section.name.replaceAll('-', ' ')}</p>
+                  </li>
+                  <li
+                    className={`sub-item ${showOptions[objectKey]?
+                          'show':
+                          'hide'}`}
+                  >
+                    <DropDownComponent
+                      selectors={['element-list']}
+                      subSections={section.subSections}
+                    />
+                  </li>
+                </ul>
+              );
+            })
+          )
         }
       </div>
       <div className="last-section">
