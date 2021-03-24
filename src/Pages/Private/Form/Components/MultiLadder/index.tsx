@@ -58,10 +58,10 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                   className={`radio-button value${value}`}
                   type="radio"
                   name={radioGroup}
-                  value={value}
+                  value={value.name}
                   defaultChecked={
                       questionAnswer ?
-                          questionAnswer.answer === value:
+                          questionAnswer.answer === value.name:
                           false
                   }
                   onClick={

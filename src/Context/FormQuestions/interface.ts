@@ -1,3 +1,4 @@
+import {Image, Item} from '../../Config/api/Graphql/Types';
 
 export interface IFormQuestionsContextState{
     sections: Array<ISection>;
@@ -66,12 +67,12 @@ export interface ISubSection{
 
 export interface IQuestion{
     id: string,
-    items: Array<string> | null
+    items: Array<Item>
     question: string
     stack: number
     stackPhrase: string | null
     placeHolder: string | null
-    imagesPath: Array<string> | null
+    imagesPath: Array<Image> | null
     category: ICategory
     order: number
     inputConfirmation: string

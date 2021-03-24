@@ -66,10 +66,12 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
             htmlFor={`${questionId}`}
           >
             <input type="checkbox"
-              value={item}
+              value={item.name}
               onChange={handleInput}
-              name={item}
-              defaultChecked={questionAnswer?.answer.split(';').includes(item)}
+              name={item.name}
+              defaultChecked={
+                questionAnswer?.answer.split(';').includes(item.name)
+              }
             />
             <div className="checkmark"/>
             {item}

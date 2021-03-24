@@ -1,9 +1,10 @@
+import {Image, Item} from '../../../../../Config/api/Graphql/Types';
 
 export interface IImageQuestionProps{
     question: string
     questionId: string
     radioGroup: string
-    items: Array<string>
+    items: Array<Item>
     setResponse: (
         response: string,
         questionID: string,
@@ -12,7 +13,7 @@ export interface IImageQuestionProps{
     ) => void
     checked?: string
     setLoading: (loading: boolean) => void
-    imagesPath: Array<string>
+    imagesPath: Array<Image>
     order: number
     setIsLoading: (isLoading: boolean) => void
     inputConfirmation: string

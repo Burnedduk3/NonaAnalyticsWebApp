@@ -1,7 +1,8 @@
+import {Item} from '../../../../../Config/api/Graphql/Types';
 
 export interface ICheckBoxProps{
     question: string,
-    items: string[],
+    items: Item[],
     questionId: string,
     setResponse: (
         response: string,

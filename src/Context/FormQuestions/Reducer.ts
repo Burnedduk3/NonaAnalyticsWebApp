@@ -35,6 +35,7 @@ const FormQuestionsReducer = (
   switch (type) {
     case GET_SECTIONS: {
       if (payload && payload.fetchedSections) {
+        console.log(payload.fetchedSections);
         const {fetchedSections} = payload;
         localStorage.setItem(
             'QUESTIONER_STORAGE',

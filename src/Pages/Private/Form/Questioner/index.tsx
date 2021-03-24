@@ -19,15 +19,13 @@ import {
   NEXT_QUESTIONS,
   PREVIOUS_QUESTION,
   SET_QUESTION_RESPONSE,
-  SET_SHOWABLE_QUESTIONS,
+  SET_SHOWABLE_QUESTIONS, GET_SECTIONS,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {RouteComponentProps} from 'react-router';
-import {TQuestionerRoute} from '../../../../navigation/interfaces/interface';
 import {
   IQuestion,
 } from '../../../../Context/FormQuestions/interface';
 import LadderQuestion from '../Components/LadderQuestion';
-import * as LadderConstants from '../Components/LadderQuestion/CONSTANTS';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import MultiLadderQuestion from '../Components/MultiLadder';
@@ -39,237 +37,244 @@ RoutingConstants
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {useOrganizeForm} from '../../../../hooks/FetchForm';
 
-const FormPage:React.FC<RouteComponentProps<
-    TQuestionerRoute>
-    > = (): JSX.Element =>{
-      const [pageLoading, setPageLoading] = useState<boolean>(true);
-      const ApplicationState = useApplicationState();
-      const FormApplicationState = useFormQuestionState();
-      const applicationState = useApplicationState();
-      const [currentProgress, setCurrentProgress] = useState<number>();
-      const [toggleToast, setToggleToast] = useState<boolean>(false);
-      const {error} = applicationState.appState;
+const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
+  const [pageLoading, setPageLoading] = useState<boolean>(true);
+  const ApplicationState = useApplicationState();
+  const FormApplicationState = useFormQuestionState();
+  const applicationState = useApplicationState();
+  const [currentProgress, setCurrentProgress] = useState<number>();
+  const [toggleToast, setToggleToast] = useState<boolean>(false);
+  const {error} = applicationState.appState;
+  const formState = useOrganizeForm();
 
-      const formState = useOrganizeForm();
-      console.log(formState);
-
-      const setQuestionResponse = (
-          response: string,
-          questionID: string,
-          order: number,
-          validation: string,
-      ) =>{
-        const questionToSave = {
-          response,
-          questionID,
-          order,
-          validation,
-        };
-        const questionIndex = FormApplicationState.
-            formState.
-            questionsAnswered.
-            findIndex(
-                (question)=>{
-                  if (question.id === questionID) {
-                    return question;
-                  }
-                },
-            );
-        if (questionIndex > -1) {
-          const possibleQuestion = FormApplicationState.formState
-              .questionsAnswered[questionIndex];
-          if (possibleQuestion) {
-            FormApplicationState.formStateDispatch(
-                {
-                  type: SET_QUESTION_RESPONSE,
-                  payload: {
-                    questionToAdd: {
-                      id: questionToSave.questionID,
-                      answer: questionToSave.response,
-                      responseDbId: possibleQuestion.responseDbId,
-                      sendToDB: false,
-                      validation: questionToSave.validation,
-                    },
-                    order,
-                  },
-                },
-            );
-          }
-        } else {
-          FormApplicationState.formStateDispatch(
-              {
-                type: SET_QUESTION_RESPONSE,
-                payload: {
-                  questionToAdd: {
-                    id: questionToSave.questionID,
-                    answer: questionToSave.response,
-                    sendToDB: false,
-                    validation: questionToSave.response,
-                  },
-                  order,
-                },
-              },
-          );
-        }
-      };
-
-      useEffect( () => {
-        ApplicationState.appStateDispatch({
-          type: HIDE_FOOTER,
-          payload: undefined,
-        });
-        ApplicationState.appStateDispatch({
-          type: HIDE_HEADER,
-          payload: undefined,
-        });
-      }, []);
-
-      useEffect(()=>{
-        if (FormApplicationState.formState.sections.length > 0
-
-        ) {
-          FormApplicationState.formStateDispatch(
-              {
-                type: SET_SHOWABLE_QUESTIONS,
-                payload: undefined,
-              },
-          );
-        }
-      }, [pageLoading]);
-
-      const goPreviousSection = () => {
-        FormApplicationState
-            .formStateDispatch({
-              type: PREVIOUS_QUESTION,
-              payload: undefined,
-            },
-            );
-      };
-
-      const SaveToDataBase = async () => {
-        const stack = FormApplicationState.formState.currentStack;
-        const section = FormApplicationState.formState.currentSection?.name;
-        const subSection = FormApplicationState.
-            formState.
-            currentSubSection?.
-            name;
-        setPageLoading(true);
-        console.log(stack, section, subSection);
-        const respondedQuestions = FormApplicationState.
-            formState.
-            questionsAnswered;
-        await respondedQuestions.map(async (RespondedQuestion) => {
-          const {id, sendToDB, answer, responseDbId} = RespondedQuestion;
-          if (!sendToDB) {
-            if (!responseDbId) {
-              try {
-                // TODO Create question
-              } catch (error) {
-                setToggleToast(true);
-                applicationState.appStateDispatch(
-                    {
-                      type: SET_ERROR,
-                      payload: {
-                        error: {
-                          error: true,
-                          errorMessage: 'unable to save questions',
-                        },
-                      },
-                    },
-                );
+  const setQuestionResponse = (
+      response: string,
+      questionID: string,
+      order: number,
+      validation: string,
+  ) =>{
+    const questionToSave = {
+      response,
+      questionID,
+      order,
+      validation,
+    };
+    const questionIndex = FormApplicationState.
+        formState.
+        questionsAnswered.
+        findIndex(
+            (question)=>{
+              if (question.id === questionID) {
+                return question;
               }
-            }
-          } else {
-            try {
-              // TODO update questions
-            } catch (error) {
-              applicationState.appStateDispatch(
-                  {
-                    type: SET_ERROR,
-                    payload: {
-                      error: {
-                        error: true,
-                        errorMessage: 'unable to update',
-                      },
-                    },
-                  },
-              );
-            }
-          }
-          FormApplicationState
-              .formStateDispatch({
-                type: UPDATE_ANSWERED_QUESTIONS,
-                payload: {
-                  questionToAdd: {
-                    answer: answer,
-                    id: id,
-                    sendToDB: sendToDB,
-                    responseDbId,
-                  },
+            },
+        );
+    if (questionIndex > -1) {
+      const possibleQuestion = FormApplicationState.formState
+          .questionsAnswered[questionIndex];
+      if (possibleQuestion) {
+        FormApplicationState.formStateDispatch(
+            {
+              type: SET_QUESTION_RESPONSE,
+              payload: {
+                questionToAdd: {
+                  id: questionToSave.questionID,
+                  answer: questionToSave.response,
+                  responseDbId: possibleQuestion.responseDbId,
+                  sendToDB: false,
+                  validation: questionToSave.validation,
                 },
+                order,
               },
-              );
-        });
-        if (
-          currentProgress !== FormApplicationState.
-              formState.
-              currentProgress
-        ) {
-          setCurrentProgress(FormApplicationState.formState.currentProgress);
-          try {
+            },
+        );
+      }
+    } else {
+      FormApplicationState.formStateDispatch(
+          {
+            type: SET_QUESTION_RESPONSE,
+            payload: {
+              questionToAdd: {
+                id: questionToSave.questionID,
+                answer: questionToSave.response,
+                sendToDB: false,
+                validation: questionToSave.response,
+              },
+              order,
+            },
+          },
+      );
+    }
+  };
 
+  useEffect( () => {
+    ApplicationState.appStateDispatch({
+      type: HIDE_FOOTER,
+      payload: undefined,
+    });
+    ApplicationState.appStateDispatch({
+      type: HIDE_HEADER,
+      payload: undefined,
+    });
+  }, []);
+
+  useEffect(()=>{
+    if (formState && formState.totalQuestions > 0) {
+      FormApplicationState.formStateDispatch(
+          {
+            type: GET_SECTIONS,
+            payload: {
+              fetchedSections: formState,
+            },
+          });
+      setPageLoading(false);
+    }
+  }, [formState]);
+
+  useEffect(()=>{
+    if (FormApplicationState.formState.sections.length > 0) {
+      FormApplicationState.formStateDispatch(
+          {
+            type: SET_SHOWABLE_QUESTIONS,
+            payload: undefined,
+          },
+      );
+    }
+  }, [pageLoading]);
+
+  const goPreviousSection = () => {
+    FormApplicationState
+        .formStateDispatch({
+          type: PREVIOUS_QUESTION,
+          payload: undefined,
+        },
+        );
+  };
+
+  const SaveToDataBase = async () => {
+    const stack = FormApplicationState.formState.currentStack;
+    const section = FormApplicationState.formState.currentSection?.name;
+    const subSection = FormApplicationState.
+        formState.
+        currentSubSection?.
+        name;
+    setPageLoading(true);
+    console.log(stack, section, subSection);
+    const respondedQuestions = FormApplicationState.
+        formState.
+        questionsAnswered;
+    await respondedQuestions.map(async (RespondedQuestion) => {
+      const {id, sendToDB, answer, responseDbId} = RespondedQuestion;
+      if (!sendToDB) {
+        if (!responseDbId) {
+          try {
+            // TODO Create question
           } catch (error) {
+            setToggleToast(true);
             applicationState.appStateDispatch(
                 {
                   type: SET_ERROR,
                   payload: {
                     error: {
                       error: true,
-                      errorMessage: error.message,
+                      errorMessage: 'unable to save questions',
                     },
                   },
                 },
             );
           }
         }
-        if (!ApplicationState.appState.error.error) {
-          FormApplicationState
-              .formStateDispatch({
-                type: NEXT_QUESTIONS,
-                payload: undefined,
-              },
-              );
-
-          FormApplicationState.formStateDispatch(
+      } else {
+        try {
+          // TODO update questions
+        } catch (error) {
+          applicationState.appStateDispatch(
               {
-                type: SET_SHOWABLE_QUESTIONS,
-                payload: undefined,
+                type: SET_ERROR,
+                payload: {
+                  error: {
+                    error: true,
+                    errorMessage: 'unable to update',
+                  },
+                },
               },
           );
         }
+      }
+      FormApplicationState
+          .formStateDispatch({
+            type: UPDATE_ANSWERED_QUESTIONS,
+            payload: {
+              questionToAdd: {
+                answer: answer,
+                id: id,
+                sendToDB: sendToDB,
+                responseDbId,
+              },
+            },
+          },
+          );
+    });
+    if (
+      currentProgress !== FormApplicationState.
+          formState.
+          currentProgress
+    ) {
+      setCurrentProgress(FormApplicationState.formState.currentProgress);
+      try {
+
+      } catch (error) {
         applicationState.appStateDispatch(
             {
               type: SET_ERROR,
               payload: {
                 error: {
-                  error: false,
-                  errorMessage: '',
+                  error: true,
+                  errorMessage: error.message,
                 },
               },
             },
         );
-        setPageLoading(false);
-      };
-      const formFinished = FormApplicationState.formState.finished;
+      }
+    }
+    if (!ApplicationState.appState.error.error) {
+      FormApplicationState
+          .formStateDispatch({
+            type: NEXT_QUESTIONS,
+            payload: undefined,
+          },
+          );
 
-      return (
-        <>
+      FormApplicationState.formStateDispatch(
           {
-            formFinished && <Redirect
-              to={RoutingConstants.menu.home.path}
-            />
-          }
-          {!formFinished &&
+            type: SET_SHOWABLE_QUESTIONS,
+            payload: undefined,
+          },
+      );
+    }
+    applicationState.appStateDispatch(
+        {
+          type: SET_ERROR,
+          payload: {
+            error: {
+              error: false,
+              errorMessage: '',
+            },
+          },
+        },
+    );
+    setPageLoading(false);
+  };
+  const formFinished = FormApplicationState.formState.finished;
+
+  return (
+    <>
+      {
+        formFinished && <Redirect
+          to={RoutingConstants.menu.home.path}
+        />
+      }
+      {!formFinished &&
             <main className="content-container">
               <LeftBar/>
               <div className="form-container">
@@ -367,13 +372,7 @@ const FormPage:React.FC<RouteComponentProps<
                                     radioGroup={item.id}
                                     order={item.order}
                                     setResponse={setQuestionResponse}
-                                    values={
-                                        item.items === null ||
-                                        item.items.length === 0 ?
-                                            LadderConstants.default.
-                                                defaultValue :
-                                            item.items
-                                    }
+                                    values={item.items}
                                     inputConfirmation={item.inputConfirmation}
                                   />
                                 );
@@ -467,9 +466,9 @@ const FormPage:React.FC<RouteComponentProps<
                 </div>
               </div>
             </main>
-          }
-        </>
-      );
-    };
+      }
+    </>
+  );
+};
 
 export default FormPage;

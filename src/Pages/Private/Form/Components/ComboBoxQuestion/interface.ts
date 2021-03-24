@@ -1,6 +1,8 @@
+import {Item} from '../../../../../Config/api/Graphql/Types';
+
 export interface IComboBoxProps{
     question: string,
-    items: Array<string>,
+    items: Array<Item>,
     questionId: string,
     setResponse: (
         response: string,

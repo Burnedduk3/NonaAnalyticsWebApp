@@ -37,10 +37,10 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
 
         >
           {items.map((item) => <option
-            key={item}
-            value={item}
-            selected={questionAnswer?.answer === item}
-          >{item}</option>)}
+            key={item.name}
+            value={item.name}
+            selected={questionAnswer?.answer === item.name}
+          >{item.name}</option>)}
         </select>
         <i/>
       </label>

@@ -79,15 +79,15 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                         className="radio-button negative"
                         type="radio"
                         name={radioGroup}
-                        value={option}
+                        value={option.name}
                         defaultChecked={
                             questionAnswer ?
-                                questionAnswer.answer === option:
+                                questionAnswer.answer === option.name:
                                 false
                         }
                         onClick={
                           () => setResponse(
-                              option,
+                              option.name,
                               questionId,
                               order,
                               inputConfirmation,

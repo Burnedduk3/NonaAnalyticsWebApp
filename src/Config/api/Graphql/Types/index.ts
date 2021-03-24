@@ -54,6 +54,19 @@ export interface FetchedQuestionsAPI {
                         name: string
                         __typename: 'Category'
                     }
+                    items: Array<{
+                        name:string,
+                        order: number
+                        __typename: 'QuestionItems'
+                    }>
+
+                    imagesPath: Array<{
+                        id: string
+                        src: string
+                        alt: string
+                        order: number
+                        __typename: 'QuestionImages'
+                    }>
                 }>
                 error: boolean
                 message: string
@@ -69,6 +82,18 @@ interface APISubSection{
     id: string
 }
 
+export interface Item{
+    name:string,
+    order: number
+}
+
+export interface Image {
+    id: string
+    src: string
+    alt: string
+    order: number
+}
+
 export interface IMappedQuestions {
     id: string
     inputConfirmation: string
@@ -79,4 +104,7 @@ export interface IMappedQuestions {
     stackPhrase: string
     subSection: APISubSection
     category: ICategory
+    items: Array<Item>
+    imagesPath: Array<Image>
+
 }

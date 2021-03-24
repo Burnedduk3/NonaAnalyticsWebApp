@@ -39,30 +39,30 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
         {values.map((value)=>
           (
             <label
-              key={`${questionId}-${value}`}
-              htmlFor={`${questionId}-${value}`}
+              key={`${questionId}-${value.name}`}
+              htmlFor={`${questionId}-${value.name}`}
             >
               <input
-                id={`${questionId}-${value}`}
-                className={`radio-button value${value}`}
+                id={`${questionId}-${value.name}`}
+                className={`radio-button value.name${value.name}`}
                 type="radio"
                 name={radioGroup}
-                value={value}
+                value={value.name}
                 defaultChecked={
                     questionAnswer ?
-                        questionAnswer.answer === value:
+                        questionAnswer.answer === value.name:
                         false
                 }
                 onClick={
                   () => setResponse(
-                      value.toString(),
+                      value.name.toString(),
                       questionId,
                       order,
                       inputConfirmation,
                   )
                 }
               />
-              <div className={`check value`}>{value}</div>
+              <div className={`check value`}>{value.name}</div>
             </label>
           ),
         )}

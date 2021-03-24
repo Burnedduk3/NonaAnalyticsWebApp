@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React from 'react';
 
 import './styles.scss';
 import {IImageQuestionProps} from './interfaces';
@@ -18,11 +18,9 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
       setResponse,
       items,
       order,
-      setIsLoading,
       inputConfirmation,
     }:IImageQuestionProps,
 ): JSX.Element =>{
-  const [images, setImages] = useState<string[]>([]);
   const formContext = useFormQuestionState();
   const questionAnswer: IAnsweredQuestion | undefined = formContext.
       formState.
@@ -35,24 +33,6 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
         }
       });
 
-  const fetchImages = async () => {
-    try {
-      const srcImages: Array<string> = [];
-      for (let i = 0; i < imagesPath.length; i++) {
-      }
-      setImages(srcImages);
-    } catch (err) {
-      console.log(err);
-    }
-  };
-
-  useEffect(()=>{
-    setIsLoading(true);
-    fetchImages().then(()=>{
-    });
-    setIsLoading(false);
-  }, []);
-
   return (
     <>
       {
@@ -63,18 +43,18 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
               (
                 <label
                   className="ImageItem"
-                  key={`${questionId}-${value}`}
-                  htmlFor={`${questionId}-${value}`}
+                  key={`${questionId}-${value.name}`}
+                  htmlFor={`${questionId}-${value.name}`}
                 >
                   <input
-                    id={`${questionId}-${value}`}
-                    className={`radio-button value${value}`}
+                    id={`${questionId}-${value.name}`}
+                    className={`radio-button value.name${value.name}`}
                     type="radio"
                     name={radioGroup}
-                    value={value}
+                    value={value.name}
                     onClick={
                       () => setResponse(
-                          value.toString(),
+                          value.name.toString(),
                           questionId,
                           order,
                           inputConfirmation,
@@ -82,16 +62,16 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
                     }
                     defaultChecked={
                         questionAnswer ?
-                            questionAnswer.answer === value:
+                            questionAnswer.answer === value.name:
                         false
                     }
                   />
                   <div
                     className={`check value`}
                     style={{backgroundImage: `linear-gradient(white, white),
-                    url(${images[index]})`}}
+                    url(${imagesPath[index].src})`}}
                   />
-                  <p>{value}</p>
+                  <p>{value.name}</p>
                 </label>
               ),
             )}
