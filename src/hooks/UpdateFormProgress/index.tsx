@@ -1,0 +1,36 @@
+import {useEffect} from 'react';
+import {useMutation} from '@apollo/client';
+import {UPDATE_FORM_PROGRESS} from '../../Config/api/Graphql/QuerySintax';
+import {IUpdateFormProgressResponse} from '../../Config/api/Graphql/Types';
+
+export interface IUpdateFormProgressParams {
+    variables:{
+        formId: string
+        progress: number
+    }
+}
+
+export const useUpdateFormProgress = () => {
+  const [
+    updateProgress,
+    {data, loading, error},
+  ] = useMutation(UPDATE_FORM_PROGRESS);
+
+  useEffect(()=>{
+    try {
+      if (!loading && data) {
+        const rawResponse: IUpdateFormProgressResponse = data;
+        if (
+          error ||
+          rawResponse.UserInteractionMutation.updateFormProgress.error
+        ) {
+          throw new Error('Unable to update progress try again');
+        }
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }, [loading]);
+
+  return updateProgress;
+};

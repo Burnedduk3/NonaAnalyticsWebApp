@@ -32,17 +32,28 @@ import {Redirect} from 'react-router-dom';
 import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
-import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {useOrganizeForm} from '../../../../hooks/FetchForm';
+import {
+  ISaveResponseParams,
+  useSaveResponses,
+} from '../../../../hooks/CreateFormResponse';
+import {
+  IUpdateResponseParams,
+  useUpdateResponse,
+} from '../../../../hooks/UpdateQuestion';
+import {
+  IUpdateFormProgressParams,
+  useUpdateFormProgress,
+} from '../../../../hooks/UpdateFormProgress';
 
 const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const [pageLoading, setPageLoading] = useState<boolean>(true);
   const ApplicationState = useApplicationState();
   const FormApplicationState = useFormQuestionState();
-  const applicationState = useApplicationState();
-  const [toggleToast, setToggleToast] = useState<boolean>(false);
-  const {error} = applicationState.appState;
   const formState = useOrganizeForm();
+  const saveResponses = useSaveResponses();
+  const updateResponse = useUpdateResponse();
+  const updateFormProgress = useUpdateFormProgress();
 
   const setQuestionResponse = (
       response: string,
@@ -113,6 +124,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
       type: HIDE_HEADER,
       payload: undefined,
     });
+    setPageLoading(false);
   }, []);
 
   useEffect(()=>{
@@ -145,8 +157,46 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   };
 
   const SaveToDataBase = async () => {
-    FormApplicationState
-        .formStateDispatch({
+    const {
+      questionsAnswered,
+      currentFormID,
+      currentProgress,
+    } = FormApplicationState.formState;
+
+    for (const answer of questionsAnswered ) {
+      if (!answer.sendToDB) {
+        if (!answer.responseDbId) {
+          const params: ISaveResponseParams = {
+            variables: {
+              formID: currentFormID !== '' ? currentFormID : '1',
+              questionID: answer.id,
+              response: answer.answer,
+            },
+          };
+          await saveResponses(params);
+        } else {
+          const params: IUpdateResponseParams = {
+            variables: {
+              newResponse: answer.answer,
+              questionId: answer.id,
+            },
+          };
+          await updateResponse(params);
+        }
+      }
+    }
+
+    const params: IUpdateFormProgressParams = {
+      variables: {
+        progress: currentProgress,
+        formId: currentFormID !== '' ? currentFormID : '1',
+      },
+    };
+    await updateFormProgress(params);
+
+
+    FormApplicationState.
+        formStateDispatch({
           type: NEXT_QUESTIONS,
           payload: undefined,
         },
@@ -167,17 +217,6 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
               <LeftBar/>
               <div className="form-container">
                 <div className='questioner-container'>
-                  {error.error && <ErrorMessageToast
-                    message={error.errorMessage.toString()}
-                    position="top-center"
-                    autoClose={5000}
-                    hideProgressBar={false}
-                    closeOnClick={false}
-                    pauseOnHover={false}
-                    draggable={false}
-                    toggleToast={toggleToast}
-                    setToggleToast={setToggleToast}
-                  />}
                   {pageLoading && (
                     <div className="spinner-wrapper">
                       <Spinner/>

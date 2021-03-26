@@ -8,4 +8,10 @@ export interface IErrorMessageProps {
     message: string,
     toggleToast: boolean,
     setToggleToast: (toggleToast:boolean) => void
+    setError?: (params:setErrorFunction) => void
+}
+
+interface setErrorFunction {
+    error: boolean,
+    message: string
 }

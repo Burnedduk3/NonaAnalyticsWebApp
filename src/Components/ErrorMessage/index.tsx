@@ -14,6 +14,7 @@ export const ErrorMessageToast: React.FC<IErrorMessageProps> = (
       position,
       setToggleToast,
       toggleToast,
+      setError,
     }:IErrorMessageProps,
 ): JSX.Element =>{
   useEffect(
@@ -29,6 +30,9 @@ export const ErrorMessageToast: React.FC<IErrorMessageProps> = (
             progress: undefined,
           });
           setToggleToast(false);
+          if (setError) {
+            setError({error: true, message: ''});
+          }
         }
       },
       [toggleToast],

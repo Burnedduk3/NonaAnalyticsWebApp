@@ -97,3 +97,51 @@ export const GET_ALL_QUESTIONS: DocumentNode = gql`
         }
     }
 `;
+
+export const CREATE_RESPONSE: DocumentNode = gql`
+    mutation($formID: String!, $questionID: String!, $response: String!) {
+        UserInteractionMutation {
+            createResponse(
+                createResponseInputs: {
+                    formId: $formID
+                    questionId: $questionID
+                    response: $response
+                }
+            ) {
+                error
+                message
+                data {
+                    id
+                }
+            }
+        }
+    }
+`;
+
+export const UPDATE_RESPONSE: DocumentNode = gql`
+    mutation($questionId:String!, $newResponse:String!){
+        UserInteractionMutation{
+            updateQuestionResponse(updateResponse:{questionId:$questionId, newResponse: $newResponse}){
+                data{
+                    id
+                    response
+                }
+            }
+        }
+    }
+`;
+
+export const UPDATE_FORM_PROGRESS: DocumentNode = gql`
+    mutation($formId:String!, $progress:Float!){
+        UserInteractionMutation{
+            updateFormProgress(UpdateProgress:{formId:$formId, progress: $progress}){
+                error
+                message
+                data{
+                    id
+                    percentage
+                }
+            }
+        }
+    }
+`;

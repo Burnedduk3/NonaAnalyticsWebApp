@@ -74,7 +74,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
               }
             />
             <div className="checkmark"/>
-            {item}
+            {item.name}
           </label>
         ))}
       </div>

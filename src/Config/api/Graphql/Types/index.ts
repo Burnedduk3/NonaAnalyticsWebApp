@@ -108,3 +108,50 @@ export interface IMappedQuestions {
     imagesPath: Array<Image>
 
 }
+
+export interface ICreateAnswerResponse {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        createResponse:{
+            __typename: 'SingleAnswerResponse'
+            message: string
+            error: boolean
+            data:{
+                id: string
+                __typename: 'FormResponses'
+            }
+        }
+    }
+}
+
+export interface IUpdateAnswerResponse {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        updateQuestionResponse:{
+            __typename: 'SingleAnswerResponse'
+            message: string
+            error: boolean
+            data:{
+                id: string
+                __typename: 'FormResponses'
+            }
+        }
+    }
+}
+
+export interface IUpdateFormProgressResponse {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        updateFormProgress:{
+            __typename: 'SingleAnswerResponse'
+            message: string
+            error: boolean
+            data:{
+                id: '21'
+                percentage: number
+                __typename: 'FormResponses'
+            }
+        }
+    }
+}
+
