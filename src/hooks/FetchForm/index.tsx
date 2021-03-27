@@ -63,11 +63,13 @@ export const useOrganizeForm = () => {
             const subSections: ISubSection[] = section.subSections.map(
                 (subSection: ISubSection): ISubSection=>{
                   let maxNumber = 0;
+                  let questionsNumber = 0;
                   const formQuestions: IQuestion[] = questions.reduce((
                       questions: IQuestion[],
                       question:IMappedQuestions,
                   ): IQuestion[] => {
                     if (question.subSection.name === subSection.name) {
+                      questionsNumber += 1;
                       const items: Item[] = question.items.map(
                           (item: Item) => {
                             return {
@@ -95,7 +97,7 @@ export const useOrganizeForm = () => {
                         inputConfirmation: question.inputConfirmation,
                         stack: question.stack,
                         category: question.category,
-                        question: question.question,
+                        question: `${questionsNumber}. ${question.question}`,
                         placeHolder: question.placeHolder,
                         imagesPath: images,
                         order: question.order,
