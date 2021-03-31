@@ -31,6 +31,7 @@ export const useOrganizeForm = () => {
   useEffect(()=>{
     if (!error && data && sections) {
       const fetchedData:FetchedQuestionsAPI = data;
+      console.log(data);
       const questions: Array<IMappedQuestions> = fetchedData.
           SettingUpFormQueries.
           General.

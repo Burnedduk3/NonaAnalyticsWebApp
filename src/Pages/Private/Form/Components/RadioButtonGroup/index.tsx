@@ -50,7 +50,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                         key={`${questionId}-${header}`}
                         className="text-header-container"
                       >
-                        <h4>{header}</h4>
+                        <h4>{header.name}</h4>
                       </div>
                     );
                   },

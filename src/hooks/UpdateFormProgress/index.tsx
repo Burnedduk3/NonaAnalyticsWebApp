@@ -13,7 +13,7 @@ export interface IUpdateFormProgressParams {
 export const useUpdateFormProgress = () => {
   const [
     updateProgress,
-    {data, loading, error},
+    {data, loading},
   ] = useMutation(UPDATE_FORM_PROGRESS);
 
   useEffect(()=>{
@@ -21,9 +21,10 @@ export const useUpdateFormProgress = () => {
       if (!loading && data) {
         const rawResponse: IUpdateFormProgressResponse = data;
         if (
-          error ||
           rawResponse.UserInteractionMutation.updateFormProgress.error
         ) {
+          // eslint-disable-next-line max-len
+          console.log(rawResponse.UserInteractionMutation.updateFormProgress.message);
           throw new Error('Unable to update progress try again');
         }
       }

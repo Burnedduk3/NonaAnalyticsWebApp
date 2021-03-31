@@ -1,4 +1,4 @@
-import {ICategory, ISubSection} from '../../../../Context/FormQuestions/interface';
+import {ICategory} from '../../../../Context/FormQuestions/interface';
 
 export const hello = 'hello';
 
@@ -147,11 +147,28 @@ export interface IUpdateFormProgressResponse {
             message: string
             error: boolean
             data:{
-                id: '21'
+                id: string
                 percentage: number
                 __typename: 'FormResponses'
             }
         }
     }
 }
+
+export interface IUpdateFormConsentResponse {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        updateFormConsent:{
+            __typename: 'SingleFormResponse'
+            message: string
+            error: boolean
+            data:{
+                id: string
+                consent: number
+                __typename: 'Form'
+            }
+        }
+    }
+}
+
 
