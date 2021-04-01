@@ -1,5 +1,4 @@
 import {ICategory} from '../../../../Context/FormQuestions/interface';
-
 export const hello = 'hello';
 
 export interface FetchchedSectionsAPI {
