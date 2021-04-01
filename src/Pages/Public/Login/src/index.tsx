@@ -27,6 +27,7 @@ import validator from 'validator';
 //   SET_CURRENT_FORM_ID,
 // } from '../../../../Context/FormQuestions/ActionTypes';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
+import {Auth} from 'aws-amplify';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -94,75 +95,8 @@ const LoginPage : React.FC = (): JSX.Element =>{
         (validator.isEmail(username) || validator.isMobilePhone(username)) &&
           validator.isAscii(password)
       ) {
-        // // const user = await Auth.signIn(
-        // //     pageInputs.username, pageInputs.password,
-        // // );
-        // // if (user) {
-        // //   console.log(user);
-        // //   const queryParameters: GetUserInfoQueryVariables = {
-        // //     userID: user.username,
-        // //   };
-        // //   const auroraUser:any = await API.graphql(graphqlOperation(
-        // //       getUserInfo,
-        // //       {
-        // //         ...queryParameters,
-        // //       },
-        // //   ));
-        // //   if (auroraUser.data.getUserInfo === null) {
-        // //     const createUserInfoInput: CreateUserInfoInput = {
-        // //       fName: user.attributes.name,
-        // //       lName: user.attributes.name,
-        // //       userEmail: user.attributes.email,
-        // //       userID: user.username,
-        // //     };
-        // //     await API.graphql(
-        // //         graphqlOperation(
-        // //             createUserInfo,
-        // //             {
-        // //               createUserInfoInput,
-        // //             },
-        // //         ),
-        // //     );
-        // //   }
-        //   userState.userStateDispatch({
-        //     type: ADD_USER,
-        //     payload: {
-        //       name: user.attributes.name,
-        //       birthdate: user.attributes.birthdate,
-        //       email: user.attributes.email,
-        //       gender: user.attributes.gender,
-        //       usernameID: user.username,
-        //       accessToken: user.signInUserSession.accessToken.jwtToken,
-        //       idToken: user.signInUserSession.idToken.jwtToken,
-        //       refreshToken: user.signInUserSession.refreshToken.jwtToken,
-        //     },
-        //   });
-        //
-        //   if (user.attributes.email_verified) {
-        // eslint-disable-next-line max-len
-        //     const formData: any = await API.graphql(graphqlOperation(createForm,
-        //         {
-        //           input: {
-        //             UserID: user.username,
-        //             finished: false,
-        //             percentage: 0,
-        //             consent: false,
-        //             sentEmail: false,
-        //           },
-        //         },
-        //     ));
-        //     formState.formStateDispatch(
-        //         {
-        //           type: SET_CURRENT_FORM_ID,
-        //           payload: {
-        //             currentFormID: formData.data.createForm.id,
-        //           },
-        //         },
-        //     );
-        //     setRedirectPath(RoutingConstants.consent.path);
-        //     setIsRedirecting(true);
-        //   }
-        // }
+        const user = await Auth.signIn(username, password);
+        console.log(user);
       } else {
         throw new Error('incorrect username or password');
       }

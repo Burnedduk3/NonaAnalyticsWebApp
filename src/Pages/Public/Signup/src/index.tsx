@@ -25,6 +25,7 @@ import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
+import {Auth} from 'aws-amplify';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -131,17 +132,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      // await Auth.signUp({
-      //   username: pageInputs.email,
-      //   password: pageInputs.password,
-      //   attributes: {
-      //     email: pageInputs.email,
-      //     birthdate: pageInputs.birthdate,
-      //     gender: pageInputs.gender,
-      //     name: pageInputs.name,
-      //   },
-      // });
-      history.push(RoutingConstants.menu.home.path);
+      const reponse = await Auth.signUp({
+        username: pageInputs.email,
+        password: pageInputs.password,
+        attributes: {
+          email: pageInputs.email,
+          birthdate: pageInputs.birthdate,
+          gender: pageInputs.gender,
+          name: pageInputs.name,
+        },
+      });
+      console.log(reponse);
+      // history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       setToggleToast(true);
       applicationState.appStateDispatch(

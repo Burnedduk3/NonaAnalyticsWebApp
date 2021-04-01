@@ -1,4 +1,6 @@
-import {ICategory, ISubSection} from '../../../../Context/FormQuestions/interface';
+import {
+  ICategory,
+} from '../../../../Context/FormQuestions/interface';
 
 export const hello = 'hello';
 
