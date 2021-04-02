@@ -192,8 +192,11 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
         formId: currentFormID !== '' ? currentFormID : '1',
       },
     };
-    await updateFormProgress(params);
-
+    try {
+      await updateFormProgress(params);
+    } catch (err) {
+      return;
+    }
 
     FormApplicationState.
         formStateDispatch({

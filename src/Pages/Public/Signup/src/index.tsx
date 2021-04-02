@@ -21,11 +21,13 @@ import user from '../../../../assets/Icons/user.png';
 import birthday from '../../../../assets/Icons/birthday.png';
 import mail from '../../../../assets/Icons/mail.png';
 import gender from '../../../../assets/Icons/gender.png';
+import phone from '../../../../assets/Icons/phone.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {Auth} from 'aws-amplify';
+import {ICreateUserParams, useCreateUser} from '../../../../hooks/CreateUser';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -34,14 +36,16 @@ const initialInputState: ISignUp = {
   email: '',
   gender: 'Other',
   name: '',
+  phone: '',
 };
 
 const SignUpPage : React.FC = (): JSX.Element =>{
-  const [pageInputs, setPageInputs] = useState(initialInputState);
+  const [pageInputs, setPageInputs] = useState<ISignUp>(initialInputState);
   const [startDate, setStartDate] = useState(new Date());
   const applicationState = useApplicationState();
   const history = useHistory();
   const [toggleToast, setToggleToast] = useState<boolean>(false);
+  const createUser = useCreateUser();
 
   useEffect(()=>{
     applicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -58,7 +62,6 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     try {
       const name: string = event.target.name.toString();
       const value: string = event.target.value;
-
       for (const key of Object.keys(pageInputs)) {
         if (name === key) {
           if (pageInputs[key].length < 60 ||
@@ -94,6 +97,11 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     const nameValidator = /^[a-zA-Z_ ]*$/g;
     if (!nameValidator.test(pageInputs.name)) {
       throw new Error('Wrong Name Input');
+    }
+
+    if (!validator.isMobilePhone(pageInputs.phone)) {
+      // eslint-disable-next-line max-len
+      throw new Error('Invalid phone number, remember to add the country indicator');
     }
 
     if (pageInputs.gender === 'Choose One' ||
@@ -132,7 +140,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const signUp = async () => {
     try {
       checkInput();
-      const reponse = await Auth.signUp({
+      const response = await Auth.signUp({
         username: pageInputs.email,
         password: pageInputs.password,
         attributes: {
@@ -142,8 +150,17 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           name: pageInputs.name,
         },
       });
-      console.log(reponse);
-      // history.push(RoutingConstants.menu.home.path);
+      const createUserParams: ICreateUserParams = {
+        variables: {
+          CognitoPoolId: response.userSub,
+          email: pageInputs.email,
+          name: pageInputs.name,
+          phone: pageInputs.phone,
+          username: pageInputs.email,
+        },
+      };
+      await createUser(createUserParams);
+      history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       setToggleToast(true);
       applicationState.appStateDispatch(
@@ -201,7 +218,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
         </div>
         <div className="form-container">
           <label htmlFor="birthdate">
-            <img src={birthday} alt="Birthday Icons8"/>
+            <img src={birthday} alt="Birthday Icons"/>
             <DatePicker
               selected={startDate}
               onChange={(date: Date) => setStartDate(date)}
@@ -210,7 +227,7 @@ const SignUpPage : React.FC = (): JSX.Element =>{
 
 
           <label htmlFor="email">
-            <img src={mail} alt="Mail Icons8"/>
+            <img src={mail} alt="Mail Icons"/>
             <input type="text"
               name='email'
               value={pageInputs.email}
@@ -219,8 +236,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
             />
           </label>
 
+          <label htmlFor="phone">
+            <img src={phone} alt="phone Icons"/>
+            <input type="text"
+              name='phone'
+              value={pageInputs.phone}
+              placeholder='Phone'
+              onChange={handleInput}
+            />
+          </label>
+
           <label htmlFor="gender">
-            <img src={gender} alt="Gender Icons8"/>
+            <img src={gender} alt="Gender Icons"/>
             <select
               name='gender'
               placeholder='Gender'

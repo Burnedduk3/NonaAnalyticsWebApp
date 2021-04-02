@@ -170,4 +170,52 @@ export interface IUpdateFormConsentResponse {
     }
 }
 
+export interface ICreateUser {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        createUser:{
+            __typename: 'SingleUserResponse'
+            message: string
+            error: boolean
+            data:{
+                id: string
+                __typename: 'User'
+            }
+        }
+    }
+}
+
+export interface IStartForm {
+    UserInteractionMutation:{
+        __typename: 'UserInteractionMutationsTypes'
+        startForm:{
+            __typename: 'SingleFormResponse'
+            message: string
+            error: boolean
+            data:{
+                id: string
+                __typename: 'From'
+            }
+        }
+    }
+}
+
+export interface IGetUser {
+    UserInteractionQueries:{
+        __typename: 'UserInteractionQueriesTypes'
+        listUserData:{
+            __typename: 'SingleUserResponse'
+            message: string
+            error: boolean
+            data:{
+                phone: string
+                CognitoPoolId: string
+                username: string
+                name: string
+                __typename: 'User'
+            }
+        }
+    }
+}
+
 

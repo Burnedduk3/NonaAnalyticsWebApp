@@ -159,5 +159,65 @@ export const UPDATE_FORM_CONSENT: DocumentNode = gql`
             }
         }
     }
+`;
 
+export const CREATE_USER: DocumentNode = gql`
+    mutation(
+        $CognitoPoolId: String!
+        $phone: String!
+        $username: String!
+        $email: String!
+        $name: String!
+    ) {
+        UserInteractionMutation {
+            createUser(
+                UserData: {
+                    CognitoPoolId: $CognitoPoolId
+                    phone: $phone
+                    username: $username
+                    email: $email
+                    name: $name
+                }
+            ) {
+                error
+                message
+                data {
+                    CognitoPoolId
+                    username
+                    email
+                }
+            }
+        }
+    }    
+`;
+
+export const GET_USER_DATA: DocumentNode = gql`
+    query($UserID:String!){
+        UserInteractionQueries{
+            listUserData(UserId:{userCognitoId:$UserID}){
+                error
+                message
+                data{
+                    CognitoPoolId
+                    phone
+                    username
+                    name
+                }
+            }
+        }
+    }    
+`
+
+export const START_FORM: DocumentNode = gql`
+    mutation($CognitoPoolId:String!){
+        UserInteractionMutation{
+            startForm(userID:$CognitoPoolId){
+                error
+                message
+                data{
+                    id
+                }
+            }
+        }
+    }
 `;

@@ -18,16 +18,11 @@ import FBIcon from '../../../../assets/Icons/SocialMedia/facebook_color.png';
 import GoogleIcon from '../../../../assets/Icons/SocialMedia/google_color.png';
 import user from '../../../../assets/Icons/user.png';
 import lock from '../../../../assets/Icons/lock.png';
-// import {useUserState} from '../../../../Context/UserContext/Provider';
-// import {ADD_USER} from '../../../../Context/UserContext/ActionTypes';
 import validator from 'validator';
-// eslint-disable-next-line max-len
-// import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
-// import {
-//   SET_CURRENT_FORM_ID,
-// } from '../../../../Context/FormQuestions/ActionTypes';
 import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {Auth} from 'aws-amplify';
+import {IGetUserParams, useGetUser} from '../../../../hooks/GetUserData';
+import {IStartFormParams, useStartForm} from '../../../../hooks/StartForm';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -38,12 +33,12 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
   const ApplicationState = useApplicationState();
   const history = useHistory();
-  // const userState = useUserState();
-  // const formState = useFormQuestionState();
   const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const applicationState = useApplicationState();
+  const getUser = useGetUser();
+  const startForm = useStartForm();
 
 
   useEffect(() => {
@@ -96,7 +91,28 @@ const LoginPage : React.FC = (): JSX.Element =>{
           validator.isAscii(password)
       ) {
         const user = await Auth.signIn(username, password);
-        console.log(user);
+        if (user) {
+          const getUserParams: IGetUserParams = {
+            variables: {
+              UserID: user.username,
+            },
+          };
+          getUser(
+              getUserParams,
+              user.signInUserSession.accessToken.jwtToken,
+              user.signInUserSession.idToken.jwtToken,
+              user.signInUserSession.refreshToken.jwtToken,
+          );
+        }
+        const startFormParams: IStartFormParams = {
+          variables: {
+            CognitoPoolId: user.username,
+          },
+        };
+        await startForm(startFormParams);
+
+        setRedirectPath(RoutingConstants.consent.path);
+        setIsRedirecting(true);
       } else {
         throw new Error('incorrect username or password');
       }
