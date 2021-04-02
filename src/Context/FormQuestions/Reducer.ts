@@ -108,10 +108,15 @@ const FormQuestionsReducer = (
 
     case SET_CURRENT_FORM_ID: {
       if (payload?.currentFormID) {
-        return {
+        const newState = {
           ...state,
           currentFormID: payload.currentFormID,
         };
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
+        return newState;
       } else {
         return {
           ...state,

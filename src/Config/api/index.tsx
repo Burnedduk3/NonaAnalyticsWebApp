@@ -6,8 +6,8 @@ let client: ApolloClient<any> | null = null;
 
 const authMiddleware = new ApolloLink((operation, forward) => {
   // add the authorization to the headers
-  const userData = localStorage.getItem('USER');
-  if (!userData) {
+  const token = localStorage.getItem('token');
+  if (!token) {
     operation.setContext({
       headers: {
         // eslint-disable-next-line max-len
@@ -16,7 +16,6 @@ const authMiddleware = new ApolloLink((operation, forward) => {
     });
     return forward(operation);
   }
-  const token = JSON.parse(userData).accessToken;
   operation.setContext({
     headers: {
       // eslint-disable-next-line max-len

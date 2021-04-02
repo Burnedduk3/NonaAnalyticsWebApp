@@ -35,6 +35,7 @@ export const useGetUser = () => {
       const fetchedData: IGetUser = data;
       // eslint-disable-next-line max-len
       const {name, username, CognitoPoolId, phone} = fetchedData.UserInteractionQueries.listUserData.data;
+      console.log(name);
       userState.userStateDispatch({
         type: ADD_USER,
         payload: {

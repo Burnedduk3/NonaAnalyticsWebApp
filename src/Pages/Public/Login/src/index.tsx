@@ -92,6 +92,11 @@ const LoginPage : React.FC = (): JSX.Element =>{
       ) {
         const user = await Auth.signIn(username, password);
         if (user) {
+          localStorage.setItem(
+              'token',
+              user.signInUserSession.accessToken.jwtToken,
+          );
+
           const getUserParams: IGetUserParams = {
             variables: {
               UserID: user.username,
