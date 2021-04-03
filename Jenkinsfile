@@ -3,7 +3,7 @@ pipeline {
     environment {
         HOME = '.'
         registry = 'burnedduke36/rampupfront'
-        registryCredential = 'ducker_hub'
+        registryCredential = 'life_project_credentials'
         dockerImage = ''
     }
     stages {
@@ -30,7 +30,7 @@ pipeline {
         stage('push'){
             steps{
                 script {
-                    docker.withRegistry('342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end', 'life_project_credentials') {
+                    docker.withRegistry('342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end', registryCredential) {
                         dockerImage.push()
                         dockerImage.push('latest')
                     }
