@@ -3,7 +3,7 @@ pipeline {
     environment {
         HOME = '.'
         registry = 'burnedduke36/rampupfront'
-        registryCredential = 'life_project_credentials'
+        registryCredential = 'AWS_Jenkins'
         dockerImage = ''
     }
     stages {
