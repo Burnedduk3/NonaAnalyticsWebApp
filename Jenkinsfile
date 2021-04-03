@@ -29,7 +29,7 @@ pipeline {
         stage('push'){
             steps{
                 script {
-                    docker.withRegistry('342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end', 'ecr:us-east-1:AWS_Jenkins') {
+                    docker.withRegistry('https://342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end', 'ecr:us-east-1:AWS_Jenkins') {
                         dockerImage.push()
                         dockerImage.push('latest')
                     }
