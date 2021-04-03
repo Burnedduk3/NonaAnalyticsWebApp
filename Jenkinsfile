@@ -2,7 +2,7 @@ pipeline {
     agent any
     environment {
         HOME = '.'
-        registry = '342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end/life-project-front-end'
+        registry = '342495404680.dkr.ecr.us-east-1.amazonaws.com/life-project-front-end'
         dockerImage = ''
     }
     stages {
