@@ -39,9 +39,16 @@ pipeline {
 
         stage('deploy'){
             steps{
-//                 sh "sudo salt 'front-*' state.apply docker-run-front"
-                    sh 'echo Running deploy'
+                 sh 'sudo salt -C "ip-10-0-[0-1]-*" state.apply docker-run-front'
             }
+        }
+    }
+    post {
+        always {
+            echo 'One way or another, I have finished'
+            sh "docker stop $(docker ps -q)"
+            sh "docker rm $(docker ps -a -q)"
+            sh "docker rmi $(docker images -q -f dangling=true)"
         }
     }
 }
