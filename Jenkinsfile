@@ -39,7 +39,7 @@ pipeline {
 
         stage('deploy'){
             steps{
-                 sh 'sudo salt -C "ip-10-0-[0-1]-*" state.apply docker-run-front'
+                 sh "sudo salt -C 'ip-10-0-[0-1]-*' state.apply docker-run-front"
             }
         }
     }
