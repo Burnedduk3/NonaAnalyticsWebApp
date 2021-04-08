@@ -19,6 +19,7 @@ import {IQuestionerState} from '../../../Private/Form/Questioner/interface';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
+import {IStartFormParams, useStartForm} from '../../../../hooks/StartForm';
 
 
 const initialState: IQuestionerState = {
@@ -43,6 +44,8 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
     responseState,
     setResponseState,
   ] = useState<IQuestionerState>(initialState);
+  const startForm = useStartForm();
+
   useEffect(()=>{
     applicationState?.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState?.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
@@ -53,28 +56,20 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   }, []);
 
   const createQuestioner = async () =>{
-    setLoading(true);
-    // const {usernameID} = userState.userState;
-    // const formData: any = await API.graphql(graphqlOperation(
-    //     createForm,
-    //     {
-    //       input: {
-    //         UserID: usernameID,
-    //         finished: false,
-    //         percentage: 0,
-    //         sentEmail: false,
-    //         consent: false,
-    //       },
-    //     },
-    // ));
-    // formState.formStateDispatch(
-    //     {
-    //       type: SET_CURRENT_FORM_ID,
-    //       payload: {
-    //         currentFormID: formData.data.createForm.id,
-    //       },
-    //     },
-    // );
+    try {
+      setLoading(true);
+      const {usernameID} = userState.userState;
+      const startFormParams: IStartFormParams = {
+        variables: {
+          CognitoPoolId: usernameID,
+        },
+      };
+      await startForm(startFormParams);
+      setLoading(false);
+      setRedirect(true);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(
@@ -100,11 +95,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
         responseState.over18.response === '1' &&
         userState?.userState.email !== ''
     ) {
-      // eslint-disable-next-line max-len
-      createQuestioner().then(()=>{
-        setRedirect(true);
-        setLoading(false);
-      });
+      createQuestioner();
     }
   };
 
