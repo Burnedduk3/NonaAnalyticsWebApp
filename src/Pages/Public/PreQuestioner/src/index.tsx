@@ -75,6 +75,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
       setLoading(false);
       setRedirect(true);
     } catch (err) {
+      history.push(RoutingConstants.login.path);
       console.log(err);
     }
   };
