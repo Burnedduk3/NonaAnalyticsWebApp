@@ -45,6 +45,7 @@ import {
   IUpdateFormProgressParams,
   useUpdateFormProgress,
 } from '../../../../hooks/UpdateFormProgress';
+import {Auth} from 'aws-amplify';
 
 const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const [pageLoading, setPageLoading] = useState<boolean>(true);
@@ -157,53 +158,61 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   };
 
   const SaveToDataBase = async () => {
-    const {
-      questionsAnswered,
-      currentFormID,
-      currentProgress,
-    } = FormApplicationState.formState;
+    try {
+      const {getAccessToken} = await Auth.currentSession();
+      localStorage.setItem(
+          'token',
+          getAccessToken().getJwtToken(),
+      );
+      const {
+        questionsAnswered,
+        currentFormID,
+        currentProgress,
+      } = FormApplicationState.formState;
 
-    for (const answer of questionsAnswered ) {
-      if (!answer.sendToDB) {
-        if (!answer.responseDbId) {
-          const params: ISaveResponseParams = {
-            variables: {
-              formID: currentFormID !== '' ? currentFormID : '1',
-              questionID: answer.id,
-              response: answer.answer,
-            },
-          };
-          await saveResponses(params);
-        } else {
-          const params: IUpdateResponseParams = {
-            variables: {
-              newResponse: answer.answer,
-              questionId: answer.id,
-            },
-          };
-          await updateResponse(params);
+      for (const answer of questionsAnswered) {
+        if (!answer.sendToDB) {
+          if (!answer.responseDbId) {
+            const params: ISaveResponseParams = {
+              variables: {
+                formID: currentFormID !== '' ? currentFormID : '1',
+                questionID: answer.id,
+                response: answer.answer,
+              },
+            };
+            await saveResponses(params);
+          } else {
+            const params: IUpdateResponseParams = {
+              variables: {
+                newResponse: answer.answer,
+                questionId: answer.id,
+              },
+            };
+            await updateResponse(params);
+          }
         }
       }
-    }
 
-    const params: IUpdateFormProgressParams = {
-      variables: {
-        progress: currentProgress,
-        formId: currentFormID !== '' ? currentFormID : '1',
-      },
-    };
-    try {
-      await updateFormProgress(params);
-    } catch (err) {
-      return;
-    }
-
-    FormApplicationState.
-        formStateDispatch({
-          type: NEXT_QUESTIONS,
-          payload: undefined,
+      const params: IUpdateFormProgressParams = {
+        variables: {
+          progress: currentProgress,
+          formId: currentFormID !== '' ? currentFormID : '1',
         },
-        );
+      };
+      try {
+        await updateFormProgress(params);
+      } catch (err) {
+        return;
+      }
+
+      FormApplicationState.formStateDispatch({
+        type: NEXT_QUESTIONS,
+        payload: undefined,
+      },
+      );
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   const formFinished = FormApplicationState.formState.finished;

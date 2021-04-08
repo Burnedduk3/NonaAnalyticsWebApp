@@ -20,6 +20,7 @@ import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';
 import {IStartFormParams, useStartForm} from '../../../../hooks/StartForm';
+import {Auth} from 'aws-amplify';
 
 
 const initialState: IQuestionerState = {
@@ -58,12 +59,18 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   const createQuestioner = async () =>{
     try {
       setLoading(true);
+      const {getAccessToken} = await Auth.currentSession();
+      localStorage.setItem(
+          'token',
+          getAccessToken().getJwtToken(),
+      );
       const {usernameID} = userState.userState;
       const startFormParams: IStartFormParams = {
         variables: {
           CognitoPoolId: usernameID,
         },
       };
+
       await startForm(startFormParams);
       setLoading(false);
       setRedirect(true);

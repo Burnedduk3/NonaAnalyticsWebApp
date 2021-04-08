@@ -6,6 +6,7 @@ import {
   UPDATE_ANSWERED_QUESTIONS,
 } from '../../Context/FormQuestions/ActionTypes';
 import {ICreateAnswerResponse} from '../../Config/api/Graphql/Types';
+import {Auth} from 'aws-amplify';
 
 export interface ISaveResponseParams {
     variables:{

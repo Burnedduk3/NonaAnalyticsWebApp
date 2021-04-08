@@ -18,6 +18,7 @@ import
 RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
 import {useHistory} from 'react-router-dom';
+import {Auth} from 'aws-amplify';
 
 const Consent: React.FC = ():JSX.Element =>{
   const applicationState = useApplicationState();
@@ -53,6 +54,11 @@ const Consent: React.FC = ():JSX.Element =>{
         },
       };
       try {
+        const {getAccessToken} = await Auth.currentSession();
+        localStorage.setItem(
+            'token',
+            getAccessToken().getJwtToken(),
+        );
         await updateConsent(params);
         setRedirect(true);
       } catch (err) {
