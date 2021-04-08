@@ -1,7 +1,6 @@
 // eslint-disable-next-line max-len
 import {ApolloClient, ApolloLink, concat, HttpLink, InMemoryCache} from '@apollo/client';
 import {BACKEND_URL} from '../EnviromentVariables';
-import {Auth} from 'aws-amplify';
 
 let client: ApolloClient<any> | null = null;
 
@@ -20,7 +19,7 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   operation.setContext({
     headers: {
       // eslint-disable-next-line max-len
-      authorization: Auth.currentSession(),
+      authorization: token,
     },
   });
   return forward(operation);
