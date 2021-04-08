@@ -159,10 +159,10 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
 
   const SaveToDataBase = async () => {
     try {
-      const {getAccessToken} = await Auth.currentSession();
+      const session = await Auth.currentSession();
       localStorage.setItem(
           'token',
-          getAccessToken().getJwtToken(),
+          session.getAccessToken().getJwtToken(),
       );
       const {
         questionsAnswered,

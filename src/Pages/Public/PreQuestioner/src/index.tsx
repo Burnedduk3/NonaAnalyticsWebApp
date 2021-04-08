@@ -37,7 +37,6 @@ const initialState: IQuestionerState = {
 const PreQuestionerPage: React.FC = (): JSX.Element =>{
   const applicationState = useApplicationState();
   const userState = useUserState();
-  // const formState = useFormQuestionState();
   const history = useHistory();
   const [loading, setLoading] = useState<boolean>(false);
   const [redirect, setRedirect] = useState<boolean>(false);
@@ -59,10 +58,10 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
   const createQuestioner = async () =>{
     try {
       setLoading(true);
-      const {getAccessToken} = await Auth.currentSession();
+      const session = await Auth.currentSession();
       localStorage.setItem(
           'token',
-          getAccessToken().getJwtToken(),
+          session.getAccessToken().getJwtToken(),
       );
       const {usernameID} = userState.userState;
       const startFormParams: IStartFormParams = {
@@ -76,7 +75,6 @@ const PreQuestionerPage: React.FC = (): JSX.Element =>{
       setRedirect(true);
     } catch (err) {
       history.push(RoutingConstants.login.path);
-      console.log(err);
     }
   };
 

@@ -50,19 +50,18 @@ const Consent: React.FC = ():JSX.Element =>{
       const {currentFormID} = formState.formState;
       const params: IUpdateConsentParams = {
         variables: {
-          formId: currentFormID ? '1' : '1',
+          formId: currentFormID,
         },
       };
       try {
-        const {getAccessToken} = await Auth.currentSession();
+        const session = await Auth.currentSession();
         localStorage.setItem(
             'token',
-            getAccessToken().getJwtToken(),
+            session.getAccessToken().getJwtToken(),
         );
         await updateConsent(params);
         setRedirect(true);
       } catch (err) {
-        console.log(err);
         setToggleToast(true);
       }
     } else {
