@@ -16,7 +16,7 @@ RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
 import {useUserState} from '../../../../Context/UserContext/Provider';
 import {
-  SEARCH_LOCAL_STORAGE,
+  DELETE_USER,
 } from '../../../../Context/UserContext/ActionTypes';
 import {
   useFormQuestionState,
@@ -42,8 +42,12 @@ const Home: React.FC = (): JSX.Element => {
   useEffect(()=>{
     applicationState.appStateDispatch({type: SHOW_HEADER, payload: undefined});
     applicationState.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
+    localStorage.setItem(
+        'token',
+        '',
+    );
     userState.userStateDispatch({
-      type: SEARCH_LOCAL_STORAGE,
+      type: DELETE_USER,
       payload: undefined,
     });
     formState.formStateDispatch(

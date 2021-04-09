@@ -27,11 +27,9 @@ export const useOrganizeForm = () => {
       });
   const sections = useSectionsAndSubSections();
   const {loading, error, data} = useQuery(GET_ALL_QUESTIONS);
-
   useEffect(()=>{
     if (!error && data && sections) {
       const fetchedData:FetchedQuestionsAPI = data;
-      console.log(data);
       const questions: Array<IMappedQuestions> = fetchedData.
           SettingUpFormQueries.
           General.
@@ -71,13 +69,17 @@ export const useOrganizeForm = () => {
                   ): IQuestion[] => {
                     if (question.subSection.name === subSection.name) {
                       questionsNumber += 1;
-                      const items: Item[] = question.items.map(
+                      let items: Item[] = [];
+                      if (question.category.name === 'Combo') {
+                        items = [{name: 'Choose One', order: 1}];
+                      }
+                      items = [...items, ...question.items.map(
                           (item: Item) => {
                             return {
                               name: item.name,
                               order: item.order,
                             };
-                          });
+                          })];
 
                       const images: Image[] = question.imagesPath.map(
                           (image: Image) => {

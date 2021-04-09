@@ -56,8 +56,8 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
 
 
   return (
-    <div className={'inputContainerCheck ' + question}>
-      <p className="checkLabel">{question}</p>
+    <div className={'input-container-check'}>
+      <p className="check-label">{question}</p>
       <div className="items">
         {items.map((item, index) => (
           <label

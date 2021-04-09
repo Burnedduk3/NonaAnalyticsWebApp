@@ -125,6 +125,23 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
       type: HIDE_HEADER,
       payload: undefined,
     });
+    console.log(formState);
+    if (formState && formState.totalQuestions > 0) {
+      FormApplicationState.formStateDispatch(
+          {
+            type: GET_SECTIONS,
+            payload: {
+              fetchedSections: formState,
+            },
+          });
+      setPageLoading(false);
+      FormApplicationState.formStateDispatch(
+          {
+            type: SET_SHOWABLE_QUESTIONS,
+            payload: undefined,
+          },
+      );
+    }
     setPageLoading(false);
   }, []);
 
@@ -175,7 +192,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
           if (!answer.responseDbId) {
             const params: ISaveResponseParams = {
               variables: {
-                formID: currentFormID !== '' ? currentFormID : '1',
+                formID: currentFormID,
                 questionID: answer.id,
                 response: answer.answer,
               },
@@ -196,7 +213,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
       const params: IUpdateFormProgressParams = {
         variables: {
           progress: currentProgress,
-          formId: currentFormID !== '' ? currentFormID : '1',
+          formId: currentFormID,
         },
       };
       try {
@@ -317,7 +334,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 );
                               }
                               if (item.category.name === 'RadioGroup') {
-                                if (!item.items || !item.stackPhrase) {
+                                console.log(item);
+                                if (!item.items) {
                                   return <></>;
                                 }
                                 return (
@@ -329,7 +347,9 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                     questionId={item.id}
                                     radioGroup={item.id}
                                     order={item.order}
-                                    stackPhrase={item.stackPhrase}
+                                    stackPhrase={
+                                      item.stackPhrase ? item.stackPhrase: ''
+                                    }
                                     inputConfirmation={item.inputConfirmation}
                                   />
                                 );

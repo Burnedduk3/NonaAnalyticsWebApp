@@ -1,10 +1,10 @@
 @import '../../../../../Global/styles/Colors.scss';
 
-.inputContainerCheck {
+.input-container-check {
   width: 100%;
   min-width: 300px;
 
-  .checkLabel {
+  .check-label {
     width: 100%;
     height: auto;
     font-size: 1.4em;
@@ -15,7 +15,7 @@
   }
 
   .container {
-    display: block;
+    display: flex;
     position: relative;
     padding-left: 35px;
     margin-bottom: 12px;
@@ -28,6 +28,13 @@
     font-weight: 400;
     color: $primary-color;
     font-size: 0.9em;
+
+    .items {
+      display: flex;
+      margin: 20px 0 0 0;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
 
     input {
       position: absolute;
@@ -59,9 +66,4 @@
   .container input:checked ~ .checkmark::after {
     display: none;
   }
-}
-
-.CANCERS {
-  margin-left: -35vw;
-  margin-top: -24vh;
 }
