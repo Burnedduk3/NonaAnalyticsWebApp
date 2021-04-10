@@ -60,10 +60,6 @@ export const nextQuestions = (
     }
   }
   newState = setShowableQuestions(newState);
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(newState),
-  );
   return {
     ...state,
     ...newState,
@@ -123,10 +119,6 @@ export const previousQuestion = (
     }
   }
   newState = setShowableQuestions(newState);
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(newState),
-  );
   return {
     ...newState,
   };
@@ -148,10 +140,6 @@ export const updateQuestionAnswer = (
       ...questionToAdd,
     };
   }
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(state),
-  );
   return state;
 };
 
@@ -171,10 +159,6 @@ export const setShowableQuestions = (
     );
     state.showableQuestions = [...currentQuestions];
   }
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(state),
-  );
   return {
     ...state,
   };
@@ -217,11 +201,6 @@ export const setByMenu = (
   }
 
   const newState = setShowableQuestions(state);
-
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(newState),
-  );
   return {...newState};
 };
 
@@ -265,10 +244,6 @@ export const setQuestionResponse = (
     state.questionsAnswered.length * 100
   )/state.totalQuestions;
   state.currentProgress = parseFloat(currentProgress.toFixed(2));
-  localStorage.setItem(
-      'QUESTIONER_STORAGE',
-      JSON.stringify(state),
-  );
   return {
     ...state,
   };

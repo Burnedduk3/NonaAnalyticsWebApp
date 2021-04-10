@@ -141,7 +141,6 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
               fetchedSections: formState,
             },
           });
-      setPageLoading(false);
       FormApplicationState.formStateDispatch(
           {
             type: SET_SHOWABLE_QUESTIONS,

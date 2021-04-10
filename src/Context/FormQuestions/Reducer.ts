@@ -36,10 +36,6 @@ const FormQuestionsReducer = (
     case GET_SECTIONS: {
       if (payload && payload.fetchedSections) {
         const {fetchedSections} = payload;
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(fetchedSections),
-        );
         return {
           ...fetchedSections,
         };
@@ -57,16 +53,25 @@ const FormQuestionsReducer = (
     }
 
     case PREVIOUS_QUESTION: {
-      return previousQuestion(state);
+      const newState = previousQuestion(state);
+      if (newState.currentFormID !== '') {
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
+      }
+      return newState;
     }
 
     case UPDATE_ANSWERED_QUESTIONS: {
       if (payload && payload.questionToAdd) {
         const newState = updateQuestionAnswer(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        if (newState.currentFormID !== '') {
+          localStorage.setItem(
+              'QUESTIONER_STORAGE',
+              JSON.stringify(newState),
+          );
+        }
         return newState;
       } else {
         return state;
@@ -75,10 +80,12 @@ const FormQuestionsReducer = (
 
     case NEXT_QUESTIONS: {
       const newState = nextQuestions(state);
-      localStorage.setItem(
-          'QUESTIONER_STORAGE',
-          JSON.stringify(newState),
-      );
+      if (newState.currentFormID !== '') {
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
+      }
       return {
         ...newState,
       };
@@ -87,10 +94,12 @@ const FormQuestionsReducer = (
     case SET_QUESTION_RESPONSE: {
       if (payload) {
         const newState = setQuestionResponse(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        if (newState.currentFormID !== '') {
+          localStorage.setItem(
+              'QUESTIONER_STORAGE',
+              JSON.stringify(newState),
+          );
+        }
         return {
           ...newState,
         };
@@ -103,10 +112,12 @@ const FormQuestionsReducer = (
     case SET_SUBSECTION_BY_MENU: {
       if (payload) {
         const newState = setByMenu(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        if (newState.currentFormID !== '') {
+          localStorage.setItem(
+              'QUESTIONER_STORAGE',
+              JSON.stringify(newState),
+          );
+        }
         return newState;
       } else {
         return state;
@@ -115,10 +126,12 @@ const FormQuestionsReducer = (
 
     case SET_SHOWABLE_QUESTIONS: {
       const newState = setShowableQuestions(state);
-      localStorage.setItem(
-          'QUESTIONER_STORAGE',
-          JSON.stringify(newState),
-      );
+      if (newState.currentFormID !== '') {
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
+      }
       return newState;
     }
 
@@ -135,10 +148,12 @@ const FormQuestionsReducer = (
           ...state,
           currentFormID: payload.currentFormID,
         };
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        if (newState.currentFormID !== '') {
+          localStorage.setItem(
+              'QUESTIONER_STORAGE',
+              JSON.stringify(newState),
+          );
+        }
         return newState;
       } else {
         return {
