@@ -18,7 +18,7 @@ export const useOrganizeForm = () => {
       >({
         currentStack: 0,
         questionsAnswered: [],
-        currentFormID: oldForm.currentFormID?oldForm.currentFormID:'0',
+        currentFormID: '0',
         currentProgress: 0,
         currentSubSection: null,
         currentSection: null,
@@ -143,7 +143,7 @@ export const useOrganizeForm = () => {
         currentProgress: 0,
         currentStack: 0,
         questionsAnswered: [],
-        currentFormID: '',
+        currentFormID: oldForm.currentFormID ? oldForm.currentFormID: '',
         sections: formSections,
         showableQuestions: [],
         totalQuestions: questions.length,

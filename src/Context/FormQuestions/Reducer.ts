@@ -54,24 +54,21 @@ const FormQuestionsReducer = (
 
     case PREVIOUS_QUESTION: {
       const newState = previousQuestion(state);
-      if (newState.currentFormID !== '') {
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
-      }
+      localStorage.setItem(
+          'QUESTIONER_STORAGE',
+          JSON.stringify(newState),
+      );
+
       return newState;
     }
 
     case UPDATE_ANSWERED_QUESTIONS: {
       if (payload && payload.questionToAdd) {
         const newState = updateQuestionAnswer(state, payload);
-        if (newState.currentFormID !== '') {
-          localStorage.setItem(
-              'QUESTIONER_STORAGE',
-              JSON.stringify(newState),
-          );
-        }
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
         return newState;
       } else {
         return state;
@@ -94,12 +91,10 @@ const FormQuestionsReducer = (
     case SET_QUESTION_RESPONSE: {
       if (payload) {
         const newState = setQuestionResponse(state, payload);
-        if (newState.currentFormID !== '') {
-          localStorage.setItem(
-              'QUESTIONER_STORAGE',
-              JSON.stringify(newState),
-          );
-        }
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
         return {
           ...newState,
         };
@@ -112,12 +107,10 @@ const FormQuestionsReducer = (
     case SET_SUBSECTION_BY_MENU: {
       if (payload) {
         const newState = setByMenu(state, payload);
-        if (newState.currentFormID !== '') {
-          localStorage.setItem(
-              'QUESTIONER_STORAGE',
-              JSON.stringify(newState),
-          );
-        }
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
         return newState;
       } else {
         return state;
@@ -126,12 +119,10 @@ const FormQuestionsReducer = (
 
     case SET_SHOWABLE_QUESTIONS: {
       const newState = setShowableQuestions(state);
-      if (newState.currentFormID !== '') {
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
-      }
+      localStorage.setItem(
+          'QUESTIONER_STORAGE',
+          JSON.stringify(newState),
+      );
       return newState;
     }
 
@@ -148,12 +139,10 @@ const FormQuestionsReducer = (
           ...state,
           currentFormID: payload.currentFormID,
         };
-        if (newState.currentFormID !== '') {
-          localStorage.setItem(
-              'QUESTIONER_STORAGE',
-              JSON.stringify(newState),
-          );
-        }
+        localStorage.setItem(
+            'QUESTIONER_STORAGE',
+            JSON.stringify(newState),
+        );
         return newState;
       } else {
         return {
