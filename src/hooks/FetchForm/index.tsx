@@ -138,11 +138,14 @@ export const useOrganizeForm = () => {
       });
       setFormState({
         finished: false,
-        currentSection: formSections[0],
-        currentSubSection: formSections[0].subSections[0],
-        currentProgress: 0,
-        currentStack: 0,
-        questionsAnswered: [],
+        // eslint-disable-next-line max-len
+        currentSection: oldForm.currentSection? oldForm.currentSection: formSections[0],
+        // eslint-disable-next-line max-len
+        currentSubSection: oldForm.currentSubSection? oldForm.currentSubSection: formSections[0].subSections[0],
+        currentProgress: oldForm.currentProgress? oldForm.currentProgress: 0,
+        currentStack: oldForm.currentStack? oldForm.currentStack: 0,
+        // eslint-disable-next-line max-len
+        questionsAnswered: oldForm.questionsAnswered ? oldForm.questionsAnswered: [],
         currentFormID: oldForm.currentFormID ? oldForm.currentFormID: '',
         sections: formSections,
         showableQuestions: [],
