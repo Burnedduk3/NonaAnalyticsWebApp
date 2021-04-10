@@ -11,12 +11,14 @@ import {
 } from '../../Config/api/Graphql/Types';
 
 export const useOrganizeForm = () => {
+  const stateCandidate = localStorage.getItem('QUESTIONER_STORAGE');
+  const oldForm = JSON.parse(stateCandidate?stateCandidate:'{}');
   const [formState, setFormState] = useState<
       IFormQuestionsContextState | null
       >({
         currentStack: 0,
         questionsAnswered: [],
-        currentFormID: '',
+        currentFormID: oldForm.currentFormID?oldForm.currentFormID:'0',
         currentProgress: 0,
         currentSubSection: null,
         currentSection: null,

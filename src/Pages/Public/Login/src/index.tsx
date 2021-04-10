@@ -23,6 +23,7 @@ import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
 import {Auth} from 'aws-amplify';
 import {IGetUserParams, useGetUser} from '../../../../hooks/GetUserData';
 import {IStartFormParams, useStartForm} from '../../../../hooks/StartForm';
+import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -33,13 +34,19 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
   const ApplicationState = useApplicationState();
   const history = useHistory();
-  const [isRedirecting, setIsRedirecting] = useState<boolean>(false);
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const applicationState = useApplicationState();
   const getUser = useGetUser();
   const startForm = useStartForm();
+  const formState = useFormQuestionState();
+  const {currentFormID} = formState.formState;
 
+  useEffect(()=>{
+    if (currentFormID !== '') {
+      redirect();
+    }
+  }, [currentFormID]);
 
   useEffect(() => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -55,15 +62,6 @@ const LoginPage : React.FC = (): JSX.Element =>{
         },
     );
   }, []);
-
-  useEffect(
-      () =>{
-        if (isRedirecting) {
-          redirect();
-        }
-      },
-      [isRedirecting],
-  );
 
   const goHome = () =>{
     history.push(RoutingConstants.menu.home.path);
@@ -117,14 +115,12 @@ const LoginPage : React.FC = (): JSX.Element =>{
         await startForm(startFormParams);
 
         setRedirectPath(RoutingConstants.consent.path);
-        setIsRedirecting(true);
       } else {
         throw new Error('incorrect username or password');
       }
     } catch (error) {
       if (error.name === 'UserNotConfirmedException') {
         setRedirectPath(RoutingConstants.verifyEmail.path);
-        setIsRedirecting(true);
       } else {
         setToggleToast(true);
         applicationState.appStateDispatch(

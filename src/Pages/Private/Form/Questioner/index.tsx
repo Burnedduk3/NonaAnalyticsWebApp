@@ -17,7 +17,10 @@ import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
 import {
   PREVIOUS_QUESTION,
   SET_QUESTION_RESPONSE,
-  SET_SHOWABLE_QUESTIONS, GET_SECTIONS, NEXT_QUESTIONS,
+  SET_SHOWABLE_QUESTIONS,
+  GET_SECTIONS,
+  NEXT_QUESTIONS,
+  SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import {RouteComponentProps} from 'react-router';
 import {
@@ -125,7 +128,11 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
       type: HIDE_HEADER,
       payload: undefined,
     });
-    console.log(formState);
+    FormApplicationState.
+        formStateDispatch({
+          type: SEARCH_STORAGE_QUESTIONER, payload: undefined,
+        },
+        );
     if (formState && formState.totalQuestions > 0) {
       FormApplicationState.formStateDispatch(
           {

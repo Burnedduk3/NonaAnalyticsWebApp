@@ -19,6 +19,9 @@ RoutingConstants
   from '../../../../navigation/CONSTANTS/RoutingConstants';
 import {useHistory} from 'react-router-dom';
 import {Auth} from 'aws-amplify';
+import {
+  SEARCH_STORAGE_QUESTIONER,
+} from '../../../../Context/FormQuestions/ActionTypes';
 
 const Consent: React.FC = ():JSX.Element =>{
   const applicationState = useApplicationState();
@@ -32,8 +35,14 @@ const Consent: React.FC = ():JSX.Element =>{
 
   useEffect(()=>{
     applicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    formState.
+        formStateDispatch({
+          type: SEARCH_STORAGE_QUESTIONER, payload: undefined,
+        },
+        );
   },
   []);
+
 
   useEffect(()=>{
     if (redirect) {
@@ -46,26 +55,33 @@ const Consent: React.FC = ():JSX.Element =>{
 
 
   const onAcceptConsent = async () =>{
-    if (formState.formState.currentFormID && acceptInvitation) {
-      const {currentFormID} = formState.formState;
-      const params: IUpdateConsentParams = {
-        variables: {
-          formId: currentFormID,
-        },
-      };
-      try {
-        const session = await Auth.currentSession();
-        localStorage.setItem(
-            'token',
-            session.getAccessToken().getJwtToken(),
-        );
-        await updateConsent(params);
-        setRedirect(true);
-      } catch (err) {
+    try {
+      if (acceptInvitation) {
+        const {currentFormID} = formState.formState;
+        if (currentFormID === '') {
+          throw new Error('No Form id ');
+        }
+        const params: IUpdateConsentParams = {
+          variables: {
+            formId: currentFormID,
+          },
+        };
+        try {
+          const session = await Auth.currentSession();
+          localStorage.setItem(
+              'token',
+              session.getAccessToken().getJwtToken(),
+          );
+          await updateConsent(params);
+          setRedirect(true);
+        } catch (err) {
+          setToggleToast(true);
+        }
+      } else {
         setToggleToast(true);
       }
-    } else {
-      setToggleToast(true);
+    } catch (err) {
+      history.push('/');
     }
   };
 
