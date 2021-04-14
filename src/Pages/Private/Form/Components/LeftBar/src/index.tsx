@@ -4,8 +4,6 @@ import 'react-circular-progressbar/dist/styles.css';
 import colors from '../../../../../../Global/js/colors';
 import logo from '../../../../../../assets/Logos/logo.png';
 import DropDownComponent from '../DropDown';
-import LeftBarText, {
-} from './CONSTANTS';
 import {
   useFormQuestionState,
 } from '../../../../../../Context/FormQuestions/Provider';
@@ -24,6 +22,8 @@ interface IShowHideOptions{
 const LeftBar: React.FC = ():JSX.Element => {
   const formState = useFormQuestionState();
   const sections = useSectionsAndSubSections();
+  const formApplicationState = useFormQuestionState();
+  const {currentSection, currentSubSection} = formApplicationState.formState;
   const [showOptions, setShowOptions] = useState<IShowHideOptions>({
     LakeNona: false,
     Health: false,
@@ -66,6 +66,18 @@ const LeftBar: React.FC = ():JSX.Element => {
           <p className="progress-bar-subtitle">Survey Progress</p>
         </div>
       </div>
+      <div className="road-map">
+        <p
+          className="current-section"
+        >
+          <span>Current Section:</span> {currentSection?.name}
+        </p>
+        <p
+          className="current-subsection"
+        >
+          <span>Current Sub Section:</span> {currentSubSection?.name}
+        </p>
+      </div>
       <div className="drop-down-menu">
         {
           sections && (
@@ -98,11 +110,6 @@ const LeftBar: React.FC = ():JSX.Element => {
             })
           )
         }
-      </div>
-      <div className="last-section">
-        <h4 className="last-section-title">{LeftBarText.lastSection.title}</h4>
-        {/* eslint-disable-next-line max-len */}
-        <p className="last-section-content">{LeftBarText.lastSection.content}</p>
       </div>
     </aside>
   );

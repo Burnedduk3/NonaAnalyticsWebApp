@@ -13,6 +13,7 @@
 
   .drop-down-menu {
     text-decoration: none;
+    margin: auto;
 
     ul {
       padding-inline: 0;
@@ -60,6 +61,7 @@
     display: flex;
     min-width: 300px;
     flex-wrap: wrap;
+    margin: auto;
 
     .form-nona-logo-container {
       display: flex;
@@ -68,7 +70,8 @@
       margin: 2vh 0;
 
       .form-nona-logo {
-        width: 16vw;
+        width: 100%;
+        object-fit: contain;
       }
     }
 
@@ -89,33 +92,33 @@
     }
   }
 
-  .last-section {
+  .road-map {
     color: white;
     overflow: hidden;
-    margin: 10px 0 0 0;
-    position: sticky;
+    margin: auto 10px;
     bottom: 0;
+    min-height: 60px;
 
-    .last-section-title {
+    .current-section {
       color: white;
-      margin: 0 auto;
-      width: 98%;
-      font-size: 0.8em;
+      width: 90%;
+      font-size: 0.9em;
+      margin: 10px 15px;
+
+      span {
+        font-weight: bold;
+      }
     }
 
-    .last-section-content {
+    .current-subsection {
       color: white;
-      font-size: 10px;
-      margin: 5px auto 0;
-      width: 85%;
-      text-align: justify;
-    }
+      width: 90%;
+      font-size: 0.9em;
+      margin: 10px 15px;
 
-    .social {
-      display: flex;
-      flex-wrap: nowrap;
-      justify-content: space-evenly;
-      margin: 15px 0 0 0;
+      span {
+        font-weight: bold;
+      }
     }
   }
 }

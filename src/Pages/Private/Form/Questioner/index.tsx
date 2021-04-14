@@ -361,7 +361,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 );
                               }
                               if (item.category.name === 'MultiLadder') {
-                                if (!item.items || !item.stackPhrase) {
+                                if (!item.items) {
                                   return <></>;
                                 }
                                 return (
@@ -372,7 +372,10 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                     question={item.question}
                                     questionId={item.id}
                                     radioGroup={item.id}
-                                    stackPhrase={item.stackPhrase}
+                                    stackPhrase={
+                                      item.stackPhrase?
+                                          item.stackPhrase:''
+                                    }
                                     order={item.order}
                                     inputConfirmation={item.inputConfirmation}
                                   />

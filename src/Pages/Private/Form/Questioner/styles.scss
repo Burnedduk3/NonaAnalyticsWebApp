@@ -55,12 +55,17 @@
       max-height: 10vh;
 
       .button {
+        display: flex;
+        justify-content: center;
+        align-items: center;
         margin: 0 20px 0 20px;
         min-width: 250px;
+        width: 25%;
+        max-width: 300px;
         font-size: 1.3em;
-        height: fit-content;
+        height: 70%;
+        min-height: 50px;
         background-color: $primary-color;
-        padding: 15px 80px;
         border-radius: 35px;
         color: white;
       }

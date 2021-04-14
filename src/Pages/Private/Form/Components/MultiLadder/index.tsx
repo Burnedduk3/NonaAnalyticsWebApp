@@ -50,12 +50,12 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
           {items.map((value)=>
             (
               <label
-                key={`${questionId}-${value}`}
-                htmlFor={`${questionId}-${value}`}
+                key={`${questionId}-${value.name}`}
+                htmlFor={`${questionId}-${value.name}`}
               >
                 <input
-                  id={`${questionId}-${value}`}
-                  className={`radio-button value${value}`}
+                  id={`${questionId}-${value.name}`}
+                  className={`radio-button value${value.name}`}
                   type="radio"
                   name={radioGroup}
                   value={value.name}
@@ -73,7 +73,7 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                     )
                   }
                 />
-                <div className={`check value`}>{value}</div>
+                <div className={`check value`}>{value.name}</div>
               </label>
             ),
           )}
