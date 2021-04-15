@@ -40,7 +40,7 @@ const HeaderTexts = {
   },
   congrats: {
     // eslint-disable-next-line max-len
-    congratulationsMessage: 'Congratulations, you have riched the end of the survey',
+    congratulationsMessage: 'Congratulations, you have reached the end of the survey',
     ThankyouMessage: 'Thank you for participating in this project',
   },
 };
