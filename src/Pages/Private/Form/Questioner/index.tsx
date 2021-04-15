@@ -340,7 +340,6 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 );
                               }
                               if (item.category.name === 'RadioGroup') {
-                                console.log(item);
                                 if (!item.items) {
                                   return <></>;
                                 }

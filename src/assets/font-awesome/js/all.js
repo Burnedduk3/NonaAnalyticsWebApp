@@ -3937,10 +3937,10 @@
         if (mutation) {
           acc.push(mutation);
         }
-      } catch (e) {
+      } catch (err) {
         if (!PRODUCTION) {
-          if (e instanceof MissingIcon) {
-            console.error(e);
+          if (err instanceof MissingIcon) {
+            console.error(err);
           }
         }
       }
