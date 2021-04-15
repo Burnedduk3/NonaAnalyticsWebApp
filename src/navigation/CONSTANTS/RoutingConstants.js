@@ -21,6 +21,10 @@ const RoutingConstants = {
     name: 'login',
     path: '/login',
   },
+  congrats: {
+    name: 'congratulations',
+    path: '/congratulations',
+  },
   signUp: {
     name: 'signUp',
     path: '/sign-up',

@@ -24,7 +24,7 @@ export const useUpdateFormProgress = () => {
           rawResponse.UserInteractionMutation.updateFormProgress.error
         ) {
           // eslint-disable-next-line max-len
-          console.log(rawResponse.UserInteractionMutation.updateFormProgress.message);
+          // console.log(rawResponse.UserInteractionMutation.updateFormProgress.message);
           throw new Error('Unable to update progress try again');
         }
       }

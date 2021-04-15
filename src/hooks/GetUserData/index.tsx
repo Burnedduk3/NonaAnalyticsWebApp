@@ -31,23 +31,26 @@ export const useGetUser = () => {
   };
 
   useEffect(()=> {
-    if (!loading && data) {
-      const fetchedData: IGetUser = data;
-      // eslint-disable-next-line max-len
-      const {name, username, CognitoPoolId, phone} = fetchedData.UserInteractionQueries.listUserData.data;
-      console.log(name);
-      userState.userStateDispatch({
-        type: ADD_USER,
-        payload: {
-          name: name,
-          email: username,
-          usernameID: CognitoPoolId,
-          phone: phone,
-          accessToken: accessToken,
-          idToken: tokenId,
-          refreshToken: refreshToken,
-        },
-      });
+    try {
+      if (!loading && data) {
+        const fetchedData: IGetUser = data;
+        // eslint-disable-next-line max-len
+        const {name, username, CognitoPoolId, phone} = fetchedData.UserInteractionQueries.listUserData.data;
+        userState.userStateDispatch({
+          type: ADD_USER,
+          payload: {
+            name: name,
+            email: username,
+            usernameID: CognitoPoolId,
+            phone: phone,
+            accessToken: accessToken,
+            idToken: tokenId,
+            refreshToken: refreshToken,
+          },
+        });
+      }
+    } catch (err) {
+      console.log(err);
     }
   }, [loading]);
 

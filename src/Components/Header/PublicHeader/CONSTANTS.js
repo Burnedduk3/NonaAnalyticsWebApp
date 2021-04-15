@@ -38,6 +38,11 @@ const HeaderTexts = {
     // eslint-disable-next-line max-len
         'Your participation is essential to cracking-the-code to life-long health and well-being. Join the thousands of Lake Nona Citizen Scientists Making History.',
   },
+  congrats: {
+    // eslint-disable-next-line max-len
+    congratulationsMessage: 'Congratulations, you have riched the end of the survey',
+    ThankyouMessage: 'Thank you for participating in this project',
+  },
 };
 
 export default HeaderTexts;

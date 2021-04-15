@@ -119,6 +119,30 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
     </header>
   );
 
+  const congrats = () => (
+    <header className="header header-congrats">
+      <PublicNavBar theme="dark" />
+      <div className="container" />
+      <div className="social">
+        <i className="fab fa-instagram" />
+        <i className="fab fa-facebook-f" />
+      </div>
+      <h1 className="main-title">
+        <span
+          className="title-primary-congrats"
+        >
+          {HeaderTexts.congrats.congratulationsMessage}
+        </span>
+        <span
+          className="title-primary-second"
+        >
+          {HeaderTexts.congrats.ThankyouMessage}
+        </span>
+        <br />
+      </h1>
+    </header>
+  );
+
   const ApplicationState = useApplicationState();
   return (
     <>
@@ -136,6 +160,9 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
           )}
           {(page === RoutingConstants.preSurvey.path) && (
             startSurvey()
+          )}
+          {(page === RoutingConstants.congrats.path) && (
+            congrats()
           )}
         </>
       }

@@ -1,15 +1,31 @@
 import React from 'react';
-import {Route} from 'react-router-dom';
+import {Redirect, Route} from 'react-router-dom';
 import RoutingConstants from '../CONSTANTS/RoutingConstants';
-import FormPage from '../../Pages/Private/Form/Questioner';
 
-const PrivateRoutes : React.FC = (): JSX.Element => {
+interface IPrivateRoutesProps {
+    path: string
+    PrivateComponent: any
+}
+
+const PrivateRoutes : React.FC<IPrivateRoutesProps> = (
+    {path, PrivateComponent, ...rest}:IPrivateRoutesProps,
+): JSX.Element => {
   return (
     <Route
+      {...rest}
       exact
-      path={`${RoutingConstants.dinamicForm.path}`
+      path={path}
+      render={
+        (props) =>
+          localStorage.getItem('token') ? (
+              <PrivateComponent {...props}/>
+              ):
+            (
+                <Redirect
+                  to={RoutingConstants.login.path}
+                />
+            )
       }
-      component={FormPage}
     />
   );
 };

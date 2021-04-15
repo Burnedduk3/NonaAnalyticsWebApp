@@ -114,6 +114,22 @@
     margin-top: 20px;
   }
 
+  .title-primary-congrats {
+    display: inline-block;
+    color: $primary-color;
+    font-size: 1.2em;
+    margin-top: 20px;
+    width: 100%;
+  }
+
+  .title-primary-second {
+    display: inline-block;
+    color: $primary-color;
+    font-size: 1em;
+    margin-top: 20px;
+    width: 100%;
+  }
+
   .title-secondary {
     color: $secondary-color;
   }
@@ -195,6 +211,35 @@
     .container {
       background-image: url("../../../assets/Images/StartSurveyImage.jpg");
       opacity: 0.5;
+    }
+
+    .social {
+      top: 20vh;
+
+      .fab {
+        color: $secondary-color;
+      }
+    }
+
+    .main-title {
+      margin-left: 20vh;
+      max-width: 70vw !important;
+
+      .title-primary {
+        font-size: 0.5em !important;
+        line-height: 1.8;
+        margin-top: 0;
+      }
+    }
+  }
+
+  &-congrats {
+    padding-bottom: 1vh;
+
+    .container {
+      background-image: url("../../../assets/Images/CongratsPage.jpg");
+      opacity: 0.5;
+      background-position: 50% 50%;
     }
 
     .social {

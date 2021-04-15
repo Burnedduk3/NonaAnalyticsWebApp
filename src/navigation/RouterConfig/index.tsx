@@ -16,6 +16,8 @@ import UserProvider from '../../Context/UserContext/Provider';
 import FormQuestionProvider from '../../Context/FormQuestions/Provider';
 import MailVerificationPage from '../../Pages/Public/MailVerification/src';
 import Consent from '../../Pages/Private/Consent/src';
+import FormPage from '../../Pages/Private/Form/Questioner';
+import EndScreenPage from '../../Pages/Private/EndScreen';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -66,13 +68,29 @@ const RouterConfig: React.FC = (): JSX.Element => {
               component={PreQuestionerPage}
             />
 
-            <Route
-              exact
-              path={RoutingConstants.consent.path}
-              component={Consent}
-            />
+            {
+              <PrivateRoutes
+                // @ts-ignore
+                PrivateComponent={Consent}
+                path={RoutingConstants.consent.path}
+              />
+            }
 
-            <PrivateRoutes />
+            {
+              <PrivateRoutes
+                // @ts-ignore
+                PrivateComponent={FormPage}
+                path={RoutingConstants.dinamicForm.path}
+              />
+            }
+
+            {
+              <PrivateRoutes
+                // @ts-ignore
+                PrivateComponent={EndScreenPage}
+                path={RoutingConstants.congrats.path}
+              />
+            }
 
             <Route path={RoutingConstants.notFound.path} component={NotFound}/>
             <Redirect to={RoutingConstants.notFound.path}/>

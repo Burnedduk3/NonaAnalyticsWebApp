@@ -2,7 +2,11 @@
 
 .input-container-check {
   width: 100%;
+  display: flex;
   min-width: 300px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 800px;
 
   .check-label {
     width: 100%;
@@ -11,7 +15,8 @@
     color: $primary-color;
     font-family: 'Poppins', sans-serif;
     font-weight: 700;
-    margin-bottom: 8px;
+    margin-bottom: 20px;
+    text-align: center;
   }
 
   .container {

@@ -19,12 +19,11 @@ export const useUpdateConsent = () => {
     try {
       if (!loading && data) {
         const rawResponse: IUpdateFormConsentResponse = data;
-        console.log(rawResponse);
         if (
           rawResponse.UserInteractionMutation.updateFormConsent.error
         ) {
           // eslint-disable-next-line max-len
-          console.log(rawResponse.UserInteractionMutation.updateFormConsent.message);
+          // console.log(rawResponse.UserInteractionMutation.updateFormConsent.message);
           throw new Error('Unable to update consent try again');
         }
       }

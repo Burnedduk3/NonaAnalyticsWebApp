@@ -244,7 +244,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
     <>
       {
         formFinished && <Redirect
-          to={RoutingConstants.menu.home.path}
+          to={RoutingConstants.congrats.path}
         />
       }
       {!formFinished &&
