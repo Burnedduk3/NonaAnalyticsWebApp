@@ -32,14 +32,7 @@ const LeftBar: React.FC = ():JSX.Element => {
   });
 
   const handleOnClick = (event: any, key: string) =>{
-    const newState:IShowHideOptions = {
-      LakeNona: false,
-      Health: false,
-      Social: false,
-      Mood: false,
-    };
-    newState[key] = !newState[key];
-    setShowOptions({...newState});
+    setShowOptions({...showOptions, [key]: !showOptions[key]});
   };
 
   return (
@@ -56,12 +49,11 @@ const LeftBar: React.FC = ():JSX.Element => {
                 0
             }
             text={`${formState?.formState.currentProgress}%`}
-            styles={buildStyles(
-                {
-                  trailColor: colors.progressBackGround,
-                  pathColor: colors.secondaryColor,
-                  textColor: colors.creamWhiteBackground,
-                })}
+            styles={buildStyles({
+              trailColor: colors.progressBackGround,
+              pathColor: colors.secondaryColor,
+              textColor: colors.creamWhiteBackground,
+            })}
           />
           <p className="progress-bar-subtitle">Survey Progress</p>
         </div>

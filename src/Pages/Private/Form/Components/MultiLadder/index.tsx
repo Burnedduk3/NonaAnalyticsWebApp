@@ -47,8 +47,8 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
           </p>
         </div>
         <div className="response-container">
-          {items.map((value)=>
-            (
+          {items.map((value)=> {
+            return (
               <label
                 key={`${questionId}-${value.name}`}
                 htmlFor={`${questionId}-${value.name}`}
@@ -60,13 +60,13 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                   name={radioGroup}
                   value={value.name}
                   defaultChecked={
-                      questionAnswer ?
-                          questionAnswer.answer === value.name:
-                          false
+                                  questionAnswer ?
+                                      questionAnswer.answer === value.name :
+                                      false
                   }
                   onClick={
                     () => setResponse(
-                        value.toString(),
+                        value.name.toString(),
                         questionId,
                         order,
                         inputConfirmation,
@@ -75,7 +75,8 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
                 />
                 <div className={`check value`}>{value.name}</div>
               </label>
-            ),
+            );
+          },
           )}
         </div>
       </div>

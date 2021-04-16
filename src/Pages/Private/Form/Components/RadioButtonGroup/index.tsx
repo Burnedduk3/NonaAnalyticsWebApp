@@ -70,8 +70,8 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
               items.map(
                   (option) => (
                     <label
-                      htmlFor={`${questionId}-${option}`}
-                      key={`${questionId}-${option}`}
+                      htmlFor={`${questionId}-${option.name}`}
+                      key={`${questionId}-${option.name}`}
                       className="input-container"
                     >
                       <input

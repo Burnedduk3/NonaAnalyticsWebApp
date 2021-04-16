@@ -31,7 +31,7 @@ export const ErrorMessageToast: React.FC<IErrorMessageProps> = (
           });
           setToggleToast(false);
           if (setError) {
-            setError({error: true, message: ''});
+            setError({error: false, message: ''});
           }
         }
       },
