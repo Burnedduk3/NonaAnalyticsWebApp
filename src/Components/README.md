@@ -8,7 +8,7 @@ The following components are considered globals until the moment:
 * ## [ErrorMessage](./ErrorMessage/README.md)
 * ## [Footer](./Footer/README.md)
 * ## [Header](./Header/README.md)
-* ## [NavBar](./NavBar/README.md)
+* ## [NavBar](./Navbar/README.md)
 * ## [Spinner](./Spinner/README.md)
 
 [GO BACK](../README.md)
