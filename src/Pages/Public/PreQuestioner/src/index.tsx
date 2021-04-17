@@ -15,7 +15,7 @@ import {useUserState} from '../../../../Context/UserContext/Provider';
 import {useHistory} from 'react-router-dom';
 
 import './styles.scss';
-import {IQuestionerState} from '../../../Private/Form/Questioner/interface';
+import {IQuestionerState} from '../../../Private/Form/Survey/interface';
 import {
   SEARCH_LOCAL_STORAGE,
 } from '../../../../Context/UserContext/ActionTypes';

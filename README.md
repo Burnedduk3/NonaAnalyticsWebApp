@@ -37,7 +37,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 This command will init a linting process throw all the files with extensions `.js` `.jsx` `.ts` or `.tsx`, this will show where the code is not accomplishing the `google code eslint` standard
 running this command like `yarn jslint --fix` will fix almost all the linting errors in any file.
 
-### `csslint`
+### `yarn csslint`
 This command will run a linting process for all the `scss` files inside the `src` folder. running this command like
 `yarn csslint --fix` will fix almost all the linting issues on the scss files.
 
@@ -66,6 +66,7 @@ This command will run a linting process for all the `scss` files inside the `src
   push  |  In this step, the created image will be pushed to the chosen registry, and it will be pushed to times, the first time with the build number and the secodn time with the `latest` tag. 
   deploy  |  In this step, the jenkins hosts uses the previously configured `Salt` configuration management tools to deploy the application in the front-end hosts.
 
+# To see design click [here](https://xd.adobe.com/view/5247fc7b-18f3-4624-a308-1dacff276df3-0714/screen/c22c12c8-c40c-457f-bc9d-ad932501cb1d/)
 
 # Next Steps
 Continue reading the application Documentation [here](./src/README.md)

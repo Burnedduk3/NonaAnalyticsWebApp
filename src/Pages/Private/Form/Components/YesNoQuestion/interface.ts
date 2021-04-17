@@ -1,4 +1,4 @@
-import {IQuestionerState} from '../../Questioner/interface';
+import {IQuestionerState} from '../../Survey/interface';
 
 export interface IYesNoProps{
     question: string,

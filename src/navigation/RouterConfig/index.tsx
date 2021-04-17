@@ -16,7 +16,7 @@ import UserProvider from '../../Context/UserContext/Provider';
 import FormQuestionProvider from '../../Context/FormQuestions/Provider';
 import MailVerificationPage from '../../Pages/Public/MailVerification/src';
 import Consent from '../../Pages/Private/Consent/src';
-import FormPage from '../../Pages/Private/Form/Questioner';
+import FormPage from '../../Pages/Private/Form/Survey';
 import EndScreenPage from '../../Pages/Private/EndScreen';
 
 const RouterConfig: React.FC = (): JSX.Element => {

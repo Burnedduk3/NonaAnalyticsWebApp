@@ -1,6 +1,6 @@
 # Utils
 
-Here should be stored all the functions that helps in thge proces of development but are not going to be used in a production environments.
+Here should be stored all the functions that helps in the process of development but are not going to be used in a production environments.
 
 ## Functions
 
