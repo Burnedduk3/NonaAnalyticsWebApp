@@ -22,6 +22,7 @@ import {Auth} from 'aws-amplify';
 import {
   SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
+import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const Consent: React.FC = ():JSX.Element =>{
   const applicationState = useApplicationState();
@@ -177,11 +178,7 @@ const Consent: React.FC = ():JSX.Element =>{
                                           return (
                                             <li
                                               className="list-element"
-                                              key={
-                                                ''+
-                                                `${htmlContent[0]}-`+
-                                                `${htmlContent[1]}-li`
-                                              }
+                                              key={generateUUID()}
                                             >
                                               {''+listElement}
                                             </li>

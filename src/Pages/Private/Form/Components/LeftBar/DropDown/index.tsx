@@ -6,7 +6,6 @@ import {
   SET_SUBSECTION_BY_MENU,
 } from '../../../../../../Context/FormQuestions/ActionTypes';
 import {ISubSection} from '../../../../../../Context/FormQuestions/interface';
-import {generateUUID} from '../../../../../../utils/GenerateUUID';
 
 export interface IDropDownProps{
   subSections: Array<ISubSection>
