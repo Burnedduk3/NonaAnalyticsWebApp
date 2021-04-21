@@ -32,7 +32,13 @@ const LeftBar: React.FC = ():JSX.Element => {
   });
 
   const handleOnClick = (event: any, key: string) =>{
-    setShowOptions({...showOptions, [key]: !showOptions[key]});
+    setShowOptions({
+      LakeNona: false,
+      Health: false,
+      Social: false,
+      Mood: false,
+      [key]: !showOptions[key],
+    });
   };
 
   return (
