@@ -149,7 +149,7 @@ export const UPDATE_FORM_PROGRESS: DocumentNode = gql`
 export const UPDATE_FORM_CONSENT: DocumentNode = gql`
     mutation($formId:String!){
         UserInteractionMutation{
-            updateFormConsent(UpdateProgress:{formId:$formId}){
+            updateFormConsent(UpdateConsent:{formId:$formId}){
                 error
                 message
                 data{

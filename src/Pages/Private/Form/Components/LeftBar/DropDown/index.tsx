@@ -6,6 +6,7 @@ import {
   SET_SUBSECTION_BY_MENU,
 } from '../../../../../../Context/FormQuestions/ActionTypes';
 import {ISubSection} from '../../../../../../Context/FormQuestions/interface';
+import {generateUUID} from '../../../../../../utils/GenerateUUID';
 
 export interface IDropDownProps{
   subSections: Array<ISubSection>
@@ -37,7 +38,7 @@ const DropDownComponent: React.FC<IDropDownProps> = (
               return (
                 <li
                   className={selectors.join(' ')}
-                  key={subSection.name}
+                  key={generateUUID()}
                   onClick={
                     (event) => handleOnClick(event, subSection.name)
                   }>

@@ -7,6 +7,7 @@ import {
 import {
   IAnsweredQuestion,
 } from '../../../../../Context/FormQuestions/interface';
+import {generateUUID} from '../../../../../utils/GenerateUUID';
 
 const MultiLadderQuestion: React.FC<IMultiladder> = (
     {
@@ -50,7 +51,7 @@ const MultiLadderQuestion: React.FC<IMultiladder> = (
           {items.map((value)=> {
             return (
               <label
-                key={`${questionId}-${value.name}`}
+                key={generateUUID()}
                 htmlFor={`${questionId}-${value.name}`}
               >
                 <input

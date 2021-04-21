@@ -18,6 +18,7 @@ import MailVerificationPage from '../../Pages/Public/MailVerification/src';
 import Consent from '../../Pages/Private/Consent/src';
 import FormPage from '../../Pages/Private/Form/Survey';
 import EndScreenPage from '../../Pages/Private/EndScreen';
+import UserForms from '../../Pages/Private/UserForms/UserForms';
 
 const RouterConfig: React.FC = (): JSX.Element => {
   const location = useLocation();
@@ -89,6 +90,14 @@ const RouterConfig: React.FC = (): JSX.Element => {
                 // @ts-ignore
                 PrivateComponent={EndScreenPage}
                 path={RoutingConstants.congrats.path}
+              />
+            }
+
+            {
+              <PrivateRoutes
+                // @ts-ignore
+                PrivateComponent={UserForms}
+                path={RoutingConstants.listUserForms.path}
               />
             }
 

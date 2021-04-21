@@ -49,6 +49,7 @@ import {
   useUpdateFormProgress,
 } from '../../../../hooks/UpdateFormProgress';
 import {Auth} from 'aws-amplify';
+import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const [pageLoading, setPageLoading] = useState<boolean>(true);
@@ -265,7 +266,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                               if (item.category.name === 'YesNo') {
                                 return (
                                 // eslint-disable-next-line max-len
-                                  <div key={item.id} className="yes-no-container-comp">
+                                  <div key={generateUUID()} className="yes-no-container-comp">
                                     <YesNoQuestionQuestioner
                                       question={item.question}
                                       questionId={item.id}
@@ -283,7 +284,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 }
                                 return (
                                   <ComboBoxComponent
-                                    key={item.id}
+                                    key={generateUUID()}
                                     question={item.question}
                                     questionId={item.id}
                                     setResponse={setQuestionResponse}
@@ -300,7 +301,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 return (
                                   <TextInputComponent
                                     placeholder={item.placeHolder}
-                                    key={item.id}
+                                    key={generateUUID()}
                                     question={item.question}
                                     questionId={item.id}
                                     setResponse={setQuestionResponse}
@@ -315,7 +316,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 }
                                 return (
                                   <CheckBoxComponent
-                                    key={item.id}
+                                    key={generateUUID()}
                                     items={item.items}
                                     questionId={item.id}
                                     question={item.question}
@@ -328,7 +329,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                               if (item.category.name === 'Ladder') {
                                 return (
                                   <LadderQuestion
-                                    key={item.id}
+                                    key={generateUUID()}
                                     questionText={item.question}
                                     questionId={item.id}
                                     radioGroup={item.id}
@@ -345,7 +346,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 }
                                 return (
                                   <RadioButtonGroup
-                                    key={item.id}
+                                    key={generateUUID()}
                                     items={item.items}
                                     setResponse={setQuestionResponse}
                                     question={item.question}
@@ -365,7 +366,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 }
                                 return (
                                   <MultiLadderQuestion
-                                    key={item.id}
+                                    key={generateUUID()}
                                     items={item.items}
                                     setResponse={setQuestionResponse}
                                     question={item.question}
@@ -387,7 +388,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 }
                                 return (
                                   <ImageOneSelection
-                                    key={item.id}
+                                    key={generateUUID()}
                                     items={item.items}
                                     setResponse={setQuestionResponse}
                                     question={item.question}

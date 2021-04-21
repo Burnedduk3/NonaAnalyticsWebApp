@@ -69,17 +69,19 @@
         background-color: $primary-color;
         border-radius: 35px;
         color: white;
-      }
-
-      .next {
         font-family: "Poppins", sans-serif;
         font-weight: 500;
       }
 
-      .previous {
-        background-color: white;
-        color: $primary-color;
-      }
+      //.next {
+      //  font-family: "Poppins", sans-serif;
+      //  font-weight: 500;
+      //}
+
+      //.previous {
+      //  background-color: white;
+      //  color: $primary-color;
+      //}
     }
   }
 }

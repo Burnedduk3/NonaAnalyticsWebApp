@@ -10,6 +10,7 @@ import {
   SHOW_FOOTER,
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
+import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const LifeProject: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -25,7 +26,7 @@ const LifeProject: React.FC = (): JSX.Element => {
         <ul>
           {
             LifeProjectText.firstPart.list.map((item, index) => (
-              <li key={`${index}first`}>{item}</li>
+              <li key={generateUUID()}>{item}</li>
             ))
           }
         </ul>
@@ -34,7 +35,7 @@ const LifeProject: React.FC = (): JSX.Element => {
         <ul>
           {
             LifeProjectText.secondPart.list.map((item, index) => (
-              <li key={`${index}second`}>{item}</li>
+              <li key={generateUUID()}>{item}</li>
             ))
           }
         </ul>
@@ -44,7 +45,7 @@ const LifeProject: React.FC = (): JSX.Element => {
               const color = index === 2 || index === 3 ? 'prim' : 'second';
               return (
                 <Milestone
-                  key={`${index}third`}
+                  key={generateUUID()}
                   Milestones={
                     new MilestoneClass(
                         item.title,

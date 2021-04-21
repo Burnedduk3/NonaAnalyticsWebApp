@@ -24,6 +24,7 @@ import {
 import {
   RESET_FORM_STORAGE,
 } from '../../../../Context/FormQuestions/ActionTypes';
+import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -78,7 +79,7 @@ const Home: React.FC = (): JSX.Element => {
             Object.values(HomeTexts.sections.second).map(
                 (item) => (
                   <Perk
-                    key={item.title}
+                    key={generateUUID()}
                     img={item.img}
                     title={item.title}
                     text={item.text}
@@ -97,7 +98,7 @@ const Home: React.FC = (): JSX.Element => {
         {
           Object.values(HomeTexts.sections.third.members.first).map(
               (item) => (
-                <Member key={item.name}
+                <Member key={generateUUID()}
                   memberClass={item.role}
                   name={item.name}
                   title={item.title}
@@ -110,7 +111,7 @@ const Home: React.FC = (): JSX.Element => {
           {
             Object.values(HomeTexts.sections.third.members.second).map(
                 (item) => (
-                  <Member key={item.name}
+                  <Member key={generateUUID()}
                     memberClass={item.role}
                     name={item.name}
                     title={item.title}

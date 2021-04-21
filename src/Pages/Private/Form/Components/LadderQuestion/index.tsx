@@ -8,6 +8,7 @@ import {
 import {
   IAnsweredQuestion,
 } from '../../../../../Context/FormQuestions/interface';
+import {generateUUID} from '../../../../../utils/GenerateUUID';
 
 const LadderQuestion: React.FC<ILadderQuestionProps> = (
     {
@@ -39,7 +40,7 @@ const LadderQuestion: React.FC<ILadderQuestionProps> = (
         {values.map((value)=>
           (
             <label
-              key={`${questionId}-${value.name}`}
+              key={generateUUID()}
               htmlFor={`${questionId}-${value.name}`}
             >
               <input
