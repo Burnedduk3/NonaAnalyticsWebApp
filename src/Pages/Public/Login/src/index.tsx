@@ -24,6 +24,9 @@ import {Auth} from 'aws-amplify';
 import {IGetUserParams, useGetUser} from '../../../../hooks/GetUserData';
 import {IStartFormParams, useStartForm} from '../../../../hooks/StartForm';
 import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
+import {
+  SEARCH_STORAGE_QUESTIONER,
+} from '../../../../Context/FormQuestions/ActionTypes';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -32,7 +35,6 @@ const initialInputState: ILoginInterface = {
 
 const LoginPage : React.FC = (): JSX.Element =>{
   const [pageInputs, setPageInputs] = useState(initialInputState);
-  const ApplicationState = useApplicationState();
   const history = useHistory();
   const [redirectPath, setRedirectPath] = useState<string>('');
   const [toggleToast, setToggleToast] = useState<boolean>(false);
@@ -43,15 +45,17 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const {currentFormID} = formState.formState;
 
   useEffect(()=>{
-    if (currentFormID !== '' ||
-        redirectPath === RoutingConstants.verifyEmail.path
+    const tokenLocalStorage = localStorage.getItem('token');
+    if ((currentFormID !== '' ||
+        redirectPath === RoutingConstants.verifyEmail.path) &&
+        tokenLocalStorage
     ) {
       redirect();
     }
   }, [currentFormID, redirectPath]);
 
   useEffect(() => {
-    ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
+    applicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
     applicationState.appStateDispatch(
         {
           type: SET_ERROR,
@@ -63,7 +67,14 @@ const LoginPage : React.FC = (): JSX.Element =>{
           },
         },
     );
+    formState.
+        formStateDispatch({
+          type: SEARCH_STORAGE_QUESTIONER, payload: undefined,
+        },
+        );
   }, []);
+
+  console.log(formState.formState);
 
   const goHome = () =>{
     history.push(RoutingConstants.menu.home.path);
@@ -114,9 +125,13 @@ const LoginPage : React.FC = (): JSX.Element =>{
             CognitoPoolId: user.username,
           },
         };
-        await startForm(startFormParams);
-
-        setRedirectPath(RoutingConstants.consent.path);
+        if (currentFormID === '') {
+          await startForm(startFormParams);
+          setRedirectPath(RoutingConstants.consent.path);
+        } else {
+          console.log('hola');
+          setRedirectPath(RoutingConstants.dinamicForm.path);
+        }
       } else {
         throw new Error('incorrect username or password');
       }

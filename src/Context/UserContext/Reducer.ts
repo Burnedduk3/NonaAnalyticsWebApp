@@ -36,7 +36,7 @@ const userReducer = (
     }
 
     case DELETE_USER: {
-      localStorage.clear();
+      localStorage.removeItem('USER');
       return {
         ...initialState,
       };
