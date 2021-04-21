@@ -7,7 +7,6 @@ import {
 import {
   useFormQuestionState,
 } from '../../../../../Context/FormQuestions/Provider';
-import {generateUUID} from '../../../../../utils/GenerateUUID';
 
 const ComboBoxComponent: React.FC<IComboBoxProps> = ({
   question, items, questionId, setResponse, order, inputConfirmation,
@@ -38,7 +37,7 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
 
         >
           {items.map((item) => <option
-            key={generateUUID()}
+            key={`${item.name}-option`}
             value={item.name}
             selected={questionAnswer?.answer === item.name}
           >{item.name}</option>)}

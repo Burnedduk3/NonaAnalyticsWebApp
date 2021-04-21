@@ -7,7 +7,6 @@ import {
 import {
   useFormQuestionState,
 } from '../../../../../Context/FormQuestions/Provider';
-import {generateUUID} from '../../../../../utils/GenerateUUID';
 
 
 const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
@@ -48,7 +47,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                   (header) => {
                     return (
                       <div
-                        key={generateUUID()}
+                        key={`${header.name}-div`}
                         className="text-header-container"
                       >
                         <h4>{header.name}</h4>
@@ -72,7 +71,7 @@ const RadioButtonGroup: React.FC<IRadioButtonGroupProps> = (
                   (option) => (
                     <label
                       htmlFor={`${questionId}-${option.name}`}
-                      key={generateUUID()}
+                      key={`${questionId}-${option.name}-label`}
                       className="input-container"
                     >
                       <input

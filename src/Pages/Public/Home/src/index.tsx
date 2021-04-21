@@ -79,7 +79,7 @@ const Home: React.FC = (): JSX.Element => {
             Object.values(HomeTexts.sections.second).map(
                 (item) => (
                   <Perk
-                    key={generateUUID()}
+                    key={item.text}
                     img={item.img}
                     title={item.title}
                     text={item.text}

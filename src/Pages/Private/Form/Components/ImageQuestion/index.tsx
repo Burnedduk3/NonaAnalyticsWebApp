@@ -8,7 +8,6 @@ import {
 import {
   IAnsweredQuestion,
 } from '../../../../../Context/FormQuestions/interface';
-import {generateUUID} from '../../../../../utils/GenerateUUID';
 
 const ImageOneSelection: React.FC<IImageQuestionProps> = (
     {
@@ -44,7 +43,7 @@ const ImageOneSelection: React.FC<IImageQuestionProps> = (
               (
                 <label
                   className="ImageItem"
-                  key={generateUUID()}
+                  key={`${value.name}-label`}
                   htmlFor={`${questionId}-${value.name}`}
                 >
                   <input

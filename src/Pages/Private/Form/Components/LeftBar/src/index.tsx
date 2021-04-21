@@ -9,7 +9,6 @@ import {
 } from '../../../../../../Context/FormQuestions/Provider';
 import './styles.scss';
 import {useSectionsAndSubSections} from '../../../../../../hooks/GetSections';
-import {generateUUID} from '../../../../../../utils/GenerateUUID';
 
 interface IShowHideOptions{
     [key:string]: boolean;
@@ -78,7 +77,7 @@ const LeftBar: React.FC = ():JSX.Element => {
               const objectKey = section.name.replaceAll('-', '');
               return (
                 <ul
-                  key={generateUUID()}
+                  key={`${section.id}-${section.name}-ul`}
                   onClick={(event) =>
                     handleOnClick(event, objectKey)}
                 >

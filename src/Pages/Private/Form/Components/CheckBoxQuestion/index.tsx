@@ -7,7 +7,7 @@ import {
 import {
   useFormQuestionState,
 } from '../../../../../Context/FormQuestions/Provider';
-import {generateUUID} from '../../../../../utils/GenerateUUID';
+
 
 const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
   question, items, questionId, setResponse, order, inputConfirmation,
@@ -62,7 +62,7 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
       <div className="items">
         {items.map((item, index) => (
           <label
-            key={generateUUID()}
+            key={`${item.name}-label`}
             className="container"
             htmlFor={`${questionId}`}
           >

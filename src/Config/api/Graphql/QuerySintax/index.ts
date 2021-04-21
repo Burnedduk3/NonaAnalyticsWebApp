@@ -206,7 +206,24 @@ export const GET_USER_DATA: DocumentNode = gql`
             }
         }
     }    
-`
+`;
+
+export const GET_USER_FORMS_DATA: DocumentNode = gql`
+    query($UserID:String!){
+        UserInteractionQueries{
+            listUserData(UserId:{userCognitoId:$UserID}){
+                error
+                message
+                data{
+                    CognitoPoolId
+                    phone
+                    username
+                    name
+                }
+            }
+        }
+    }
+`;
 
 export const START_FORM: DocumentNode = gql`
     mutation($CognitoPoolId:String!){

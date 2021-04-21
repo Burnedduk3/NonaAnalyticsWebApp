@@ -22,7 +22,6 @@ import {Auth} from 'aws-amplify';
 import {
   SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
-import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const Consent: React.FC = ():JSX.Element =>{
   const applicationState = useApplicationState();
@@ -109,7 +108,7 @@ const Consent: React.FC = ():JSX.Element =>{
                   if (entry[0] === 'mainTitle') {
                     return (
                       <h1
-                        key={generateUUID()}
+                        key={entry[0]}
                         className={entry[0].toLowerCase()}
                       >
                         {entry[1]}
@@ -119,7 +118,7 @@ const Consent: React.FC = ():JSX.Element =>{
                   if (entry[0] === 'subTitle') {
                     return (
                       <h2
-                        key={generateUUID()}
+                        key={entry[1]}
                         className={entry[0].toLowerCase()}
                       >
                         {entry[1]}
@@ -127,7 +126,7 @@ const Consent: React.FC = ():JSX.Element =>{
                     );
                   }
                   return ( <h3
-                    key={generateUUID()}
+                    key={`${entry[0]}-${entry[1]}`}
                     className={entry[0].toLowerCase()}
                   >
                     {entry[1]}
@@ -147,7 +146,7 @@ const Consent: React.FC = ():JSX.Element =>{
                           return (
                             <h4
                               className={htmlContent[0]}
-                              key={generateUUID()}
+                              key={`${htmlContent[0]}-${htmlContent[1]}-h4`}
                             >
                               {htmlContent[1]}
                             </h4>
@@ -158,7 +157,7 @@ const Consent: React.FC = ():JSX.Element =>{
                           return (
                             <p
                               className="paragraph"
-                              key={generateUUID()}
+                              key={`${htmlContent[0]}-${htmlContent[1]}-p`}
                             >
                               {htmlContent[1]}
                             </p>
@@ -169,7 +168,7 @@ const Consent: React.FC = ():JSX.Element =>{
                           return (
                             <ul
                               className="list-container"
-                              key={generateUUID()}
+                              key={`${htmlContent[0]}-${htmlContent[1]}-ul`}
                             >
                               {
                                 Object.values(htmlContent[1]).
@@ -178,7 +177,11 @@ const Consent: React.FC = ():JSX.Element =>{
                                           return (
                                             <li
                                               className="list-element"
-                                              key={generateUUID()}
+                                              key={
+                                                ''+
+                                                `${htmlContent[0]}-`+
+                                                `${htmlContent[1]}-li`
+                                              }
                                             >
                                               {''+listElement}
                                             </li>

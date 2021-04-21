@@ -9,7 +9,6 @@ import {
   SHOW_FOOTER,
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
-import {generateUUID} from '../../../../utils/GenerateUUID';
 
 const BePartPage: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -26,7 +25,7 @@ const BePartPage: React.FC = (): JSX.Element => {
               if (index % 2 === 0) {
                 return (
                   <BePartContent
-                    key={generateUUID()}
+                    key={`${item.title}-Be-part`}
                     align='left'
                     title={item.title}
                     text={item.text}
@@ -37,7 +36,7 @@ const BePartPage: React.FC = (): JSX.Element => {
               if (index % 2 !== 0) {
                 return (
                   <BePartContent
-                    key={generateUUID()}
+                    key={index}
                     align='right'
                     title={item.title}
                     text={item.text}

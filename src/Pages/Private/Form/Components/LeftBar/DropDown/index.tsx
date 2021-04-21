@@ -38,7 +38,7 @@ const DropDownComponent: React.FC<IDropDownProps> = (
               return (
                 <li
                   className={selectors.join(' ')}
-                  key={generateUUID()}
+                  key={`${subSection.id}-${subSection.name}-li`}
                   onClick={
                     (event) => handleOnClick(event, subSection.name)
                   }>
