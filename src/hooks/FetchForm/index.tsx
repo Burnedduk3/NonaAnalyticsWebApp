@@ -160,7 +160,7 @@ export const useOrganizeForm = () => {
     } catch (err) {
       console.log(err);
     }
-  }, [loading]);
+  }, [loading, sections]);
 
   return formState;
 };

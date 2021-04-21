@@ -43,10 +43,12 @@ const LoginPage : React.FC = (): JSX.Element =>{
   const {currentFormID} = formState.formState;
 
   useEffect(()=>{
-    if (currentFormID !== '') {
+    if (currentFormID !== '' ||
+        redirectPath === RoutingConstants.verifyEmail.path
+    ) {
       redirect();
     }
-  }, [currentFormID]);
+  }, [currentFormID, redirectPath]);
 
   useEffect(() => {
     ApplicationState.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
@@ -119,7 +121,8 @@ const LoginPage : React.FC = (): JSX.Element =>{
         throw new Error('incorrect username or password');
       }
     } catch (error) {
-      if (error.name === 'UserNotConfirmedException') {
+      if (error.code === 'UserNotConfirmedException') {
+        console.log(error.code);
         setRedirectPath(RoutingConstants.verifyEmail.path);
       } else {
         setToggleToast(true);
