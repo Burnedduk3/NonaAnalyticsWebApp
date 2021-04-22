@@ -9,25 +9,29 @@ const BePartContentText = {
     first: {
       title: 'What We Do',
       // eslint-disable-next-line max-len
-      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      text:
+        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
       img: WhatWeDoImage,
     },
     second: {
       title: 'How We do It',
       // eslint-disable-next-line max-len
-      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      text:
+        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
       img: HowWeDoItImage,
     },
     third: {
       title: 'Participate',
       // eslint-disable-next-line max-len
-      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      text:
+        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
       img: ParticipateImage,
     },
     fourth: {
       title: 'Win Prices',
       // eslint-disable-next-line max-len
-      text: 'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
+      text:
+        'Morbi sed lobortis eros. Nullam dolor diam, convallis ac purus vitae, feugiat consequat dolor. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur ac nibh facilisis nunc fringilla rhoncus ac in erat. Nulla efficitur velit et blandit ultrices. Nullam tellus lectus, sollicitudin a pellentesque sed, hendrerit non turpis. Aliquam ultrices lectus in cursus cursus.',
       img: WinPricesImage,
     },
   },

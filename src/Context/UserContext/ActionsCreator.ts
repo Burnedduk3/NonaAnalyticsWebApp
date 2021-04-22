@@ -1,14 +1,11 @@
-import {IUserContextPayload, IUserState} from './interface';
+import { IUserContextPayload, IUserState } from './interface';
 
 export const addQuestions = (
-    currentState: IUserState,
-    payload: IUserContextPayload,
-) => ({...currentState, ...payload});
+  currentState: IUserState,
+  payload: IUserContextPayload
+) => ({ ...currentState, ...payload });
 
-
-export const checkUserLocalStorage = (
-    currentState: IUserState,
-): IUserState => {
+export const checkUserLocalStorage = (currentState: IUserState): IUserState => {
   const possibleState = localStorage.getItem('USER');
   if (possibleState) {
     const savedState = JSON.parse(possibleState);

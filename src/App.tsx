@@ -1,11 +1,11 @@
 import React from 'react';
 import './App.scss';
 import RouterConfig from './navigation/RouterConfig';
-import {BrowserRouter} from 'react-router-dom';
-import {ApolloProvider} from '@apollo/client';
-import {getClient} from './Config/api';
+import { BrowserRouter } from 'react-router-dom';
+import { ApolloProvider } from '@apollo/client';
+import { getClient } from './Config/api';
 import Amplify from 'aws-amplify';
-import {COGNITO} from './Config/AWS';
+import { COGNITO } from './Config/AWS';
 
 Amplify.configure({
   aws_cognito_region: COGNITO.REGION,

@@ -1,7 +1,8 @@
 const footerConst = {
   firstCol: {
     // eslint-disable-next-line max-len
-    text: 'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy',
+    text:
+      'Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy',
   },
   secCol: {
     home: {

@@ -1,3 +1,3 @@
 export interface IPublicHeaderProps {
-    page: string;
+  page: string;
 }

@@ -1,25 +1,23 @@
-import {useState, useEffect} from 'react';
-import {useMutation} from '@apollo/client';
-import {CREATE_RESPONSE} from '../../Config/api/Graphql/QuerySintax';
-import {useFormQuestionState} from '../../Context/FormQuestions/Provider';
-import {
-  UPDATE_ANSWERED_QUESTIONS,
-} from '../../Context/FormQuestions/ActionTypes';
-import {ICreateAnswerResponse} from '../../Config/api/Graphql/Types';
+import { useState, useEffect } from 'react';
+import { useMutation } from '@apollo/client';
+import { CREATE_RESPONSE } from '../../Config/api/Graphql/QuerySintax';
+import { useFormQuestionState } from '../../Context/FormQuestions/Provider';
+import { UPDATE_ANSWERED_QUESTIONS } from '../../Context/FormQuestions/ActionTypes';
+import { ICreateAnswerResponse } from '../../Config/api/Graphql/Types';
 
 export interface ISaveResponseParams {
-    variables:{
-        formID: string
-        questionID: string
-        response: string
-    }
+  variables: {
+    formID: string;
+    questionID: string;
+    response: string;
+  };
 }
 
 export const useSaveResponses = () => {
-  const [createResponse, {data, loading}] = useMutation(CREATE_RESPONSE);
+  const [createResponse, { data, loading }] = useMutation(CREATE_RESPONSE);
   const [queryParams, setQueryParams] = useState<ISaveResponseParams>();
   const formContext = useFormQuestionState();
-  const saveData = async (params: ISaveResponseParams) =>{
+  const saveData = async (params: ISaveResponseParams) => {
     try {
       setQueryParams(params);
       await createResponse(params);
@@ -28,10 +26,10 @@ export const useSaveResponses = () => {
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     try {
       if (!loading && data && queryParams) {
-        const {questionID, response} = queryParams.variables;
+        const { questionID, response } = queryParams.variables;
         const rawResponse: ICreateAnswerResponse = data;
         const id = rawResponse.UserInteractionMutation.createResponse.data.id;
         formContext.formStateDispatch({
@@ -44,8 +42,7 @@ export const useSaveResponses = () => {
               responseDbId: id,
             },
           },
-        },
-        );
+        });
       }
     } catch (err) {
       console.log(err);

@@ -6,8 +6,8 @@
  * @param {img} img source path.
  */
 export interface IContentProps {
-    align: 'left' | 'right';
-    title: string;
-    text: string;
-    img: string
+  align: 'left' | 'right';
+  title: string;
+  text: string;
+  img: string;
 }

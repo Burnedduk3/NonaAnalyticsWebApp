@@ -1,14 +1,22 @@
 import {
-  nextQuestions, previousQuestion, setByMenu, setQuestionResponse,
-  setShowableQuestions, updateQuestionAnswer,
+  nextQuestions,
+  previousQuestion,
+  setByMenu,
+  setQuestionResponse,
+  setShowableQuestions,
+  updateQuestionAnswer,
 } from './ActionCreators';
 import {
   UPDATE_ANSWERED_QUESTIONS,
-  GET_SECTIONS, NEXT_QUESTIONS, PREVIOUS_QUESTION,
+  GET_SECTIONS,
+  NEXT_QUESTIONS,
+  PREVIOUS_QUESTION,
   RESET_FORM_STORAGE,
-  SEARCH_STORAGE_QUESTIONER, SET_CURRENT_FORM_ID,
+  SEARCH_STORAGE_QUESTIONER,
+  SET_CURRENT_FORM_ID,
   SET_QUESTION_RESPONSE,
-  SET_SHOWABLE_QUESTIONS, SET_SUBSECTION_BY_MENU,
+  SET_SHOWABLE_QUESTIONS,
+  SET_SUBSECTION_BY_MENU,
 } from './ActionTypes';
 import {
   IFormQuestionsContextReducer,
@@ -29,13 +37,13 @@ export const initialState: IFormQuestionsContextState = {
 };
 
 const FormQuestionsReducer = (
-    state: IFormQuestionsContextState,
-    {type, payload}: IFormQuestionsContextReducer,
-):IFormQuestionsContextState => {
+  state: IFormQuestionsContextState,
+  { type, payload }: IFormQuestionsContextReducer
+): IFormQuestionsContextState => {
   switch (type) {
     case GET_SECTIONS: {
       if (payload && payload.fetchedSections) {
-        const {fetchedSections} = payload;
+        const { fetchedSections } = payload;
         return {
           ...fetchedSections,
         };
@@ -54,10 +62,7 @@ const FormQuestionsReducer = (
 
     case PREVIOUS_QUESTION: {
       const newState = previousQuestion(state);
-      localStorage.setItem(
-          'QUESTIONER_STORAGE',
-          JSON.stringify(newState),
-      );
+      localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
 
       return newState;
     }
@@ -65,10 +70,7 @@ const FormQuestionsReducer = (
     case UPDATE_ANSWERED_QUESTIONS: {
       if (payload && payload.questionToAdd) {
         const newState = updateQuestionAnswer(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
         return newState;
       } else {
         return state;
@@ -78,10 +80,7 @@ const FormQuestionsReducer = (
     case NEXT_QUESTIONS: {
       const newState = nextQuestions(state);
       if (newState.currentFormID !== '') {
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
       }
       return {
         ...newState,
@@ -91,10 +90,7 @@ const FormQuestionsReducer = (
     case SET_QUESTION_RESPONSE: {
       if (payload) {
         const newState = setQuestionResponse(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
         return {
           ...newState,
         };
@@ -107,10 +103,7 @@ const FormQuestionsReducer = (
     case SET_SUBSECTION_BY_MENU: {
       if (payload) {
         const newState = setByMenu(state, payload);
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
         return newState;
       } else {
         return state;
@@ -119,10 +112,7 @@ const FormQuestionsReducer = (
 
     case SET_SHOWABLE_QUESTIONS: {
       const newState = setShowableQuestions(state);
-      localStorage.setItem(
-          'QUESTIONER_STORAGE',
-          JSON.stringify(newState),
-      );
+      localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
       return newState;
     }
 
@@ -139,10 +129,7 @@ const FormQuestionsReducer = (
           ...state,
           currentFormID: payload.currentFormID,
         };
-        localStorage.setItem(
-            'QUESTIONER_STORAGE',
-            JSON.stringify(newState),
-        );
+        localStorage.setItem('QUESTIONER_STORAGE', JSON.stringify(newState));
         return newState;
       } else {
         return {

@@ -5,4 +5,3 @@ export default {
   backButton: 'Back to Nona Analytics',
   errorMessage: 'Error: wrong username or password',
 };
-

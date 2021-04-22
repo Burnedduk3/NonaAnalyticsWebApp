@@ -1,18 +1,14 @@
 import React from 'react';
 import './styles.scss';
-import {
-  IBePartSubContainer,
-} from '../../interfaces/BePartSubContainerInterface';
+import { IBePartSubContainer } from '../../interfaces/BePartSubContainerInterface';
 
-const BePartSubContainer: React.FC<IBePartSubContainer> = (
-    {
-      alt,
-      img,
-      containerClassName,
-      text,
-      title,
-    }:IBePartSubContainer,
-): JSX.Element => (
+const BePartSubContainer: React.FC<IBePartSubContainer> = ({
+  alt,
+  img,
+  containerClassName,
+  text,
+  title,
+}: IBePartSubContainer): JSX.Element => (
   <div className="content-be-part">
     <div className={`wrapper-be-part wrapper-be-part-${containerClassName}`}>
       <div className="one">

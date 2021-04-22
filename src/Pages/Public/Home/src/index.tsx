@@ -1,24 +1,18 @@
-import React, {useEffect} from 'react';
-import {useHistory} from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import './styles.scss';
 import Perk from '../Components/Perk';
 import HomeTexts from './CONSTANTS';
-import {
-  useApplicationState,
-} from '../../../../Context/ApplicationState/Provider';
+import { useApplicationState } from '../../../../Context/ApplicationState/Provider';
 import {
   SHOW_FOOTER,
   SHOW_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
 import Member from '../Components/Member/index';
-import
-RoutingConstants
-  from '../../../../navigation/CONSTANTS/RoutingConstants';
-import {useUserState} from '../../../../Context/UserContext/Provider';
-import {
-  DELETE_USER,
-} from '../../../../Context/UserContext/ActionTypes';
-import {generateUUID} from '../../../../utils/GenerateUUID';
+import RoutingConstants from '../../../../navigation/CONSTANTS/RoutingConstants';
+import { useUserState } from '../../../../Context/UserContext/Provider';
+import { DELETE_USER } from '../../../../Context/UserContext/ActionTypes';
+import { generateUUID } from '../../../../utils/GenerateUUID';
 
 const Home: React.FC = (): JSX.Element => {
   const applicationState = useApplicationState();
@@ -33,13 +27,10 @@ const Home: React.FC = (): JSX.Element => {
     history.push(RoutingConstants.preSurvey.path);
   };
 
-  useEffect(()=>{
-    applicationState.appStateDispatch({type: SHOW_HEADER, payload: undefined});
-    applicationState.appStateDispatch({type: SHOW_FOOTER, payload: undefined});
-    localStorage.setItem(
-        'token',
-        '',
-    );
+  useEffect(() => {
+    applicationState.appStateDispatch({ type: SHOW_HEADER, payload: undefined });
+    applicationState.appStateDispatch({ type: SHOW_FOOTER, payload: undefined });
+    localStorage.setItem('token', '');
     userState.userStateDispatch({
       type: DELETE_USER,
       payload: undefined,
@@ -62,18 +53,14 @@ const Home: React.FC = (): JSX.Element => {
       <div className="what-do-we-do">
         <h3 className="subtitle">{HomeTexts.title}</h3>
         <div className="perks">
-          {
-            Object.values(HomeTexts.sections.second).map(
-                (item) => (
-                  <Perk
-                    key={item.text}
-                    img={item.img}
-                    title={item.title}
-                    text={item.text}
-                  />
-                ),
-            )
-          }
+          {Object.values(HomeTexts.sections.second).map((item) => (
+            <Perk
+              key={item.text}
+              img={item.img}
+              title={item.title}
+              text={item.text}
+            />
+          ))}
         </div>
         <button type="button" className="red-button" onClick={StartSurvey}>
           {HomeTexts.sections.button.text}
@@ -82,35 +69,28 @@ const Home: React.FC = (): JSX.Element => {
 
       <div className="our-team">
         <h3 className="subtitle">{HomeTexts.sections.third.title}</h3>
-        {
-          Object.values(HomeTexts.sections.third.members.first).map(
-              (item) => (
-                <Member key={generateUUID()}
-                  memberClass={item.role}
-                  name={item.name}
-                  title={item.title}
-                />
-              ),
-          )
-        }
+        {Object.values(HomeTexts.sections.third.members.first).map((item) => (
+          <Member
+            key={generateUUID()}
+            memberClass={item.role}
+            name={item.name}
+            title={item.title}
+          />
+        ))}
         <h2 className="subsubtitle">{HomeTexts.sections.third.subtitle}</h2>
-        <div className='medsContainer'>
-          {
-            Object.values(HomeTexts.sections.third.members.second).map(
-                (item) => (
-                  <Member key={generateUUID()}
-                    memberClass={item.role}
-                    name={item.name}
-                    title={item.title}
-                  />
-                ),
-            )
-          }
+        <div className="medsContainer">
+          {Object.values(HomeTexts.sections.third.members.second).map((item) => (
+            <Member
+              key={generateUUID()}
+              memberClass={item.role}
+              name={item.name}
+              title={item.title}
+            />
+          ))}
         </div>
       </div>
     </>
   );
 };
-
 
 export default Home;

@@ -1,16 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import TextInputComponent from '../Components/TextInputQuestion';
 import ComboBoxComponent from '../Components/ComboBoxQuestion';
-import {YesNoQuestionQuestioner} from '../Components/YesNoQuestion';
+import { YesNoQuestionQuestioner } from '../Components/YesNoQuestion';
 import Spinner from '../../../../Components/Spinner';
 import LeftBar from '../Components/LeftBar/src';
-import {useApplicationState}
-  from '../../../../Context/ApplicationState/Provider';
-import {HIDE_FOOTER, HIDE_HEADER}
-  from '../../../../Context/ApplicationState/ActionTypes';
+import { useApplicationState } from '../../../../Context/ApplicationState/Provider';
+import {
+  HIDE_FOOTER,
+  HIDE_HEADER,
+} from '../../../../Context/ApplicationState/ActionTypes';
 
 import './styles.scss';
-import {useFormQuestionState} from '../../../../Context/FormQuestions/Provider';
+import { useFormQuestionState } from '../../../../Context/FormQuestions/Provider';
 import {
   PREVIOUS_QUESTION,
   SET_QUESTION_RESPONSE,
@@ -19,25 +20,30 @@ import {
   NEXT_QUESTIONS,
   SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
-import {RouteComponentProps} from 'react-router';
-import {IQuestion} from '../../../../Context/FormQuestions/interface';
+import { RouteComponentProps } from 'react-router';
+import { IQuestion } from '../../../../Context/FormQuestions/interface';
 import LadderQuestion from '../Components/LadderQuestion';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
 import MultiLadderQuestion from '../Components/MultiLadder';
 import ImageOneSelection from '../Components/ImageQuestion';
-import {Redirect} from 'react-router-dom';
-import RoutingConstants
-  from '../../../../navigation/CONSTANTS/RoutingConstants';
-import {useOrganizeForm} from '../../../../hooks/FetchForm';
-import {ISaveResponseParams, useSaveResponses}
-  from '../../../../hooks/CreateFormResponse';
-import {IUpdateResponseParams, useUpdateResponse}
-  from '../../../../hooks/UpdateQuestion';
-import {IUpdateFormProgressParams, useUpdateFormProgress}
-  from '../../../../hooks/UpdateFormProgress';
-import {Auth} from 'aws-amplify';
-import {BranchingLogic} from '../../../../branchQuestions';
+import { Redirect } from 'react-router-dom';
+import RoutingConstants from '../../../../navigation/CONSTANTS/RoutingConstants';
+import { useOrganizeForm } from '../../../../hooks/FetchForm';
+import {
+  ISaveResponseParams,
+  useSaveResponses,
+} from '../../../../hooks/CreateFormResponse';
+import {
+  IUpdateResponseParams,
+  useUpdateResponse,
+} from '../../../../hooks/UpdateQuestion';
+import {
+  IUpdateFormProgressParams,
+  useUpdateFormProgress,
+} from '../../../../hooks/UpdateFormProgress';
+import { Auth } from 'aws-amplify';
+import { BranchingLogic } from '../../../../branchQuestions';
 
 const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
   const [pageLoading, setPageLoading] = useState<boolean>(true);
@@ -48,25 +54,30 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
   const updateResponse = useUpdateResponse();
   const updateFormProgress = useUpdateFormProgress();
   const [questions, setQuestions] = useState<IQuestion[]>([]);
-  const {showableQuestions} = FormApplicationState.formState;
+  const { showableQuestions } = FormApplicationState.formState;
 
-  const setQuestionResponse =
-  (response: string, questionID: string, order: number, validation: string) => {
+  const setQuestionResponse = (
+    response: string,
+    questionID: string,
+    order: number,
+    validation: string
+  ) => {
     const questionToSave = {
       response,
       questionID,
       order,
       validation,
     };
-    const questionIndex =
-    FormApplicationState.formState.questionsAnswered.findIndex((question) => {
-      if (question.id === questionID) {
-        return question;
+    const questionIndex = FormApplicationState.formState.questionsAnswered.findIndex(
+      (question) => {
+        if (question.id === questionID) {
+          return question;
+        }
       }
-    });
+    );
     if (questionIndex > -1) {
       const possibleQuestion =
-      FormApplicationState.formState.questionsAnswered[questionIndex];
+        FormApplicationState.formState.questionsAnswered[questionIndex];
       if (possibleQuestion) {
         FormApplicationState.formStateDispatch({
           type: SET_QUESTION_RESPONSE,
@@ -180,8 +191,11 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
     try {
       const session = await Auth.currentSession();
       localStorage.setItem('token', session.getAccessToken().getJwtToken());
-      const {questionsAnswered, currentFormID, currentProgress} =
-        FormApplicationState.formState;
+      const {
+        questionsAnswered,
+        currentFormID,
+        currentProgress,
+      } = FormApplicationState.formState;
 
       for (const answer of questionsAnswered) {
         if (!answer.sendToDB) {
@@ -247,8 +261,11 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
                   {questions.map((item: IQuestion) => {
                     if (item.category.name === 'YesNo' && item.show) {
                       return (
-                      // eslint-disable-next-line max-len
-                        <div key={`${item.id}-${item.category.name}-div`} className="yes-no-container-comp">
+                        // eslint-disable-next-line max-len
+                        <div
+                          key={`${item.id}-${item.category.name}-div`}
+                          className="yes-no-container-comp"
+                        >
                           <YesNoQuestionQuestioner
                             question={item.question}
                             questionId={item.id}
@@ -386,22 +403,17 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
               )}
             </div>
             <div className="buttons-container">
-              {
-                FormApplicationState.formState.currentSubSection?.
-                    name !== 'Lake-Nona' && (
-                  <button
-                    className="button previous"
-                    type="button"
-                    onClick={goPreviousSection}
-                  >
-                    PREVIOUS
-                  </button>
-                )}
-              <button
-                className="button next"
-                type="button"
-                onClick={SaveToDataBase}
-              >
+              {FormApplicationState.formState.currentSubSection?.name !==
+                'Lake-Nona' && (
+                <button
+                  className="button previous"
+                  type="button"
+                  onClick={goPreviousSection}
+                >
+                  PREVIOUS
+                </button>
+              )}
+              <button className="button next" type="button" onClick={SaveToDataBase}>
                 {'NEXT >'}
               </button>
             </div>

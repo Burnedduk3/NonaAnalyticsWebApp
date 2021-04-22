@@ -1,5 +1,4 @@
-import {ENVIRONMENT} from '../../Config/EnviromentVariables';
-
+import { ENVIRONMENT } from '../../Config/EnviromentVariables';
 
 export enum LogLevel {
   // eslint-disable-next-line no-unused-vars
@@ -26,10 +25,7 @@ const dropConsole = (level: LogLevel, message: string): void => {
 
     if (level === LogLevel.LOW) {
       // eslint-disable-next-line no-console
-      console.log(
-          `%c LOW WARNING: ${message} `,
-          'background: #222; color: #bada55',
-      );
+      console.log(`%c LOW WARNING: ${message} `, 'background: #222; color: #bada55');
     }
 
     if (level === LogLevel.MESSAGE) {

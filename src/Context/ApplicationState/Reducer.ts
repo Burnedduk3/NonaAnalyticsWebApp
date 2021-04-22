@@ -4,9 +4,8 @@ import {
   SET_ERROR,
   SHOW_FOOTER,
   SHOW_HEADER,
-}
-  from './ActionTypes';
-import {IApplicationInitialState, IApplicationReducer} from './interface';
+} from './ActionTypes';
+import { IApplicationInitialState, IApplicationReducer } from './interface';
 
 export const initialState: IApplicationInitialState = {
   hideFooter: false,
@@ -18,32 +17,35 @@ export const initialState: IApplicationInitialState = {
 };
 
 const ApplicationStateReducer = (
-    state: IApplicationInitialState,
-    {type, payload}: IApplicationReducer,
+  state: IApplicationInitialState,
+  { type, payload }: IApplicationReducer
 ) => {
   switch (type) {
     case HIDE_FOOTER: {
-      return {...state, hideFooter: true};
+      return { ...state, hideFooter: true };
     }
 
     case HIDE_HEADER: {
-      return {...state, hideFooter: true};
+      return { ...state, hideFooter: true };
     }
     case SHOW_FOOTER: {
-      return {...state, hideFooter: false};
+      return { ...state, hideFooter: false };
     }
 
     case SHOW_HEADER: {
-      return {...state, hideFooter: false};
+      return { ...state, hideFooter: false };
     }
 
     case SET_ERROR: {
       if (payload && payload.error !== undefined) {
-        return {...state, error: {
-          ...payload.error,
-        }};
+        return {
+          ...state,
+          error: {
+            ...payload.error,
+          },
+        };
       }
-      return {...state};
+      return { ...state };
     }
 
     default:

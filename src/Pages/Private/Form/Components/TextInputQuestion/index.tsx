@@ -1,27 +1,29 @@
 import React from 'react';
 import './styles.scss';
-import {ITextInputProps} from './interface';
-import {
-  useFormQuestionState,
-} from '../../../../../Context/FormQuestions/Provider';
-import {
-  IAnsweredQuestion,
-} from '../../../../../Context/FormQuestions/interface';
+import { ITextInputProps } from './interface';
+import { useFormQuestionState } from '../../../../../Context/FormQuestions/Provider';
+import { IAnsweredQuestion } from '../../../../../Context/FormQuestions/interface';
 
 const TextInputComponent: React.FC<ITextInputProps> = ({
-  question, questionId, setResponse, placeholder, order, inputConfirmation,
-}:ITextInputProps) => {
+  question,
+  questionId,
+  setResponse,
+  placeholder,
+  order,
+  inputConfirmation,
+}: ITextInputProps) => {
   const formContext = useFormQuestionState();
-  const questionAnswer: IAnsweredQuestion | undefined = formContext.
-      formState.
-      questionsAnswered.
-      find((questionAnswer:IAnsweredQuestion)=>{
-        if (questionAnswer.id === questionId) {
-          return questionAnswer;
-        } else {
-          return undefined;
-        }
-      });
+  const questionAnswer:
+    | IAnsweredQuestion
+    | undefined = formContext.formState.questionsAnswered.find(
+    (questionAnswer: IAnsweredQuestion) => {
+      if (questionAnswer.id === questionId) {
+        return questionAnswer;
+      } else {
+        return undefined;
+      }
+    }
+  );
 
   return (
     <div className="inputContainer">
@@ -32,10 +34,9 @@ const TextInputComponent: React.FC<ITextInputProps> = ({
           placeholder={placeholder}
           type="text"
           className="text-input"
-          value={questionAnswer? questionAnswer.answer: ''}
-          onChange={
-            (e) =>
-              setResponse(e.target.value, questionId, order, inputConfirmation)
+          value={questionAnswer ? questionAnswer.answer : ''}
+          onChange={(e) =>
+            setResponse(e.target.value, questionId, order, inputConfirmation)
           }
         />
       </label>
