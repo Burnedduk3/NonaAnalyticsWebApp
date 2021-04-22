@@ -152,7 +152,7 @@ export const setShowableQuestions = (
     const currentQuestions: Array<IQuestion> = [];
     currentSubSection.questions.map(
         (question: IQuestion) => {
-          if (question.stack === currentStack) {
+          if (question.stack === currentStack && question.show) {
             currentQuestions.push(question);
           }
         },

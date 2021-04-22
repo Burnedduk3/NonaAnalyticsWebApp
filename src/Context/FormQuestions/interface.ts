@@ -66,12 +66,13 @@ export interface ISubSection{
 }
 
 export interface IQuestion{
-    id: string,
+    id: string
     items: Array<Item>
     question: string
     stack: number
     stackPhrase: string | null
     placeHolder: string | null
+    show: boolean
     imagesPath: Array<Image> | null
     category: ICategory
     order: number
@@ -79,6 +80,6 @@ export interface IQuestion{
 }
 
 export interface ICategory{
-    id: string,
+    id: string
     name: string
 }

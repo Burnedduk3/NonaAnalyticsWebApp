@@ -105,6 +105,7 @@ export const useOrganizeForm = () => {
                           placeHolder: question.placeHolder,
                           imagesPath: images,
                           order: question.order,
+                          show: false,
                           id: question.id,
                         };
                         questions.push(mappedQuestion);

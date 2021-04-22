@@ -3,3 +3,5 @@ src/graphql
 src/models
 
 src\models
+
+*.md
