@@ -6,6 +6,7 @@ import {
   ISection,
   ISubSection,
 } from './interface';
+import {BranchingLogic, IQoption} from "./branchQuestions";
 
 export const nextQuestions = (
   state: IFormQuestionsContextState
@@ -137,9 +138,44 @@ export const updateQuestionAnswer = (
       ...state.questionsAnswered[indexofQuestion],
       ...questionToAdd,
     };
+    state = ApplyConditionalLogic(state)
   }
   return state;
 };
+
+export const ApplyConditionalLogic = (
+    state: IFormQuestionsContextState
+) =>{
+  const newState: IFormQuestionsContextState  = {
+    ...state
+  }
+  const {showableQuestions, questionsAnswered} = state;
+  newState.showableQuestions = showableQuestions.map((uiQuestion)=>{
+    const condition = BranchingLogic.find((questionCondition)=>{
+      return questionCondition.id === uiQuestion.id;
+    })
+    if (condition){
+      const dependantQuestions = condition.logicQuestions
+      for (const conditionalQuestion of dependantQuestions){
+        const answeredQuestion = questionsAnswered.find((answer)=>{
+          return answer.id === conditionalQuestion.id
+        })
+        if (answeredQuestion){
+          if (answeredQuestion.answer.toLowerCase() !== conditionalQuestion.answer.toLowerCase()){
+            uiQuestion.show = false
+          } else{
+            uiQuestion.show = true
+          }
+        }else{
+          uiQuestion.show = false
+        }
+      }
+    }
+
+    return uiQuestion;
+  })
+  return state;
+}
 
 export const setShowableQuestions = (
   state: IFormQuestionsContextState
@@ -153,9 +189,11 @@ export const setShowableQuestions = (
       }
     });
     state.showableQuestions = [...currentQuestions];
+
   }
+  const newState = ApplyConditionalLogic(state)
   return {
-    ...state,
+    ...newState,
   };
 };
 
@@ -233,6 +271,7 @@ export const setQuestionResponse = (
   const currentProgress =
     (state.questionsAnswered.length * 100) / state.totalQuestions;
   state.currentProgress = parseFloat(currentProgress.toFixed(2));
+  state = ApplyConditionalLogic(state)
   return {
     ...state,
   };

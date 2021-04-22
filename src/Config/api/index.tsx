@@ -24,7 +24,6 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   }
   operation.setContext({
     headers: {
-      // eslint-disable-next-line max-len
       authorization: token,
     },
   });

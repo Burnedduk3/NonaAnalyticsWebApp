@@ -65,8 +65,6 @@ const LoginPage: React.FC = (): JSX.Element => {
     });
   }, []);
 
-  console.log(formState.formState);
-
   const goHome = () => {
     history.push(RoutingConstants.menu.home.path);
   };

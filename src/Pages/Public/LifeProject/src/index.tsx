@@ -22,14 +22,14 @@ const LifeProject: React.FC = (): JSX.Element => {
       <div className="contentLife">
         <h3 className="subtitle">{LifeProjectText.firstPart.title}</h3>
         <ul>
-          {LifeProjectText.firstPart.list.map((item, index) => (
+          {LifeProjectText.firstPart.list.map((item) => (
             <li key={generateUUID()}>{item}</li>
           ))}
         </ul>
         <h3 className="subtitle">{LifeProjectText.secondPart.title}</h3>
         <p>{LifeProjectText.secondPart.paragraph}</p>
         <ul>
-          {LifeProjectText.secondPart.list.map((item, index) => (
+          {LifeProjectText.secondPart.list.map((item) => (
             <li key={generateUUID()}>{item}</li>
           ))}
         </ul>

@@ -21,7 +21,7 @@ import {
   SEARCH_STORAGE_QUESTIONER,
 } from '../../../../Context/FormQuestions/ActionTypes';
 import { RouteComponentProps } from 'react-router';
-import { IQuestion } from '../../../../Context/FormQuestions/interface';
+import {IQuestion} from '../../../../Context/FormQuestions/interface';
 import LadderQuestion from '../Components/LadderQuestion';
 import RadioButtonGroup from '../Components/RadioButtonGroup';
 import CheckBoxComponent from '../Components/CheckBoxQuestion';
@@ -43,7 +43,6 @@ import {
   useUpdateFormProgress,
 } from '../../../../hooks/UpdateFormProgress';
 import { Auth } from 'aws-amplify';
-import { BranchingLogic } from '../../../../branchQuestions';
 
 const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
   const [pageLoading, setPageLoading] = useState<boolean>(true);
@@ -53,7 +52,6 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
   const saveResponses = useSaveResponses();
   const updateResponse = useUpdateResponse();
   const updateFormProgress = useUpdateFormProgress();
-  const [questions, setQuestions] = useState<IQuestion[]>([]);
   const { showableQuestions } = FormApplicationState.formState;
 
   const setQuestionResponse = (
@@ -153,33 +151,6 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
     }
   }, [formState]);
 
-  // eslint-disable-next-line max-len
-  // TODO la variable de loaded no era necesari, ya la info esta quedando en el arreglo de questions como puedes ver en el console log de abajo, borra este comentario con lo  que hay arriba tambien plox
-  useEffect(() => {
-    if (showableQuestions.length > 0) {
-      showableQuestions.map((question: any, index: number)=>{
-        try {
-          const hideQ = BranchingLogic.map((qId: any)=>{
-            return qId.qOptions.map((opt: any)=>{
-              if (opt.id == question.id) {
-                console.log(opt);
-                return opt;
-              }
-            });
-          });
-          if (hideQ[index] != undefined) {
-            question.show = true;
-          } else {
-            question.show = false;
-          }
-        } catch (e) {
-          console.log(e);
-        }
-      });
-      setQuestions(showableQuestions);
-    }
-  }, [showableQuestions]);
-
   const goPreviousSection = () => {
     FormApplicationState.formStateDispatch({
       type: PREVIOUS_QUESTION,
@@ -258,7 +229,7 @@ const FormPage: React.FC<RouteComponentProps> = (): JSX.Element => {
               )}
               {!pageLoading && (
                 <>
-                  {questions.map((item: IQuestion) => {
+                  {showableQuestions.map((item: IQuestion) => {
                     if (item.category.name === 'YesNo' && item.show) {
                       return (
                         // eslint-disable-next-line max-len
