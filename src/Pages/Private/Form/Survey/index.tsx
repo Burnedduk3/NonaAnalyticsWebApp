@@ -49,7 +49,7 @@ import {
   useUpdateFormProgress,
 } from '../../../../hooks/UpdateFormProgress';
 import {Auth} from 'aws-amplify';
-import branchQuestions from '../../../../branchQuestions.json';
+import {BranchingLogic} from '../../../../branchQuestions';
 
 const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const [pageLoading, setPageLoading] = useState<boolean>(true);
@@ -179,9 +179,9 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   useEffect(()=>{
     if (showableQuestions.length > 0) {
       const branchQ = [];
-      Object.keys(branchQuestions.BranchingLogic).forEach(
+      Object.keys(BranchingLogic).forEach(
           (key: any) => {
-            branchQ.push(branchQuestions.BranchingLogic[key]);
+            branchQ.push(BranchingLogic[key]);
           });
       setQuestions(showableQuestions);
     }
