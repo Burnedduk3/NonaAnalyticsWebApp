@@ -58,6 +58,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const saveResponses = useSaveResponses();
   const updateResponse = useUpdateResponse();
   const updateFormProgress = useUpdateFormProgress();
+  const [questions, setQuestions] = useState<IQuestion[]>( FormApplicationState.formState.showableQuestions);
 
   const setQuestionResponse = (
       response: string,
@@ -260,7 +261,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                   {(!pageLoading) && (
                     <>
                       {
-                        FormApplicationState.formState.showableQuestions.map(
+                        questions.map(
                             (item: IQuestion) => {
                               if (item.category.name === 'YesNo' && item.show) {
                                 return (
