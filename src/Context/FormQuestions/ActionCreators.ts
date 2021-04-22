@@ -145,8 +145,11 @@ export const updateQuestionAnswer = (
 
 export const applyBanchingConditions = (
     questionArray: IQuestion[],
-) => {
-
+): IQuestion[] => {
+  const branchedQuestions: IQuestion[] = [];
+  questionArray.map((item)=>{
+  });
+  return branchedQuestions;
 };
 
 export const setShowableQuestions = (
@@ -156,7 +159,11 @@ export const setShowableQuestions = (
   if (currentSubSection && currentStack !== null) {
     const currentQuestions: Array<IQuestion> = [];
     // TODO AQUI antes de esto
-    currentSubSection.questions.map(
+    const branchedQuestions = applyBanchingConditions(
+        currentSubSection.questions,
+    );
+
+    branchedQuestions.map(
         (question: IQuestion) => {
           if (question.stack === currentStack && question.show) {
             currentQuestions.push(question);
