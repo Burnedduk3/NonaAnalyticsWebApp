@@ -143,37 +143,19 @@ export const updateQuestionAnswer = (
   return state;
 };
 
-export const applyBanchingConditions = (
-    questionArray: IQuestion[],
-    state: IFormQuestionsContextState,
-): IQuestion[] => {
-  const branchedQuestions: IQuestion[] = [];
-  questionArray.map((item)=>{
-    state.questionsAnswered;
-  });
-  return branchedQuestions;
-};
-
 export const setShowableQuestions = (
     state: IFormQuestionsContextState,
 ):IFormQuestionsContextState => {
   const {currentSubSection, currentStack} = state;
   if (currentSubSection && currentStack !== null) {
     const currentQuestions: Array<IQuestion> = [];
-    // TODO AQUI antes de esto
-    const branchedQuestions = applyBanchingConditions(
-        currentSubSection.questions,
-        state,
-    );
-
-    branchedQuestions.map(
+    currentSubSection.questions.map(
         (question: IQuestion) => {
           if (question.stack === currentStack && question.show) {
             currentQuestions.push(question);
           }
         },
     );
-
     state.showableQuestions = [...currentQuestions];
   }
   return {

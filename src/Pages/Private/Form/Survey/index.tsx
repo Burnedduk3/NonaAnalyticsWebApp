@@ -262,7 +262,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                       {
                         FormApplicationState.formState.showableQuestions.map(
                             (item: IQuestion) => {
-                              if (item.category.name === 'YesNo') {
+                              if (item.category.name === 'YesNo' && item.show) {
                                 return (
                                 // eslint-disable-next-line max-len
                                   <div key={`${item.id}-${item.category.name}-div`}
@@ -279,7 +279,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   </div>
                                 );
                               }
-                              if (item.category.name === 'Combo') {
+                              if (item.category.name === 'Combo' && item.show) {
                                 if (!item.items) {
                                   return <></>;
                                 }
@@ -295,7 +295,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   />
                                 );
                               }
-                              if (item.category.name === 'Open') {
+                              if (item.category.name === 'Open' && item.show) {
                                 if (!item.placeHolder) {
                                   return <></>;
                                 }
@@ -311,7 +311,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   />
                                 );
                               }
-                              if (item.category.name === 'MultiSelection') {
+                              if (item.category.name === 'MultiSelection' &&
+                                  item.show) {
                                 if (!item.items) {
                                   return <></>;
                                 }
@@ -327,7 +328,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   />
                                 );
                               }
-                              if (item.category.name === 'Ladder') {
+                              if (item.category.name === 'Ladder' &&
+                                  item.show) {
                                 return (
                                   <LadderQuestion
                                     key={`${item.id}-${item.category.name}-com`}
@@ -341,7 +343,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   />
                                 );
                               }
-                              if (item.category.name === 'RadioGroup') {
+                              if (item.category.name === 'RadioGroup' &&
+                                  item.show) {
                                 if (!item.items) {
                                   return <></>;
                                 }
@@ -361,7 +364,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                   />
                                 );
                               }
-                              if (item.category.name === 'MultiLadder') {
+                              if (item.category.name === 'MultiLadder' &&
+                                  item.show) {
                                 if (!item.items) {
                                   return <></>;
                                 }
@@ -383,7 +387,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                                 );
                               }
 
-                              if (item.category.name === 'Images') {
+                              if (item.category.name === 'Images' &&
+                                  item.show) {
                                 if (!item.items || !item.imagesPath) {
                                   return <></>;
                                 }
