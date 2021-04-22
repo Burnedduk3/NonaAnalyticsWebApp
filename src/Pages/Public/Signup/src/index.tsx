@@ -1,15 +1,13 @@
-import React, {ChangeEvent, useEffect, useState} from 'react';
-import {Link} from 'react-router-dom';
-import {ISignUp} from '../interfaces/SignUpInterface';
-import {useHistory} from 'react-router-dom';
-import RoutingConstants
-  from '../../../../navigation/CONSTANTS/RoutingConstants';
-import {
-  useApplicationState,
-} from '../../../../Context/ApplicationState/Provider';
+import React, { ChangeEvent, useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { ISignUp } from '../interfaces/SignUpInterface';
+import { useHistory } from 'react-router-dom';
+import RoutingConstants from '../../../../navigation/CONSTANTS/RoutingConstants';
+import { useApplicationState } from '../../../../Context/ApplicationState/Provider';
 import {
   HIDE_FOOTER,
-  HIDE_HEADER, SET_ERROR,
+  HIDE_HEADER,
+  SET_ERROR,
 } from '../../../../Context/ApplicationState/ActionTypes';
 import './styles.scss';
 import CONSTANTS from './CONSTANTS.js';
@@ -25,9 +23,9 @@ import phone from '../../../../assets/Icons/phone.png';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
 import validator from 'validator';
-import {ErrorMessageToast} from '../../../../Components/ErrorMessage';
-import {Auth} from 'aws-amplify';
-import {ICreateUserParams, useCreateUser} from '../../../../hooks/CreateUser';
+import { ErrorMessageToast } from '../../../../Components/ErrorMessage';
+import { Auth } from 'aws-amplify';
+import { ICreateUserParams, useCreateUser } from '../../../../hooks/CreateUser';
 
 const initialInputState: ISignUp = {
   password: '',
@@ -39,7 +37,7 @@ const initialInputState: ISignUp = {
   phone: '',
 };
 
-const SignUpPage : React.FC = (): JSX.Element =>{
+const SignUpPage: React.FC = (): JSX.Element => {
   const [pageInputs, setPageInputs] = useState<ISignUp>(initialInputState);
   const [startDate, setStartDate] = useState(new Date());
   const applicationState = useApplicationState();
@@ -47,26 +45,28 @@ const SignUpPage : React.FC = (): JSX.Element =>{
   const [toggleToast, setToggleToast] = useState<boolean>(false);
   const createUser = useCreateUser();
 
-  useEffect(()=>{
-    applicationState?.appStateDispatch({type: HIDE_FOOTER, payload: undefined});
-    applicationState?.appStateDispatch({type: HIDE_HEADER, payload: undefined});
+  useEffect(() => {
+    applicationState?.appStateDispatch({ type: HIDE_FOOTER, payload: undefined });
+    applicationState?.appStateDispatch({ type: HIDE_HEADER, payload: undefined });
   }, []);
 
-  const goHome = () =>{
+  const goHome = () => {
     history.push(RoutingConstants.menu.home.path);
   };
 
   const handleInput = (
-      event:ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>,
+    event: ChangeEvent<HTMLInputElement> | ChangeEvent<HTMLSelectElement>
   ) => {
     try {
       const name: string = event.target.name.toString();
       const value: string = event.target.value;
       for (const key of Object.keys(pageInputs)) {
         if (name === key) {
-          if (pageInputs[key].length < 60 ||
-              event.target.value.length < pageInputs[key].length) {
-            setPageInputs({...pageInputs, [key]: value});
+          if (
+            pageInputs[key].length < 60 ||
+            event.target.value.length < pageInputs[key].length
+          ) {
+            setPageInputs({ ...pageInputs, [key]: value });
           }
         }
       }
@@ -75,21 +75,18 @@ const SignUpPage : React.FC = (): JSX.Element =>{
     }
   };
 
-  useEffect(()=>{
+  useEffect(() => {
     if (startDate) {
       try {
         setPageInputs({
           ...pageInputs,
-          birthdate:
-              `${startDate.toISOString().split('T')[0].replaceAll('-', '/')}`,
+          birthdate: `${startDate.toISOString().split('T')[0].replaceAll('-', '/')}`,
         });
-      } catch (e) {
-
-      }
+      } catch (e) {}
     }
   }, [startDate]);
 
-  const checkInput = () =>{
+  const checkInput = () => {
     if (!validator.isEmail(pageInputs.email)) {
       throw new Error('Wrong email');
     }
@@ -104,35 +101,28 @@ const SignUpPage : React.FC = (): JSX.Element =>{
       throw new Error('Invalid phone number, remember to add the country indicator');
     }
 
-    if (pageInputs.gender === 'Choose One' ||
-        !validator.isAlpha(pageInputs.gender)) {
+    if (
+      pageInputs.gender === 'Choose One' ||
+      !validator.isAlpha(pageInputs.gender)
+    ) {
       throw new Error('Wrong Gender Option');
     }
 
-    if (!validator.isAscii(pageInputs.password) ||
-        !validator.isAscii(pageInputs.confirmPassword) ||
-        pageInputs.confirmPassword !== pageInputs.password
+    if (
+      !validator.isAscii(pageInputs.password) ||
+      !validator.isAscii(pageInputs.confirmPassword) ||
+      pageInputs.confirmPassword !== pageInputs.password
     ) {
       throw new Error('Password are not equal');
     }
 
-    if (
-      pageInputs.password.length < 8 ||
-        pageInputs.confirmPassword.length < 8
-    ) {
+    if (pageInputs.password.length < 8 || pageInputs.confirmPassword.length < 8) {
       throw new Error('Password to short');
     }
 
     const actualDate = new Date();
-    actualDate.setFullYear(
-        actualDate.getFullYear() - 18,
-    );
-    if (
-      !validator.isBefore(
-          pageInputs.birthdate,
-          actualDate.toDateString(),
-      )
-    ) {
+    actualDate.setFullYear(actualDate.getFullYear() - 18);
+    if (!validator.isBefore(pageInputs.birthdate, actualDate.toDateString())) {
       throw new Error('you are to young to participate');
     }
   };
@@ -163,42 +153,42 @@ const SignUpPage : React.FC = (): JSX.Element =>{
       history.push(RoutingConstants.menu.home.path);
     } catch (error) {
       setToggleToast(true);
-      applicationState.appStateDispatch(
-          {
-            type: SET_ERROR,
-            payload: {
-              error: {
-                error: true,
-                errorMessage: error.message,
-              },
-            },
+      applicationState.appStateDispatch({
+        type: SET_ERROR,
+        payload: {
+          error: {
+            error: true,
+            errorMessage: error.message,
           },
-      );
+        },
+      });
     }
   };
 
-  const startSignup = () =>{
+  const startSignup = () => {
     signUp();
   };
 
-  const {error} = applicationState.appState;
+  const { error } = applicationState.appState;
 
   return (
     <main className="Sign-up-Body">
       <div className="logoContainer">
-        <img src={logo} alt="Nona Logo"/>
+        <img src={logo} alt="Nona Logo" />
       </div>
-      {error.error && <ErrorMessageToast
-        message={error.errorMessage.toString()}
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        closeOnClick={false}
-        pauseOnHover={false}
-        draggable={false}
-        toggleToast={toggleToast}
-        setToggleToast={setToggleToast}
-      />}
+      {error.error && (
+        <ErrorMessageToast
+          message={error.errorMessage.toString()}
+          position="top-center"
+          autoClose={5000}
+          hideProgressBar={false}
+          closeOnClick={false}
+          pauseOnHover={false}
+          draggable={false}
+          toggleToast={toggleToast}
+          setToggleToast={setToggleToast}
+        />
+      )}
       <div className="Sign-up-Card">
         <div className="go-back-container">
           <p onClick={goHome}>
@@ -212,45 +202,46 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           <img src={FBIcon} alt="Facebook logo" />
         </div>
         <div className="horizontal-line">
-          <hr/>
+          <hr />
           O
-          <hr/>
+          <hr />
         </div>
         <div className="form-container">
           <label htmlFor="birthdate">
-            <img src={birthday} alt="Birthday Icons"/>
+            <img src={birthday} alt="Birthday Icons" />
             <DatePicker
               selected={startDate}
               onChange={(date: Date) => setStartDate(date)}
             />
           </label>
 
-
           <label htmlFor="email">
-            <img src={mail} alt="Mail Icons"/>
-            <input type="text"
-              name='email'
+            <img src={mail} alt="Mail Icons" />
+            <input
+              type="text"
+              name="email"
               value={pageInputs.email}
-              placeholder='Email'
+              placeholder="Email"
               onChange={handleInput}
             />
           </label>
 
           <label htmlFor="phone">
-            <img src={phone} alt="phone Icons"/>
-            <input type="text"
-              name='phone'
+            <img src={phone} alt="phone Icons" />
+            <input
+              type="text"
+              name="phone"
               value={pageInputs.phone}
-              placeholder='Phone'
+              placeholder="Phone"
               onChange={handleInput}
             />
           </label>
 
           <label htmlFor="gender">
-            <img src={gender} alt="Gender Icons"/>
+            <img src={gender} alt="Gender Icons" />
             <select
-              name='gender'
-              placeholder='Gender'
+              name="gender"
+              placeholder="Gender"
               onChange={handleInput}
               className="combo-box"
             >
@@ -262,30 +253,33 @@ const SignUpPage : React.FC = (): JSX.Element =>{
           </label>
 
           <label htmlFor="name">
-            <img src={user} alt="User Icons8"/>
-            <input type="text"
-              name='name'
+            <img src={user} alt="User Icons8" />
+            <input
+              type="text"
+              name="name"
               value={pageInputs.name}
-              placeholder='Name'
+              placeholder="Name"
               onChange={handleInput}
             />
           </label>
 
           <label htmlFor="password">
-            <img src={lock} alt="Lock Icons8"/>
-            <input type="password"
-              name='password'
-              placeholder='Password'
+            <img src={lock} alt="Lock Icons8" />
+            <input
+              type="password"
+              name="password"
+              placeholder="Password"
               onChange={handleInput}
               value={pageInputs.password}
             />
           </label>
 
           <label htmlFor="confirmPassword">
-            <img src={lock} alt="Lock Icons8"/>
-            <input type="password"
-              name='confirmPassword'
-              placeholder='Confirm Password'
+            <img src={lock} alt="Lock Icons8" />
+            <input
+              type="password"
+              name="confirmPassword"
+              placeholder="Confirm Password"
               onChange={handleInput}
               value={pageInputs.confirmPassword}
             />

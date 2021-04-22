@@ -1,18 +1,16 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import './styles.scss';
 import UserFormHeader from '../Components/Header';
 import {
-  HIDE_FOOTER, HIDE_HEADER,
+  HIDE_FOOTER,
+  HIDE_HEADER,
 } from '../../../../Context/ApplicationState/ActionTypes';
-import {
-  useApplicationState,
-} from '../../../../Context/ApplicationState/Provider';
+import { useApplicationState } from '../../../../Context/ApplicationState/Provider';
 
-
-const UserForms: React.FC = (): JSX.Element =>{
+const UserForms: React.FC = (): JSX.Element => {
   const ApplicationState = useApplicationState();
 
-  useEffect(()=>{
+  useEffect(() => {
     ApplicationState.appStateDispatch({
       type: HIDE_FOOTER,
       payload: undefined,
@@ -21,8 +19,7 @@ const UserForms: React.FC = (): JSX.Element =>{
       type: HIDE_HEADER,
       payload: undefined,
     });
-  },
-  []);
+  }, []);
 
   return (
     <>

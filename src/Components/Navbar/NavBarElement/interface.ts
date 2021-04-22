@@ -1,4 +1,4 @@
-export interface INavBarElementProps{
-    name: string,
-    route: string,
+export interface INavBarElementProps {
+  name: string;
+  route: string;
 }

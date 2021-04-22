@@ -1,15 +1,15 @@
-import React, {createContext, useReducer} from 'react';
-import FormQuestionsReducer, {initialState} from './Reducer';
-import {IFormQuestionsContext} from './interface';
+import React, { createContext, useReducer } from 'react';
+import FormQuestionsReducer, { initialState } from './Reducer';
+import { IFormQuestionsContext } from './interface';
 
 type ContextValue = IFormQuestionsContext | null;
 
 export const FormQuestionsContext = createContext<ContextValue>(null);
 
-// eslint-disable-next-line react/prop-types
-const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
+const FormQuestionProvider: React.FC = ({ children }): JSX.Element => {
   const [FormQuestionsState, FormQuestionsDispatch] = useReducer(
-      FormQuestionsReducer, initialState,
+    FormQuestionsReducer,
+    initialState
   );
 
   const formQuestionContext: IFormQuestionsContext = {
@@ -17,17 +17,14 @@ const FormQuestionProvider: React.FC = ({children}):JSX.Element => {
     formStateDispatch: FormQuestionsDispatch,
   };
 
-
   return (
-    <FormQuestionsContext.Provider
-      value={formQuestionContext}
-    >
+    <FormQuestionsContext.Provider value={formQuestionContext}>
       {children}
     </FormQuestionsContext.Provider>
   );
 };
 
-export const useFormQuestionState = ():IFormQuestionsContext =>
+export const useFormQuestionState = (): IFormQuestionsContext =>
   React.useContext(FormQuestionsContext) as IFormQuestionsContext;
 
 export default FormQuestionProvider;

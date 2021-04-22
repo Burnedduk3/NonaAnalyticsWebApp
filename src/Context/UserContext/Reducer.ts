@@ -2,10 +2,11 @@ import {
   ADD_RESPONDED_QUESTIONS,
   ADD_USER,
   DELETE_USER,
-  EDIT_USER, SEARCH_LOCAL_STORAGE,
+  EDIT_USER,
+  SEARCH_LOCAL_STORAGE,
 } from './ActionTypes';
-import {IUserContextReducer, IUserState} from './interface';
-import {checkUserLocalStorage} from './ActionsCreator';
+import { IUserContextReducer, IUserState } from './interface';
+import { checkUserLocalStorage } from './ActionsCreator';
 
 export const initialState: IUserState = {
   respondedQuestions: 0,
@@ -22,8 +23,8 @@ export const initialState: IUserState = {
 };
 
 const userReducer = (
-    state: IUserState,
-    {type, payload}: IUserContextReducer,
+  state: IUserState,
+  { type, payload }: IUserContextReducer
 ): IUserState => {
   switch (type) {
     case ADD_USER: {

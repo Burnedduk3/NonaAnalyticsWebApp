@@ -2,16 +2,15 @@ import React from 'react';
 import './styles.scss';
 import HeaderTexts from './CONSTANTS';
 import PublicNavBar from '../../Navbar/PublicNavBar';
-import {IPublicHeaderProps} from './interface';
+import { IPublicHeaderProps } from './interface';
 import RoutingConstants from '../../../navigation/CONSTANTS/RoutingConstants';
-import {useApplicationState} from '../../../Context/ApplicationState/Provider';
-import {useHistory} from 'react-router-dom';
+import { useApplicationState } from '../../../Context/ApplicationState/Provider';
+import { useHistory } from 'react-router-dom';
 import arrow from '../../../assets/Icons/long-arrow-right.png';
 
-
-const PublicHeader: React.FC<IPublicHeaderProps> = (
-    {page}: IPublicHeaderProps,
-): JSX.Element => {
+const PublicHeader: React.FC<IPublicHeaderProps> = ({
+  page,
+}: IPublicHeaderProps): JSX.Element => {
   const history = useHistory();
 
   const QuickStart = () => {
@@ -32,9 +31,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
       </div>
       <h1 className="main-title">
         {HeaderTexts.home.text.substr(0, 8)}
-        <span className="title-secondary">
-          {HeaderTexts.home.text.substr(8, 8)}
-        </span>
+        <span className="title-secondary">{HeaderTexts.home.text.substr(8, 8)}</span>
         <br />
         {HeaderTexts.home.text.substr(16, HeaderTexts.home.text.length)}
       </h1>
@@ -65,11 +62,10 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         </span>
         <br />
         <span className="title-primary">
-          {
-            HeaderTexts.lifeProject.text.substr(
-                13, HeaderTexts.innovation.text.length,
-            )
-          }
+          {HeaderTexts.lifeProject.text.substr(
+            13,
+            HeaderTexts.innovation.text.length
+          )}
         </span>
       </h1>
       <div className="info">
@@ -88,9 +84,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         <i className="fab fa-facebook-f" />
       </div>
       <h1 className="main-title">
-        <span
-          className="title-secondary"
-        >
+        <span className="title-secondary">
           {HeaderTexts.bePart.text.substr(0, 13)}
         </span>
         <br />
@@ -109,11 +103,7 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         <i className="fab fa-facebook-f" />
       </div>
       <h1 className="main-title">
-        <span
-          className="title-primary"
-        >
-          {HeaderTexts.startSurvey.text}
-        </span>
+        <span className="title-primary">{HeaderTexts.startSurvey.text}</span>
         <br />
       </h1>
     </header>
@@ -128,14 +118,10 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
         <i className="fab fa-facebook-f" />
       </div>
       <h1 className="main-title">
-        <span
-          className="title-primary-congrats"
-        >
+        <span className="title-primary-congrats">
           {HeaderTexts.congrats.congratulationsMessage}
         </span>
-        <span
-          className="title-primary-second"
-        >
+        <span className="title-primary-second">
           {HeaderTexts.congrats.ThankyouMessage}
         </span>
         <br />
@@ -146,26 +132,17 @@ const PublicHeader: React.FC<IPublicHeaderProps> = (
   const ApplicationState = useApplicationState();
   return (
     <>
-      {ApplicationState?.appState.hideHeader ?
-            <></> :
+      {ApplicationState?.appState.hideHeader ? (
+        <></>
+      ) : (
         <>
-          {(page === RoutingConstants.menu.home.path) && (
-            home()
-          )}
-          {(page === RoutingConstants.menu.lifeProject.path) && (
-            lifeProject()
-          )}
-          {(page === RoutingConstants.menu.bePart.path) && (
-            bePart()
-          )}
-          {(page === RoutingConstants.preSurvey.path) && (
-            startSurvey()
-          )}
-          {(page === RoutingConstants.congrats.path) && (
-            congrats()
-          )}
+          {page === RoutingConstants.menu.home.path && home()}
+          {page === RoutingConstants.menu.lifeProject.path && lifeProject()}
+          {page === RoutingConstants.menu.bePart.path && bePart()}
+          {page === RoutingConstants.preSurvey.path && startSurvey()}
+          {page === RoutingConstants.congrats.path && congrats()}
         </>
-      }
+      )}
     </>
   );
 };

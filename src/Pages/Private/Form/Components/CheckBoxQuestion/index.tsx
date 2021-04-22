@@ -1,39 +1,41 @@
 import React from 'react';
 import './styles.scss';
-import {ICheckBoxProps} from './interface';
-import {
-  IAnsweredQuestion,
-} from '../../../../../Context/FormQuestions/interface';
-import {
-  useFormQuestionState,
-} from '../../../../../Context/FormQuestions/Provider';
-
+import { ICheckBoxProps } from './interface';
+import { IAnsweredQuestion } from '../../../../../Context/FormQuestions/interface';
+import { useFormQuestionState } from '../../../../../Context/FormQuestions/Provider';
 
 const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
-  question, items, questionId, setResponse, order, inputConfirmation,
+  question,
+  items,
+  questionId,
+  setResponse,
+  order,
+  inputConfirmation,
 }: ICheckBoxProps): JSX.Element => {
   const formContext = useFormQuestionState();
-  const questionAnswer: IAnsweredQuestion | undefined = formContext.
-      formState.
-      questionsAnswered.
-      find((questionAnswer:IAnsweredQuestion)=>{
+  const questionAnswer:
+    | IAnsweredQuestion
+    | undefined = formContext.formState.questionsAnswered.find(
+    (questionAnswer: IAnsweredQuestion) => {
+      if (questionAnswer.id === questionId) {
+        return questionAnswer;
+      } else {
+        return undefined;
+      }
+    }
+  );
+  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const questionAnswer:
+      | IAnsweredQuestion
+      | undefined = formContext.formState.questionsAnswered.find(
+      (questionAnswer: IAnsweredQuestion) => {
         if (questionAnswer.id === questionId) {
           return questionAnswer;
         } else {
           return undefined;
         }
-      });
-  const handleInput = (event: React.ChangeEvent<HTMLInputElement>) =>{
-    const questionAnswer: IAnsweredQuestion | undefined = formContext.
-        formState.
-        questionsAnswered.
-        find((questionAnswer:IAnsweredQuestion)=>{
-          if (questionAnswer.id === questionId) {
-            return questionAnswer;
-          } else {
-            return undefined;
-          }
-        });
+      }
+    );
     if (questionAnswer) {
       let text: string | Array<string> = questionAnswer.answer;
       text = text.trim().split(';');
@@ -55,7 +57,6 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
     }
   };
 
-
   return (
     <div className={'input-container-check'}>
       <p className="check-label">{question}</p>
@@ -66,15 +67,14 @@ const CheckBoxComponent: React.FC<ICheckBoxProps> = ({
             className="container"
             htmlFor={`${questionId}`}
           >
-            <input type="checkbox"
+            <input
+              type="checkbox"
               value={item.name}
               onChange={handleInput}
               name={item.name}
-              defaultChecked={
-                questionAnswer?.answer.split(';').includes(item.name)
-              }
+              defaultChecked={questionAnswer?.answer.split(';').includes(item.name)}
             />
-            <div className="checkmark"/>
+            <div className="checkmark" />
             {item.name}
           </label>
         ))}

@@ -1,3 +1,3 @@
-export interface IStateQuestionResponse{
-    [key: string]: string
+export interface IStateQuestionResponse {
+  [key: string]: string;
 }

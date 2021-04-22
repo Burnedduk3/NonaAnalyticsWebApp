@@ -1,3 +1,3 @@
 export interface IPublicNavBarProps {
-    theme: string
+  theme: string;
 }

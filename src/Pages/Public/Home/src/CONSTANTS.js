@@ -9,7 +9,7 @@ const HomeTexts = {
     first: {
       title: 'Our Mission',
       text:
-      // eslint-disable-next-line max-len
+        // eslint-disable-next-line max-len
         'Co-innovate with lifestyle medicine providers, fitness and wellness centers, sports performance clubs, and health research institutions. Our company utilizes state-of-the-art people analytics and machine learning based personalization to offer innovative solutions that are designed to double the analytical productivity of our customers, in half of the time and with half the cost. Our team is located in Lake Nona, the global epicenter for innovation in health, wellness and sports technology. We are inspired to positively impact individual’s health locally and internationally.',
       button: {
         text: 'Know project',
@@ -46,7 +46,8 @@ const HomeTexts = {
             role: 'eng',
             name: 'Cesar Muñoz',
             // eslint-disable-next-line max-len
-            title: 'PhD Computer Engineering & Management System - CEO Nona Analytics',
+            title:
+              'PhD Computer Engineering & Management System - CEO Nona Analytics',
           },
           {
             role: 'eng',
@@ -79,13 +80,15 @@ const HomeTexts = {
             role: 'med',
             name: 'Ana Maria Betancourt',
             // eslint-disable-next-line max-len
-            title: 'Medical Doctor Specialized Sport & Life Style Medicine Co-founder ASMEVIDA',
+            title:
+              'Medical Doctor Specialized Sport & Life Style Medicine Co-founder ASMEVIDA',
           },
           {
             role: 'med',
             name: 'Simon Villa Arango',
             // eslint-disable-next-line max-len
-            title: 'PhD Biomedical Engineering - CEO inncremental SAS Co-founder ASMEVIDA',
+            title:
+              'PhD Biomedical Engineering - CEO inncremental SAS Co-founder ASMEVIDA',
           },
         ],
       },

@@ -2,21 +2,21 @@ const LeftBarText = {
   lastSection: {
     title: 'What will we do with this information?',
     // eslint-disable-next-line max-len
-    content: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit aliquet massa sit amet facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae quam ligula. ',
-
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam suscipit aliquet massa sit amet facilisis. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus vitae quam ligula. ',
   },
 };
 
 export interface ILeftBarSubSections {
-  text: string
-  code: string
+  text: string;
+  code: string;
 }
 
 export interface ILeftBarSections {
   [key: string]: {
-    text: string
-    subSections: Array<ILeftBarSubSections>
-  }
+    text: string;
+    subSections: Array<ILeftBarSubSections>;
+  };
 }
 
 export const LEFT_BAR_SECTIONS: ILeftBarSections = {

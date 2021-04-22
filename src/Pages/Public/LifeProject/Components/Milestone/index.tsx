@@ -1,13 +1,11 @@
 import React from 'react';
 import './styles.scss';
-import {IMilestone} from '../../interfaces/MilestonesInterfaces';
+import { IMilestone } from '../../interfaces/MilestonesInterfaces';
 
-const Milestone: React.FC<IMilestone> = (
-    {
-      color,
-      Milestones,
-    }:IMilestone,
-): JSX.Element => {
+const Milestone: React.FC<IMilestone> = ({
+  color,
+  Milestones,
+}: IMilestone): JSX.Element => {
   return (
     <div className="milestone">
       <span className={`circle circle-${color}`} />

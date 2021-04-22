@@ -1,6 +1,12 @@
 // eslint-disable-next-line max-len
-import {ApolloClient, ApolloLink, concat, HttpLink, InMemoryCache} from '@apollo/client';
-import {BACKEND_URL} from '../EnviromentVariables';
+import {
+  ApolloClient,
+  ApolloLink,
+  concat,
+  HttpLink,
+  InMemoryCache,
+} from '@apollo/client';
+import { BACKEND_URL } from '../EnviromentVariables';
 
 let client: ApolloClient<any> | null = null;
 
@@ -25,9 +31,9 @@ const authMiddleware = new ApolloLink((operation, forward) => {
   return forward(operation);
 });
 
-const httpLink = new HttpLink({uri: BACKEND_URL});
+const httpLink = new HttpLink({ uri: BACKEND_URL });
 
-export const getClient= () => {
+export const getClient = () => {
   if (client === null) {
     client = new ApolloClient({
       cache: new InMemoryCache(),

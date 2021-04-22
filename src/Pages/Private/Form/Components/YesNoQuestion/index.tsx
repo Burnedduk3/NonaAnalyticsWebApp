@@ -1,16 +1,18 @@
 import React from 'react';
 import './styles.scss';
-import {IYesNoProps, IYesNoPropsQuestioner} from './interface';
-import {
-  useFormQuestionState,
-} from '../../../../../Context/FormQuestions/Provider';
-import {
-  IAnsweredQuestion,
-} from '../../../../../Context/FormQuestions/interface';
+import { IYesNoProps, IYesNoPropsQuestioner } from './interface';
+import { useFormQuestionState } from '../../../../../Context/FormQuestions/Provider';
+import { IAnsweredQuestion } from '../../../../../Context/FormQuestions/interface';
 
 const YesNoQuestion: React.FC<IYesNoProps> = ({
-  question, radioGroup, questionId, setResponse, currentState, checked, order,
-}:IYesNoProps): JSX.Element => {
+  question,
+  radioGroup,
+  questionId,
+  setResponse,
+  currentState,
+  checked,
+  order,
+}: IYesNoProps): JSX.Element => {
   return (
     <div className="inputContainer">
       <p className="question-text">{question}</p>
@@ -22,17 +24,18 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
             type="radio"
             name={radioGroup}
             value="yes"
-            onClick={() => setResponse({
-              ...currentState,
-              [questionId]: {
-                response: '1',
-                order,
-              },
-            },
-            )}
+            onClick={() =>
+              setResponse({
+                ...currentState,
+                [questionId]: {
+                  response: '1',
+                  order,
+                },
+              })
+            }
             defaultChecked={checked === 'yes'}
           />
-          <div className="check positive"/>
+          <div className="check positive" />
         </label>
         <label htmlFor={`${questionId}+no`}>
           <input
@@ -41,19 +44,18 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
             type="radio"
             name={radioGroup}
             value="no"
-            onClick={() => setResponse(
-                {
-                  ...currentState,
-                  [questionId]: {
-                    response: '0',
-                    order,
-                  },
+            onClick={() =>
+              setResponse({
+                ...currentState,
+                [questionId]: {
+                  response: '0',
+                  order,
                 },
-            )
+              })
             }
             defaultChecked={checked === 'no'}
           />
-          <div className="check negative"/>
+          <div className="check negative" />
         </label>
       </div>
     </div>
@@ -61,19 +63,25 @@ const YesNoQuestion: React.FC<IYesNoProps> = ({
 };
 
 export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
-  question, radioGroup, questionId, setResponse, order, inputConfirmation,
-}:IYesNoPropsQuestioner): JSX.Element => {
+  question,
+  radioGroup,
+  questionId,
+  setResponse,
+  order,
+  inputConfirmation,
+}: IYesNoPropsQuestioner): JSX.Element => {
   const formContext = useFormQuestionState();
-  const questionAnswer: IAnsweredQuestion | undefined = formContext.
-      formState.
-      questionsAnswered.
-      find((questionAnswer:IAnsweredQuestion)=>{
-        if (questionAnswer.id === questionId) {
-          return questionAnswer;
-        } else {
-          return undefined;
-        }
-      });
+  const questionAnswer:
+    | IAnsweredQuestion
+    | undefined = formContext.formState.questionsAnswered.find(
+    (questionAnswer: IAnsweredQuestion) => {
+      if (questionAnswer.id === questionId) {
+        return questionAnswer;
+      } else {
+        return undefined;
+      }
+    }
+  );
   return (
     <div className="inputContainer">
       <p className="question-text">{question}</p>
@@ -85,12 +93,10 @@ export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
             type="radio"
             name={radioGroup}
             value="yes"
-            onClick={
-              () => setResponse('yes', questionId, order, inputConfirmation)
-            }
+            onClick={() => setResponse('yes', questionId, order, inputConfirmation)}
             defaultChecked={questionAnswer?.answer === 'yes'}
           />
-          <div className="check positive"/>
+          <div className="check positive" />
         </label>
         <label htmlFor={`${questionId}+no`}>
           <input
@@ -99,12 +105,10 @@ export const YesNoQuestionQuestioner: React.FC<IYesNoPropsQuestioner> = ({
             type="radio"
             name={radioGroup}
             value="no"
-            onClick={
-              () => setResponse('no', questionId, order, inputConfirmation)
-            }
+            onClick={() => setResponse('no', questionId, order, inputConfirmation)}
             defaultChecked={questionAnswer?.answer === 'no'}
           />
-          <div className="check negative"/>
+          <div className="check negative" />
         </label>
       </div>
     </div>

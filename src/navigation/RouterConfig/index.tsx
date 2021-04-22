@@ -1,5 +1,5 @@
 import React from 'react';
-import {Redirect, Route, Switch, useLocation} from 'react-router-dom';
+import { Redirect, Route, Switch, useLocation } from 'react-router-dom';
 import Home from '../../Pages/Public/Home/src';
 import LifeProject from '../../Pages/Public/LifeProject/src';
 import RoutingConstants from '../CONSTANTS/RoutingConstants';
@@ -26,14 +26,10 @@ const RouterConfig: React.FC = (): JSX.Element => {
     <ApplicationStateProvider>
       <UserProvider>
         <FormQuestionProvider>
-          <PublicHeader page={location.pathname}/>
+          <PublicHeader page={location.pathname} />
           <Switch>
             {/* public routes */}
-            <Route
-              exact
-              path={RoutingConstants.menu.home.path}
-              component={Home}
-            />
+            <Route exact path={RoutingConstants.menu.home.path} component={Home} />
             <Route
               exact
               path={RoutingConstants.menu.lifeProject.path}
@@ -51,11 +47,7 @@ const RouterConfig: React.FC = (): JSX.Element => {
               component={MailVerificationPage}
             />
 
-            <Route
-              exact
-              path={RoutingConstants.login.path}
-              component={LoginPage}
-            />
+            <Route exact path={RoutingConstants.login.path} component={LoginPage} />
 
             <Route
               exact
@@ -71,7 +63,6 @@ const RouterConfig: React.FC = (): JSX.Element => {
 
             {
               <PrivateRoutes
-                // @ts-ignore
                 PrivateComponent={Consent}
                 path={RoutingConstants.consent.path}
               />
@@ -79,7 +70,6 @@ const RouterConfig: React.FC = (): JSX.Element => {
 
             {
               <PrivateRoutes
-                // @ts-ignore
                 PrivateComponent={FormPage}
                 path={RoutingConstants.dinamicForm.path}
               />
@@ -87,7 +77,6 @@ const RouterConfig: React.FC = (): JSX.Element => {
 
             {
               <PrivateRoutes
-                // @ts-ignore
                 PrivateComponent={EndScreenPage}
                 path={RoutingConstants.congrats.path}
               />
@@ -95,14 +84,13 @@ const RouterConfig: React.FC = (): JSX.Element => {
 
             {
               <PrivateRoutes
-                // @ts-ignore
                 PrivateComponent={UserForms}
                 path={RoutingConstants.listUserForms.path}
               />
             }
 
-            <Route path={RoutingConstants.notFound.path} component={NotFound}/>
-            <Redirect to={RoutingConstants.notFound.path}/>
+            <Route path={RoutingConstants.notFound.path} component={NotFound} />
+            <Redirect to={RoutingConstants.notFound.path} />
           </Switch>
           <Footer />
         </FormQuestionProvider>
