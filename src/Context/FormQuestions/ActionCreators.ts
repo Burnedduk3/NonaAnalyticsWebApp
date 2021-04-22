@@ -155,6 +155,7 @@ export const setShowableQuestions = (
   const {currentSubSection, currentStack} = state;
   if (currentSubSection && currentStack !== null) {
     const currentQuestions: Array<IQuestion> = [];
+    // TODO AQUI antes de esto
     currentSubSection.questions.map(
         (question: IQuestion) => {
           if (question.stack === currentStack && question.show) {
