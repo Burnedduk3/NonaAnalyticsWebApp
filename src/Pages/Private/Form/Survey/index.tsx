@@ -58,7 +58,8 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const saveResponses = useSaveResponses();
   const updateResponse = useUpdateResponse();
   const updateFormProgress = useUpdateFormProgress();
-  const [questions, setQuestions] = useState<IQuestion[]>( FormApplicationState.formState.showableQuestions);
+  const [questions, setQuestions] = useState<IQuestion[]>([]);
+  const [loaded, setLoaded] = useState<boolean>(false);
 
   const setQuestionResponse = (
       response: string,
@@ -171,6 +172,16 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
     }
   }, [formState]);
 
+  useEffect(()=>{
+    if (!loaded) {
+      console.log('cargando array...');
+      console.log(FormApplicationState.formState.showableQuestions + 'prueba');
+      setQuestions(FormApplicationState.formState.showableQuestions);
+      setLoaded(true);
+    }
+    console.log(questions);
+  }, [FormApplicationState.formState.showableQuestions]);
+
 
   const goPreviousSection = () => {
     FormApplicationState
@@ -258,7 +269,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                       <Spinner/>
                     </div>
                   )}
-                  {(!pageLoading) && (
+                  {(!pageLoading && loaded) && (
                     <>
                       {
                         questions.map(
