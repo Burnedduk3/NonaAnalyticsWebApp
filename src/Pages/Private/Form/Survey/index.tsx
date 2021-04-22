@@ -179,7 +179,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
     if (showableQuestions.length > 0) {
       setQuestions(FormApplicationState.formState.showableQuestions);
     }
-  }, [FormApplicationState.formState.showableQuestions]);
+  }, [showableQuestions]);
 
   console.log(questions);
 
