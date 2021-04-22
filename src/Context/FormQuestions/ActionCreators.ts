@@ -145,9 +145,11 @@ export const updateQuestionAnswer = (
 
 export const applyBanchingConditions = (
     questionArray: IQuestion[],
+    state: IFormQuestionsContextState,
 ): IQuestion[] => {
   const branchedQuestions: IQuestion[] = [];
   questionArray.map((item)=>{
+    state.questionsAnswered;
   });
   return branchedQuestions;
 };
@@ -161,6 +163,7 @@ export const setShowableQuestions = (
     // TODO AQUI antes de esto
     const branchedQuestions = applyBanchingConditions(
         currentSubSection.questions,
+        state,
     );
 
     branchedQuestions.map(
@@ -170,6 +173,7 @@ export const setShowableQuestions = (
           }
         },
     );
+
     state.showableQuestions = [...currentQuestions];
   }
   return {
