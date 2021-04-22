@@ -59,7 +59,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   const updateResponse = useUpdateResponse();
   const updateFormProgress = useUpdateFormProgress();
   const [questions, setQuestions] = useState<IQuestion[]>([]);
-  const [loaded, setLoaded] = useState<boolean>(false);
+  const {showableQuestions} = FormApplicationState.formState;
 
   const setQuestionResponse = (
       response: string,
@@ -172,15 +172,16 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
     }
   }, [formState]);
 
+
+  // eslint-disable-next-line max-len
+  // TODO la variable de loaded no era necesari, ya la info esta quedando en el arreglo de questions como puedes ver en el console log de abajo, borra este comentario con lo  que hay arriba tambien plox
   useEffect(()=>{
-    if (!loaded) {
-      console.log('cargando array...');
-      console.log(FormApplicationState.formState.showableQuestions + 'prueba');
+    if (showableQuestions.length > 0) {
       setQuestions(FormApplicationState.formState.showableQuestions);
-      setLoaded(true);
     }
-    console.log(questions);
   }, [FormApplicationState.formState.showableQuestions]);
+
+  console.log(questions);
 
 
   const goPreviousSection = () => {
@@ -269,7 +270,7 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
                       <Spinner/>
                     </div>
                   )}
-                  {(!pageLoading && loaded) && (
+                  {(!pageLoading) && (
                     <>
                       {
                         questions.map(
