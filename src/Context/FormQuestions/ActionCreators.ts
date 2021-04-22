@@ -143,6 +143,11 @@ export const updateQuestionAnswer = (
   return state;
 };
 
+export const applyBanchingConditions = (
+    questionArray: IQuestion[],
+) => {
+
+};
 
 export const setShowableQuestions = (
     state: IFormQuestionsContextState,
