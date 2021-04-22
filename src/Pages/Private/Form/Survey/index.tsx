@@ -178,10 +178,11 @@ const FormPage:React.FC<RouteComponentProps> = (): JSX.Element =>{
   // TODO la variable de loaded no era necesari, ya la info esta quedando en el arreglo de questions como puedes ver en el console log de abajo, borra este comentario con lo  que hay arriba tambien plox
   useEffect(()=>{
     if (showableQuestions.length > 0) {
-      var branchQ = [];
-      Object.keys(branchQuestions.BranchingLogic).forEach(function(key: String) {
-        branchQ.push(branchQuestions.BranchingLogic[key]);
-      });
+      const branchQ = [];
+      Object.keys(branchQuestions.BranchingLogic).forEach(
+          (key: any) => {
+            branchQ.push(branchQuestions.BranchingLogic[key]);
+          });
       setQuestions(showableQuestions);
     }
   }, [showableQuestions]);
