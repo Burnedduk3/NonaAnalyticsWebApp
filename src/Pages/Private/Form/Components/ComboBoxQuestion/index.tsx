@@ -1,4 +1,4 @@
-import React, { ChangeEvent } from 'react';
+import React, { ChangeEvent, useState } from 'react';
 import './styles.scss';
 import { IComboBoxProps } from './interface';
 import { IAnsweredQuestion } from '../../../../../Context/FormQuestions/interface';
@@ -24,6 +24,7 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
       }
     }
   );
+  const [isOther, setOther] = useState<boolean>(false);
 
   return (
     <div className="inputContainer">
@@ -32,9 +33,14 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
         <select
           id={`${questionId}`}
           className="combo-box"
-          onChange={(e: ChangeEvent<HTMLSelectElement>) =>
-            setResponse(e.target.value, questionId, order, inputConfirmation)
-          }
+          onChange={(e: ChangeEvent<HTMLSelectElement>) =>{
+            if (e.target.value === 'Other') {
+              setOther(true);
+            } else {
+              setOther(false);
+              setResponse(e.target.value, questionId, order, inputConfirmation);
+            }
+          }}
         >
           {items.map((item) => (
             <option
@@ -47,6 +53,18 @@ const ComboBoxComponent: React.FC<IComboBoxProps> = ({
           ))}
         </select>
         <i />
+        {
+          isOther && 
+          <input
+            id={`${questionId}-other`}
+            placeholder={'Please, specify...'}
+            type="text"
+            className="text-input"
+            onChange={(e) =>
+              setResponse(`Other: ${e.target.value}`, questionId, order, inputConfirmation)
+            }
+          />
+        }
       </label>
     </div>
   );

@@ -57,4 +57,22 @@
   option {
     color: $primary-color;
   }
+  
+  .txtInput {
+    border: none;
+    border-bottom: 1px #d6d4da solid !important;
+    outline: none;
+    display: block;
+    min-width: 300px;
+    width: 500px;
+    max-width: 700px;
+    text-align: center;
+    -webkit-appearance: none !important;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 15px 0 0 0;
+    font-size: 1em;
+    color: #5c5c5c;
+    font-weight: bold;
+  }
 }
