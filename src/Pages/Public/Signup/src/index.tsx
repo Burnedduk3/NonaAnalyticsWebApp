@@ -97,7 +97,6 @@ const SignUpPage: React.FC = (): JSX.Element => {
     }
 
     if (!validator.isMobilePhone(pageInputs.phone)) {
-      // eslint-disable-next-line max-len
       throw new Error('Invalid phone number, remember to add the country indicator');
     }
 

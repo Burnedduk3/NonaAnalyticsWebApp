@@ -98,7 +98,7 @@ export const useOrganizeForm = () => {
                         maxNumber = question.stack;
                       }
 
-                      const mappedQuestion = {
+                      const mappedQuestion: IQuestion = {
                         stackPhrase: question.stackPhrase,
                         items: items,
                         inputConfirmation: question.inputConfirmation,
@@ -107,6 +107,7 @@ export const useOrganizeForm = () => {
                         question: question.question,
                         placeHolder: question.placeHolder,
                         imagesPath: images,
+                        showOther: false,
                         order: question.order,
                         show: true,
                         id: question.id,

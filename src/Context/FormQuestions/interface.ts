@@ -70,6 +70,7 @@ export interface IQuestion {
   question: string;
   stack: number;
   stackPhrase: string | null;
+  showOther: false;
   placeHolder: string | null;
   show: boolean;
   imagesPath: Array<Image> | null;
