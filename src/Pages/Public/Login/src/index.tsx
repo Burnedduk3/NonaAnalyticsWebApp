@@ -21,6 +21,8 @@ import { IGetUserParams, useGetUser } from '../../../../hooks/GetUserData';
 import { IStartFormParams, useStartForm } from '../../../../hooks/StartForm';
 import { useFormQuestionState } from '../../../../Context/FormQuestions/Provider';
 import { SEARCH_STORAGE_QUESTIONER } from '../../../../Context/FormQuestions/ActionTypes';
+import { CognitoHostedUIIdentityProvider } from "@aws-amplify/auth/lib/types";
+import { ICreateUserParams, useCreateUser } from '../../../../hooks/CreateUser';
 
 const initialInputState: ILoginInterface = {
   password: '',
@@ -37,6 +39,7 @@ const LoginPage: React.FC = (): JSX.Element => {
   const startForm = useStartForm();
   const formState = useFormQuestionState();
   const { currentFormID } = formState.formState;
+  const createUser = useCreateUser();
 
   useEffect(() => {
     const tokenLocalStorage = localStorage.getItem('token');
@@ -49,6 +52,54 @@ const LoginPage: React.FC = (): JSX.Element => {
   }, [currentFormID, redirectPath]);
 
   useEffect(() => {
+    
+    const resp = Auth.currentAuthenticatedUser().then(async (response)=>{
+      try {
+        if(response){
+          const createUserParams: ICreateUserParams = {
+            variables: {
+              CognitoPoolId: response.signInUserSession.idToken.payload.sub,
+              email: response.signInUserSession.idToken.payload.email,
+              name: response.signInUserSession.idToken.payload.name,
+              phone:"0000000",
+              username: response.signInUserSession.idToken.payload.email
+            },
+          };
+          //
+          localStorage.setItem('token', response.signInUserSession.accessToken.jwtToken);
+  
+          const getUserParams: IGetUserParams = {
+            variables: {
+              UserID: response.signInUserSession.idToken.payload.sub,
+            },
+          };
+          getUser(
+            getUserParams,
+            response.signInUserSession.accessToken.jwtToken,
+            response.signInUserSession.idToken.jwtToken,
+            response.signInUserSession.refreshToken.jwtToken
+          );
+          const startFormParams: IStartFormParams = {
+            variables: {
+              CognitoPoolId: response.signInUserSession.idToken.payload.sub,
+            },
+          };
+          if (currentFormID === '') {
+            await createUser(createUserParams);
+            await startForm(startFormParams);
+            setRedirectPath(RoutingConstants.consent.path);
+          } else {
+            console.log('hola');
+            setRedirectPath(RoutingConstants.dinamicForm.path);
+          }
+        }
+      } catch (error) {
+        console.log(error);
+      }
+     
+     
+    });
+    
     applicationState.appStateDispatch({ type: HIDE_FOOTER, payload: undefined });
     applicationState.appStateDispatch({
       type: SET_ERROR,
@@ -92,6 +143,7 @@ const LoginPage: React.FC = (): JSX.Element => {
       ) {
         const user = await Auth.signIn(username, password);
         if (user) {
+          console.log(user);
           localStorage.setItem('token', user.signInUserSession.accessToken.jwtToken);
 
           const getUserParams: IGetUserParams = {
@@ -143,6 +195,20 @@ const LoginPage: React.FC = (): JSX.Element => {
   const triggerSignIn = () => {
     signIn();
   };
+  const facebookSignIn= async ()=> {
+    const options = { 
+      provider: CognitoHostedUIIdentityProvider.Facebook
+    }
+    const response = await Auth.federatedSignIn(options);
+    console.log(response);
+  }
+  const googleSignIn= async ()=> {
+    const options = { 
+      provider: CognitoHostedUIIdentityProvider.Google
+    }
+    const response = await Auth.federatedSignIn(options);
+    console.log(response);
+  }
 
   const handleInput = (event: ChangeEvent<HTMLInputElement>) => {
     const { username, password } = pageInputs;
@@ -191,12 +257,12 @@ const LoginPage: React.FC = (): JSX.Element => {
           <img
             src={GoogleIcon}
             alt="Google logo"
-            // onClick={()=>fedarateGoogleSignin()}
+            onClick={()=>googleSignIn()}
           />
           <img
             src={FBIcon}
             alt="Facebook logo"
-            // onClick={() => fedarateFacebookSignin()}
+            onClick={() => facebookSignIn()}
           />
         </div>
         <div className="horizontal-line">
@@ -243,3 +309,5 @@ const LoginPage: React.FC = (): JSX.Element => {
 };
 
 export default LoginPage;
+
+

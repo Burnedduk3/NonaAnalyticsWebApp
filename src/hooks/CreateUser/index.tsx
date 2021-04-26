@@ -21,6 +21,7 @@ export const useCreateUser = () => {
       if (!loading && data) {
         const rawResponse: ICreateUser = data;
         if (rawResponse.UserInteractionMutation.createUser.error) {
+          console.log(rawResponse.UserInteractionMutation);
           throw new Error('Unable to update consent try again');
         }
       }

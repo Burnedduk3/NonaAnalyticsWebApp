@@ -50,6 +50,7 @@ const PreQuestionerPage: React.FC = (): JSX.Element => {
     try {
       setLoading(true);
       const session = await Auth.currentSession();
+      console.log(session);
       localStorage.setItem('token', session.getAccessToken().getJwtToken());
       const { usernameID } = userState.userState;
       const startFormParams: IStartFormParams = {
@@ -60,15 +61,16 @@ const PreQuestionerPage: React.FC = (): JSX.Element => {
 
       await startForm(startFormParams);
       setLoading(false);
-      setRedirect(true);
+      //setRedirect(true);
     } catch (err) {
-      history.push(RoutingConstants.login.path);
+      console.log(err);
+      //history.push(RoutingConstants.login.path);
     }
   };
 
   useEffect(() => {
     if (redirect) {
-      history.push(`${RoutingConstants.consent.path}`);
+      //history.push(`${RoutingConstants.consent.path}`);
     }
   }, [loading]);
 
