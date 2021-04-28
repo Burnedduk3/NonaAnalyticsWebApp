@@ -7,6 +7,9 @@ import {
   ISubSection,
 } from './interface';
 import {BranchingLogic, IQoption} from "./branchQuestions";
+import validator from "validator";
+import {ApplyCondition} from "./ApplyCondition";
+import {initialState} from "./Reducer";
 
 export const nextQuestions = (
   state: IFormQuestionsContextState
@@ -62,6 +65,8 @@ export const nextQuestions = (
     }
   }
   newState = setShowableQuestions(newState);
+  newState = SkipForwardQuestions(newState);
+
   return {
     ...state,
     ...newState,
@@ -118,6 +123,7 @@ export const previousQuestion = (
     }
   }
   newState = setShowableQuestions(newState);
+  newState = SkipBackwardsQuestions(newState);
   return {
     ...newState,
   };
@@ -156,25 +162,61 @@ export const ApplyConditionalLogic = (
     })
     if (condition){
       const dependantQuestions = condition.logicQuestions
-      for (const conditionalQuestion of dependantQuestions){
+      const conditionsResult: boolean[] = dependantQuestions.map((conditionItem):boolean=> {
         const answeredQuestion = questionsAnswered.find((answer)=>{
-          return answer.id === conditionalQuestion.id
+          return answer.id === conditionItem.id
         })
-        if (answeredQuestion){
-          if (answeredQuestion.answer.toLowerCase() !== conditionalQuestion.answer.toLowerCase()){
-            uiQuestion.show = false
-          } else{
-            uiQuestion.show = true
-          }
-        }else{
-          uiQuestion.show = false
+
+        if (answeredQuestion) {
+          return ApplyCondition(answeredQuestion, conditionItem)
+        } else {
+          return false
         }
+      });
+      if (condition.method === "EVERY"){
+        uiQuestion.show =  conditionsResult.every(Boolean);
+      }
+
+      if (condition.method === "SOME"){
+        uiQuestion.show =  conditionsResult.some(Boolean);
       }
     }
-
     return uiQuestion;
-  })
+  });
+
   return state;
+}
+
+export const SkipForwardQuestions = (
+    state:IFormQuestionsContextState
+) => {
+  const emptyPage = state.showableQuestions.every((question)=>{
+    return question.show === false
+  });
+  if (emptyPage){
+    state = nextQuestions(state);
+    const newState = setShowableQuestions(state);
+    SkipForwardQuestions(newState);
+  }
+  return {
+    ...state
+  }
+}
+
+export const SkipBackwardsQuestions = (
+    state:IFormQuestionsContextState
+) => {
+  const emptyPage = state.showableQuestions.every((question)=>{
+    return question.show === false
+  });
+  if (emptyPage){
+    state = previousQuestion(state);
+    const newState = setShowableQuestions(state);
+    SkipBackwardsQuestions(newState);
+  }
+  return {
+    ...state
+  }
 }
 
 export const setShowableQuestions = (
@@ -192,6 +234,7 @@ export const setShowableQuestions = (
 
   }
   const newState = ApplyConditionalLogic(state)
+
   return {
     ...newState,
   };

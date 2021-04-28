@@ -1,281 +1,353 @@
 export interface IBranchingLogic {
     id: string;
+    method: "EVERY" | "SOME"
     logicQuestions: IQoption[];
 }
 
 export interface IQoption {
     id: string;
     answer: string;
+    condition: "EQUAL" | "NOTEQUAL" | "GRATER" | "GRATEREQUAL";
 }
 
 export const BranchingLogic: IBranchingLogic[] = [
     {
         id: '272',
-        logicQuestions: [{ id: '10', answer: 'US' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '10', answer: 'US', condition:"EQUAL" }],
     },
     {
         id: '273',
-        logicQuestions: [{ id: '10', answer: 'Some Other Country' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '10', answer: 'Some Other Country', condition:"EQUAL" }],
     },
     {
         id: '13',
-        logicQuestions: [{ id: '12', answer: 'Yes' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '12', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '18',
+        method: "EVERY",
         logicQuestions: [
-            { id: '17', answer: 'Never Married' },
-            { id: '17', answer: 'Divorced' },
-            { id: '17', answer: 'Separated' },
-            { id: '17', answer: 'Widowed' },
+            { id: '17', answer: 'Married', condition: "NOTEQUAL" },
         ],
     },
     {
         id: '20',
+        method: "EVERY",
         logicQuestions: [
-            { id: '7', answer: 'Female' },
-            { id: '19', answer: '0' },
+            { id: '7', answer: 'Female', condition: "EQUAL" },
+            { id: '19', answer: '0', condition: "GRATER" },
         ],
     },
     {
         id: '21',
+        method: "EVERY",
         logicQuestions: [
-            { id: '7', answer: 'Female' },
-            { id: '19', answer: '0' },
+            { id: '7', answer: 'Female', condition: "EQUAL" },
+            { id: '19', answer: '0', condition: "GRATER" },
         ],
     },
     {
         id: '22',
+        method: "EVERY",
         logicQuestions: [
-            { id: '7', answer: 'Female' },
-            { id: '19', answer: '0' },
+            { id: '7', answer: 'Female', condition: "EQUAL" },
+            { id: '19', answer: '0', condition: "GRATER" },
         ],
     },
     {
         id: '23',
+        method: "EVERY",
         logicQuestions: [
-            { id: '7', answer: 'Female' },
-            { id: '19', answer: '0' },
-            { id: '20', answer: 'Yes' },
+            { id: '7', answer: 'Female', condition: "EQUAL" },
+            { id: '19', answer: '0', condition: "GRATER" },
+            { id: '21', answer: 'Yes', condition: "EQUAL" },
         ],
     },
     {
         id: '25',
+        method: "SOME",
         logicQuestions: [
-            { id: '19', answer: '0' },
-            { id: '24', answer: '0' },
+            { id: '19', answer: '0', condition: "GRATER" },
+            { id: '24', answer: '0', condition: "GRATER" },
         ],
     },
     {
         id: '56',
-        logicQuestions: [{ id: '19', answer: '0' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '19', answer: '0', condition:"GRATER" }],
     },
     {
         id: '57',
-        logicQuestions: [{ id: '19', answer: '0' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '19', answer: '0', condition:"GRATER" }],
     },
     {
         id: '59',
-        logicQuestions: [{ id: '6', answer: '50' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '6', answer: '50', condition:"GRATEREQUAL" }],
     },
     {
         id: '60',
-        logicQuestions: [{ id: '6', answer: '50' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '6', answer: '50', condition:"GRATEREQUAL" }],
     },
     {
         id: '61',
-        logicQuestions: [{ id: '6', answer: '50' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '6', answer: '50', condition:"GRATEREQUAL" }],
     },
     {
         id: '62',
-        logicQuestions: [{ id: '6', answer: '50' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '6', answer: '50', condition:"GRATEREQUAL" }],
     },
     {
         id: '63',
-        logicQuestions: [{ id: '6', answer: '50' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '6', answer: '50', condition:"GRATEREQUAL" }],
     },
     {
         id: '64',
+        method: "EVERY",
         logicQuestions: [
-            { id: '6', answer: '50' },
-            { id: '7', answer: 'Male' },
+            { id: '6', answer: '50', condition: "GRATEREQUAL" },
+            { id: '7', answer: 'Male', condition: "EQUAL"},
         ],
     },
     {
         id: '65',
+        method: "EVERY",
         logicQuestions: [
-            { id: '6', answer: '40' },
-            { id: '7', answer: 'Female' },
+            { id: '6', answer: '40', condition: "GRATEREQUAL" },
+            { id: '7', answer: 'Female', condition: "EQUAL" },
         ],
     },
     {
         id: '66',
-        logicQuestions: [{ id: '7', answer: 'Female' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '7', answer: 'Female', condition:"EQUAL" }],
     },
     {
         id: '67',
-        logicQuestions: [{ id: '7', answer: 'Female' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '7', answer: 'Female', condition:"EQUAL" }],
     },
     {
         id: '77',
-        logicQuestions: [{ id: '7', answer: 'Female' }],
+        method: "EVERY",
+        logicQuestions: [{ id: '7', answer: 'Female', condition:"EQUAL" }],
     },
     {
         id: '88',
-        logicQuestions: [{ id: '85', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '85', answer: '0', condition:"GRATER" }],
     },
     {
         id: '90',
-        logicQuestions: [{ id: '86', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '86', answer: '0', condition:"GRATER" }],
     },
     {
         id: '91',
-        logicQuestions: [{ id: '87', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '87', answer: '0', condition:"GRATER" }],
     },
     {
         id: '95',
-        logicQuestions: [{ id: '94', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '94', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '96',
-        logicQuestions: [{ id: '94', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '94', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '97',
-        logicQuestions: [{ id: '94', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '94', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '99',
-        logicQuestions: [{ id: '98', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '98', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '100',
-        logicQuestions: [{ id: '98', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '98', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '101',
-        logicQuestions: [{ id: '98', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '98', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '111',
-        logicQuestions: [{ id: '110', answer: 'Yes' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '110', answer: 'Yes', condition:"EQUAL" }],
     },
     {
         id: '116',
-        logicQuestions: [{ id: '115', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '115', answer: '0', condition:"GRATER" }],
     },
     {
         id: '131',
-        logicQuestions: [{ id: '130', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '130', answer: '0', condition:"GRATER" }],
     },
     {
         id: '132',
-        logicQuestions: [{ id: '130', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '130', answer: '0', condition:"GRATER" }],
     },
     {
         id: '133',
-        logicQuestions: [{ id: '130', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '130', answer: '0', condition:"GRATER" }],
     },
     {
         id: '134',
-        logicQuestions: [{ id: '130', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '130', answer: '0', condition:"GRATER" }],
     },
     {
         id: '190',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '191',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '192',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '193',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '194',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '195',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '196',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '197',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '198',
+                method: "EVERY",
+
         logicQuestions: [
-            { id: '26', answer: 'Full-time employment' },
-            { id: '26', answer: 'Part-time employment' },
-            { id: '26', answer: 'Self-employed' },
-            { id: '26', answer: 'On maternity leave' },
-            { id: '26', answer: 'On illness leave' },
+            { id: '26', answer: 'Full-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Part-time employment', condition:"EQUAL" },
+            { id: '26', answer: 'Self-employed', condition:"EQUAL" },
+            { id: '26', answer: 'On maternity leave', condition:"EQUAL" },
+            { id: '26', answer: 'On illness leave', condition:"EQUAL" },
         ],
     },
     {
         id: '200',
-        logicQuestions: [{ id: '199', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '199', answer: '0', condition:"GRATER" }],
     },
     {
         id: '202',
-        logicQuestions: [{ id: '201', answer: '0' }],
+                method: "EVERY",
+
+        logicQuestions: [{ id: '201', answer: '0', condition:"GRATER" }],
     },
 ];
